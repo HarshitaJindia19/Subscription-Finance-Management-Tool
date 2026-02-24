@@ -10,12 +10,6 @@ public class Data {
 
     // Create function to add new subscription
     public static void addSubscription(String name, String cost, String category, String renewal, String start, String end, String status) {
-    /*
-    - Create a new array list to store new subscription
-    - Add data to the array list
-    - Add that list to the subscriptions arraylist
-    - Add new category to categories - no repeated categories
-     */
 
         ArrayList<String> newSub = new ArrayList<>();
         newSub.add(name);
@@ -34,6 +28,7 @@ public class Data {
     //Store budget for each category
     public static void setCategoryBudget(String category, double limit) {
         //Store in HashMap -> Key = Category Name, Value = Budget Limit
+        categoryBudgets.put(category.toLowerCase(), limit);
     }
 
     //Calculates Monthly spend of the user
