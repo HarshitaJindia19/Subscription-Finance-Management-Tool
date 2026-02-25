@@ -25,7 +25,7 @@ public class Menu {
                     //harshitas work
                     break;
                 case "2":
-
+                    updateProcess();
                     break;
                 case "3":
                     //mehrins work
@@ -41,4 +41,23 @@ public class Menu {
         }
         input.close();
     }
+public static void updateProcess() {
+    System.out.println("\nEnter name of subscription to update: ");
+    String name= input.nextLine().trim();
+
+    int index = Data.subscriptionIndex(name);
+    if (index==-1) {
+        System.out.println("ERROR: '"+name + "subscription not found.");
+        return;
+    }
+    System.out.println("\nWhat do you want to update?");
+    System.out.println("1. Name");
+    System.out.println("2. Cost");
+    System.out.println("3. Category");
+    System.out.println("4. Billing cycle");
+    System.out.println("5. Start date");
+    System.out.println("6. End date");
+    System.out.println("7. Status of subscription (ACTIVE/PAUSED/CANCELLED)");
+    System.out.print("SELECT YOUR DESIRED FIELD: ");
+}
 }
