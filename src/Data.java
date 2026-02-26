@@ -49,10 +49,14 @@ public class Data {
  *
  */
 public static int findingSubscriptionIndex(String name){
-    for (int i=0;i<subsciptions.size();i++) {
+    for (int i=0;i<subscriptions.size();i++) {
         if (subscriptions.get(i).get(0).equalsIgnoreCase(name)){
             return i;
         }
     }
     return  -1;
+}
+public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
+    subscriptions.get(subIndex).set(choiceIndex, newChoice);
+}
 }
