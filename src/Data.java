@@ -41,3 +41,18 @@ public class Data {
         return 0;
     }
 }
+
+/** @author Ramsha
+ * finds the index of subcription in outer ArrayList by ensuring the name matches
+ * @param name the name of subscription to search for
+ * @return index of subscription or -1 if index is invalid
+ *
+ */
+public static int findingSubscriptionIndex(String name){
+    for (int i=0;i<subsciptions.size();i++) {
+        if (subscriptions.get(i).get(0).equalsIgnoreCase(name)){
+            return i;
+        }
+    }
+    return  -1;
+}
