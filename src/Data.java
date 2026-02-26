@@ -59,4 +59,12 @@ public static int findingSubscriptionIndex(String name){
 public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
     subscriptions.get(subIndex).set(choiceIndex, newChoice);
 }
+
+public static boolean validStatus(String status) {
+    for (String validString: STATUS_OPTIONS){
+        if (validString.equals(status)){
+            return true;
+        }
+    }
+        return false;
 }
