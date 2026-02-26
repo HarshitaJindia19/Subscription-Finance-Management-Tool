@@ -7,6 +7,7 @@ public class Data {
     public static final ArrayList<Object[]> subscriptions = new ArrayList<>();
     public static final HashMap<String, Double> categoryBudgets = new HashMap<>();
     public static final HashSet<String> categories = new HashSet<>();
+    public static final HashSet<String> names = new HashSet<>();
     public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
     // Store Index for each subscription information
@@ -18,7 +19,6 @@ public class Data {
     private static final int INDEX_START_DATE = 4;
     private static final int INDEX_END_DATE = 5;
     private static final int INDEX_STATUS = 6;
-
 
 
     // Create function to add new subscription
@@ -33,38 +33,23 @@ public class Data {
             subscription[INDEX_END_DATE] = endDate;
             subscription[INDEX_STATUS] = status;
             subscriptions.add(subscription);
+            names.add(name);
             categories.add(category); //no duplicates
-            System.out.println("Stored");
             return true;
         } else {
             return false;
         }
     }
 
-    // check functions
-
+    // Check functions
     public static boolean subscriptionExists(String name) {
-        for(Object[] subscription : subscriptions) {
-            if(subscription[INDEX_NAME].equals(name)) {
-                return true;
-            }
-        }
-        return false;
+        return names.contains(name);
     }
 
     //Store budget for each category
     public static void setCategoryBudget(String category, double limit) {
         //Store in HashMap -> Key = Category Name, Value = Budget Limit
         categoryBudgets.put(category.toLowerCase(), limit);
+        categories.add(category);
     }
-
-//    //Calculates Monthly spend of the user
-//    public static double calculateMonthlySpend() {
-//        return 0;
-//    }
-//
-//    //Calculates yearly spend of the user
-//    public static double calculateYearlySpend() {
-//        return 0;
-//    }
 }
