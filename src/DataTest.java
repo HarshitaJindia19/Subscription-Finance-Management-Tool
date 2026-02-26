@@ -21,13 +21,13 @@ public class DataTest {
         subscription.add("ACTIVE");
         Data.subscriptions.add(subscription);
 
-        int index = Data.findSubscriptionIndex("Netflix");
+        int index = Data.findingSubscriptionIndex("Netflix");
         assertEquals(0, index, "Netflix should be in index 0");
 
     }
     @Test
     void updateSubscriptionChoice(){
-        Data.suscriptions.clear();
+        Data.subscriptions.clear();
         ArrayList<String> subscription= new ArrayList<>();
         subscription.add("Netflix");
         subscription.add("18.99");
@@ -38,7 +38,7 @@ public class DataTest {
         subscription.add("ACTIVE");
         Data.subscriptions.add(subscription);
 
-        Data.updateSubscriptionChoice(0,6, "PAUSED");
+        Data.changeSubscriptionChoice(0,6, "PAUSED");
         assertEquals("PAUSED",Data.subscriptions.get(0).get(6), "Should update status to PAUSED");
 
 

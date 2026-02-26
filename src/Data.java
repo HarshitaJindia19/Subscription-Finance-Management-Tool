@@ -40,31 +40,47 @@ public class Data {
     public static double calculateYearlySpend() {
         return 0;
     }
-}
 
-/** @author Ramsha
- * finds the index of subcription in outer ArrayList by ensuring the name matches
- * @param name the name of subscription to search for
- * @return index of subscription or -1 if index is invalid
- *
- */
-public static int findingSubscriptionIndex(String name){
-    for (int i=0;i<subscriptions.size();i++) {
-        if (subscriptions.get(i).get(0).equalsIgnoreCase(name)){
-            return i;
-        }
-    }
-    return  -1;
-}
-public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
-    subscriptions.get(subIndex).set(choiceIndex, newChoice);
-}
 
-public static boolean validStatus(String status) {
-    for (String validString: STATUS_OPTIONS){
-        if (validString.equals(status)){
-            return true;
+    /**
+     * @param name the name of subscription to search for
+     * @return index of subscription or -1 if index is invalid
+     * @author Ramsha
+     * finds the index of subcription in outer ArrayList by ensuring the name matches
+     *
+     */
+    public static int findingSubscriptionIndex(String name) {
+        for (int i = 0; i < subscriptions.size(); i++) {
+            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
+                return i;
+            }
         }
+        return -1;
     }
+
+    /**
+     *
+     * @param subIndex    index of subscriptions in outer ArrayList
+     * @param choiceIndex index of choice to update
+     * @param newChoice   new choice to set
+     */
+    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
+        subscriptions.get(subIndex).set(choiceIndex, newChoice);
+    }
+
+    /**
+     * check if status string is valid options
+     *
+     * @param status status to validate
+     * @return true if valid, false if invalid
+     */
+
+    public static boolean validStatus(String status) {
+        for (String validString : STATUS_OPTIONS) {
+            if (validString.equals(status)) {
+                return true;
+            }
+        }
         return false;
+    }
 }
