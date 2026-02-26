@@ -9,19 +9,29 @@ public class Data {
     public static final HashSet<String> categories = new HashSet<>();
     public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
-    //
+    // Store Index for each subscription information
+
+    private static final int INDEX_NAME = 0;
+    private static final int INDEX_COST = 1;
+    private static final int INDEX_CATEGORY = 2;
+    private static final int INDEX_RENEWAL = 3;
+    private static final int INDEX_START_DATE = 4;
+    private static final int INDEX_END_DATE = 5;
+    private static final int INDEX_STATUS = 6;
+
+
 
     // Create function to add new subscription
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
 
         Object[] subscription = new Object[7];
-        subscription[0] = name;
-        subscription[1] = cost;
-        subscription[2] = category;
-        subscription[3] = renewal;
-        subscription[4] = startDate;
-        subscription[5] = endDate;
-        subscription[6] = status;
+        subscription[INDEX_NAME] = name;
+        subscription[INDEX_COST] = cost;
+        subscription[INDEX_CATEGORY] = category;
+        subscription[INDEX_RENEWAL] = renewal;
+        subscription[INDEX_START_DATE] = startDate;
+        subscription[INDEX_END_DATE] = endDate;
+        subscription[INDEX_STATUS] = status;
 
         subscriptions.add(subscription);
 
