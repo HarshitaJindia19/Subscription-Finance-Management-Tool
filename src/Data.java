@@ -23,21 +23,33 @@ public class Data {
 
     // Create function to add new subscription
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
+        if (!subscriptionExists(name)) {
+            Object[] subscription = new Object[7];
+            subscription[INDEX_NAME] = name;
+            subscription[INDEX_COST] = cost;
+            subscription[INDEX_CATEGORY] = category;
+            subscription[INDEX_RENEWAL] = renewal;
+            subscription[INDEX_START_DATE] = startDate;
+            subscription[INDEX_END_DATE] = endDate;
+            subscription[INDEX_STATUS] = status;
+            subscriptions.add(subscription);
+            categories.add(category); //no duplicates
+            System.out.println("Stored");
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-        Object[] subscription = new Object[7];
-        subscription[INDEX_NAME] = name;
-        subscription[INDEX_COST] = cost;
-        subscription[INDEX_CATEGORY] = category;
-        subscription[INDEX_RENEWAL] = renewal;
-        subscription[INDEX_START_DATE] = startDate;
-        subscription[INDEX_END_DATE] = endDate;
-        subscription[INDEX_STATUS] = status;
+    // check functions
 
-        subscriptions.add(subscription);
-
-        categories.add(category); //adds category to set - no duplicates
-
-        return true;
+    public static boolean subscriptionExists(String name) {
+        for(Object[] subscription : subscriptions) {
+            if(subscription[INDEX_NAME].equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //Store budget for each category
