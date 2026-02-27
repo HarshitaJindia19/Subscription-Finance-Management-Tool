@@ -68,6 +68,9 @@ public class Menu {
         return name;
     }
 
+    /**
+     * @return String cost for new subscription (user input)
+     */
     private static String getCost() {
         System.out.println("Enter the cost:");
         String cost;
@@ -93,6 +96,25 @@ public class Menu {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    private static String getCategory() {
+        System.out.println("Enter the category (e.g. Entertainment, Fitness, Education): ");
+
+        //Show existing categories if there are any
+        if (!Data.categories.isEmpty()) {
+            System.out.println("Existing categories: " + Data.categories);
+        }
+
+        //User chooses category/or creates one
+        String category;
+        do {
+            category = input.nextLine().trim();
+            if (category.isEmpty()) {
+                System.out.println("Category cannot be empty, please enter a category: ");
+            }
+        } while (category.isEmpty());
+        return category;
     }
 
 
