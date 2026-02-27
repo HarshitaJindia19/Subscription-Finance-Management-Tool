@@ -62,14 +62,11 @@ public class Data {
     public static double calculateYearlySpend() {
         return 0;
     }
-
-
     /**
-     * @param name the name of subscription to search for
-     * @return index of subscription or -1 if index is invalid
+     * Finds the index of subscription in outer ArrayList by ensuring the name matches.
      * @author Ramsha
-     * finds the index of subcription in outer ArrayList by ensuring the name matches
-     *
+     * @param name the name of subscription to search for
+     * @return index of subscription or -1 if not found
      */
     public static int findingSubscriptionIndex(String name) {
         for (int i = 0; i < subscriptions.size(); i++) {
@@ -81,18 +78,19 @@ public class Data {
     }
 
     /**
-     *
-     * @param subIndex    index of subscriptions in outer ArrayList
-     * @param choiceIndex index of choice to update
-     * @param newChoice   new choice to set
+     * Updates a specific field of a subscription using .set().
+     * @author Ramsha
+     * @param subIndex    index of subscription in outer ArrayList
+     * @param choiceIndex index of field to update
+     * @param newChoice   new value to set
      */
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         subscriptions.get(subIndex).set(choiceIndex, newChoice);
     }
 
     /**
-     * check if status string is valid options
-     *
+     * Checks if status string is one of the valid options.
+     * @author Ramsha
      * @param status status to validate
      * @return true if valid, false if invalid
      */
