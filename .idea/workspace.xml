@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="">
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="fixed some bugs in files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +12,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
     <option name="UPDATE_TYPE" value="REBASE" />
@@ -31,6 +45,13 @@
     &quot;second&quot;: &quot;1def89c3-24eb-4d88-98f8-dac7a664f202&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -83,6 +104,7 @@
       <workItem from="1771959119740" duration="140000" />
       <workItem from="1771959263244" duration="4187000" />
       <workItem from="1771979718354" duration="7549000" />
+      <workItem from="1772061190360" duration="12360000" />
     </task>
     <task id="LOCAL-00001" summary="initial project files setup">
       <option name="closed" value="true" />
@@ -108,7 +130,23 @@
       <option name="project" value="LOCAL" />
       <updated>1771959382581</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updating changes">
+      <option name="closed" value="true" />
+      <created>1772061534502</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1772061534502</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fixed some bugs in files">
+      <option name="closed" value="true" />
+      <created>1772081935683</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1772081935683</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +166,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial project files setup" />
     <MESSAGE value="imported ArrayList, HashMap, HashSet" />
-    <option name="LAST_COMMIT_MESSAGE" value="imported ArrayList, HashMap, HashSet" />
+    <MESSAGE value="updating changes" />
+    <MESSAGE value="fixed some bugs in files" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some bugs in files" />
   </component>
 </project>

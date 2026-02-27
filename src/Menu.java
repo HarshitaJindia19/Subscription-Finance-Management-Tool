@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  * Menu.java - handles the main menu loop and user interface
@@ -10,34 +11,78 @@ import java.util.Scanner;
 public class Menu {
     private static Scanner input = new Scanner(System.in);
 
+    public static final ArrayList<String> options= new ArrayList<>();
+    static{
+        options.add("Exit");
+        options.add("Add subscription");
+        options.add("Update subscription");
+        options.add("View all subscriptions");
+        options.add("View active subscriptions");
+        options.add("Total monthly spend");
+        options.add("Total annual spend");
+        options.add("Upcoming bills");
+        options.add("Paused subscriptions");
+        options.add("Budget % by category");
+        options.add("High-expense bills");
+        options.add("Budget alert");
+        options.add("Search subscriptions");
+        options.add("Add category budget");
+    }
     public static void runMenu() {
-        boolean running = true;
-        while (running) {
-            System.out.println("====SUBSCRIPTION MANAGER===");
-            System.out.println("1. Add Subscription");
-            System.out.println("2. Update Subscription");
-            System.out.println("3. View all Subscriptions");
-            System.out.println("4. Exit");
-            System.out.print("Select an option: ");
-            String choice = input.nextLine().trim();
-
-            switch (choice) {
+        boolean active=true;
+            while (active) {
+                System.out.println("====SUBSCRIPTION MANAGER===");
+                for (int i=0;i<options.size();i++) {
+                    System.out.println(i + ". " + options.get(i));
+                }
+                System.out.println("Please select an option: ");
+                String choice= input.nextLine().trim();
+                switch (choice) {
                 case "1":
-                    //harshitas work
+                    // harshitas work
                     break;
                 case "2":
                     updateProcess();
                     break;
                 case "3":
-                    //mehrins work
+                    // mehrins work
                     break;
                 case "4":
-                    running = false;
+                    // mehrins work
+                    break;
+                case "5":
+                    // harshitas work
+                    break;
+                case "6":
+                    // harshitas work
+                    break;
+                case "7":
+                    // mehrins work
+                    break;
+                case "8":
+                    // mehrins work
+                    break;
+                case "9":
+                    // mehrins work
+                    break;
+                case "10":
+                    // mehrins work
+                    break;
+                case "11":
+                    // mehrins work
+                    break;
+                case "12":
+                    // mehrins work
+                    break;
+                case "13":
+                    // harshitas work
+                    break;
+                case "0":
+                    active = false;
                     System.out.println("Exited.");
                     break;
                 default:
-                    System.out.println("Invalid choice, please enter numbers 1-4.");
-
+                    System.out.println("Invalid choice, please enter a number from the menu.");
             }
         }
         input.close();
