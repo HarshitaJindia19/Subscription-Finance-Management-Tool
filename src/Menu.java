@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  */
 public class Menu {
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     public static void runMenu() {
         boolean running = true;
@@ -42,6 +42,59 @@ public class Menu {
         }
         input.close();
     }
+
+    private static void addNewSubscription() {
+        boolean success = false;
+
+        do {
+            String name = getName();
+            String cost = getCost();
+            String category = getCategory();
+            String renewal = getRenewal();
+            String startDate = getStartDate();
+            String endDate = getEndDate();
+            String status = getStatus();
+            success = Data.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
+        } while(!success);
+
+    }
+
+    private static String getName() {
+        System.out.println("Enter the name:");
+        String name;
+        do {
+            name = input.nextLine().trim();
+        } while (name.isEmpty());
+        return name;
+    }
+
+    private static String getCost() {
+        System.out.println("Enter the cost:");
+        String cost;
+
+        do {
+            cost = input.nextLine().trim().replace("$", "");
+            if (!isValidCost(cost)) {
+                System.out.println("Invalid cost. Please enter a valid cost (ex. 15.99)");
+            }
+        } while (!isValidCost(cost));
+
+        return cost;
+    }
+
+    /**
+     * @param cost for new subscription
+     * @return boolean true if cost is double, false otherwise
+     */
+    private static boolean isValidCost(String cost) {
+        try {
+            double value = Double.parseDouble(cost);
+            return value > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     public static void updateProcess() {
         System.out.println("\nEnter name of subscription to update: ");
