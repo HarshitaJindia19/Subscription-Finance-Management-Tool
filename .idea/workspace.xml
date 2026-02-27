@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="validate start and end date. (Not sure if we can import Date formatter). Also need to make it so end-date is optional.">
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="chore: cleaned Data file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +148,23 @@
       <option name="project" value="LOCAL" />
       <updated>1772164089442</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="validate status through getStatus and validStatus(). Need to modify so user can easily choose rather than type.">
+      <option name="closed" value="true" />
+      <created>1772164747615</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772164747615</updated>
+    </task>
+    <task id="LOCAL-00010" summary="chore: cleaned Data file">
+      <option name="closed" value="true" />
+      <created>1772164774936</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1772164774936</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +189,8 @@
     <MESSAGE value="feat: started the addNewSubscription() logic, and created functions to error check inputs for getName() and getCost()" />
     <MESSAGE value="getCategory() asks user for new category, but still need to formate better so use doesn't enter same category but with different letter cases." />
     <MESSAGE value="validate start and end date. (Not sure if we can import Date formatter). Also need to make it so end-date is optional." />
-    <option name="LAST_COMMIT_MESSAGE" value="validate start and end date. (Not sure if we can import Date formatter). Also need to make it so end-date is optional." />
+    <MESSAGE value="validate status through getStatus and validStatus(). Need to modify so user can easily choose rather than type." />
+    <MESSAGE value="chore: cleaned Data file" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: cleaned Data file" />
   </component>
 </project>
