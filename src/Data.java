@@ -97,12 +97,62 @@ public class Data {
      * @return true if valid, false if invalid
      */
 
-    public static boolean validStatus(String status) {
+    //--------------------------------Valid Checks----------------------------------------//
+    public static boolean isValidStatus(String status) {
         for (String validString : STATUS_OPTIONS) {
             if (validString.equals(status)) {
                 return true;
             }
         }
         return false;
+    }
+
+    /**
+     * @param date (end/start) of the subscription ( user input )
+     * @return boolean true if valid, false otherwise
+     */
+    public static boolean isValidDate(String date) {
+
+        // check the basic format MM/DD/YYYY
+        if (date.length() != 10) {
+            return false;
+        }
+        if (date.charAt(2) != '/' || date.charAt(5) != '/') {
+            return false;
+        }
+
+        // Check bounds of month, day, year
+        try {
+            int month = Integer.parseInt(date.substring(0, 2));
+            int day = Integer.parseInt(date.substring(3, 5));
+            int year = Integer.parseInt(date.substring(6, 10));
+
+            if (month < 1 || month > 12) {
+                return false;
+            }
+            if (day < 1 || day > 31) {
+                return false;
+            }
+            if (year < 2000) {
+                return false;
+            }
+            return true;
+
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
+     * @param cost for new subscription
+     * @return boolean true if cost is double, false otherwise
+     */
+    public static boolean isValidCost(String cost) {
+        try {
+            double value = Double.parseDouble(cost);
+            return value > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }

@@ -44,6 +44,9 @@ public class Menu {
         input.close();
     }
 
+    /**
+     * TBD
+     */
     private static void addNewSubscription() {
         boolean success = false;
 
@@ -60,6 +63,10 @@ public class Menu {
 
     }
 
+    /**
+     * Validates/gets name from user
+     * @return name/brand of subscription
+     */
     private static String getName() {
         System.out.println("Enter the name:");
         String name;
@@ -70,6 +77,7 @@ public class Menu {
     }
 
     /**
+     * Validates/gets cost from user
      * @return String cost for new subscription (user input)
      */
     private static String getCost() {
@@ -78,27 +86,19 @@ public class Menu {
 
         do {
             cost = input.nextLine().trim().replace("$", "");
-            if (!isValidCost(cost)) {
+            if (!Data.isValidCost(cost)) {
                 System.out.println("Invalid cost. Please enter a valid cost (ex. 15.99)");
             }
-        } while (!isValidCost(cost));
+        } while (!Data.isValidCost(cost));
 
         return cost;
     }
 
     /**
-     * @param cost for new subscription
-     * @return boolean true if cost is double, false otherwise
+     * Validates/gets category from user
+     * Displays previous categories for user to choose from or add new one
+     * @return category of the subscription
      */
-    private static boolean isValidCost(String cost) {
-        try {
-            double value = Double.parseDouble(cost);
-            return value > 0;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
     private static String getCategory() {
         System.out.println("Enter the category (e.g. Entertainment, Fitness, Education): ");
 
@@ -118,6 +118,10 @@ public class Menu {
         return category;
     }
 
+    /**
+     * Validates/gets renewal cycle from user (Monthly or Yearly)
+     * @return renewal cycle of subscription
+     */
     private static String getRenewal() {
         String renewal;
         System.out.println("Enter the billing cycle (Monthly or Yearly):");
@@ -132,16 +136,20 @@ public class Menu {
         return renewal;
     }
 
+    /**
+     * Validates/gets start date from user
+     * @return start date of subscription (user input)
+     */
     private static String getStartDate() {
         String startDate;
         System.out.println("Enter the start date (MM/DD/YYYY): ");
 
         do{
             startDate = input.nextLine().trim();
-            if(!isValidDate(startDate)) {
+            if(!Data.isValidDate(startDate)) {
                 System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
             }
-        } while(!isValidDate(startDate));
+        } while(!Data.isValidDate(startDate));
 
 
 
@@ -149,6 +157,7 @@ public class Menu {
     }
 
     /**
+     * Validates/gets endDate from user
      * @return endDate for subscription (user input)
      */
     private static String getEndDate() {
@@ -157,47 +166,19 @@ public class Menu {
 
         do {
             endDate = input.nextLine().trim();
-            if (!isValidDate(endDate)) {
+            if (!Data.isValidDate(endDate)) {
                 System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
             }
 
-        } while (!isValidDate(endDate));
+        } while (!Data.isValidDate(endDate));
 
         return endDate;
     }
 
-    private static boolean isValidDate(String date) {
-
-        // check the basic format MM/DD/YYYY
-        if (date.length() != 10) {
-            return false;
-        }
-        if (date.charAt(2) != '/' || date.charAt(5) != '/') {
-            return false;
-        }
-
-        // Check bounds of month, day, year
-        try {
-            int month = Integer.parseInt(date.substring(0, 2));
-            int day = Integer.parseInt(date.substring(3, 5));
-            int year = Integer.parseInt(date.substring(6, 10));
-
-            if (month < 1 || month > 12) {
-                return false;
-            }
-            if (day < 1 || day > 31) {
-                return false;
-            }
-            if (year < 2000) {
-                return false;
-            }
-            return true;
-
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
+    /**
+     * Validates/gets status input from user - compares it to STATUS_OPTIONS
+     * @return status of subscription (user input)
+     */
     private static String getStatus(){
         String status;
         System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
@@ -205,12 +186,12 @@ public class Menu {
 
         do {
             status = input.nextLine().trim().toUpperCase();
-            if(!Data.validStatus(status)) {
+            if(!Data.isValidStatus(status)) {
                 System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
                 System.out.println("Please enter one of the options provided:");
             }
-        } while (!Data.validStatus());
-        return "";
+        } while (!Data.isValidStatus(status));
+        return status;
     }
 
 
@@ -243,7 +224,7 @@ public class Menu {
         String newChoice = input.nextLine().trim();
 
         if (choiceIndex == 6) {
-            if (!Data.validStatus(newChoice.toUpperCase())) {
+            if (!Data.isValidStatus(newChoice.toUpperCase())) {
                 System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED");
                 return;
             }
