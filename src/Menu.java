@@ -117,6 +117,90 @@ public class Menu {
         return category;
     }
 
+    private static String getRenewal() {
+        String renewal;
+        System.out.println("Enter the billing cycle (Monthly or Yearly):");
+
+        do {
+            renewal = input.nextLine().trim();
+            if (!renewal.equalsIgnoreCase("monthly") && !renewal.equalsIgnoreCase("yearly")) {
+                System.out.println("Please enter a valid billing cycle (Monthly or Yearly)");
+            }
+        } while(!renewal.equalsIgnoreCase("monthly") && !renewal.equalsIgnoreCase("yearly"));
+
+        return renewal;
+    }
+
+    private static String getStartDate() {
+        String startDate;
+        System.out.println("Enter the start date (MM/DD/YYYY): ");
+
+        do{
+            startDate = input.nextLine().trim();
+            if(!isValidDate(startDate)) {
+                System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
+            }
+        } while(!isValidDate(startDate));
+
+
+
+        return startDate;
+    }
+
+    /**
+     * @return endDate for subscription (user input)
+     */
+    private static String getEndDate() {
+        String endDate;
+        System.out.println("Enter the end date (MM/DD/YYYY): ");
+
+        do {
+            endDate = input.nextLine().trim();
+            if (!isValidDate(endDate)) {
+                System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
+            }
+
+        } while (!isValidDate(endDate));
+
+        return endDate;
+    }
+
+    private static boolean isValidDate(String date) {
+
+        // check the basic format MM/DD/YYYY
+        if (date.length() != 10) {
+            return false;
+        }
+        if (date.charAt(2) != '/' || date.charAt(5) != '/') {
+            return false;
+        }
+
+        // Check bounds of month, day, year
+        try {
+            int month = Integer.parseInt(date.substring(0, 2));
+            int day = Integer.parseInt(date.substring(3, 5));
+            int year = Integer.parseInt(date.substring(6, 10));
+
+            if (month < 1 || month > 12) {
+                return false;
+            }
+            if (day < 1 || day > 31) {
+                return false;
+            }
+            if (year < 2000) {
+                return false;
+            }
+            return true;
+
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    private static String getStatus(){
+        return "";
+    }
+
 
     public static void updateProcess() {
         System.out.println("\nEnter name of subscription to update: ");
