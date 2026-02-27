@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  *
  */
 public class Menu {
-    private static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
     //Arraylist stores all menu options - index 0=exit, index 1=add subscription, etc.
     public static final ArrayList<String> options= new ArrayList<>();
 
@@ -103,6 +104,157 @@ public class Menu {
      *
      */
 
+    /**
+     * TBD
+     */
+    private static void addNewSubscription() {
+        boolean success = false;
+
+        do {
+            String name = getName();
+            String cost = getCost();
+            String category = getCategory();
+            String renewal = getRenewal();
+            String startDate = getStartDate();
+            String endDate = getEndDate();
+            String status = getStatus();
+            success = Data.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
+        } while(!success);
+
+    }
+
+    /**
+     * Validates/gets name from user
+     * @return name/brand of subscription
+     */
+    private static String getName() {
+        System.out.println("Enter the name:");
+        String name;
+        do {
+            name = input.nextLine().trim();
+        } while (name.isEmpty());
+        return name;
+    }
+
+    /**
+     * Validates/gets cost from user
+     * @return String cost for new subscription (user input)
+     */
+    private static String getCost() {
+        System.out.println("Enter the cost:");
+        String cost;
+
+        do {
+            cost = input.nextLine().trim().replace("$", "");
+            if (!Data.isValidCost(cost)) {
+                System.out.println("Invalid cost. Please enter a valid cost (ex. 15.99)");
+            }
+        } while (!Data.isValidCost(cost));
+
+        return cost;
+    }
+
+    /**
+     * Validates/gets category from user
+     * Displays previous categories for user to choose from or add new one
+     * @return category of the subscription
+     */
+    private static String getCategory() {
+        System.out.println("Enter the category (e.g. Entertainment, Fitness, Education): ");
+
+        //Show existing categories if there are any
+        if (!Data.categories.isEmpty()) {
+            System.out.println("Existing categories: " + Data.categories);
+        }
+
+        //User chooses category/or creates one
+        String category;
+        do {
+            category = input.nextLine().trim();
+            if (category.isEmpty()) {
+                System.out.println("Category cannot be empty, please enter a category: ");
+            }
+        } while (category.isEmpty());
+        return category;
+    }
+
+    /**
+     * Validates/gets renewal cycle from user (Monthly or Yearly)
+     * @return renewal cycle of subscription
+     */
+    private static String getRenewal() {
+        String renewal;
+        System.out.println("Enter the billing cycle (Monthly or Yearly):");
+
+        do {
+            renewal = input.nextLine().trim();
+            if (!renewal.equalsIgnoreCase("monthly") && !renewal.equalsIgnoreCase("yearly")) {
+                System.out.println("Please enter a valid billing cycle (Monthly or Yearly)");
+            }
+        } while(!renewal.equalsIgnoreCase("monthly") && !renewal.equalsIgnoreCase("yearly"));
+
+        return renewal;
+    }
+
+    /**
+     * Validates/gets start date from user
+     * @return start date of subscription (user input)
+     */
+    private static String getStartDate() {
+        String startDate;
+        System.out.println("Enter the start date (MM/DD/YYYY): ");
+
+        do{
+            startDate = input.nextLine().trim();
+            if(!Data.isValidDate(startDate)) {
+                System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
+            }
+        } while(!Data.isValidDate(startDate));
+
+
+
+        return startDate;
+    }
+
+    /**
+     * Validates/gets endDate from user
+     * @return endDate for subscription (user input)
+     */
+    private static String getEndDate() {
+        String endDate;
+        System.out.println("Enter the end date (MM/DD/YYYY): ");
+
+        do {
+            endDate = input.nextLine().trim();
+            if (!Data.isValidDate(endDate)) {
+                System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
+            }
+
+        } while (!Data.isValidDate(endDate));
+
+        return endDate;
+    }
+
+    /**
+     * Validates/gets status input from user - compares it to STATUS_OPTIONS
+     * @return status of subscription (user input)
+     */
+    private static String getStatus(){
+        String status;
+        System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
+        System.out.println("Enter current status: ");
+
+        do {
+            status = input.nextLine().trim().toUpperCase();
+            if(!Data.isValidStatus(status)) {
+                System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
+                System.out.println("Please enter one of the options provided:");
+            }
+        } while (!Data.isValidStatus(status));
+        return status;
+    }
+
+
     public static void updateProcess() {
         //asking user which subscription to update
         System.out.println("\nEnter name of subscription to update: ");
@@ -138,7 +290,7 @@ public class Menu {
         String newChoice = input.nextLine().trim();
 
         if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
-            if (!Data.validStatus(newChoice.toUpperCase())) {
+            if (!Data.isValidStatus(newChoice.toUpperCase())) {
                 System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED");
                 return;
             }//change to uppercase so it matches STATUS_OPTIONS
