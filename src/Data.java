@@ -24,14 +24,6 @@ public class Data {
     // Create function to add new subscription
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
         if (!subscriptionExists(name)) {
-//            Object[] subscription = new Object[7];
-//            subscription[INDEX_NAME] = name;
-//            subscription[INDEX_COST] = cost;
-//            subscription[INDEX_CATEGORY] = category;
-//            subscription[INDEX_RENEWAL] = renewal;
-//            subscription[INDEX_START_DATE] = startDate;
-//            subscription[INDEX_END_DATE] = endDate;
-//            subscription[INDEX_STATUS] = status;
             ArrayList<String> subscription = new ArrayList<>();
             subscription.add(name);
             subscription.add(cost);
