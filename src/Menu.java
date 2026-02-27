@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -198,6 +199,17 @@ public class Menu {
     }
 
     private static String getStatus(){
+        String status;
+        System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
+        System.out.println("Enter current status: ");
+
+        do {
+            status = input.nextLine().trim().toUpperCase();
+            if(!Data.validStatus(status)) {
+                System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
+                System.out.println("Please enter one of the options provided:");
+            }
+        } while (!Data.validStatus());
         return "";
     }
 
