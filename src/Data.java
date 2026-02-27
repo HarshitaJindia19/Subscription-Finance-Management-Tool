@@ -40,4 +40,44 @@ public class Data {
     public static double calculateYearlySpend() {
         return 0;
     }
+    /**
+     * Finds the index of subscription in outer ArrayList by ensuring the name matches.
+     * @author Ramsha
+     * @param name the name of subscription to search for
+     * @return index of subscription or -1 if not found
+     */
+    public static int findingSubscriptionIndex(String name) {
+        for (int i = 0; i < subscriptions.size(); i++) {
+            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Updates a specific field of a subscription using .set().
+     * @author Ramsha
+     * @param subIndex    index of subscription in outer ArrayList
+     * @param choiceIndex index of field to update
+     * @param newChoice   new value to set
+     */
+    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
+        subscriptions.get(subIndex).set(choiceIndex, newChoice);
+    }
+
+    /**
+     * Checks if status string is one of the valid options.
+     * @author Ramsha
+     * @param status status to validate
+     * @return true if valid, false if invalid
+     */
+    public static boolean validStatus(String status) {
+        for (String validString : STATUS_OPTIONS) {
+            if (validString.equals(status)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
