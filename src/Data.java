@@ -44,40 +44,46 @@ public class Data {
      * Finds the index of subscription in outer ArrayList by ensuring the name matches.
      * @author Ramsha
      * @param name the name of subscription to search for
-     * @return index of subscription or -1 if not found
+     * @return index of subscription in outer ArrayList or -1 if not found
      */
     public static int findingSubscriptionIndex(String name) {
+        //loop through every subscription in list
         for (int i = 0; i < subscriptions.size(); i++) {
+            //get(i) - subscription row
+            //get(0) - name at index 0
             if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
-                return i;
+                return i;//found - return its position
             }
         }
-        return -1;
+        return -1;//not found
     }
 
     /**
-     * Updates a specific field of a subscription using .set().
+     * Updates a specific field of a subscription using .set(index,newValue).
      * @author Ramsha
      * @param subIndex    index of subscription in outer ArrayList
-     * @param choiceIndex index of field to update
+     * @param choiceIndex index of field to update in inner ArrayList
      * @param newChoice   new value to set
      */
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
+        //get(subIndex) - finds correct subscription row
+        //.set(choiceIndex, newChoice) - replaces value at field
         subscriptions.get(subIndex).set(choiceIndex, newChoice);
     }
 
     /**
-     * Checks if status string is one of the valid options.
+     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
      * @author Ramsha
-     * @param status status to validate
+     * @param status status string to ensure is right
      * @return true if valid, false if invalid
      */
     public static boolean validStatus(String status) {
+        //loop through STATUS_OPTIONS string array and check that one matches
         for (String validString : STATUS_OPTIONS) {
             if (validString.equals(status)) {
-                return true;
+                return true;//matched
             }
         }
-        return false;
+        return false;//nothing to match
     }
 }
