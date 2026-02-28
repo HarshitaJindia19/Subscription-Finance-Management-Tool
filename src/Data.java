@@ -92,13 +92,13 @@ public class Data {
         if (name == null) return results;
 
         for (int i = 0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub = subscriptions.get(i);
+            ArrayList<String> sub= subscriptions.get(i);
 
             if (sub.size() > 0) {
-                String subName = sub.get(0);
+                String subName= sub.get(0);
 
-                String subNameLower = subName.toLowerCase();
-                String newNameLower = name.toLowerCase();
+                String subNameLower= subName.toLowerCase();
+                String newNameLower= name.toLowerCase();
 
                 if (subNameLower.equals(newNameLower)) {
                     results.add(sub);
@@ -120,12 +120,12 @@ public class Data {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
 
         for (int i = 0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub = subscriptions.get(i);
+            ArrayList<String> sub= subscriptions.get(i);
             if (sub.size() > 2) {
-                String subCategory = sub.get(2);
+                String subCategory= sub.get(2);
 
-                String subCategoryLower = subCategory.toLowerCase();
-                String categoryNewLower = category.toLowerCase();
+                String subCategoryLower= subCategory.toLowerCase();
+                String categoryNewLower= category.toLowerCase();
 
                 if (subCategoryLower.equals(categoryNewLower)) {
                     results.add(sub);
@@ -146,11 +146,11 @@ public class Data {
     public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
 
-        for (int i = 0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub = subscriptions.get(i);
+        for (int i=0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub= subscriptions.get(i);
 
         if (sub.size() > 6) {
-            String status = sub.get(6);
+            String status= sub.get(6);
 
                 if (status.equalsIgnoreCase("ACTIVE")) {
                     String costStr = sub.get(1);
@@ -181,30 +181,30 @@ public class Data {
     for (int i = 0; i < categories.size(); i++) {
        String category = categories.get(i);
 
-        double limit = categoryBudgets.get(category);
-        double total = 0;
+        double limit= categoryBudgets.get(category);
+        double total= 0;
 
-        for (int j = 0; j < subscriptions.size(); j++) {
+        for (int j=0; j< subscriptions.size(); j++) {
             ArrayList<String> sub = subscriptions.get(j);
 
-            if (sub.size() <= 6) { //theres not enough data so continue
+            if (sub.size() <= 6) {
                 continue;
             }
-//come up with logic behind the rest of the code
+
+            String subName= sub.get(0);
+            String costStr= sub.get(1);
+            String subCategory= sub.get(2);
+            String status= sub.get(6);
 
 
 
-
-
-
-
-            /**
-            * Updates a specific field of a subscription using .set(index,newValue).
-            * @author Ramsha
-            * @param subIndex index of subscription in outer ArrayList
-            * @param choiceIndex index of field to update in inner ArrayList
-            * @param newChoice   new value to set
-            */
+       /**
+       * Updates a specific field of a subscription using .set(index,newValue).
+       * @author Ramsha
+       * @param subIndex index of subscription in outer ArrayList
+       * @param choiceIndex index of field to update in inner ArrayList
+       * @param newChoice   new value to set
+        */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
