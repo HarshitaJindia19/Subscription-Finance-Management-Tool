@@ -141,7 +141,6 @@ public class Data {
         if (sub.size() > 6) {
             String status = sub.get(6);
 
-
             /**
              * Updates a specific field of a subscription using .set(index,newValue).
              * @author Ramsha
