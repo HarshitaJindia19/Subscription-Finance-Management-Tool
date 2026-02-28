@@ -256,17 +256,19 @@ public class Menu {
 
 
     public static void updateProcess() {
-        //asking user which subscription to update
+        //loop until valid subscription name is found
+        int index = -1;
+        while (index==-1) {
         System.out.println("\nEnter name of subscription to update: ");
-        String name = input.nextLine().trim();
-
+        String name= input.nextLine().trim();
         //search for subscription by name or return -1 if not found
-        int index = Data.findingSubscriptionIndex(name);
+        index = Data.findingSubscriptionIndex(name);
         //if returned -1, subscription DNE
         if (index == -1) {
-            System.out.println("ERROR: '" + name + "' subscription not found.");
-            return;
+            System.out.println("ERROR: '" + name + "' subscription not found. Please try again.");
         }
+        }
+
         System.out.println("\nWhat field do you want to update?");
         System.out.println("1. Name");
         System.out.println("2. Cost");
@@ -275,26 +277,39 @@ public class Menu {
         System.out.println("5. Start date");
         System.out.println("6. End date");
         System.out.println("7. Status of subscription (ACTIVE/PAUSED/CANCELLED)");
-        System.out.print("YOUR DESIRED CHOICE: ");
-        String fieldChoice = input.nextLine().trim();
 
-        //convert users choice(1-7) to ArrayList index(0-6)
-        int choiceIndex = getIndexChoice(fieldChoice);
-
-        //if -1, that means choice is invalid, stop
-        if (choiceIndex == -1) {
-            System.out.println("ERROR: invalid choice selection.");
-            return;
+        int choiceIndex= -1;//loop until valid choice is selected
+        while (choiceIndex ==-1) {
+            System.out.print("YOUR DESIRED CHOICE: ");
+            String fieldChoice=input.nextLine().trim();
+            choiceIndex=getIndexChoice(fieldChoice);
+            //if -1, that means choice is invalid, stop
+            if (choiceIndex == -1) {
+                System.out.println("ERROR: invalid choice selection.");
+            }
         }
-        System.out.println("Please enter new choice: ");
-        String newChoice = input.nextLine().trim();
+        //looping until valid newChoice is entered
+        String newChoice="";
+        boolean validChoice=false;
+        while (!validChoice) {
+            System.out.println("Please enter new choice: ");
+            newChoice = input.nextLine().trim();
 
-        if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
-            if (!Data.isValidStatus(newChoice.toUpperCase())) {
-                System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED");
-                return;
-            }//change to uppercase so it matches STATUS_OPTIONS
-            newChoice = newChoice.toUpperCase();
+            if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
+                if (!Data.isValidStatus(newChoice.toUpperCase())) {
+                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
+                } else {
+                    newChoice = newChoice.toUpperCase();
+                    validChoice = true;
+                }
+            }else {
+                if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
+                    System.out.println("ERROR: value cannot be empty. Try again.");
+                } else {
+                    validChoice = true;
+                }
+
+            }
         }
         //call Data to update field using .set(index,newValue)
         Data.changeSubscriptionChoice(index, choiceIndex, newChoice);
