@@ -131,7 +131,12 @@ public class Data {
         return results;
     }
 
-    //maybe add another comment here
+    /**
+     * Finds all ACTIVE subscriptions with a cost >= to the given threshold
+     *@param threshold the minimum cost to take into account
+     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription
+     *where the cost will either meets or exceeds the threshold (>=)
+     */
     public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
 
