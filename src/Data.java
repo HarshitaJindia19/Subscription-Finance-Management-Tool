@@ -41,16 +41,29 @@ public class Data {
         }
     }
 
-    // Check functions
-    public static boolean subscriptionExists(String name) {
-        return names.contains(name);
-    }
-
     //Store budget for each category
     public static void setCategoryBudget(String category, double limit) {
         //Store in HashMap -> Key = Category Name, Value = Budget Limit
         categoryBudgets.put(category.toLowerCase(), limit);
         categories.add(category);
+    }
+
+    public static double getCategoryBudget(String category) {
+        return categoryBudgets.getOrDefault(category.toLowerCase(), -1.0);
+    }
+
+    public static ArrayList<String> getAllBudgets() {
+        ArrayList<String> budgetList = new ArrayList<>();
+        for (String category: categoryBudgets.keySet()) {
+            double limit = categoryBudgets.get(category);
+            budgetList.add(category + ": $" + String.format("%.2f", limit));
+        }
+        return budgetList;
+    }
+
+    // Check functions
+    public static boolean subscriptionExists(String name) {
+        return names.contains(name);
     }
 
     //Calculates Monthly spend of the user
@@ -148,6 +161,15 @@ public class Data {
     public static boolean isValidCost(String cost) {
         try {
             double value = Double.parseDouble(cost);
+            return value > 0;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean isValidBudget(String budget) {
+        try {
+            double value = Double.parseDouble(budget);
             return value > 0;
         } catch (NumberFormatException e) {
             return false;

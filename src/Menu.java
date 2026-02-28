@@ -30,17 +30,20 @@ public class Menu {
         options.add("Add category budget");
     }
     public static void runMenu() {
-        boolean active=true;
-            while (active) {
-                System.out.println("====SUBSCRIPTION MANAGER===");
-                for (int i=0;i<options.size();i++) {
-                    System.out.println(i + ". " + options.get(i));
-                }
-                System.out.println("Please select an option: ");
-                String choice= input.nextLine().trim();
-                switch (choice) {
+        boolean active = true;
+        while (active) {
+            System.out.println("====SUBSCRIPTION MANAGER MENU OPTIONS====");
+            for (int i = 0; i < options.size(); i++) {
+                System.out.println(i + ". " + options.get(i));
+            }
+            System.out.println("Please select an option: ");
+            String choice = input.nextLine().trim();
+
+
+            switch (choice) {
                 case "1":
-                    // harshitas work
+                    // Harshita
+                    addNewSubscription();
                     break;
                 case "2":
                     updateProcess();
@@ -76,7 +79,7 @@ public class Menu {
                     // mehrins work
                     break;
                 case "13":
-                    // harshitas work
+                    addCategoryBudget();
                     break;
                 case "0":
                     active = false;
@@ -105,7 +108,37 @@ public class Menu {
             String status = getStatus();
             success = Data.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
         } while(!success);
+    }
 
+    private static void addCategoryBudget() {
+        System.out.println("\n====ADD/UPDATE CATEGORY BUDGET====");
+
+        // show existing budgets if any
+        displayAllBudgets();
+
+        // show existing budgets if any
+        if (!Data.categories.isEmpty()) {
+            System.out.println("\nExisitng categories: " + Data.categories);
+        } else {
+            System.out.println("No subscriptions added yet - you can still set a budget for a future category.");
+        }
+    }
+
+    /**
+     * Displays all current set budgets in a formatted table
+     */
+    private static void displayAllBudgets() {
+        ArrayList<String> budgets = Data.getAllBudgets();
+        if (budgets.isEmpty()) {
+            System.out.println("No budgets set yet.");
+            return;
+        }
+        System.out.println("\n---Current Budgets---");
+        System.out.println("------------------------");
+        for (String budget: budgets) {
+            System.out.println(" " + budget);
+        }
+        System.out.println("-------------------------");
     }
 
     /**
@@ -113,7 +146,7 @@ public class Menu {
      * @return name/brand of subscription
      */
     private static String getName() {
-        System.out.println("Enter the name:");
+        System.out.println("\nEnter the name:");
         String name;
         do {
             name = input.nextLine().trim();
