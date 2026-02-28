@@ -98,6 +98,27 @@ public class Data {
         return results;
     }
 
+    public static ArrayList<ArrayList<String>> searchByCategory(String category) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+            if (sub.size() > 2) {
+                String subCategory = sub.get(2);
+
+                String subCategoryLower = subCategory.toLowerCase();
+                String categoryNewLower = category.toLowerCase();
+
+                if (subCategoryLower.equals(categoryNewLower)) {
+                    results.add(sub);
+                }else {
+                }
+            }else {
+            }
+        }
+        return results;
+    }
+
     public static int findingSubscriptionIndex(String name) {
         //loop through every subscription in list
         for (int i = 0; i < subscriptions.size(); i++) {
