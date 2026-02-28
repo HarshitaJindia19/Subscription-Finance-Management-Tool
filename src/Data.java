@@ -136,18 +136,29 @@ public class Data {
 
         for (int i = 0; i < subscriptions.size(); i++) {
             ArrayList<String> sub = subscriptions.get(i);
-        }
 
         if (sub.size() > 6) {
             String status = sub.get(6);
 
-            /**
-             * Updates a specific field of a subscription using .set(index,newValue).
-             * @author Ramsha
-             * @param subIndex    index of subscription in outer ArrayList
-             * @param choiceIndex index of field to update in inner ArrayList
-             * @param newChoice   new value to set
-             */
+                if (status.equalsIgnoreCase("ACTIVE")) {
+                    String costStr = sub.get(1);
+
+                    if (costStr.equals("") == false) {
+                        try {
+                            double cost = Double.parseDouble(costStr);
+
+                            if (cost >= threshold) {
+                                results.add(sub);
+                            }
+
+
+                            /**
+                             * Updates a specific field of a subscription using .set(index,newValue).
+                             * @author Ramsha
+                             * @param subIndex    index of subscription in outer ArrayList
+                             * @param choiceIndex index of field to update in inner ArrayList
+                             * @param newChoice   new value to set
+                             */
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
         //.set(choiceIndex, newChoice) - replaces value at field
