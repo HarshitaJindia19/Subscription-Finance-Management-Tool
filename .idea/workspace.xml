@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
+    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions">
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +39,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772286055269</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions">
+      <option name="closed" value="true" />
+      <created>1772304610715</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1772304610715</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -53,6 +63,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
+    <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
   </component>
 </project>

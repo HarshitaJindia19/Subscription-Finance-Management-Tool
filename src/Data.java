@@ -69,6 +69,18 @@ public class Data {
      * @return index of subscription in outer ArrayList or -1 if not found
      */
 
+            public static int findingSubscriptionIndex(String name) {
+        //loop through every subscription in list
+        for (int i = 0; i < subscriptions.size(); i++) {
+            //get(i) - subscription row
+            //get(0) - name at index 0
+            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
+                return i;//found - return its position
+            }
+        }
+        return -1;//not found
+    }
+
     /**
      * Search Engine to find all the subscriptions under the given name
      * @param name the name of subscription to search for
@@ -119,25 +131,24 @@ public class Data {
         return results;
     }
 
-    public static int findingSubscriptionIndex(String name) {
-        //loop through every subscription in list
-        for (int i = 0; i < subscriptions.size(); i++) {
-            //get(i) - subscription row
-            //get(0) - name at index 0
-            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
-                return i;//found - return its position
-            }
-        }
-        return -1;//not found
-    }
+    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
 
-    /**
-     * Updates a specific field of a subscription using .set(index,newValue).
-     * @author Ramsha
-     * @param subIndex    index of subscription in outer ArrayList
-     * @param choiceIndex index of field to update in inner ArrayList
-     * @param newChoice   new value to set
-     */
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+        }
+
+        if (sub.size() > 6) {
+            String status = sub.get(6);
+
+
+            /**
+             * Updates a specific field of a subscription using .set(index,newValue).
+             * @author Ramsha
+             * @param subIndex    index of subscription in outer ArrayList
+             * @param choiceIndex index of field to update in inner ArrayList
+             * @param newChoice   new value to set
+             */
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
         //.set(choiceIndex, newChoice) - replaces value at field
