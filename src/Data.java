@@ -181,6 +181,21 @@ public class Data {
     for (int i = 0; i < categories.size(); i++) {
        String category = categories.get(i);
 
+        double limit = categoryBudgets.get(category);
+        double total = 0;
+
+        for (int j = 0; j < subscriptions.size(); j++) {
+            ArrayList<String> sub = subscriptions.get(j);
+
+            if (sub.size() <= 6) { //theres not enough data so continue
+                continue;
+            }
+//come up with logic behind the rest of the code
+
+
+
+
+
 
 
             /**
