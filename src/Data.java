@@ -131,6 +131,7 @@ public class Data {
         return results;
     }
 
+    //maybe add another comment here
     public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
 
@@ -150,15 +151,26 @@ public class Data {
                             if (cost >= threshold) {
                                 results.add(sub);
                             }
+                        } catch (RuntimeException e) {
+                            System.out.println("Invalid cost for: " + sub.get(0));
+                        }
+                    } else {
+                        System.out.println("Cost not entered for: " + sub.get(0));
+                    }
+                }
+             }
+        }
+        return results;
+    }
 
+    /**
+    * Updates a specific field of a subscription using .set(index,newValue).
+    * @author Ramsha
+    * @param subIndex index of subscription in outer ArrayList
+    * @param choiceIndex index of field to update in inner ArrayList
+    * @param newChoice   new value to set
+    */
 
-                            /**
-                             * Updates a specific field of a subscription using .set(index,newValue).
-                             * @author Ramsha
-                             * @param subIndex    index of subscription in outer ArrayList
-                             * @param choiceIndex index of field to update in inner ArrayList
-                             * @param newChoice   new value to set
-                             */
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
         //.set(choiceIndex, newChoice) - replaces value at field
