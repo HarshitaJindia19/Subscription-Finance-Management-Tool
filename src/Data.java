@@ -68,6 +68,37 @@ public class Data {
      * @param name the name of subscription to search for
      * @return index of subscription in outer ArrayList or -1 if not found
      */
+
+    /**
+     * Search Engine to find all the subscriptions under the given name
+     * @param name the name of subscription to search for
+     * @return ArrayList of ArrayLists, where inner list shows a
+     * subscription that matches the name
+     */
+    public static ArrayList<ArrayList<String>> searchByName(String name) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+        if (name == null) return results;
+
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+
+            if (sub.size() > 0) {
+                String subName = sub.get(0);
+
+                String subNameLower = subName.toLowerCase();
+                String newNameLower = name.toLowerCase();
+
+                if (subNameLower.equals(newNameLower)) {
+                    results.add(sub);
+                }else {
+                }
+            }else {
+            }
+        }
+        return results;
+    }
+
+
     public static int findingSubscriptionIndex(String name) {
         //loop through every subscription in list
         for (int i = 0; i < subscriptions.size(); i++) {
