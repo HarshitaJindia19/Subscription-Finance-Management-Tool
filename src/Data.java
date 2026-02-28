@@ -98,7 +98,6 @@ public class Data {
         return results;
     }
 
-
     public static int findingSubscriptionIndex(String name) {
         //loop through every subscription in list
         for (int i = 0; i < subscriptions.size(); i++) {
