@@ -109,6 +109,12 @@ public class Data {
         }
         return results;
     }
+    /**
+     * Search Engine to find all the subscriptions under the given category
+     * @param category is the category of subscription to search for
+     * @return ArrayList of ArrayLists, where each inner list shows a
+     *subscription that matches the category
+     */
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
@@ -168,13 +174,22 @@ public class Data {
         return results;
     }
 
-    /**
-    * Updates a specific field of a subscription using .set(index,newValue).
-    * @author Ramsha
-    * @param subIndex index of subscription in outer ArrayList
-    * @param choiceIndex index of field to update in inner ArrayList
-    * @param newChoice   new value to set
-    */
+    //add Javadoc comments later
+    public static void showBudgetAlerts() {
+    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
+
+    for (int i = 0; i < categories.size(); i++) {
+       String category = categories.get(i);
+
+
+
+            /**
+            * Updates a specific field of a subscription using .set(index,newValue).
+            * @author Ramsha
+            * @param subIndex index of subscription in outer ArrayList
+            * @param choiceIndex index of field to update in inner ArrayList
+            * @param newChoice   new value to set
+            */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
