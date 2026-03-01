@@ -196,15 +196,24 @@ public class Data {
             String subCategory= sub.get(2);
             String status= sub.get(6);
 
+            if (subCategory.toLowerCase().equals(category.toLowerCase())) {
+                if (status.toLowerCase().equals("active")) {
+                    costStr= costStr.replace("$", "").trim();
+
+                    if (costStr.equals("") == false) {
+                        try {
+                            double cost= Double.parseDouble(costStr);
+                            total += cost;
 
 
-       /**
-       * Updates a specific field of a subscription using .set(index,newValue).
-       * @author Ramsha
-       * @param subIndex index of subscription in outer ArrayList
-       * @param choiceIndex index of field to update in inner ArrayList
-       * @param newChoice   new value to set
-        */
+
+                            /**
+                            * Updates a specific field of a subscription using .set(index,newValue).
+                            * @author Ramsha
+                            * @param subIndex index of subscription in outer ArrayList
+                            * @param choiceIndex index of field to update in inner ArrayList
+                            * @param newChoice   new value to set
+                             */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
