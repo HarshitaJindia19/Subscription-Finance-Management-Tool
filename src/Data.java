@@ -214,9 +214,13 @@ public class Data {
             } else {
             }
         }
-
-
-
+        if (total > limit) {
+            System.out.println("🚨 Budget exceeded for " + category);
+            System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
+        } else {
+        }
+      }
+    }
 
 
         /**
