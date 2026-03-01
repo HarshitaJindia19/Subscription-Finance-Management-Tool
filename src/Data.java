@@ -25,9 +25,9 @@ public class Data {
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
         if (!subscriptionExists(name)) {
             ArrayList<String> subscription = new ArrayList<>();
-            subscription.add(name.toLowerCase());
+            subscription.add(name);
             subscription.add(cost);
-            subscription.add(formatTitleCase(category));
+            subscription.add(category);
             subscription.add(renewal);
             subscription.add(startDate);
             subscription.add(endDate);
@@ -41,49 +41,16 @@ public class Data {
         }
     }
 
-    /**
-     * Formats category string to title case
-     * Stores received budget/limit from Menu.java
-     */
+    // Check functions
+    public static boolean subscriptionExists(String name) {
+        return names.contains(name);
+    }
+
+    //Store budget for each category
     public static void setCategoryBudget(String category, double limit) {
-        // Format to title case: "netflix" -> "Netflix"
-        String cleanCategory = formatTitleCase(category);
-
-        categoryBudgets.put(cleanCategory, limit);
-        categories.add(cleanCategory);
-    }
-
-    /**
-     * Formats user input into title case for clean data storage
-     * @param input from user
-     * @return formatted input
-     */
-    public static String formatTitleCase(String input) {
-        if (input.isEmpty()) return "";
-        return input.substring(0, 1).toUpperCase() +
-                input.substring(1).toLowerCase();
-    }
-
-    /**
-     * Gets the budget for the specified category if it already exists
-     * @param category selected by the user for their subscription
-     * @return budget for the category, -1 if not found
-     */
-    public static double getCategoryBudget(String category) {
-        return categoryBudgets.getOrDefault(formatTitleCase(category), -1.0);
-    }
-
-    /**
-     * Lists all categories and budgets in a clean format
-     * @return all the budgets currently stored by category
-     */
-    public static ArrayList<String> getAllBudgets() {
-        ArrayList<String> budgetList = new ArrayList<>();
-        for (String category: categoryBudgets.keySet()) {
-            double limit = categoryBudgets.get(category);
-            budgetList.add(category + ": $" + String.format("%.2f", limit));
-        }
-        return budgetList;
+        //Store in HashMap -> Key = Category Name, Value = Budget Limit
+        categoryBudgets.put(category.toLowerCase(), limit);
+        categories.add(category);
     }
 
     //Calculates Monthly spend of the user
@@ -95,19 +62,19 @@ public class Data {
     public static double calculateYearlySpend() {
         return 0;
     }
-
     /**
      * Finds the index of subscription in outer ArrayList by ensuring the name matches.
      * @author Ramsha
      * @param name the name of subscription to search for
      * @return index of subscription in outer ArrayList or -1 if not found
      */
-    public static int findingSubscriptionIndex(String name) {
+
+            public static int findingSubscriptionIndex(String name) {
         //loop through every subscription in list
         for (int i = 0; i < subscriptions.size(); i++) {
             //get(i) - subscription row
             //get(0) - name at index 0
-            if (subscriptions.get(i).get(INDEX_NAME).equalsIgnoreCase(name)) {
+            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
                 return i;//found - return its position
             }
         }
@@ -209,50 +176,40 @@ public class Data {
 
     //add Javadoc comments later
     public static void showBudgetAlerts() {
-        ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
+    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
 
-        for (int i = 0; i < categories.size(); i++) {
-            String category = categories.get(i);
+    for (int i = 0; i < categories.size(); i++) {
+       String category = categories.get(i);
 
-            double limit = categoryBudgets.get(category);
-            double total = 0;
+        double limit= categoryBudgets.get(category);
+        double total= 0;
 
-            for (int j = 0; j < subscriptions.size(); j++) {
-                ArrayList<String> sub = subscriptions.get(j);
+        for (int j=0; j< subscriptions.size(); j++) {
+            ArrayList<String> sub = subscriptions.get(j);
 
-                if (sub.size() <= 6) {
-                    continue;
-                }
-
-                String subName = sub.get(0);
-                String costStr = sub.get(1);
-                String subCategory = sub.get(2);
-                String status = sub.get(6);
-
-
+            if (sub.size() <= 6) {
+                continue;
             }
-        }
-    }
 
-   /**
-   * Updates a specific field of a subscription using .set(index,newValue).
-   * @author Ramsha
-   * @param subIndex index of subscription in outer ArrayList
-   * @param choiceIndex index of field to update in inner ArrayList
-   * @param newChoice   new value to set
-    */
+            String subName= sub.get(0);
+            String costStr= sub.get(1);
+            String subCategory= sub.get(2);
+            String status= sub.get(6);
+
+
+
+       /**
+       * Updates a specific field of a subscription using .set(index,newValue).
+       * @author Ramsha
+       * @param subIndex index of subscription in outer ArrayList
+       * @param choiceIndex index of field to update in inner ArrayList
+       * @param newChoice   new value to set
+        */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
         //.set(choiceIndex, newChoice) - replaces value at field
         subscriptions.get(subIndex).set(choiceIndex, newChoice);
-    }
-
-
-    //--------------------------------Valid Checks----------------------------------------//
-
-    public static boolean subscriptionExists(String name) {
-        return names.contains(name.toLowerCase());
     }
 
     /**
@@ -262,6 +219,8 @@ public class Data {
      * @return true if valid, false if invalid
      */
 
+    //--------------------------------Valid Checks----------------------------------------//
+    //loop through STATUS_OPTIONS string array and check that one matches
     public static boolean isValidStatus(String status) {
         for (String validString : STATUS_OPTIONS) {
             if (validString.equals(status)) {
