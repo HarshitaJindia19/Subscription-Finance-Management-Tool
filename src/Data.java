@@ -294,14 +294,35 @@ public class Data {
                 String subCategory = sub.get(2);
                 String status = sub.get(6);
 
+                if (subCategory.equalsIgnoreCase(category) == true && status.equalsIgnoreCase("active") == true) {
+                    String costStr = sub.get(1).replace("$", "").trim();
+                    if (costStr.isEmpty() == false) {
+                        try {
+                            totalSpent += Double.parseDouble(costStr);
+                        } catch (RuntimeException e) {
+                            System.out.println("Invalid cost for subscription: " + sub.get(0));
+                        }
+                    }
+                }
+            }
+        }
+        double budgetLimit = categoryBudgets.get(category.toLowerCase());
+        double percentageUsed = (totalSpent / budgetLimit) * 100;
 
-                /**
-                * Updates a specific field of a subscription using .set(index,newValue).
-                * @author Ramsha
-                * @param subIndex index of subscription in outer ArrayList
-                * @param choiceIndex index of field to update in inner ArrayList
-                * @param newChoice   new value to set
-                 */
+        if (percentageUsed > 100) {
+            percentageUsed = 100;
+        }
+
+        return percentageUsed;
+    }
+
+        /**
+        * Updates a specific field of a subscription using .set(index,newValue).
+        * @author Ramsha
+        * @param subIndex index of subscription in outer ArrayList
+        * @param choiceIndex index of field to update in inner ArrayList
+        * @param newChoice   new value to set
+         */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
