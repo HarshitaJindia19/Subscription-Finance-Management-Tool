@@ -47,6 +47,11 @@ public class Menu {
                 }
                 System.out.println("Please select an option: ");
                 String choice= input.nextLine().trim();
+                //if user presses enter again, skip and show menu again
+                if (choice.isEmpty()) {
+                    continue;
+                }
+
                 switch (choice) {  //switch to guide user to correct action based on choice
                 case "1":
                     // harshitas work
