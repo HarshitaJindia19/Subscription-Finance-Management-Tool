@@ -119,8 +119,18 @@ public class Menu {
                     }
                     break;
                 case "9":
-              //Not done yet
-                    break;
+                        // Budget % used by category
+                        System.out.println("=== Budget % used by Category ===");
+                        System.out.print("Enter category to check budget usage: ");
+                        String category = input.nextLine().trim();
+                        double percentage = Data.getCategoryBudgetUsage(category);
+
+                        if (percentage < 0) {
+                            System.out.println("No budget set for this category.");
+                        } else {
+                            System.out.println("Category '" + category + "' Budget used: " + String.format("%.2f", percentage) + "%");
+                        }
+                        break;
                 case "10":
                     // High-expense bills
                     System.out.print("Enter threshold amount: $");
