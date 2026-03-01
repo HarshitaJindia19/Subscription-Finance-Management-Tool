@@ -1,0 +1,1325 @@
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_48a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_48a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_48a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666496)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_48a_m___Changes_.xml	(date 1772385666496)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_48 a_m__[Changes]" date="1772383719533" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_48 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:48 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_45 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_45 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_45 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666494)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_45 a_m__[Changes]/shelved.patch	(date 1772385666494)
+@@ -0,0 +1,36 @@
++Index: src/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>public class Main {\n\n    public static void main(String[] args) {\n        Menu.runMenu();\n    }\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Main.java b/src/Main.java
++--- a/src/Main.java	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/src/Main.java	(date 1772383420777)
++@@ -3,4 +3,10 @@
++     public static void main(String[] args) {
++         Menu.runMenu();
++     }
+++}
+++public class Main {
+++
+++    public static void main(String[] args) {
+++        Menu.runMenu();
+++    }
++ }
++\ No newline at end of file
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>.idea/\r\n/.idea/workspace.xml\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-16LE
++===================================================================
++diff --git a/.gitignore b/.gitignore
++--- a/.gitignore	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/.gitignore	(date 1772383425492)
++@@ -1,2 +1,3 @@
++ .idea/
++ /.idea/workspace.xml
+++/.idea/workspace.xml
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_48 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_48 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_48 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666494)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_48 a_m__[Changes]/shelved.patch	(date 1772385666494)
+@@ -0,0 +1,29 @@
++Index: src/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Main.java b/src/Main.java
++--- a/src/Main.java	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/src/Main.java	(date 1772383677617)
++@@ -1,0 +1,6 @@
+++public class Main {
+++
+++    public static void main(String[] args) {
+++        Menu.runMenu();
+++    }
+++}
++\ No newline at end of file
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>.idea/\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-16LE
++===================================================================
++diff --git a/.gitignore b/.gitignore
++--- a/.gitignore	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/.gitignore	(date 1772383680401)
++@@ -1,1 +1,2 @@
++ .idea/
+++/.idea/workspace.xml
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666493)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]/shelved.patch	(date 1772385666493)
+@@ -0,0 +1,42 @@
++Index: src/Data.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class Data {\n\n    public static final ArrayList<ArrayList<String>> subscriptions = new ArrayList<>();\n    public static final HashMap<String, Double> categoryBudgets = new HashMap<>();\n    public static final HashSet<String> categories = new HashSet<>();\n    public static final HashSet<String> names = new HashSet<>();\n    public static final String[] STATUS_OPTIONS = {\"ACTIVE\", \"PAUSED\", \"CANCELLED\"};\n\n    // Store Index for each subscription information\n\n    private static final int INDEX_NAME = 0;\n    private static final int INDEX_COST = 1;\n    private static final int INDEX_CATEGORY = 2;\n    private static final int INDEX_RENEWAL = 3;\n    private static final int INDEX_START_DATE = 4;\n    private static final int INDEX_END_DATE = 5;\n    private static final int INDEX_STATUS = 6;\n\n\n    // Create function to add new subscription\n    public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {\n        if (!subscriptionExists(name)) {\n            ArrayList<String> subscription = new ArrayList<>();\n            subscription.add(name);\n            subscription.add(cost);\n            subscription.add(category);\n            subscription.add(renewal);\n            subscription.add(startDate);\n            subscription.add(endDate);\n            subscription.add(status);\n            subscriptions.add(subscription);\n            names.add(name);\n            categories.add(category); //no duplicates\n            return true;\n        } else {\n            return false;\n        }\n    }\n\n    // Check functions\n    public static boolean subscriptionExists(String name) {\n        return names.contains(name);\n    }\n\n    //Store budget for each category\n    public static void setCategoryBudget(String category, double limit) {\n        //Store in HashMap -> Key = Category Name, Value = Budget Limit\n        categoryBudgets.put(category.toLowerCase(), limit);\n        categories.add(category);\n    }\n\n    //Calculates Monthly spend of the user\n    public static double calculateMonthlySpend() {\n        return 0;\n    }\n\n    //Calculates yearly spend of the user\n    public static double calculateYearlySpend() {\n        return 0;\n    }\n    /**\n     * Finds the index of subscription in outer ArrayList by ensuring the name matches.\n     * @author Ramsha\n     * @param name the name of subscription to search for\n     * @return index of subscription in outer ArrayList or -1 if not found\n     */\n\n            public static int findingSubscriptionIndex(String name) {\n        //loop through every subscription in list\n        for (int i = 0; i < subscriptions.size(); i++) {\n            //get(i) - subscription row\n            //get(0) - name at index 0\n            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {\n                return i;//found - return its position\n            }\n        }\n        return -1;//not found\n    }\n\n    /**\n     * Search Engine to find all the subscriptions under the given name\n     * @param name the name of subscription to search for\n     * @return ArrayList of ArrayLists, where inner list shows a\n     * subscription that matches the name\n     */\n    public static ArrayList<ArrayList<String>> searchByName(String name) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n        if (name == null) return results;\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n            if (sub.size() > 0) {\n                String subName= sub.get(0);\n\n                String subNameLower= subName.toLowerCase();\n                String newNameLower= name.toLowerCase();\n\n                if (subNameLower.equals(newNameLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n    /**\n     * Search Engine to find all the subscriptions under the given category\n     * @param category is the category of subscription to search for\n     * @return ArrayList of ArrayLists, where each inner list shows a\n     *subscription that matches the category\n     */\n\n    public static ArrayList<ArrayList<String>> searchByCategory(String category) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n            if (sub.size() > 2) {\n                String subCategory= sub.get(2);\n\n                String subCategoryLower= subCategory.toLowerCase();\n                String categoryNewLower= category.toLowerCase();\n\n                if (subCategoryLower.equals(categoryNewLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n//new method here, add javadoc comments later\npublic static void printTable(ArrayList<ArrayList<String>> subs) {\n      //look into how to make the interface later\n    for (int i = 0; i < subs.size(); i++) {\n        ArrayList<String> sub = subs.get(i);\n\n        if (sub.size() <= 6) {\n            continue;\n        }\n\n        String subName = sub.get(0);\n        String costStr = sub.get(1);\n        String subCategory = sub.get(2);\n        String billing = sub.get(3);\n        String start = sub.get(4);\n        String end = sub.get(5);\n        String status = sub.get(6);\n\n        if (end == null) {\n            end = \"-\";\n        } else if (end.isEmpty()) {\n            end = \"-\";\n        }\n\n\n\n    /**\n     * Finds all ACTIVE subscriptions with a cost >= to the given threshold\n     *@param threshold the minimum cost to take into account\n     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription\n     *where the cost will either meets or exceeds the threshold (>=)\n     */\n    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i=0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n        if (sub.size() > 6) {\n            String status= sub.get(6);\n\n                if (status.equalsIgnoreCase(\"ACTIVE\")) {\n                    String costStr = sub.get(1);\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n\n                            if (cost >= threshold) {\n                                results.add(sub);\n                            }\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Invalid cost for: \" + sub.get(0));\n                        }\n                    } else {\n                        System.out.println(\"Cost not entered for: \" + sub.get(0));\n                    }\n                }\n             }\n        }\n        return results;\n    }\n\n    /**\n     * Checks all subscription categories with their budget limits and prints alerts\n     * Used for categories where total spending on ACTIVE subscriptions exceeds the budget\n     *\n     * For each category, this method sums the costs of all ACTIVE subscriptions in that category\n     * If the total spending > budget for category = budget alert\n     * is printed to the console showing the category name, amount spent, and budget limit\n     *\n     * This method doesn't return a value, only printing messages to console\n     */\n    public static void showBudgetAlerts() {\n    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());\n\n    for (int i = 0; i < categories.size(); i++) {\n       String category = categories.get(i);\n\n        double limit= categoryBudgets.get(category);\n        double total= 0;\n\n        ArrayList<ArrayList<String>> overBudgetSubs = new ArrayList<>();\n\n        for (int j=0; j< subscriptions.size(); j++) {\n            ArrayList<String> sub = subscriptions.get(j);\n\n            if (sub.size() <= 6) {\n                continue;\n            }\n\n            String subName = sub.get(0);\n            String costStr = sub.get(1);\n            String subCategory = sub.get(2);\n            String status = sub.get(6);\n\n            if (subCategory.toLowerCase().equals(category.toLowerCase())) {\n                if (status.toLowerCase().equals(\"active\")) {\n                    costStr = costStr.replace(\"$\", \"\").trim();\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n                            total += cost;\n                            overBudgetSubs.add(sub);\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Could not read the cost for: \" + subName);\n                        }\n                    } else {\n                    }\n                } else {\n                }\n            } else {\n            }\n        }\n        if (total > limit) {\n            System.out.println(\"\uD83D\uDEA8 Budget exceeded for \" + category);\n            System.out.println(\"Spent: $\" + String.format(\"%.2f\", total) + \" / Budget: $\" + String.format(\"%.2f\", limit));\n            System.out.println(\"Subscriptions causing alert:\");\n            Data.printTable(overBudgetSubs);\n        } else {\n        }\n      }\n    }\n\n        /**\n        * Updates a specific field of a subscription using .set(index,newValue).\n        * @author Ramsha\n        * @param subIndex index of subscription in outer ArrayList\n        * @param choiceIndex index of field to update in inner ArrayList\n        * @param newChoice   new value to set\n         */\n\n    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {\n        //get(subIndex) - finds correct subscription row\n        //.set(choiceIndex, newChoice) - replaces value at field\n        subscriptions.get(subIndex).set(choiceIndex, newChoice);\n    }\n\n    /**\n     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)\n     * @author Ramsha\n     * @param status status string to ensure is right\n     * @return true if valid, false if invalid\n     */\n\n    //--------------------------------Valid Checks----------------------------------------//\n    //loop through STATUS_OPTIONS string array and check that one matches\n    public static boolean isValidStatus(String status) {\n        for (String validString : STATUS_OPTIONS) {\n            if (validString.equals(status)) {\n                return true;//matched\n            }\n        }\n        return false;//nothing to match\n    }\n\n    /**\n     * @param date (end/start) of the subscription ( user input )\n     * @return boolean true if valid, false otherwise\n     */\n    public static boolean isValidDate(String date) {\n\n        // check the basic format MM/DD/YYYY\n        if (date.length() != 10) {\n            return false;\n        }\n        if (date.charAt(2) != '/' || date.charAt(5) != '/') {\n            return false;\n        }\n\n        // Check bounds of month, day, year\n        try {\n            int month = Integer.parseInt(date.substring(0, 2));\n            int day = Integer.parseInt(date.substring(3, 5));\n            int year = Integer.parseInt(date.substring(6, 10));\n\n            if (month < 1 || month > 12) {\n                return false;\n            }\n            if (day < 1 || day > 31) {\n                return false;\n            }\n            if (year < 2000) {\n                return false;\n            }\n            return true;\n\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n\n    /**\n     * @param cost for new subscription\n     * @return boolean true if cost is double, false otherwise\n     */\n    public static boolean isValidCost(String cost) {\n        try {\n            double value = Double.parseDouble(cost);\n            return value > 0;\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n}\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Data.java b/src/Data.java
++--- a/src/Data.java	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/src/Data.java	(date 1772383308708)
++@@ -218,8 +218,6 @@
++         double limit= categoryBudgets.get(category);
++         double total= 0;
++ 
++-        ArrayList<ArrayList<String>> overBudgetSubs = new ArrayList<>();
++-
++         for (int j=0; j< subscriptions.size(); j++) {
++             ArrayList<String> sub = subscriptions.get(j);
++ 
++@@ -240,7 +238,6 @@
++                         try {
++                             double cost = Double.parseDouble(costStr);
++                             total += cost;
++-                            overBudgetSubs.add(sub);
++                         } catch (RuntimeException e) {
++                             System.out.println("Could not read the cost for: " + subName);
++                         }
++@@ -254,13 +251,12 @@
++         if (total > limit) {
++             System.out.println("🚨 Budget exceeded for " + category);
++             System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
++-            System.out.println("Subscriptions causing alert:");
++-            Data.printTable(overBudgetSubs);
++         } else {
++         }
++       }
++     }
++ 
+++
++         /**
++         * Updates a specific field of a subscription using .set(index,newValue).
++         * @author Ramsha
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666494)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]/shelved.patch	(date 1772385666494)
+@@ -0,0 +1,38 @@
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"SearchEngine\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"git-widget-placeholder\": \"main\"\n  }\n}]]></component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371198332</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371198332</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371920181</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371920181</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371967446</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371967446</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772373634223</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772373634223</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"8\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <MESSAGE value=\"Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface\" />\n    <MESSAGE value=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\" />\n    <MESSAGE value=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\" />\n  </component>\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/.idea/workspace.xml	(date 1772383727856)
++@@ -2,7 +2,8 @@
++ <project version="4">
++   <component name="ChangeListManager">
++     <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
++-      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
++@@ -16,13 +17,12 @@
++       </map>
++     </option>
++     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++-    <option name="UPDATE_TYPE" value="REBASE" />
++   </component>
++-  <component name="PropertiesComponent"><![CDATA[{
++-  "keyToString": {
++-    "git-widget-placeholder": "main"
+++  <component name="PropertiesComponent">{
+++  &quot;keyToString&quot;: {
+++    &quot;git-widget-placeholder&quot;: &quot;main&quot;
++   }
++-}]]></component>
+++}</component>
++   <component name="TaskManager">
++     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
++       <option name="closed" value="true" />
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_47 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_47 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_47 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666494)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_47 a_m__[Changes]/shelved.patch	(date 1772385666494)
+@@ -0,0 +1,36 @@
++Index: src/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>public class Main {\n\n    public static void main(String[] args) {\n        Menu.runMenu();\n    }\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Main.java b/src/Main.java
++--- a/src/Main.java	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/src/Main.java	(date 1772383617196)
++@@ -3,4 +3,10 @@
++     public static void main(String[] args) {
++         Menu.runMenu();
++     }
+++}
+++public class Main {
+++
+++    public static void main(String[] args) {
+++        Menu.runMenu();
+++    }
++ }
++\ No newline at end of file
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>.idea/\r\n/.idea/workspace.xml\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-16LE
++===================================================================
++diff --git a/.gitignore b/.gitignore
++--- a/.gitignore	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/.gitignore	(date 1772383617198)
++@@ -1,2 +1,3 @@
++ .idea/
++ /.idea/workspace.xml
+++/.idea/workspace.xml
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_.xml	(date 1772385666495)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]" date="1772383414699" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:43 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_46 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_46 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_46 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666494)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_46 a_m__[Changes]/shelved.patch	(date 1772385666494)
+@@ -0,0 +1,29 @@
++Index: src/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Main.java b/src/Main.java
++--- a/src/Main.java	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/src/Main.java	(date 1772383540204)
++@@ -1,0 +1,6 @@
+++public class Main {
+++
+++    public static void main(String[] args) {
+++        Menu.runMenu();
+++    }
+++}
++\ No newline at end of file
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>.idea/\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-16LE
++===================================================================
++diff --git a/.gitignore b/.gitignore
++--- a/.gitignore	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/.gitignore	(date 1772383543936)
++@@ -1,1 +1,2 @@
++ .idea/
+++/.idea/workspace.xml
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_33 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_33 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_33 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666491)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_33 a_m__[Changes]/shelved.patch	(date 1772385666491)
+@@ -0,0 +1,39 @@
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;\n  }\n}</component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n  </component>\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision 1b47d72eaf9e179d3371308d3d7a1a7f660778f0)
+++++ b/.idea/workspace.xml	(date 1772382804888)
++@@ -1,9 +1,7 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++   <component name="ChangeListManager">
++-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="">
++-      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
++-    </list>
+++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="" />
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
++     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++@@ -16,12 +14,13 @@
++       </map>
++     </option>
++     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+++    <option name="UPDATE_TYPE" value="REBASE" />
++   </component>
++-  <component name="PropertiesComponent">{
++-  &quot;keyToString&quot;: {
++-    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;
+++  <component name="PropertiesComponent"><![CDATA[{
+++  "keyToString": {
+++    "git-widget-placeholder": "main"
++   }
++-}</component>
+++}]]></component>
++   <component name="TaskManager">
++     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
++       <option name="closed" value="true" />
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_45a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_45a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_45a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_45a_m___Changes_.xml	(date 1772385666495)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_45 a_m__[Changes]" date="1772383543976" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_45 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:45 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666491)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]/shelved.patch	(date 1772385666491)
+@@ -0,0 +1,85 @@
++Index: src/Menu.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>import java.util.Arrays;\nimport java.util.Scanner;\nimport java.util.ArrayList;\n\n/**\n * Menu.java - handles the main menu loop and user interface\n * @author Ramsha Oad\n * @date Feb 24 2026\n * @tutorial T01\n *\n */\npublic class Menu {\n    private static final Scanner input = new Scanner(System.in);\n    //Arraylist stores all menu options - index 0=exit, index 1=add subscription, etc.\n    public static final ArrayList<String> options= new ArrayList<>();\n\n    //static runs once when class is first loaded - used here because options is a static variable\n    static{\n        options.add(\"Exit\");\n        options.add(\"Add subscription\");\n        options.add(\"Update subscription\");\n        options.add(\"View all subscriptions\");\n        options.add(\"View active subscriptions\");\n        options.add(\"Total monthly spend\");\n        options.add(\"Total annual spend\");\n        options.add(\"Upcoming bills\");\n        options.add(\"Paused subscriptions\");\n        options.add(\"Budget % by category\");\n        options.add(\"High-expense bills\");\n        options.add(\"Budget alert\");\n        options.add(\"Search subscriptions\");\n        options.add(\"Add category budget\");\n    }\n\n    /**\n     * main loop for program, keeps running until user exits\n     * shows menu, reads user input, calls the corresponding method\n     */\n    public static void runMenu() {\n        boolean active=true; //loop keeps going\n            while (active) {\n                System.out.println(\"====SUBSCRIPTION MANAGER===\");\n\n                //loop through menu options ArrayList and print each option with number in front\n                for (int i=0;i<options.size();i++) {\n                    System.out.println(i + \". \" + options.get(i));\n                }\n                System.out.println(\"Please select an option: \");\n                String choice= input.nextLine().trim();\n                switch (choice) {  //switch to guide user to correct action based on choice\n                case \"1\":\n                    // harshitas work\n                    break;\n                case \"2\":\n                    updateProcess();//update subscription\n                    break;\n                case \"3\":\n                    //View all subscriptions\n                    System.out.println(\"=== All Subscriptions ===\");\n                    if (Data.subscriptions.size() == 0) {\n                        System.out.println(\"No subscriptions found.\");\n                    } else {\n                        Data.printTable(Data.subscriptions);\n                    }\n                    break;\n                case \"4\":\n                    // View only ACTIVE status subscriptions\n                    System.out.println(\"=== Active Subscriptions ===\");\n                    ArrayList<ArrayList<String>> activeSubs = new ArrayList<>();\n                    for (int i = 0; i < Data.subscriptions.size(); i++) {\n                        ArrayList<String> sub = Data.subscriptions.get(i);\n                        if (sub.size() > 6) {\n                            String status = sub.get(6);\n                            if (status.equalsIgnoreCase(\"active\")) {\n                                activeSubs.add(sub);\n                                }\n                              }\n                           }\n                    if (activeSubs.size() == 0) {\n                        System.out.println(\"No active subscriptions found.\");\n                    } else {\n                        Data.printTable(activeSubs);\n                    }\n                    break;\n                case \"5\":\n                    // harshitas work\n                    break;\n                case \"6\":\n                    // harshitas work\n                    break;\n                case \"7\":\n                    //Upcoming bills in the next week\n                    System.out.println(\"=== Upcoming Bills (Next Week) ===\");\n                    ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();\n                    if (upcoming.size() == 0) {\n                        System.out.println(\"No upcoming bills in the next week.\");\n                    } else {\n                        Data.printTable(upcoming);\n                    }\n                    break;\n                case \"8\":\n\n                case \"9\":\n\n                case \"10\":\n\n                    break;\n                case \"11\":\n                    // mehrins work\n                    break;\n                case \"12\":\n                    // mehrins work\n                    break;\n                case \"13\":\n                    // harshitas work\n                    break;\n                case \"0\":\n                    active = false;//now active is false to exit while loop\n                    System.out.println(\"Exited.\");\n                    break;\n                default:\n                    System.out.println(\"Invalid choice, please enter a number from the menu.\");\n            }\n        }\n        input.close();//close scanner when program ends\n    }\n\n    /**\n     * handles update subscription - asks user for subscription name--> finds in Data.java-->\n     * then asks which field to update and what new value is\n     *\n     */\n\n    /**\n     * TBD\n     */\n    private static void addNewSubscription() {\n        boolean success = false;\n\n        do {\n            String name = getName();\n            String cost = getCost();\n            String category = getCategory();\n            String renewal = getRenewal();\n            String startDate = getStartDate();\n            String endDate = getEndDate();\n            String status = getStatus();\n            success = Data.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);\n        } while(!success);\n\n    }\n\n    /**\n     * Validates/gets name from user\n     * @return name/brand of subscription\n     */\n    private static String getName() {\n        System.out.println(\"Enter the name:\");\n        String name;\n        do {\n            name = input.nextLine().trim();\n        } while (name.isEmpty());\n        return name;\n    }\n\n    /**\n     * Validates/gets cost from user\n     * @return String cost for new subscription (user input)\n     */\n    private static String getCost() {\n        System.out.println(\"Enter the cost:\");\n        String cost;\n\n        do {\n            cost = input.nextLine().trim().replace(\"$\", \"\");\n            if (!Data.isValidCost(cost)) {\n                System.out.println(\"Invalid cost. Please enter a valid cost (ex. 15.99)\");\n            }\n        } while (!Data.isValidCost(cost));\n\n        return cost;\n    }\n\n    /**\n     * Validates/gets category from user\n     * Displays previous categories for user to choose from or add new one\n     * @return category of the subscription\n     */\n    private static String getCategory() {\n        System.out.println(\"Enter the category (e.g. Entertainment, Fitness, Education): \");\n\n        //Show existing categories if there are any\n        if (!Data.categories.isEmpty()) {\n            System.out.println(\"Existing categories: \" + Data.categories);\n        }\n\n        //User chooses category/or creates one\n        String category;\n        do {\n            category = input.nextLine().trim();\n            if (category.isEmpty()) {\n                System.out.println(\"Category cannot be empty, please enter a category: \");\n            }\n        } while (category.isEmpty());\n        return category;\n    }\n\n    /**\n     * Validates/gets renewal cycle from user (Monthly or Yearly)\n     * @return renewal cycle of subscription\n     */\n    private static String getRenewal() {\n        String renewal;\n        System.out.println(\"Enter the billing cycle (Monthly or Yearly):\");\n\n        do {\n            renewal = input.nextLine().trim();\n            if (!renewal.equalsIgnoreCase(\"monthly\") && !renewal.equalsIgnoreCase(\"yearly\")) {\n                System.out.println(\"Please enter a valid billing cycle (Monthly or Yearly)\");\n            }\n        } while(!renewal.equalsIgnoreCase(\"monthly\") && !renewal.equalsIgnoreCase(\"yearly\"));\n\n        return renewal;\n    }\n\n    /**\n     * Validates/gets start date from user\n     * @return start date of subscription (user input)\n     */\n    private static String getStartDate() {\n        String startDate;\n        System.out.println(\"Enter the start date (MM/DD/YYYY): \");\n\n        do{\n            startDate = input.nextLine().trim();\n            if(!Data.isValidDate(startDate)) {\n                System.out.println(\"Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).\");\n            }\n        } while(!Data.isValidDate(startDate));\n\n\n\n        return startDate;\n    }\n\n    /**\n     * Validates/gets endDate from user\n     * @return endDate for subscription (user input)\n     */\n    private static String getEndDate() {\n        String endDate;\n        System.out.println(\"Enter the end date (MM/DD/YYYY): \");\n\n        do {\n            endDate = input.nextLine().trim();\n            if (!Data.isValidDate(endDate)) {\n                System.out.println(\"Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).\");\n            }\n\n        } while (!Data.isValidDate(endDate));\n\n        return endDate;\n    }\n\n    /**\n     * Validates/gets status input from user - compares it to STATUS_OPTIONS\n     * @return status of subscription (user input)\n     */\n    private static String getStatus(){\n        String status;\n        System.out.println(\"Choose from \" + Arrays.toString(Data.STATUS_OPTIONS));\n        System.out.println(\"Enter current status: \");\n\n        do {\n            status = input.nextLine().trim().toUpperCase();\n            if(!Data.isValidStatus(status)) {\n                System.out.println(\"Choose from \" + Arrays.toString(Data.STATUS_OPTIONS));\n                System.out.println(\"Please enter one of the options provided:\");\n            }\n        } while (!Data.isValidStatus(status));\n        return status;\n    }\n\n\n    public static void updateProcess() {\n        //loop until valid subscription name is found\n        int index = -1;\n        while (index==-1) {\n        System.out.println(\"\\nEnter name of subscription to update: \");\n        String name= input.nextLine().trim();\n        //search for subscription by name or return -1 if not found\n        index = Data.findingSubscriptionIndex(name);\n        //if returned -1, subscription DNE\n        if (index == -1) {\n            System.out.println(\"ERROR: '\" + name + \"' subscription not found. Please try again.\");\n        }\n        }\n\n        System.out.println(\"\\nWhat field do you want to update?\");\n        System.out.println(\"1. Name\");\n        System.out.println(\"2. Cost\");\n        System.out.println(\"3. Category\");\n        System.out.println(\"4. Billing cycle\");\n        System.out.println(\"5. Start date\");\n        System.out.println(\"6. End date\");\n        System.out.println(\"7. Status of subscription (ACTIVE/PAUSED/CANCELLED)\");\n\n        int choiceIndex= -1;//loop until valid choice is selected\n        while (choiceIndex ==-1) {\n            System.out.print(\"YOUR DESIRED CHOICE: \");\n            String fieldChoice=input.nextLine().trim();\n            choiceIndex=getIndexChoice(fieldChoice);\n            //if -1, that means choice is invalid, stop\n            if (choiceIndex == -1) {\n                System.out.println(\"ERROR: invalid choice selection.\");\n            }\n        }\n        //looping until valid newChoice is entered\n        String newChoice=\"\";\n        boolean validChoice=false;\n        while (!validChoice) {\n            System.out.println(\"Please enter new choice: \");\n            newChoice = input.nextLine().trim();\n\n            if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)\n                if (!Data.isValidStatus(newChoice.toUpperCase())) {\n                    System.out.println(\"ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.\");\n                } else {\n                    newChoice = newChoice.toUpperCase();\n                    validChoice = true;\n                }\n            }else {\n                if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid\n                    System.out.println(\"ERROR: value cannot be empty. Try again.\");\n                } else {\n                    validChoice = true;\n                }\n\n            }\n        }\n        //call Data to update field using .set(index,newValue)\n        Data.changeSubscriptionChoice(index, choiceIndex, newChoice);\n        System.out.println(\"Update complete.\");\n    }\n\n    /**\n     * users desired menu choice(1-7) to ArrayList index(0-6)\n     * @param choice users input which is \"1\"-\"7\"\n     * @return the corresponding ArrayList index 0-6.-1 is invalid\n     */\n\n    public static int getIndexChoice(String choice) {\n        //each case (e.g. \"1\") matches to data index\n        switch (choice) {\n            case \"1\":\n                return 0;\n            case \"2\":\n                return 1;\n            case \"3\":\n                return 2;\n            case \"4\":\n                return 3;\n            case \"5\":\n                return 4;\n            case \"6\":\n                return 5;\n            case \"7\":\n                return 6;\n\n            default:\n                return -1;\n\n        }\n    }}\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Menu.java b/src/Menu.java
++--- a/src/Menu.java	(revision 840c96f360a28bf020d740f2966e7d0b2db205a2)
+++++ b/src/Menu.java	(date 1772380368653)
++@@ -89,27 +89,61 @@
++                     // harshitas work
++                     break;
++                 case "7":
++-                    //Upcoming bills in the next week
++-                    System.out.println("=== Upcoming Bills (Next Week) ===");
++-                    ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
++-                    if (upcoming.size() == 0) {
++-                        System.out.println("No upcoming bills in the next week.");
+++                    // not done this function
+++                case "8":
+++                    // Paused subscriptions
+++                    System.out.println("=== Paused Subscriptions ===");
+++                    ArrayList<ArrayList<String>> pausedSubs = new ArrayList<>();
+++                    for (int i = 0; i < Data.subscriptions.size(); i++) {
+++                        ArrayList<String> sub = Data.subscriptions.get(i);
+++                        if (sub.size() > 6) {
+++                            String status = sub.get(6);
+++
+++                            if (status.equalsIgnoreCase("paused")) {
+++                                pausedSubs.add(sub);
+++                            }
+++                        }
+++                    }
+++                    if (pausedSubs.size() == 0) {
+++                        System.out.println("No paused subscriptions.");
++                     } else {
++-                        Data.printTable(upcoming);
+++                        Data.printTable(pausedSubs);
++                     }
++                     break;
++-                case "8":
++-
++                 case "9":
++-
+++                    // not done this function
++                 case "10":
++-
+++                    // High-expense bills
+++                    System.out.print("Enter threshold amount: $");
+++                    double threshold = Double.parseDouble(input.nextLine().trim());
+++                    ArrayList<ArrayList<String>> highExpense = Data.getHighExpenseBills(threshold);
+++                    if (highExpense.size() == 0) {
+++                        System.out.println("No high-expense bills were found.");
+++                    } else {
+++                        System.out.println("=== High-Expense Subscriptions ===");
+++                        Data.printTable(highExpense);
+++                    }
++                     break;
++                 case "11":
++-                    // mehrins work
++-                    break;
+++// work on case 11
++                 case "12":
++-                    // mehrins work
+++                    // Search subscriptions by name or category
+++                    System.out.print("Search by (1) Name or (2) Category: ");
+++                    String searchNumber = input.nextLine().trim();
+++                    System.out.print("Enter search keyword: ");
+++                    String keyword = input.nextLine().trim();
+++                    ArrayList<ArrayList<String>> results;
+++                    if (searchNumber.equals("1")) {
+++                        results = Data.searchByName(keyword);
+++                    } else {
+++                        results = Data.searchByCategory(keyword);
+++                    }
+++                    if (results.isEmpty()) {
+++                        System.out.println("No matching subscriptions found.");
+++                    } else {
+++                        System.out.println("=== Search Results ===");
+++                        Data.printTable(results);
+++                    }
++                     break;
++                 case "13":
++                     // harshitas work
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_46a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_46a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_46a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666496)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_46a_m___Changes_.xml	(date 1772385666496)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_46 a_m__[Changes]" date="1772383617200" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_46 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:46 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666494)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/shelved.patch	(date 1772385666494)
+@@ -0,0 +1,567 @@
++Index: src/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Main.java b/src/Main.java
++--- a/src/Main.java	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/src/Main.java	(date 1772383281323)
++@@ -1,0 +1,6 @@
+++public class Main {
+++
+++    public static void main(String[] args) {
+++        Menu.runMenu();
+++    }
+++}
++\ No newline at end of file
++Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_01a_m___Changes_.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_01a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_01a_m___Changes_.xml
++new file mode 100644
++--- /dev/null	(date 1772383281321)
+++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_01a_m___Changes_.xml	(date 1772383281321)
++@@ -0,0 +1,4 @@
+++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_7_01 a_m__[Changes]" date="1772373700822" recycled="true" deleted="true">
+++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_01 a_m__[Changes]/shelved.patch" />
+++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 7:01 a.m. [Changes]" />
+++</changelist>
++\ No newline at end of file
++Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__6_09a_m___Changes_.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__6_09a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__6_09a_m___Changes_.xml
++new file mode 100644
++--- /dev/null	(date 1772383281320)
+++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__6_09a_m___Changes_.xml	(date 1772383281320)
++@@ -0,0 +1,4 @@
+++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_6_09 a_m__[Changes]" date="1772370585533" recycled="true" deleted="true">
+++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_6_09 a_m__[Changes]/shelved.patch" />
+++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 6:09 a.m. [Changes]" />
+++</changelist>
++\ No newline at end of file
++Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]1/shelved.patch
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]1/shelved.patch
++new file mode 100644
++--- /dev/null	(date 1772383281319)
+++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]1/shelved.patch	(date 1772383281319)
++@@ -0,0 +1,35 @@
+++Index: src/Data.java
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+>import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class Data {\n\n    public static final ArrayList<ArrayList<String>> subscriptions = new ArrayList<>();\n    public static final HashMap<String, Double> categoryBudgets = new HashMap<>();\n    public static final HashSet<String> categories = new HashSet<>();\n    public static final HashSet<String> names = new HashSet<>();\n    public static final String[] STATUS_OPTIONS = {\"ACTIVE\", \"PAUSED\", \"CANCELLED\"};\n\n    // Store Index for each subscription information\n\n    private static final int INDEX_NAME = 0;\n    private static final int INDEX_COST = 1;\n    private static final int INDEX_CATEGORY = 2;\n    private static final int INDEX_RENEWAL = 3;\n    private static final int INDEX_START_DATE = 4;\n    private static final int INDEX_END_DATE = 5;\n    private static final int INDEX_STATUS = 6;\n\n\n    // Create function to add new subscription\n    public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {\n        if (!subscriptionExists(name)) {\n            ArrayList<String> subscription = new ArrayList<>();\n            subscription.add(name);\n            subscription.add(cost);\n            subscription.add(category);\n            subscription.add(renewal);\n            subscription.add(startDate);\n            subscription.add(endDate);\n            subscription.add(status);\n            subscriptions.add(subscription);\n            names.add(name);\n            categories.add(category); //no duplicates\n            return true;\n        } else {\n            return false;\n        }\n    }\n\n    // Check functions\n    public static boolean subscriptionExists(String name) {\n        return names.contains(name);\n    }\n\n    //Store budget for each category\n    public static void setCategoryBudget(String category, double limit) {\n        //Store in HashMap -> Key = Category Name, Value = Budget Limit\n        categoryBudgets.put(category.toLowerCase(), limit);\n        categories.add(category);\n    }\n\n    //Calculates Monthly spend of the user\n    public static double calculateMonthlySpend() {\n        return 0;\n    }\n\n    //Calculates yearly spend of the user\n    public static double calculateYearlySpend() {\n        return 0;\n    }\n    /**\n     * Finds the index of subscription in outer ArrayList by ensuring the name matches.\n     * @author Ramsha\n     * @param name the name of subscription to search for\n     * @return index of subscription in outer ArrayList or -1 if not found\n     */\n\n            public static int findingSubscriptionIndex(String name) {\n        //loop through every subscription in list\n        for (int i = 0; i < subscriptions.size(); i++) {\n            //get(i) - subscription row\n            //get(0) - name at index 0\n            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {\n                return i;//found - return its position\n            }\n        }\n        return -1;//not found\n    }\n\n    /**\n     * Search Engine to find all the subscriptions under the given name\n     * @param name the name of subscription to search for\n     * @return ArrayList of ArrayLists, where inner list shows a\n     * subscription that matches the name\n     */\n    public static ArrayList<ArrayList<String>> searchByName(String name) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n        if (name == null) return results;\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n            if (sub.size() > 0) {\n                String subName= sub.get(0);\n\n                String subNameLower= subName.toLowerCase();\n                String newNameLower= name.toLowerCase();\n\n                if (subNameLower.equals(newNameLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n    /**\n     * Search Engine to find all the subscriptions under the given category\n     * @param category is the category of subscription to search for\n     * @return ArrayList of ArrayLists, where each inner list shows a\n     *subscription that matches the category\n     */\n\n    public static ArrayList<ArrayList<String>> searchByCategory(String category) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n            if (sub.size() > 2) {\n                String subCategory= sub.get(2);\n\n                String subCategoryLower= subCategory.toLowerCase();\n                String categoryNewLower= category.toLowerCase();\n\n                if (subCategoryLower.equals(categoryNewLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n\n    /**\n     * Finds all ACTIVE subscriptions with a cost >= to the given threshold\n     *@param threshold the minimum cost to take into account\n     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription\n     *where the cost will either meets or exceeds the threshold (>=)\n     */\n    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i=0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n        if (sub.size() > 6) {\n            String status= sub.get(6);\n\n                if (status.equalsIgnoreCase(\"ACTIVE\")) {\n                    String costStr = sub.get(1);\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n\n                            if (cost >= threshold) {\n                                results.add(sub);\n                            }\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Invalid cost for: \" + sub.get(0));\n                        }\n                    } else {\n                        System.out.println(\"Cost not entered for: \" + sub.get(0));\n                    }\n                }\n             }\n        }\n        return results;\n    }\n\n    //add Javadoc comments later\n    public static void showBudgetAlerts() {\n    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());\n\n    for (int i = 0; i < categories.size(); i++) {\n       String category = categories.get(i);\n\n        double limit= categoryBudgets.get(category);\n        double total= 0;\n\n        for (int j=0; j< subscriptions.size(); j++) {\n            ArrayList<String> sub = subscriptions.get(j);\n\n            if (sub.size() <= 6) {\n                continue;\n            }\n\n            String subName= sub.get(0);\n            String costStr= sub.get(1);\n            String subCategory= sub.get(2);\n            String status= sub.get(6);\n\n\n\n       /**\n       * Updates a specific field of a subscription using .set(index,newValue).\n       * @author Ramsha\n       * @param subIndex index of subscription in outer ArrayList\n       * @param choiceIndex index of field to update in inner ArrayList\n       * @param newChoice   new value to set\n        */\n\n    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {\n        //get(subIndex) - finds correct subscription row\n        //.set(choiceIndex, newChoice) - replaces value at field\n        subscriptions.get(subIndex).set(choiceIndex, newChoice);\n    }\n\n    /**\n     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)\n     * @author Ramsha\n     * @param status status string to ensure is right\n     * @return true if valid, false if invalid\n     */\n\n    //--------------------------------Valid Checks----------------------------------------//\n    //loop through STATUS_OPTIONS string array and check that one matches\n    public static boolean isValidStatus(String status) {\n        for (String validString : STATUS_OPTIONS) {\n            if (validString.equals(status)) {\n                return true;//matched\n            }\n        }\n        return false;//nothing to match\n    }\n\n    /**\n     * @param date (end/start) of the subscription ( user input )\n     * @return boolean true if valid, false otherwise\n     */\n    public static boolean isValidDate(String date) {\n\n        // check the basic format MM/DD/YYYY\n        if (date.length() != 10) {\n            return false;\n        }\n        if (date.charAt(2) != '/' || date.charAt(5) != '/') {\n            return false;\n        }\n\n        // Check bounds of month, day, year\n        try {\n            int month = Integer.parseInt(date.substring(0, 2));\n            int day = Integer.parseInt(date.substring(3, 5));\n            int year = Integer.parseInt(date.substring(6, 10));\n\n            if (month < 1 || month > 12) {\n                return false;\n            }\n            if (day < 1 || day > 31) {\n                return false;\n            }\n            if (year < 2000) {\n                return false;\n            }\n            return true;\n\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n\n    /**\n     * @param cost for new subscription\n     * @return boolean true if cost is double, false otherwise\n     */\n    public static boolean isValidCost(String cost) {\n        try {\n            double value = Double.parseDouble(cost);\n            return value > 0;\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n}\n
+++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+++<+>UTF-8
+++===================================================================
+++diff --git a/src/Data.java b/src/Data.java
+++--- a/src/Data.java	(revision 2394da6ae3b43f42d5006d57045fae7d2c6dc2fa)
++++++ b/src/Data.java	(date 1772312025130)
+++@@ -152,7 +152,7 @@
+++         if (sub.size() > 6) {
+++             String status= sub.get(6);
+++ 
+++-                if (status.equalsIgnoreCase("ACTIVE")) {
++++            if (sub.get(6).toLowerCase().equals("active")) {
+++                     String costStr = sub.get(1);
+++ 
+++                     if (costStr.equals("") == false) {
+++@@ -179,13 +179,13 @@
+++     ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
+++ 
+++     for (int i = 0; i < categories.size(); i++) {
+++-       String category = categories.get(i);
++++       String category= categories.get(i);
+++ 
+++         double limit= categoryBudgets.get(category);
+++         double total= 0;
+++ 
+++         for (int j=0; j< subscriptions.size(); j++) {
+++-            ArrayList<String> sub = subscriptions.get(j);
++++            ArrayList<String> sub= subscriptions.get(j);
+++ 
+++             if (sub.size() <= 6) {
+++                 continue;
++Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_03 a_m__[Changes]/shelved.patch
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_03 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_03 a_m__[Changes]/shelved.patch
++new file mode 100644
++--- /dev/null	(date 1772383281320)
+++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_03 a_m__[Changes]/shelved.patch	(date 1772383281320)
++@@ -0,0 +1,114 @@
+++Index: src/Data.java
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+>import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class Data {\n\n    public static final ArrayList<ArrayList<String>> subscriptions = new ArrayList<>();\n    public static final HashMap<String, Double> categoryBudgets = new HashMap<>();\n    public static final HashSet<String> categories = new HashSet<>();\n    public static final HashSet<String> names = new HashSet<>();\n    public static final String[] STATUS_OPTIONS = {\"ACTIVE\", \"PAUSED\", \"CANCELLED\"};\n\n    // Store Index for each subscription information\n\n    private static final int INDEX_NAME = 0;\n    private static final int INDEX_COST = 1;\n    private static final int INDEX_CATEGORY = 2;\n    private static final int INDEX_RENEWAL = 3;\n    private static final int INDEX_START_DATE = 4;\n    private static final int INDEX_END_DATE = 5;\n    private static final int INDEX_STATUS = 6;\n\n\n    // Create function to add new subscription\n    public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {\n        if (!subscriptionExists(name)) {\n            ArrayList<String> subscription = new ArrayList<>();\n            subscription.add(name.toLowerCase());\n            subscription.add(cost);\n            subscription.add(formatTitleCase(category));\n            subscription.add(renewal);\n            subscription.add(startDate);\n            subscription.add(endDate);\n            subscription.add(status);\n            subscriptions.add(subscription);\n            names.add(name);\n            categories.add(category); //no duplicates\n            return true;\n        } else {\n            return false;\n        }\n    }\n\n    /**\n     * Formats category string to title case\n     * Stores received budget/limit from Menu.java\n     */\n    public static void setCategoryBudget(String category, double limit) {\n        // Format to title case: \"netflix\" -> \"Netflix\"\n        String cleanCategory = formatTitleCase(category);\n\n        categoryBudgets.put(cleanCategory, limit);\n        categories.add(cleanCategory);\n    }\n\n    /**\n     * Formats user input into title case for clean data storage\n     * @param input from user\n     * @return formatted input\n     */\n    public static String formatTitleCase(String input) {\n        if (input.isEmpty()) return \"\";\n        return input.substring(0, 1).toUpperCase() +\n                input.substring(1).toLowerCase();\n    }\n\n    /**\n     * Gets the budget for the specified category if it already exists\n     * @param category selected by the user for their subscription\n     * @return budget for the category, -1 if not found\n     */\n    public static double getCategoryBudget(String category) {\n        return categoryBudgets.getOrDefault(formatTitleCase(category), -1.0);\n    }\n\n    /**\n     * Lists all categories and budgets in a clean format\n     * @return all the budgets currently stored by category\n     */\n    public static ArrayList<String> getAllBudgets() {\n        ArrayList<String> budgetList = new ArrayList<>();\n        for (String category: categoryBudgets.keySet()) {\n            double limit = categoryBudgets.get(category);\n            budgetList.add(category + \": $\" + String.format(\"%.2f\", limit));\n        }\n        return budgetList;\n    }\n\n    //Calculates Monthly spend of the user\n    public static double calculateMonthlySpend() {\n        return 0;\n    }\n\n    //Calculates yearly spend of the user\n    public static double calculateYearlySpend() {\n        return 0;\n    }\n\n    /**\n     * Finds the index of subscription in outer ArrayList by ensuring the name matches.\n     * @author Ramsha\n     * @param name the name of subscription to search for\n     * @return index of subscription in outer ArrayList or -1 if not found\n     */\n    public static int findingSubscriptionIndex(String name) {\n        //loop through every subscription in list\n        for (int i = 0; i < subscriptions.size(); i++) {\n            //get(i) - subscription row\n            //get(0) - name at index 0\n            if (subscriptions.get(i).get(INDEX_NAME).equalsIgnoreCase(name)) {\n                return i;//found - return its position\n            }\n        }\n        return -1;//not found\n    }\n\n    /**\n     * Search Engine to find all the subscriptions under the given name\n     * @param name the name of subscription to search for\n     * @return ArrayList of ArrayLists, where inner list shows a\n     * subscription that matches the name\n     */\n    public static ArrayList<ArrayList<String>> searchByName(String name) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n        if (name == null) return results;\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n            if (sub.size() > 0) {\n                String subName= sub.get(0);\n\n                String subNameLower= subName.toLowerCase();\n                String newNameLower= name.toLowerCase();\n\n                if (subNameLower.equals(newNameLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n    /**\n     * Search Engine to find all the subscriptions under the given category\n     * @param category is the category of subscription to search for\n     * @return ArrayList of ArrayLists, where each inner list shows a\n     *subscription that matches the category\n     */\n\n    public static ArrayList<ArrayList<String>> searchByCategory(String category) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n            if (sub.size() > 2) {\n                String subCategory= sub.get(2);\n\n                String subCategoryLower= subCategory.toLowerCase();\n                String categoryNewLower= category.toLowerCase();\n\n                if (subCategoryLower.equals(categoryNewLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n\n    /**\n     * Finds all ACTIVE subscriptions with a cost >= to the given threshold\n     *@param threshold the minimum cost to take into account\n     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription\n     *where the cost will either meets or exceeds the threshold (>=)\n     */\n    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i=0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n        if (sub.size() > 6) {\n            String status= sub.get(6);\n\n                if (status.equalsIgnoreCase(\"ACTIVE\")) {\n                    String costStr = sub.get(1);\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n\n                            if (cost >= threshold) {\n                                results.add(sub);\n                            }\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Invalid cost for: \" + sub.get(0));\n                        }\n                    } else {\n                        System.out.println(\"Cost not entered for: \" + sub.get(0));\n                    }\n                }\n             }\n        }\n        return results;\n    }\n\n    //add Javadoc comments later\n    public static void showBudgetAlerts() {\n        ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());\n\n        for (int i = 0; i < categories.size(); i++) {\n            String category = categories.get(i);\n\n            double limit = categoryBudgets.get(category);\n            double total = 0;\n\n            for (int j = 0; j < subscriptions.size(); j++) {\n                ArrayList<String> sub = subscriptions.get(j);\n\n                if (sub.size() <= 6) {\n                    continue;\n                }\n\n                String subName = sub.get(0);\n                String costStr = sub.get(1);\n                String subCategory = sub.get(2);\n                String status = sub.get(6);\n\n\n            }\n        }\n    }\n\n   /**\n   * Updates a specific field of a subscription using .set(index,newValue).\n   * @author Ramsha\n   * @param subIndex index of subscription in outer ArrayList\n   * @param choiceIndex index of field to update in inner ArrayList\n   * @param newChoice   new value to set\n    */\n\n    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {\n        //get(subIndex) - finds correct subscription row\n        //.set(choiceIndex, newChoice) - replaces value at field\n        subscriptions.get(subIndex).set(choiceIndex, newChoice);\n    }\n\n\n    //--------------------------------Valid Checks----------------------------------------//\n\n    public static boolean subscriptionExists(String name) {\n        return names.contains(name.toLowerCase());\n    }\n\n    /**\n     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)\n     * @author Ramsha\n     * @param status status string to ensure is right\n     * @return true if valid, false if invalid\n     */\n\n    public static boolean isValidStatus(String status) {\n        for (String validString : STATUS_OPTIONS) {\n            if (validString.equals(status)) {\n                return true;//matched\n            }\n        }\n        return false;//nothing to match\n    }\n\n    /**\n     * @param date (end/start) of the subscription ( user input )\n     * @return boolean true if valid, false otherwise\n     */\n    public static boolean isValidDate(String date) {\n\n        // check the basic format MM/DD/YYYY\n        if (date.length() != 10) {\n            return false;\n        }\n        if (date.charAt(2) != '/' || date.charAt(5) != '/') {\n            return false;\n        }\n\n        // Check bounds of month, day, year\n        try {\n            int month = Integer.parseInt(date.substring(0, 2));\n            int day = Integer.parseInt(date.substring(3, 5));\n            int year = Integer.parseInt(date.substring(6, 10));\n\n            if (month < 1 || month > 12) {\n                return false;\n            }\n            if (day < 1 || day > 31) {\n                return false;\n            }\n            if (year < 2000) {\n                return false;\n            }\n            return true;\n\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n\n    /**\n     * @param cost for new subscription\n     * @return boolean true if cost is double, false otherwise\n     */\n    public static boolean isValidCost(String cost) {\n        try {\n            double value = Double.parseDouble(cost);\n            return value > 0;\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n}\n
+++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+++<+>UTF-8
+++===================================================================
+++diff --git a/src/Data.java b/src/Data.java
+++--- a/src/Data.java	(revision 1b47d72eaf9e179d3371308d3d7a1a7f660778f0)
++++++ b/src/Data.java	(date 1772373766979)
+++@@ -228,7 +228,7 @@
+++                 String costStr = sub.get(1);
+++                 String subCategory = sub.get(2);
+++                 String status = sub.get(6);
+++-
++++        
+++ 
+++             }
+++         }
+++Index: .idea/workspace.xml
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;\n  }\n}</component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n  </component>\n</project>
+++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+++<+>UTF-8
+++===================================================================
+++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+++--- a/.idea/workspace.xml	(revision 1b47d72eaf9e179d3371308d3d7a1a7f660778f0)
++++++ b/.idea/workspace.xml	(date 1772373766981)
+++@@ -1,7 +1,7 @@
+++ <?xml version="1.0" encoding="UTF-8"?>
+++ <project version="4">
+++   <component name="ChangeListManager">
+++-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="">
++++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
+++       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+++     </list>
+++     <option name="SHOW_DIALOG" value="false" />
+++@@ -12,16 +12,17 @@
+++   <component name="Git.Settings">
+++     <option name="RECENT_BRANCH_BY_REPOSITORY">
+++       <map>
+++-        <entry key="$PROJECT_DIR$" value="main" />
++++        <entry key="$PROJECT_DIR$" value="SearchEngine" />
+++       </map>
+++     </option>
+++     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++++    <option name="UPDATE_TYPE" value="REBASE" />
+++   </component>
+++-  <component name="PropertiesComponent">{
+++-  &quot;keyToString&quot;: {
+++-    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;
++++  <component name="PropertiesComponent"><![CDATA[{
++++  "keyToString": {
++++    "git-widget-placeholder": "main"
+++   }
+++-}</component>
++++}]]></component>
+++   <component name="TaskManager">
+++     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
+++       <option name="closed" value="true" />
+++@@ -47,7 +48,39 @@
+++       <option name="project" value="LOCAL" />
+++       <updated>1772304610715</updated>
+++     </task>
+++-    <option name="localTasksCounter" value="4" />
++++    <task id="LOCAL-00004" summary="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface">
++++      <option name="closed" value="true" />
++++      <created>1772371198332</created>
++++      <option name="number" value="00004" />
++++      <option name="presentableId" value="LOCAL-00004" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772371198332</updated>
++++    </task>
++++    <task id="LOCAL-00005" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
++++      <option name="closed" value="true" />
++++      <created>1772371920181</created>
++++      <option name="number" value="00005" />
++++      <option name="presentableId" value="LOCAL-00005" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772371920181</updated>
++++    </task>
++++    <task id="LOCAL-00006" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
++++      <option name="closed" value="true" />
++++      <created>1772371967446</created>
++++      <option name="number" value="00006" />
++++      <option name="presentableId" value="LOCAL-00006" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772371967446</updated>
++++    </task>
++++    <task id="LOCAL-00007" summary="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
++++      <option name="closed" value="true" />
++++      <created>1772373634223</created>
++++      <option name="number" value="00007" />
++++      <option name="presentableId" value="LOCAL-00007" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772373634223</updated>
++++    </task>
++++    <option name="localTasksCounter" value="8" />
+++     <servers />
+++   </component>
+++   <component name="Vcs.Log.Tabs.Properties">
+++@@ -64,6 +97,9 @@
+++   <component name="VcsManagerConfiguration">
+++     <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
+++     <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
+++-    <option name="LAST_COMMIT_MESSAGE" value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
++++    <MESSAGE value="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface" />
++++    <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
++++    <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
++++    <option name="LAST_COMMIT_MESSAGE" value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
+++   </component>
+++ </project>
+++\ No newline at end of file
++Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]/shelved.patch
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]/shelved.patch
++new file mode 100644
++--- /dev/null	(date 1772383281319)
+++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-02-28,_7_28 p_m__[Changes]/shelved.patch	(date 1772383281319)
++@@ -0,0 +1,62 @@
+++Index: .idea/workspace.xml
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;\n  }\n}</component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n  </component>\n</project>
+++===================================================================
+++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+++--- a/.idea/workspace.xml	(revision 2394da6ae3b43f42d5006d57045fae7d2c6dc2fa)
++++++ b/.idea/workspace.xml	(date 1772332072488)
+++@@ -1,7 +1,7 @@
+++ <?xml version="1.0" encoding="UTF-8"?>
+++ <project version="4">
+++   <component name="ChangeListManager">
+++-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="">
++++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added showBudgetAlerts method-2&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets&#10;-Used nested for loops first loop is all categories in the categoryBudgets&#10;-The second loop is for all subscriptions to check which ones belong in the  category&#10;-assigned var">
+++       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+++     </list>
+++     <option name="SHOW_DIALOG" value="false" />
+++@@ -47,7 +47,31 @@
+++       <option name="project" value="LOCAL" />
+++       <updated>1772304610715</updated>
+++     </task>
+++-    <option name="localTasksCounter" value="4" />
++++    <task id="LOCAL-00004" summary="Added showBudgetAlerts method&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets">
++++      <option name="closed" value="true" />
++++      <created>1772308734045</created>
++++      <option name="number" value="00004" />
++++      <option name="presentableId" value="LOCAL-00004" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772308734045</updated>
++++    </task>
++++    <task id="LOCAL-00005" summary="Added showBudgetAlerts method-2&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets&#10;-Used nested for loops first loop is all categories in the categoryBudgets&#10;-The second loop is for all subscriptions to check which ones belong in the  category&#10;&#10;next step: assign var to the .get() so its easier to udnerstand and read&#10;-take inspiration from addNewSubscription() and how the assigning is">
++++      <option name="closed" value="true" />
++++      <created>1772310293445</created>
++++      <option name="number" value="00005" />
++++      <option name="presentableId" value="LOCAL-00005" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772310293445</updated>
++++    </task>
++++    <task id="LOCAL-00006" summary="Added showBudgetAlerts method-2&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets&#10;-Used nested for loops first loop is all categories in the categoryBudgets&#10;-The second loop is for all subscriptions to check which ones belong in the  category&#10;-assigned var">
++++      <option name="closed" value="true" />
++++      <created>1772310701799</created>
++++      <option name="number" value="00006" />
++++      <option name="presentableId" value="LOCAL-00006" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772310701799</updated>
++++    </task>
++++    <option name="localTasksCounter" value="7" />
+++     <servers />
+++   </component>
+++   <component name="Vcs.Log.Tabs.Properties">
+++@@ -64,6 +88,9 @@
+++   <component name="VcsManagerConfiguration">
+++     <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
+++     <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
+++-    <option name="LAST_COMMIT_MESSAGE" value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
++++    <MESSAGE value="Added showBudgetAlerts method&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets" />
++++    <MESSAGE value="Added showBudgetAlerts method-2&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets&#10;-Used nested for loops first loop is all categories in the categoryBudgets&#10;-The second loop is for all subscriptions to check which ones belong in the  category&#10;&#10;next step: assign var to the .get() so its easier to udnerstand and read&#10;-take inspiration from addNewSubscription() and how the assigning is" />
++++    <MESSAGE value="Added showBudgetAlerts method-2&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets&#10;-Used nested for loops first loop is all categories in the categoryBudgets&#10;-The second loop is for all subscriptions to check which ones belong in the  category&#10;-assigned var" />
++++    <option name="LAST_COMMIT_MESSAGE" value="Added showBudgetAlerts method-2&#10;&#10;-For loop iterates through categories, a list of all the keys from categoryBudgets&#10;-Used nested for loops first loop is all categories in the categoryBudgets&#10;-The second loop is for all subscriptions to check which ones belong in the  category&#10;-assigned var" />
+++   </component>
+++ </project>
+++\ No newline at end of file
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>.idea/\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-16LE
++===================================================================
++diff --git a/.gitignore b/.gitignore
++--- a/.gitignore	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/.gitignore	(date 1772383281318)
++@@ -1,1 +1,2 @@
++ .idea/
+++/.idea/workspace.xml
++Index: .idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01,_7_02 a_m__[Changes]/shelved.patch
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01,_7_02 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01,_7_02 a_m__[Changes]/shelved.patch
++new file mode 100644
++--- /dev/null	(date 1772383281321)
+++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01,_7_02 a_m__[Changes]/shelved.patch	(date 1772383281321)
++@@ -0,0 +1,114 @@
+++Index: src/Data.java
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+>import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class Data {\n\n    public static final ArrayList<ArrayList<String>> subscriptions = new ArrayList<>();\n    public static final HashMap<String, Double> categoryBudgets = new HashMap<>();\n    public static final HashSet<String> categories = new HashSet<>();\n    public static final HashSet<String> names = new HashSet<>();\n    public static final String[] STATUS_OPTIONS = {\"ACTIVE\", \"PAUSED\", \"CANCELLED\"};\n\n    // Store Index for each subscription information\n\n    private static final int INDEX_NAME = 0;\n    private static final int INDEX_COST = 1;\n    private static final int INDEX_CATEGORY = 2;\n    private static final int INDEX_RENEWAL = 3;\n    private static final int INDEX_START_DATE = 4;\n    private static final int INDEX_END_DATE = 5;\n    private static final int INDEX_STATUS = 6;\n\n\n    // Create function to add new subscription\n    public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {\n        if (!subscriptionExists(name)) {\n            ArrayList<String> subscription = new ArrayList<>();\n            subscription.add(name);\n            subscription.add(cost);\n            subscription.add(category);\n            subscription.add(renewal);\n            subscription.add(startDate);\n            subscription.add(endDate);\n            subscription.add(status);\n            subscriptions.add(subscription);\n            names.add(name);\n            categories.add(category); //no duplicates\n            return true;\n        } else {\n            return false;\n        }\n    }\n\n    // Check functions\n    public static boolean subscriptionExists(String name) {\n        return names.contains(name);\n    }\n\n    //Store budget for each category\n    public static void setCategoryBudget(String category, double limit) {\n        //Store in HashMap -> Key = Category Name, Value = Budget Limit\n        categoryBudgets.put(category.toLowerCase(), limit);\n        categories.add(category);\n    }\n\n    //Calculates Monthly spend of the user\n    public static double calculateMonthlySpend() {\n        return 0;\n    }\n\n    //Calculates yearly spend of the user\n    public static double calculateYearlySpend() {\n        return 0;\n    }\n    /**\n     * Finds the index of subscription in outer ArrayList by ensuring the name matches.\n     * @author Ramsha\n     * @param name the name of subscription to search for\n     * @return index of subscription in outer ArrayList or -1 if not found\n     */\n\n            public static int findingSubscriptionIndex(String name) {\n        //loop through every subscription in list\n        for (int i = 0; i < subscriptions.size(); i++) {\n            //get(i) - subscription row\n            //get(0) - name at index 0\n            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {\n                return i;//found - return its position\n            }\n        }\n        return -1;//not found\n    }\n\n    /**\n     * Search Engine to find all the subscriptions under the given name\n     * @param name the name of subscription to search for\n     * @return ArrayList of ArrayLists, where inner list shows a\n     * subscription that matches the name\n     */\n    public static ArrayList<ArrayList<String>> searchByName(String name) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n        if (name == null) return results;\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n            if (sub.size() > 0) {\n                String subName= sub.get(0);\n\n                String subNameLower= subName.toLowerCase();\n                String newNameLower= name.toLowerCase();\n\n                if (subNameLower.equals(newNameLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n    /**\n     * Search Engine to find all the subscriptions under the given category\n     * @param category is the category of subscription to search for\n     * @return ArrayList of ArrayLists, where each inner list shows a\n     *subscription that matches the category\n     */\n\n    public static ArrayList<ArrayList<String>> searchByCategory(String category) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n            if (sub.size() > 2) {\n                String subCategory= sub.get(2);\n\n                String subCategoryLower= subCategory.toLowerCase();\n                String categoryNewLower= category.toLowerCase();\n\n                if (subCategoryLower.equals(categoryNewLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n\n    /**\n     * Finds all ACTIVE subscriptions with a cost >= to the given threshold\n     *@param threshold the minimum cost to take into account\n     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription\n     *where the cost will either meets or exceeds the threshold (>=)\n     */\n    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i=0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n        if (sub.size() > 6) {\n            String status= sub.get(6);\n\n                if (status.equalsIgnoreCase(\"ACTIVE\")) {\n                    String costStr = sub.get(1);\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n\n                            if (cost >= threshold) {\n                                results.add(sub);\n                            }\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Invalid cost for: \" + sub.get(0));\n                        }\n                    } else {\n                        System.out.println(\"Cost not entered for: \" + sub.get(0));\n                    }\n                }\n             }\n        }\n        return results;\n    }\n\n    //add Javadoc comments later\n    public static void showBudgetAlerts() {\n    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());\n\n    for (int i = 0; i < categories.size(); i++) {\n       String category = categories.get(i);\n\n        double limit= categoryBudgets.get(category);\n        double total= 0;\n\n        for (int j=0; j< subscriptions.size(); j++) {\n            ArrayList<String> sub = subscriptions.get(j);\n\n            if (sub.size() <= 6) {\n                continue;\n            }\n\n            String subName= sub.get(0);\n            String costStr= sub.get(1);\n            String subCategory= sub.get(2);\n            String status= sub.get(6);\n\n\n\n       /**\n       * Updates a specific field of a subscription using .set(index,newValue).\n       * @author Ramsha\n       * @param subIndex index of subscription in outer ArrayList\n       * @param choiceIndex index of field to update in inner ArrayList\n       * @param newChoice   new value to set\n        */\n\n    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {\n        //get(subIndex) - finds correct subscription row\n        //.set(choiceIndex, newChoice) - replaces value at field\n        subscriptions.get(subIndex).set(choiceIndex, newChoice);\n    }\n\n    /**\n     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)\n     * @author Ramsha\n     * @param status status string to ensure is right\n     * @return true if valid, false if invalid\n     */\n\n    //--------------------------------Valid Checks----------------------------------------//\n    //loop through STATUS_OPTIONS string array and check that one matches\n    public static boolean isValidStatus(String status) {\n        for (String validString : STATUS_OPTIONS) {\n            if (validString.equals(status)) {\n                return true;//matched\n            }\n        }\n        return false;//nothing to match\n    }\n\n    /**\n     * @param date (end/start) of the subscription ( user input )\n     * @return boolean true if valid, false otherwise\n     */\n    public static boolean isValidDate(String date) {\n\n        // check the basic format MM/DD/YYYY\n        if (date.length() != 10) {\n            return false;\n        }\n        if (date.charAt(2) != '/' || date.charAt(5) != '/') {\n            return false;\n        }\n\n        // Check bounds of month, day, year\n        try {\n            int month = Integer.parseInt(date.substring(0, 2));\n            int day = Integer.parseInt(date.substring(3, 5));\n            int year = Integer.parseInt(date.substring(6, 10));\n\n            if (month < 1 || month > 12) {\n                return false;\n            }\n            if (day < 1 || day > 31) {\n                return false;\n            }\n            if (year < 2000) {\n                return false;\n            }\n            return true;\n\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n\n    /**\n     * @param cost for new subscription\n     * @return boolean true if cost is double, false otherwise\n     */\n    public static boolean isValidCost(String cost) {\n        try {\n            double value = Double.parseDouble(cost);\n            return value > 0;\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n}\n
+++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+++<+>UTF-8
+++===================================================================
+++diff --git a/src/Data.java b/src/Data.java
+++--- a/src/Data.java	(revision 3d6faac3bae46bafc0384f9d5d13043a2bc6ebb6)
++++++ b/src/Data.java	(date 1772373700816)
+++@@ -195,7 +195,7 @@
+++             String costStr= sub.get(1);
+++             String subCategory= sub.get(2);
+++             String status= sub.get(6);
+++-
++++        
+++ 
+++ 
+++        /**
+++Index: .idea/workspace.xml
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;\n  }\n}</component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n  </component>\n</project>
+++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+++<+>UTF-8
+++===================================================================
+++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+++--- a/.idea/workspace.xml	(revision 3d6faac3bae46bafc0384f9d5d13043a2bc6ebb6)
++++++ b/.idea/workspace.xml	(date 1772373764622)
+++@@ -1,7 +1,7 @@
+++ <?xml version="1.0" encoding="UTF-8"?>
+++ <project version="4">
+++   <component name="ChangeListManager">
+++-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="">
++++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
+++       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+++     </list>
+++     <option name="SHOW_DIALOG" value="false" />
+++@@ -12,16 +12,17 @@
+++   <component name="Git.Settings">
+++     <option name="RECENT_BRANCH_BY_REPOSITORY">
+++       <map>
+++-        <entry key="$PROJECT_DIR$" value="main" />
++++        <entry key="$PROJECT_DIR$" value="SearchEngine" />
+++       </map>
+++     </option>
+++     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++++    <option name="UPDATE_TYPE" value="REBASE" />
+++   </component>
+++-  <component name="PropertiesComponent">{
+++-  &quot;keyToString&quot;: {
+++-    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;
++++  <component name="PropertiesComponent"><![CDATA[{
++++  "keyToString": {
++++    "git-widget-placeholder": "main"
+++   }
+++-}</component>
++++}]]></component>
+++   <component name="TaskManager">
+++     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
+++       <option name="closed" value="true" />
+++@@ -47,7 +48,39 @@
+++       <option name="project" value="LOCAL" />
+++       <updated>1772304610715</updated>
+++     </task>
+++-    <option name="localTasksCounter" value="4" />
++++    <task id="LOCAL-00004" summary="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface">
++++      <option name="closed" value="true" />
++++      <created>1772371198332</created>
++++      <option name="number" value="00004" />
++++      <option name="presentableId" value="LOCAL-00004" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772371198332</updated>
++++    </task>
++++    <task id="LOCAL-00005" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
++++      <option name="closed" value="true" />
++++      <created>1772371920181</created>
++++      <option name="number" value="00005" />
++++      <option name="presentableId" value="LOCAL-00005" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772371920181</updated>
++++    </task>
++++    <task id="LOCAL-00006" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
++++      <option name="closed" value="true" />
++++      <created>1772371967446</created>
++++      <option name="number" value="00006" />
++++      <option name="presentableId" value="LOCAL-00006" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772371967446</updated>
++++    </task>
++++    <task id="LOCAL-00007" summary="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
++++      <option name="closed" value="true" />
++++      <created>1772373634223</created>
++++      <option name="number" value="00007" />
++++      <option name="presentableId" value="LOCAL-00007" />
++++      <option name="project" value="LOCAL" />
++++      <updated>1772373634223</updated>
++++    </task>
++++    <option name="localTasksCounter" value="8" />
+++     <servers />
+++   </component>
+++   <component name="Vcs.Log.Tabs.Properties">
+++@@ -64,6 +97,9 @@
+++   <component name="VcsManagerConfiguration">
+++     <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
+++     <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
+++-    <option name="LAST_COMMIT_MESSAGE" value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
++++    <MESSAGE value="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface" />
++++    <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
++++    <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
++++    <option name="LAST_COMMIT_MESSAGE" value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
+++   </component>
+++ </project>
+++\ No newline at end of file
++Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_01 a_m__[Changes]/shelved.patch
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_01 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_01 a_m__[Changes]/shelved.patch
++new file mode 100644
++--- /dev/null	(date 1772383281320)
+++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_01 a_m__[Changes]/shelved.patch	(date 1772383281320)
++@@ -0,0 +1,19 @@
+++Index: src/Data.java
+++IDEA additional info:
+++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+++<+>import java.util.ArrayList;\nimport java.util.HashMap;\nimport java.util.HashSet;\n\npublic class Data {\n\n    public static final ArrayList<ArrayList<String>> subscriptions = new ArrayList<>();\n    public static final HashMap<String, Double> categoryBudgets = new HashMap<>();\n    public static final HashSet<String> categories = new HashSet<>();\n    public static final HashSet<String> names = new HashSet<>();\n    public static final String[] STATUS_OPTIONS = {\"ACTIVE\", \"PAUSED\", \"CANCELLED\"};\n\n    // Store Index for each subscription information\n\n    private static final int INDEX_NAME = 0;\n    private static final int INDEX_COST = 1;\n    private static final int INDEX_CATEGORY = 2;\n    private static final int INDEX_RENEWAL = 3;\n    private static final int INDEX_START_DATE = 4;\n    private static final int INDEX_END_DATE = 5;\n    private static final int INDEX_STATUS = 6;\n\n\n    // Create function to add new subscription\n    public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {\n        if (!subscriptionExists(name)) {\n            ArrayList<String> subscription = new ArrayList<>();\n            subscription.add(name);\n            subscription.add(cost);\n            subscription.add(category);\n            subscription.add(renewal);\n            subscription.add(startDate);\n            subscription.add(endDate);\n            subscription.add(status);\n            subscriptions.add(subscription);\n            names.add(name);\n            categories.add(category); //no duplicates\n            return true;\n        } else {\n            return false;\n        }\n    }\n\n    // Check functions\n    public static boolean subscriptionExists(String name) {\n        return names.contains(name);\n    }\n\n    //Store budget for each category\n    public static void setCategoryBudget(String category, double limit) {\n        //Store in HashMap -> Key = Category Name, Value = Budget Limit\n        categoryBudgets.put(category.toLowerCase(), limit);\n        categories.add(category);\n    }\n\n    //Calculates Monthly spend of the user\n    public static double calculateMonthlySpend() {\n        return 0;\n    }\n\n    //Calculates yearly spend of the user\n    public static double calculateYearlySpend() {\n        return 0;\n    }\n    /**\n     * Finds the index of subscription in outer ArrayList by ensuring the name matches.\n     * @author Ramsha\n     * @param name the name of subscription to search for\n     * @return index of subscription in outer ArrayList or -1 if not found\n     */\n\n            public static int findingSubscriptionIndex(String name) {\n        //loop through every subscription in list\n        for (int i = 0; i < subscriptions.size(); i++) {\n            //get(i) - subscription row\n            //get(0) - name at index 0\n            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {\n                return i;//found - return its position\n            }\n        }\n        return -1;//not found\n    }\n\n    /**\n     * Search Engine to find all the subscriptions under the given name\n     * @param name the name of subscription to search for\n     * @return ArrayList of ArrayLists, where inner list shows a\n     * subscription that matches the name\n     */\n    public static ArrayList<ArrayList<String>> searchByName(String name) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n        if (name == null) return results;\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n            if (sub.size() > 0) {\n                String subName= sub.get(0);\n\n                String subNameLower= subName.toLowerCase();\n                String newNameLower= name.toLowerCase();\n\n                if (subNameLower.equals(newNameLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n    /**\n     * Search Engine to find all the subscriptions under the given category\n     * @param category is the category of subscription to search for\n     * @return ArrayList of ArrayLists, where each inner list shows a\n     *subscription that matches the category\n     */\n\n    public static ArrayList<ArrayList<String>> searchByCategory(String category) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i = 0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n            if (sub.size() > 2) {\n                String subCategory= sub.get(2);\n\n                String subCategoryLower= subCategory.toLowerCase();\n                String categoryNewLower= category.toLowerCase();\n\n                if (subCategoryLower.equals(categoryNewLower)) {\n                    results.add(sub);\n                }else {\n                }\n            }else {\n            }\n        }\n        return results;\n    }\n//new method here, add javadoc comments later\npublic static void printTable(ArrayList<ArrayList<String>> subs) {\n      //look into how to make the interface later\n    for (int i = 0; i < subs.size(); i++) {\n        ArrayList<String> sub = subs.get(i);\n\n        if (sub.size() <= 6) {\n            continue;\n        }\n\n        String subName = sub.get(0);\n        String costStr = sub.get(1);\n        String subCategory = sub.get(2);\n        String billing = sub.get(3);\n        String start = sub.get(4);\n        String end = sub.get(5);\n        String status = sub.get(6);\n\n        if (end == null) {\n            end = \"-\";\n        } else if (end.isEmpty()) {\n            end = \"-\";\n        }\n\n\n\n    /**\n     * Finds all ACTIVE subscriptions with a cost >= to the given threshold\n     *@param threshold the minimum cost to take into account\n     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription\n     *where the cost will either meets or exceeds the threshold (>=)\n     */\n    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {\n        ArrayList<ArrayList<String>> results = new ArrayList<>();\n\n        for (int i=0; i < subscriptions.size(); i++) {\n            ArrayList<String> sub= subscriptions.get(i);\n\n        if (sub.size() > 6) {\n            String status= sub.get(6);\n\n                if (status.equalsIgnoreCase(\"ACTIVE\")) {\n                    String costStr = sub.get(1);\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n\n                            if (cost >= threshold) {\n                                results.add(sub);\n                            }\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Invalid cost for: \" + sub.get(0));\n                        }\n                    } else {\n                        System.out.println(\"Cost not entered for: \" + sub.get(0));\n                    }\n                }\n             }\n        }\n        return results;\n    }\n\n    /**\n     * Checks all subscription categories with their budget limits and prints alerts\n     * Used for categories where total spending on ACTIVE subscriptions exceeds the budget\n     *\n     * For each category, this method sums the costs of all ACTIVE subscriptions in that category\n     * If the total spending > budget for category = budget alert\n     * is printed to the console showing the category name, amount spent, and budget limit\n     *\n     * This method doesn't return a value, only printing messages to console\n     */\n    public static void showBudgetAlerts() {\n    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());\n\n    for (int i = 0; i < categories.size(); i++) {\n       String category = categories.get(i);\n\n        double limit= categoryBudgets.get(category);\n        double total= 0;\n\n        for (int j=0; j< subscriptions.size(); j++) {\n            ArrayList<String> sub = subscriptions.get(j);\n\n            if (sub.size() <= 6) {\n                continue;\n            }\n\n            String subName = sub.get(0);\n            String costStr = sub.get(1);\n            String subCategory = sub.get(2);\n            String status = sub.get(6);\n\n            if (subCategory.toLowerCase().equals(category.toLowerCase())) {\n                if (status.toLowerCase().equals(\"active\")) {\n                    costStr = costStr.replace(\"$\", \"\").trim();\n\n                    if (costStr.equals(\"\") == false) {\n                        try {\n                            double cost = Double.parseDouble(costStr);\n                            total += cost;\n                        } catch (RuntimeException e) {\n                            System.out.println(\"Could not read the cost for: \" + subName);\n                        }\n                    } else {\n                    }\n                } else {\n                }\n            } else {\n            }\n        }\n        if (total > limit) {\n            System.out.println(\"\uD83D\uDEA8 Budget exceeded for \" + category);\n            System.out.println(\"Spent: $\" + String.format(\"%.2f\", total) + \" / Budget: $\" + String.format(\"%.2f\", limit));\n        } else {\n        }\n      }\n    }\n\n\n        /**\n        * Updates a specific field of a subscription using .set(index,newValue).\n        * @author Ramsha\n        * @param subIndex index of subscription in outer ArrayList\n        * @param choiceIndex index of field to update in inner ArrayList\n        * @param newChoice   new value to set\n         */\n\n    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {\n        //get(subIndex) - finds correct subscription row\n        //.set(choiceIndex, newChoice) - replaces value at field\n        subscriptions.get(subIndex).set(choiceIndex, newChoice);\n    }\n\n    /**\n     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)\n     * @author Ramsha\n     * @param status status string to ensure is right\n     * @return true if valid, false if invalid\n     */\n\n    //--------------------------------Valid Checks----------------------------------------//\n    //loop through STATUS_OPTIONS string array and check that one matches\n    public static boolean isValidStatus(String status) {\n        for (String validString : STATUS_OPTIONS) {\n            if (validString.equals(status)) {\n                return true;//matched\n            }\n        }\n        return false;//nothing to match\n    }\n\n    /**\n     * @param date (end/start) of the subscription ( user input )\n     * @return boolean true if valid, false otherwise\n     */\n    public static boolean isValidDate(String date) {\n\n        // check the basic format MM/DD/YYYY\n        if (date.length() != 10) {\n            return false;\n        }\n        if (date.charAt(2) != '/' || date.charAt(5) != '/') {\n            return false;\n        }\n\n        // Check bounds of month, day, year\n        try {\n            int month = Integer.parseInt(date.substring(0, 2));\n            int day = Integer.parseInt(date.substring(3, 5));\n            int year = Integer.parseInt(date.substring(6, 10));\n\n            if (month < 1 || month > 12) {\n                return false;\n            }\n            if (day < 1 || day > 31) {\n                return false;\n            }\n            if (year < 2000) {\n                return false;\n            }\n            return true;\n\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n\n    /**\n     * @param cost for new subscription\n     * @return boolean true if cost is double, false otherwise\n     */\n    public static boolean isValidCost(String cost) {\n        try {\n            double value = Double.parseDouble(cost);\n            return value > 0;\n        } catch (NumberFormatException e) {\n            return false;\n        }\n    }\n}\n
+++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+++<+>UTF-8
+++===================================================================
+++diff --git a/src/Data.java b/src/Data.java
+++--- a/src/Data.java	(revision f9cf5cb2a1540c8cffa9a8081de0ad2b124ef1f2)
++++++ b/src/Data.java	(date 1772373697636)
+++@@ -159,7 +159,7 @@
+++         } else if (end.isEmpty()) {
+++             end = "-";
+++         }
+++-
++++        
+++ 
+++ 
+++     /**
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;\n  }\n}</component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n  </component>\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/.idea/workspace.xml	(date 1772383281321)
++@@ -1,7 +1,7 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++   <component name="ChangeListManager">
++-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="">
+++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
++       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++@@ -12,16 +12,17 @@
++   <component name="Git.Settings">
++     <option name="RECENT_BRANCH_BY_REPOSITORY">
++       <map>
++-        <entry key="$PROJECT_DIR$" value="main" />
+++        <entry key="$PROJECT_DIR$" value="SearchEngine" />
++       </map>
++     </option>
++     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+++    <option name="UPDATE_TYPE" value="REBASE" />
++   </component>
++-  <component name="PropertiesComponent">{
++-  &quot;keyToString&quot;: {
++-    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;
+++  <component name="PropertiesComponent"><![CDATA[{
+++  "keyToString": {
+++    "git-widget-placeholder": "main"
++   }
++-}</component>
+++}]]></component>
++   <component name="TaskManager">
++     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
++       <option name="closed" value="true" />
++@@ -47,7 +48,39 @@
++       <option name="project" value="LOCAL" />
++       <updated>1772304610715</updated>
++     </task>
++-    <option name="localTasksCounter" value="4" />
+++    <task id="LOCAL-00004" summary="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface">
+++      <option name="closed" value="true" />
+++      <created>1772371198332</created>
+++      <option name="number" value="00004" />
+++      <option name="presentableId" value="LOCAL-00004" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1772371198332</updated>
+++    </task>
+++    <task id="LOCAL-00005" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
+++      <option name="closed" value="true" />
+++      <created>1772371920181</created>
+++      <option name="number" value="00005" />
+++      <option name="presentableId" value="LOCAL-00005" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1772371920181</updated>
+++    </task>
+++    <task id="LOCAL-00006" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
+++      <option name="closed" value="true" />
+++      <created>1772371967446</created>
+++      <option name="number" value="00006" />
+++      <option name="presentableId" value="LOCAL-00006" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1772371967446</updated>
+++    </task>
+++    <task id="LOCAL-00007" summary="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
+++      <option name="closed" value="true" />
+++      <created>1772373634223</created>
+++      <option name="number" value="00007" />
+++      <option name="presentableId" value="LOCAL-00007" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1772373634223</updated>
+++    </task>
+++    <option name="localTasksCounter" value="8" />
++     <servers />
++   </component>
++   <component name="Vcs.Log.Tabs.Properties">
++@@ -64,6 +97,9 @@
++   <component name="VcsManagerConfiguration">
++     <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
++     <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
++-    <option name="LAST_COMMIT_MESSAGE" value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
+++    <MESSAGE value="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface" />
+++    <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
+++    <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
+++    <option name="LAST_COMMIT_MESSAGE" value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
++   </component>
++ </project>
++\ No newline at end of file
++Index: .idea/misc.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_25\" project-jdk-name=\"25\" project-jdk-type=\"JavaSDK\" />\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/misc.xml b/.idea/misc.xml
++--- a/.idea/misc.xml	(revision ea18b7c13180bd25ead19fe863339ea0828f9863)
+++++ b/.idea/misc.xml	(date 1772383281318)
++@@ -1,4 +1,6 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++-  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" project-jdk-name="25" project-jdk-type="JavaSDK" />
+++  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" project-jdk-name="25" project-jdk-type="JavaSDK">
+++    <output url="file://$PROJECT_DIR$/out" />
+++  </component>
++ </project>
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_33a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_33a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_33a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_33a_m___Changes_.xml	(date 1772385666495)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_33 a_m__[Changes]" date="1772382822109" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_33 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:33 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_1.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_1.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_1.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_43a_m___Changes_1.xml	(date 1772385666495)
+@@ -0,0 +1,20 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1" date="1772383425526" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:43 a.m. [Changes]" />
++  <binary>
++    <option name="AFTER_PATH" value="out/production/cpsc233w26project1/Data.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/Data.class" />
++  </binary>
++  <binary>
++    <option name="AFTER_PATH" value="out/production/cpsc233w26project1/Menu.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/Menu.class" />
++  </binary>
++  <binary>
++    <option name="AFTER_PATH" value="out/production/cpsc233w26project1/DataTest.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/DataTest.class" />
++  </binary>
++  <binary>
++    <option name="AFTER_PATH" value="out/production/cpsc233w26project1/Main.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_43 a_m__[Changes]1/Main.class" />
++  </binary>
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01__7_02a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01__7_02a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01__7_02a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666496)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01__7_02a_m___Changes_.xml	(date 1772385666496)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Update_at_2026-03-01,_7_02 a_m__[Changes]" date="1772373766982" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2026-03-01,_7_02 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2026-03-01, 7:02 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_34 a_m__[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_34 a_m__[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_34 a_m__[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666492)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_34 a_m__[Changes]/shelved.patch	(date 1772385666492)
+@@ -0,0 +1,95 @@
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"SearchEngine\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"git-widget-placeholder\": \"main\"\n  }\n}]]></component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371198332</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371198332</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371920181</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371920181</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371967446</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371967446</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772373634223</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772373634223</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"8\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <MESSAGE value=\"Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface\" />\n    <MESSAGE value=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\" />\n    <MESSAGE value=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\" />\n  </component>\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision b6b8e1ae00ff7a19828a99db218195718eed6ca4)
+++++ b/.idea/workspace.xml	(date 1772382822068)
++@@ -1,7 +1,7 @@
++ <?xml version="1.0" encoding="UTF-8"?>
++ <project version="4">
++   <component name="ChangeListManager">
++-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
+++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="">
++       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++@@ -12,17 +12,16 @@
++   <component name="Git.Settings">
++     <option name="RECENT_BRANCH_BY_REPOSITORY">
++       <map>
++-        <entry key="$PROJECT_DIR$" value="SearchEngine" />
+++        <entry key="$PROJECT_DIR$" value="main" />
++       </map>
++     </option>
++     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++-    <option name="UPDATE_TYPE" value="REBASE" />
++   </component>
++-  <component name="PropertiesComponent"><![CDATA[{
++-  "keyToString": {
++-    "git-widget-placeholder": "main"
+++  <component name="PropertiesComponent">{
+++  &quot;keyToString&quot;: {
+++    &quot;git-widget-placeholder&quot;: &quot;SearchEngine&quot;
++   }
++-}]]></component>
+++}</component>
++   <component name="TaskManager">
++     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
++       <option name="closed" value="true" />
++@@ -48,39 +47,7 @@
++       <option name="project" value="LOCAL" />
++       <updated>1772304610715</updated>
++     </task>
++-    <task id="LOCAL-00004" summary="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface">
++-      <option name="closed" value="true" />
++-      <created>1772371198332</created>
++-      <option name="number" value="00004" />
++-      <option name="presentableId" value="LOCAL-00004" />
++-      <option name="project" value="LOCAL" />
++-      <updated>1772371198332</updated>
++-    </task>
++-    <task id="LOCAL-00005" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
++-      <option name="closed" value="true" />
++-      <created>1772371920181</created>
++-      <option name="number" value="00005" />
++-      <option name="presentableId" value="LOCAL-00005" />
++-      <option name="project" value="LOCAL" />
++-      <updated>1772371920181</updated>
++-    </task>
++-    <task id="LOCAL-00006" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
++-      <option name="closed" value="true" />
++-      <created>1772371967446</created>
++-      <option name="number" value="00006" />
++-      <option name="presentableId" value="LOCAL-00006" />
++-      <option name="project" value="LOCAL" />
++-      <updated>1772371967446</updated>
++-    </task>
++-    <task id="LOCAL-00007" summary="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
++-      <option name="closed" value="true" />
++-      <created>1772373634223</created>
++-      <option name="number" value="00007" />
++-      <option name="presentableId" value="LOCAL-00007" />
++-      <option name="project" value="LOCAL" />
++-      <updated>1772373634223</updated>
++-    </task>
++-    <option name="localTasksCounter" value="8" />
+++    <option name="localTasksCounter" value="4" />
++     <servers />
++   </component>
++   <component name="Vcs.Log.Tabs.Properties">
++@@ -97,9 +64,6 @@
++   <component name="VcsManagerConfiguration">
++     <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
++     <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
++-    <MESSAGE value="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface" />
++-    <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
++-    <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
++-    <option name="LAST_COMMIT_MESSAGE" value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
+++    <option name="LAST_COMMIT_MESSAGE" value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
++   </component>
++ </project>
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_34a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_34a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_34a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_34a_m___Changes_.xml	(date 1772385666495)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_34 a_m__[Changes]" date="1772382847915" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_34 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:34 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]1/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]1/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_50 a_m__[Changes]1/shelved.patch	(date 1772385666495)
+@@ -0,0 +1,36 @@
++Index: src/Main.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>public class Main {\n\n    public static void main(String[] args) {\n        Menu.runMenu();\n    }\n}
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/Main.java b/src/Main.java
++--- a/src/Main.java	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/src/Main.java	(date 1772383719529)
++@@ -3,4 +3,10 @@
++     public static void main(String[] args) {
++         Menu.runMenu();
++     }
+++}
+++public class Main {
+++
+++    public static void main(String[] args) {
+++        Menu.runMenu();
+++    }
++ }
++\ No newline at end of file
++Index: .gitignore
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>.idea/\r\n/.idea/workspace.xml\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-16LE
++===================================================================
++diff --git a/.gitignore b/.gitignore
++--- a/.gitignore	(revision b8ef72794d13394c577860b9ae32cc4853919141)
+++++ b/.gitignore	(date 1772383719530)
++@@ -1,2 +1,3 @@
++ .idea/
++ /.idea/workspace.xml
+++/.idea/workspace.xml
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__8_53a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__8_53a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__8_53a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__8_53a_m___Changes_.xml	(date 1772385666495)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]" date="1772380422672" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 8:53 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_47a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_47a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_47a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666496)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__9_47a_m___Changes_.xml	(date 1772385666496)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_9_47 a_m__[Changes]" date="1772383680447" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_9_47 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 9:47 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_03a_m___Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_03a_m___Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_03a_m___Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1772385666495)
++++ b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01__7_03a_m___Changes_.xml	(date 1772385666495)
+@@ -0,0 +1,4 @@
++<changelist name="Uncommitted_changes_before_Checkout_at_2026-03-01,_7_03 a_m__[Changes]" date="1772373836239" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_7_03 a_m__[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2026-03-01, 7:03 a.m. [Changes]" />
++</changelist>
+\ No newline at end of file
+diff --git a/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-01,_8_53 a_m__[Changes]1/shelved.patch
+new file mode 100644
