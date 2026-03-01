@@ -218,6 +218,8 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
         double limit= categoryBudgets.get(category);
         double total= 0;
 
+        ArrayList<ArrayList<String>> overBudgetSubs = new ArrayList<>();
+
         for (int j=0; j< subscriptions.size(); j++) {
             ArrayList<String> sub = subscriptions.get(j);
 
@@ -238,6 +240,7 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
                         try {
                             double cost = Double.parseDouble(costStr);
                             total += cost;
+                            overBudgetSubs.add(sub);
                         } catch (RuntimeException e) {
                             System.out.println("Could not read the cost for: " + subName);
                         }
@@ -251,11 +254,12 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
         if (total > limit) {
             System.out.println("🚨 Budget exceeded for " + category);
             System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
+            System.out.println("Subscriptions causing alert:");
+            Data.printTable(overBudgetSubs);
         } else {
         }
       }
     }
-
 
         /**
         * Updates a specific field of a subscription using .set(index,newValue).
