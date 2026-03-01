@@ -274,14 +274,34 @@ public class Data {
        subName, costStr, subCategory, billing, start, end, status);
             }
         }
+    /**
+     * Calculates the percentage of the budget used for a given category
+     * Iterates through all ACTIVE subscriptions in the category,
+     * sums their costs, then divides by the budget limit
+     * @param category is the name of the category
+     * @return percentage of budget used (0-100) and -1 if category not found
+     */
 
-        /**
-        * Updates a specific field of a subscription using .set(index,newValue).
-        * @author Ramsha
-        * @param subIndex index of subscription in outer ArrayList
-        * @param choiceIndex index of field to update in inner ArrayList
-        * @param newChoice   new value to set
-         */
+    public static double getCategoryBudgetUsage(String category) {
+        if (categoryBudgets.containsKey(category.toLowerCase()) == false) {
+            return -1;
+        }
+
+        double totalSpent = 0;
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+            if (sub.size() > 6) {
+                String subCategory = sub.get(2);
+                String status = sub.get(6);
+
+
+                /**
+                * Updates a specific field of a subscription using .set(index,newValue).
+                * @author Ramsha
+                * @param subIndex index of subscription in outer ArrayList
+                * @param choiceIndex index of field to update in inner ArrayList
+                * @param newChoice   new value to set
+                 */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
