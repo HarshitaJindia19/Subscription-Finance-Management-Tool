@@ -89,8 +89,15 @@ public class Menu {
                     // harshitas work
                     break;
                 case "7":
-                    //Not done yet
-                    break;
+                        //Upcoming bills in the next week
+                        System.out.println("=== Upcoming Bills (Next Week) ===");
+                        ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
+                        if (upcoming.size() == 0) {
+                            System.out.println("No upcoming bills in the next week.");
+                        } else {
+                            Data.printTable(upcoming);
+                        }
+                        break;
                 case "8":
                     // Paused subscriptions
                     System.out.println("=== Paused Subscriptions ===");
