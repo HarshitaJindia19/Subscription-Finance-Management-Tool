@@ -137,6 +137,7 @@ public class Data {
         return results;
     }
 
+
     /**
      * Finds all ACTIVE subscriptions with a cost >= to the given threshold
      *@param threshold the minimum cost to take into account
@@ -174,7 +175,16 @@ public class Data {
         return results;
     }
 
-    //add Javadoc comments later
+    /**
+     * Checks all subscription categories with their budget limits and prints alerts
+     * Used for categories where total spending on ACTIVE subscriptions exceeds the budget
+     *
+     * For each category, this method sums the costs of all ACTIVE subscriptions in that category
+     * If the total spending > budget for category = budget alert
+     * is printed to the console showing the category name, amount spent, and budget limit
+     *
+     * This method doesn't return a value, only printing messages to console
+     */
     public static void showBudgetAlerts() {
     ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
 
@@ -184,6 +194,8 @@ public class Data {
         double limit= categoryBudgets.get(category);
         double total= 0;
 
+        ArrayList<ArrayList<String>> overBudgetSubs = new ArrayList<>();
+
         for (int j=0; j< subscriptions.size(); j++) {
             ArrayList<String> sub = subscriptions.get(j);
 
@@ -191,20 +203,71 @@ public class Data {
                 continue;
             }
 
-            String subName= sub.get(0);
-            String costStr= sub.get(1);
-            String subCategory= sub.get(2);
-            String status= sub.get(6);
+            String subName = sub.get(0);
+            String costStr = sub.get(1);
+            String subCategory = sub.get(2);
+            String status = sub.get(6);
 
+            if (subCategory.toLowerCase().equals(category.toLowerCase())) {
+                if (status.toLowerCase().equals("active")) {
+                    costStr = costStr.replace("$", "").trim();
 
+                    if (costStr.equals("") == false) {
+                        try {
+                            double cost = Double.parseDouble(costStr);
+                            total += cost;
+                            overBudgetSubs.add(sub);
+                        } catch (RuntimeException e) {
+                            System.out.println("Could not read the cost for: " + subName);
+                        }
+                    } else {
+                    }
+                } else {
+                }
+            } else {
+            }
+        }
+        if (total > limit) {
+            System.out.println("🚨 Budget exceeded for " + category);
+            System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
+            System.out.println("Subscriptions causing alert:");
+            Data.printTable(overBudgetSubs);
+        } else {
+        }
+      }
+    }
 
-       /**
-       * Updates a specific field of a subscription using .set(index,newValue).
-       * @author Ramsha
-       * @param subIndex index of subscription in outer ArrayList
-       * @param choiceIndex index of field to update in inner ArrayList
-       * @param newChoice   new value to set
-        */
+    //new method here, add javadoc comments later
+    public static void printTable(ArrayList<ArrayList<String>> subs) {
+        //look into how to make the interface later
+        for (int i = 0; i < subs.size(); i++) {
+            ArrayList<String> sub = subs.get(i);
+
+            if (sub.size() <= 6) {
+                continue;
+            }
+
+            String subName = sub.get(0);
+            String costStr = sub.get(1);
+            String subCategory = sub.get(2);
+            String billing = sub.get(3);
+            String start = sub.get(4);
+            String end = sub.get(5);
+            String status = sub.get(6);
+
+            if (end == null) {
+                end = "-";
+            } else if (end.isEmpty()) {
+                end = "-";
+            }
+
+        /**
+        * Updates a specific field of a subscription using .set(index,newValue).
+        * @author Ramsha
+        * @param subIndex index of subscription in outer ArrayList
+        * @param choiceIndex index of field to update in inner ArrayList
+        * @param newChoice   new value to set
+         */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
