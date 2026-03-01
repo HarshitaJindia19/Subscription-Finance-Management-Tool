@@ -136,30 +136,6 @@ public class Data {
         }
         return results;
     }
-//new method here, add javadoc comments later
-public static void printTable(ArrayList<ArrayList<String>> subs) {
-      //look into how to make the interface later
-    for (int i = 0; i < subs.size(); i++) {
-        ArrayList<String> sub = subs.get(i);
-
-        if (sub.size() <= 6) {
-            continue;
-        }
-
-        String subName = sub.get(0);
-        String costStr = sub.get(1);
-        String subCategory = sub.get(2);
-        String billing = sub.get(3);
-        String start = sub.get(4);
-        String end = sub.get(5);
-        String status = sub.get(6);
-
-        if (end == null) {
-            end = "-";
-        } else if (end.isEmpty()) {
-            end = "-";
-        }
-
 
 
     /**
@@ -260,6 +236,30 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
         }
       }
     }
+
+    //new method here, add javadoc comments later
+    public static void printTable(ArrayList<ArrayList<String>> subs) {
+        //look into how to make the interface later
+        for (int i = 0; i < subs.size(); i++) {
+            ArrayList<String> sub = subs.get(i);
+
+            if (sub.size() <= 6) {
+                continue;
+            }
+
+            String subName = sub.get(0);
+            String costStr = sub.get(1);
+            String subCategory = sub.get(2);
+            String billing = sub.get(3);
+            String start = sub.get(4);
+            String end = sub.get(5);
+            String status = sub.get(6);
+
+            if (end == null) {
+                end = "-";
+            } else if (end.isEmpty()) {
+                end = "-";
+            }
 
         /**
         * Updates a specific field of a subscription using .set(index,newValue).
