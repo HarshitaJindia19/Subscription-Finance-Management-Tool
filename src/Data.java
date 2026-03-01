@@ -174,7 +174,17 @@ public class Data {
         return results;
     }
 
-    //add Javadoc comments later
+    /**
+     * Checks all subscription categories with their budget limits and prints alerts
+     * Used for categories where total spending on ACTIVE subscriptions exceeds the budget
+     *
+     * For each category, this method sums the costs of all ACTIVE subscriptions in that category
+     * If the total spending > budget for category = budget alert
+     * is printed to the console showing the category name, amount spent, and budget limit
+     *
+     * This method doesn't return a value, only printing messages to console
+     */
+
     public static void showBudgetAlerts() {
     ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
 
