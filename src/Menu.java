@@ -55,10 +55,32 @@ public class Menu {
                     updateProcess();//update subscription
                     break;
                 case "3":
-                    // mehrins work
+                    //View all subscriptions
+                    System.out.println("=== All Subscriptions ===");
+                    if (Data.subscriptions.size() == 0) {
+                        System.out.println("No subscriptions found.");
+                    } else {
+                        Data.printTable(Data.subscriptions);
+                    }
                     break;
                 case "4":
-                    // mehrins work
+                    // View only ACTIVE status subscriptions
+                    System.out.println("=== Active Subscriptions ===");
+                    ArrayList<ArrayList<String>> activeSubs = new ArrayList<>();
+                    for (int i = 0; i < Data.subscriptions.size(); i++) {
+                        ArrayList<String> sub = Data.subscriptions.get(i);
+                        if (sub.size() > 6) {
+                            String status = sub.get(6);
+                            if (status.equalsIgnoreCase("active")) {
+                                activeSubs.add(sub);
+                                }
+                              }
+                           }
+                    if (activeSubs.size() == 0) {
+                        System.out.println("No active subscriptions found.");
+                    } else {
+                        Data.printTable(activeSubs);
+                    }
                     break;
                 case "5":
                     // harshitas work
@@ -67,16 +89,21 @@ public class Menu {
                     // harshitas work
                     break;
                 case "7":
-                    // mehrins work
+                    //Upcoming bills in the next week
+                    System.out.println("=== Upcoming Bills (Next Week) ===");
+                    ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
+                    if (upcoming.size() == 0) {
+                        System.out.println("No upcoming bills in the next week.");
+                    } else {
+                        Data.printTable(upcoming);
+                    }
                     break;
                 case "8":
-                    // mehrins work
-                    break;
+
                 case "9":
-                    // mehrins work
-                    break;
+
                 case "10":
-                    // mehrins work
+
                     break;
                 case "11":
                     // mehrins work

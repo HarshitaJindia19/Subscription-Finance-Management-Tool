@@ -146,13 +146,13 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
             continue;
         }
 
-        String subName = sub.get(0);
-        String costStr = sub.get(1);
-        String subCategory = sub.get(2);
-        String billing = sub.get(3);
-        String start = sub.get(4);
-        String end = sub.get(5);
-        String status = sub.get(6);
+        String subName= sub.get(0);
+        String costStr= sub.get(1);
+        String subCategory= sub.get(2);
+        String billing= sub.get(3);
+        String start= sub.get(4);
+        String end= sub.get(5);
+        String status= sub.get(6);
 
         if (end == null) {
             end = "-";
@@ -255,7 +255,7 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
         }
       }
     }
-
+        
 
         /**
         * Updates a specific field of a subscription using .set(index,newValue).
