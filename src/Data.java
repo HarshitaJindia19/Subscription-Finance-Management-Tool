@@ -82,6 +82,39 @@ public class Data {
     }
 
     /**
+     * finds subscriptions with start date within the next 7 days
+     * @author Ramsha
+     * @return ArrayList of subscriptions that will be renewing in the next 7 days
+     */
+    public static ArrayList<ArrayList<String>> getUpcomingBills() {
+        ArrayList<ArrayList<String>> results= new ArrayList<>();
+        //get todays date
+        java.time.LocalDate today=java.time.LocalDate.now();
+        java.time.LocalDate sevenDaysLater =today.plusDays(7);
+
+        for (int i=0;i<subscriptions.size();i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+            if (sub.size()<= 6) continue;
+            String dateString=sub.get(4); //start date at index 4
+            try {
+                //parse the MM/DD/Y format
+                java.time.format.DateTimeFormatter formatter= java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY");
+                java.time.LocalDate subDate=java.time.LocalDate.parse(dateString,formatter);
+
+                //check if the date is coming up in the next 7 days
+                if (!subDate.isBefore(today)&& !subDate.isAfter(sevenDaysLater)) {
+
+                    results.add(sub);
+                }
+            }
+            catch (Exception parseError) {
+            }
+        }
+        return results;
+
+}
+
+    /**
      * Search Engine to find all the subscriptions under the given name
      * @param name the name of subscription to search for
      * @return ArrayList of ArrayLists, where inner list shows a
