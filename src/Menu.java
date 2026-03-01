@@ -163,7 +163,6 @@ public class Menu {
         }
         input.close();//close scanner when program ends
     }
-
     /**
      * handles update subscription - asks user for subscription name--> finds in Data.java-->
      * then asks which field to update and what new value is
