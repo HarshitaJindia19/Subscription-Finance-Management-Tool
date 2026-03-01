@@ -120,7 +120,6 @@ public class Menu {
      */
     private static void addNewSubscription() {
         boolean success = false;
-
         do {
             String name = getName();
             String cost = getCost();
