@@ -73,43 +73,64 @@ public class Menu {
                             String status = sub.get(6);
                             if (status.equalsIgnoreCase("active")) {
                                 activeSubs.add(sub);
-                                }
-                              }
-                           }
+                            }
+                        }
+                    }
                     if (activeSubs.size() == 0) {
                         System.out.println("No active subscriptions found.");
                     } else {
                         Data.printTable(activeSubs);
                     }
                     break;
-                case "5":
+                    case "5":
                     // harshitas work
                     break;
                 case "6":
                     // harshitas work
                     break;
                 case "7":
-                    //Upcoming bills in the next week
-                    System.out.println("=== Upcoming Bills (Next Week) ===");
-                    ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
-                    if (upcoming.size() == 0) {
-                        System.out.println("No upcoming bills in the next week.");
-                    } else {
-                        Data.printTable(upcoming);
-                    }
+                    //Not done yet
                     break;
                 case "8":
+                    // Paused subscriptions
+                    System.out.println("=== Paused Subscriptions ===");
+                    ArrayList<ArrayList<String>> pausedSubs = new ArrayList<>();
+                    for (int i = 0; i < Data.subscriptions.size(); i++) {
+                        ArrayList<String> sub = Data.subscriptions.get(i);
+                        if (sub.size() > 6) {
+                            String status = sub.get(6);
 
+                            if (status.equalsIgnoreCase("paused")) {
+                                pausedSubs.add(sub);
+                            }
+                        }
+                    }
+                    if (pausedSubs.size() == 0) {
+                        System.out.println("No paused subscriptions.");
+                    } else {
+                        Data.printTable(pausedSubs);
+                    }
+                    break;
                 case "9":
-
+//Not done yet
+                    break;
                 case "10":
-
+                    // High-expense bills
+                    System.out.print("Enter threshold amount: $");
+                    double threshold = Double.parseDouble(input.nextLine().trim());
+                    ArrayList<ArrayList<String>> highExpense = Data.getHighExpenseBills(threshold);
+                    if (highExpense.size() == 0) {
+                        System.out.println("No high-expense bills were found.");
+                    } else {
+                        System.out.println("=== High-Expense Subscriptions ===");
+                        Data.printTable(highExpense);
+                    }
                     break;
                 case "11":
-                    // mehrins work
+                    // Budget alert
                     break;
                 case "12":
-                    // mehrins work
+                    // Search subscriptions by name or category
                     break;
                 case "13":
                     // harshitas work
