@@ -112,7 +112,7 @@ public class Menu {
                     }
                     break;
                 case "9":
-//Not done yet
+              //Not done yet
                     break;
                 case "10":
                     // High-expense bills
@@ -128,10 +128,28 @@ public class Menu {
                     break;
                 case "11":
                     // Budget alert
+                    System.out.println("=== Budget Alert ===");
+                    Data.showBudgetAlerts();
                     break;
                 case "12":
-                    // Search subscriptions by name or category
-                    break;
+                        // Search subscriptions by name or category
+                        System.out.print("Search by (1) Name or (2) Category: ");
+                        String searchNumber = input.nextLine().trim();
+                        System.out.print("Enter search keyword: ");
+                        String keyword = input.nextLine().trim();
+                        ArrayList<ArrayList<String>> results;
+                        if (searchNumber.equals("1")) {
+                            results = Data.searchByName(keyword);
+                        } else {
+                            results = Data.searchByCategory(keyword);
+                        }
+                        if (results.isEmpty()) {
+                            System.out.println("No matching subscriptions found.");
+                        } else {
+                            System.out.println("=== Search Results ===");
+                            Data.printTable(results);
+                        }
+                        break;
                 case "13":
                     // harshitas work
                     break;
