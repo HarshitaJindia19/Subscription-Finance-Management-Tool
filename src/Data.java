@@ -115,12 +115,133 @@ public class Data {
     }
 
     /**
-     * Updates a specific field of a subscription using .set(index,newValue).
-     * @author Ramsha
-     * @param subIndex    index of subscription in outer ArrayList
-     * @param choiceIndex index of field to update in inner ArrayList
-     * @param newChoice   new value to set
+     * Search Engine to find all the subscriptions under the given name
+     * @param name the name of subscription to search for
+     * @return ArrayList of ArrayLists, where inner list shows a
+     * subscription that matches the name
      */
+    public static ArrayList<ArrayList<String>> searchByName(String name) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+        if (name == null) return results;
+
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub= subscriptions.get(i);
+
+            if (sub.size() > 0) {
+                String subName= sub.get(0);
+
+                String subNameLower= subName.toLowerCase();
+                String newNameLower= name.toLowerCase();
+
+                if (subNameLower.equals(newNameLower)) {
+                    results.add(sub);
+                }else {
+                }
+            }else {
+            }
+        }
+        return results;
+    }
+    /**
+     * Search Engine to find all the subscriptions under the given category
+     * @param category is the category of subscription to search for
+     * @return ArrayList of ArrayLists, where each inner list shows a
+     *subscription that matches the category
+     */
+
+    public static ArrayList<ArrayList<String>> searchByCategory(String category) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub= subscriptions.get(i);
+            if (sub.size() > 2) {
+                String subCategory= sub.get(2);
+
+                String subCategoryLower= subCategory.toLowerCase();
+                String categoryNewLower= category.toLowerCase();
+
+                if (subCategoryLower.equals(categoryNewLower)) {
+                    results.add(sub);
+                }else {
+                }
+            }else {
+            }
+        }
+        return results;
+    }
+
+    /**
+     * Finds all ACTIVE subscriptions with a cost >= to the given threshold
+     *@param threshold the minimum cost to take into account
+     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription
+     *where the cost will either meets or exceeds the threshold (>=)
+     */
+    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+
+        for (int i=0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub= subscriptions.get(i);
+
+        if (sub.size() > 6) {
+            String status= sub.get(6);
+
+                if (status.equalsIgnoreCase("ACTIVE")) {
+                    String costStr = sub.get(1);
+
+                    if (costStr.equals("") == false) {
+                        try {
+                            double cost = Double.parseDouble(costStr);
+
+                            if (cost >= threshold) {
+                                results.add(sub);
+                            }
+                        } catch (RuntimeException e) {
+                            System.out.println("Invalid cost for: " + sub.get(0));
+                        }
+                    } else {
+                        System.out.println("Cost not entered for: " + sub.get(0));
+                    }
+                }
+             }
+        }
+        return results;
+    }
+
+    //add Javadoc comments later
+    public static void showBudgetAlerts() {
+        ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
+
+        for (int i = 0; i < categories.size(); i++) {
+            String category = categories.get(i);
+
+            double limit = categoryBudgets.get(category);
+            double total = 0;
+
+            for (int j = 0; j < subscriptions.size(); j++) {
+                ArrayList<String> sub = subscriptions.get(j);
+
+                if (sub.size() <= 6) {
+                    continue;
+                }
+
+                String subName = sub.get(0);
+                String costStr = sub.get(1);
+                String subCategory = sub.get(2);
+                String status = sub.get(6);
+
+
+            }
+        }
+    }
+
+   /**
+   * Updates a specific field of a subscription using .set(index,newValue).
+   * @author Ramsha
+   * @param subIndex index of subscription in outer ArrayList
+   * @param choiceIndex index of field to update in inner ArrayList
+   * @param newChoice   new value to set
+    */
+
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
         //.set(choiceIndex, newChoice) - replaces value at field
