@@ -39,7 +39,7 @@ public class Menu {
     public static void runMenu() {
         boolean active = true; //loop keeps going
         while (active) {
-            System.out.println("====SUBSCRIPTION MANAGER MENU OPTIONS====");
+            System.out.println("\n====SUBSCRIPTION MANAGER MENU OPTIONS====");
 
             //loop through menu options ArrayList and print each option with number in front
             for (int i = 0; i < options.size(); i++) {
@@ -101,14 +101,10 @@ public class Menu {
         input.close();//close scanner when program ends
     }
 
-    /**
-     * handles update subscription - asks user for subscription name--> finds in Data.java-->
-     * then asks which field to update and what new value is
-     *
-     */
+    //==================================MENU FUNCTIONS==================================//
 
     /**
-     * TBD
+     * Adds/stores new subscription with information
      */
     private static void addNewSubscription() {
         boolean success = false;
@@ -125,19 +121,121 @@ public class Menu {
         } while(!success);
     }
 
+    /**
+     * Add/update a category budget and display status to user
+     * Save the information into categoryBudgets<>
+     */
     private static void addCategoryBudget() {
         System.out.println("\n====ADD/UPDATE CATEGORY BUDGET====");
 
-        // show existing budgets if any
+        // Show existing budgets (if any)
         displayAllBudgets();
 
-        // show existing budgets if any
-        if (!Data.categories.isEmpty()) {
-            System.out.println("\nExisitng categories: " + Data.categories);
-        } else {
-            System.out.println("No subscriptions added yet - you can still set a budget for a future category.");
+        // Get category from user
+        System.out.println("Choose the category you want to add the subscription for: ");
+        String category = getCategory();
+
+        // Update category budget
+        double categoryExisting = Data.getCategoryBudget(category); //
+
+        if (categoryExisting != -1) {
+            System.out.println("A budget of $" + String.format("%.2f", categoryExisting) + " already exists for '" + category + "'.");
+            System.out.println("Do you want to update it? (Y/N)");
+
+            String confirm;
+
+            do {
+                confirm = input.nextLine().trim();
+                if (!confirm.equalsIgnoreCase("y") && !confirm.equalsIgnoreCase("n")) {
+                    System.out.println("Please enter (Y/N)!");
+                }
+            } while (!confirm.equalsIgnoreCase("y") && !confirm.equalsIgnoreCase("n"));
+
+            if (confirm.equalsIgnoreCase("n")) {
+                System.out.println("Budget not updated.");
+                return;
+            }
         }
+
+        // Set new category budget and display status
+        String budgetInput = getBudgetAmount(category);
+        double limit = Double.parseDouble(budgetInput); // Will not run into error - already verified
+
+        Data.setCategoryBudget(category, limit);
+
+        System.out.println("\nBudget set successfully!");
+        System.out.println("Category : " + Data.formatTitleCase(category));
+        System.out.println("Limit    : $" + String.format("%.2f", limit));
+
     }
+
+    /**
+     * handles update subscription - asks user for subscription name--> finds in Data.java-->
+     * then asks which field to update and what new value is
+     */
+
+    public static void updateProcess() {
+        //loop until valid subscription name is found
+        int index = -1;
+        while (index==-1) {
+            System.out.println("\nEnter name of subscription to update: ");
+            String name= input.nextLine().trim();
+            //search for subscription by name or return -1 if not found
+            index = Data.findingSubscriptionIndex(name);
+            //if returned -1, subscription DNE
+            if (index == -1) {
+                System.out.println("ERROR: '" + name + "' subscription not found. Please try again.");
+            }
+        }
+
+        System.out.println("\nWhat field do you want to update?");
+        System.out.println("1. Name");
+        System.out.println("2. Cost");
+        System.out.println("3. Category");
+        System.out.println("4. Billing cycle");
+        System.out.println("5. Start date");
+        System.out.println("6. End date");
+        System.out.println("7. Status of subscription (ACTIVE/PAUSED/CANCELLED)");
+
+        int choiceIndex= -1;//loop until valid choice is selected
+        while (choiceIndex ==-1) {
+            System.out.print("YOUR DESIRED CHOICE: ");
+            String fieldChoice=input.nextLine().trim();
+            choiceIndex=getIndexChoice(fieldChoice);
+            //if -1, that means choice is invalid, stop
+            if (choiceIndex == -1) {
+                System.out.println("ERROR: invalid choice selection.");
+            }
+        }
+        //looping until valid newChoice is entered
+        String newChoice="";
+        boolean validChoice=false;
+        while (!validChoice) {
+            System.out.println("Please enter new choice: ");
+            newChoice = input.nextLine().trim();
+
+            if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
+                if (!Data.isValidStatus(newChoice.toUpperCase())) {
+                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
+                } else {
+                    newChoice = newChoice.toUpperCase();
+                    validChoice = true;
+                }
+            }else {
+                if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
+                    System.out.println("ERROR: value cannot be empty. Try again.");
+                } else {
+                    validChoice = true;
+                }
+
+            }
+        }
+        //call Data to update field using .set(index,newValue)
+        Data.changeSubscriptionChoice(index, choiceIndex, newChoice);
+        System.out.println("Update complete.");
+    }
+
+    //=====================================DISPLAY MESSAGES===============================//
 
     /**
      * Displays all current set budgets in a formatted table
@@ -154,6 +252,27 @@ public class Menu {
             System.out.println(" " + budget);
         }
         System.out.println("-------------------------");
+    }
+
+    //====================================GETTERS==================================//
+
+    /**
+     * Gets budget from user for their chosen category
+     * Validates input is a valid cost
+     *
+     * @param category for the budget (user input)
+     * @return String budget specified by user for the chosen category
+     */
+    private static String getBudgetAmount(String category) {
+        System.out.println("Enter the monthly budget limit for '" + category + "' (e.g. 50.00):");
+        String budget;
+        do {
+            budget = input.nextLine().trim().replace("$", "");
+            if (!Data.isValidCost(budget)) {
+                System.out.println("Invalid amount. Please enter a valid budget (e.g. 50.00):");
+            }
+        } while (!Data.isValidCost(budget));
+        return budget;
     }
 
     /**
@@ -244,8 +363,6 @@ public class Menu {
             }
         } while(!Data.isValidDate(startDate));
 
-
-
         return startDate;
     }
 
@@ -287,68 +404,6 @@ public class Menu {
         return status;
     }
 
-
-    public static void updateProcess() {
-        //loop until valid subscription name is found
-        int index = -1;
-        while (index==-1) {
-        System.out.println("\nEnter name of subscription to update: ");
-        String name= input.nextLine().trim();
-        //search for subscription by name or return -1 if not found
-        index = Data.findingSubscriptionIndex(name);
-        //if returned -1, subscription DNE
-        if (index == -1) {
-            System.out.println("ERROR: '" + name + "' subscription not found. Please try again.");
-        }
-        }
-
-        System.out.println("\nWhat field do you want to update?");
-        System.out.println("1. Name");
-        System.out.println("2. Cost");
-        System.out.println("3. Category");
-        System.out.println("4. Billing cycle");
-        System.out.println("5. Start date");
-        System.out.println("6. End date");
-        System.out.println("7. Status of subscription (ACTIVE/PAUSED/CANCELLED)");
-
-        int choiceIndex= -1;//loop until valid choice is selected
-        while (choiceIndex ==-1) {
-            System.out.print("YOUR DESIRED CHOICE: ");
-            String fieldChoice=input.nextLine().trim();
-            choiceIndex=getIndexChoice(fieldChoice);
-            //if -1, that means choice is invalid, stop
-            if (choiceIndex == -1) {
-                System.out.println("ERROR: invalid choice selection.");
-            }
-        }
-        //looping until valid newChoice is entered
-        String newChoice="";
-        boolean validChoice=false;
-        while (!validChoice) {
-            System.out.println("Please enter new choice: ");
-            newChoice = input.nextLine().trim();
-
-            if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
-                if (!Data.isValidStatus(newChoice.toUpperCase())) {
-                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
-                } else {
-                    newChoice = newChoice.toUpperCase();
-                    validChoice = true;
-                }
-            }else {
-                if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
-                    System.out.println("ERROR: value cannot be empty. Try again.");
-                } else {
-                    validChoice = true;
-                }
-
-            }
-        }
-        //call Data to update field using .set(index,newValue)
-        Data.changeSubscriptionChoice(index, choiceIndex, newChoice);
-        System.out.println("Update complete.");
-    }
-
     /**
      * users desired menu choice(1-7) to ArrayList index(0-6)
      * @param choice users input which is "1"-"7"
@@ -372,7 +427,6 @@ public class Menu {
                 return 5;
             case "7":
                 return 6;
-
             default:
                 return -1;
 

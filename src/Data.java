@@ -25,9 +25,9 @@ public class Data {
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
         if (!subscriptionExists(name)) {
             ArrayList<String> subscription = new ArrayList<>();
-            subscription.add(name);
+            subscription.add(name.toLowerCase());
             subscription.add(cost);
-            subscription.add(category);
+            subscription.add(formatTitleCase(category));
             subscription.add(renewal);
             subscription.add(startDate);
             subscription.add(endDate);
@@ -41,17 +41,42 @@ public class Data {
         }
     }
 
-    //Store budget for each category
+    /**
+     * Formats category string to title case
+     * Stores received budget/limit from Menu.java
+     */
     public static void setCategoryBudget(String category, double limit) {
-        //Store in HashMap -> Key = Category Name, Value = Budget Limit
-        categoryBudgets.put(category.toLowerCase(), limit);
-        categories.add(category);
+        // Format to title case: "netflix" -> "Netflix"
+        String cleanCategory = formatTitleCase(category);
+
+        categoryBudgets.put(cleanCategory, limit);
+        categories.add(cleanCategory);
     }
 
+    /**
+     * Formats user input into title case for clean data storage
+     * @param input from user
+     * @return formatted input
+     */
+    public static String formatTitleCase(String input) {
+        if (input.isEmpty()) return "";
+        return input.substring(0, 1).toUpperCase() +
+                input.substring(1).toLowerCase();
+    }
+
+    /**
+     * Gets the budget for the specified category if it already exists
+     * @param category selected by the user for their subscription
+     * @return budget for the category, -1 if not found
+     */
     public static double getCategoryBudget(String category) {
-        return categoryBudgets.getOrDefault(category.toLowerCase(), -1.0);
+        return categoryBudgets.getOrDefault(formatTitleCase(category), -1.0);
     }
 
+    /**
+     * Lists all categories and budgets in a clean format
+     * @return all the budgets currently stored by category
+     */
     public static ArrayList<String> getAllBudgets() {
         ArrayList<String> budgetList = new ArrayList<>();
         for (String category: categoryBudgets.keySet()) {
@@ -59,11 +84,6 @@ public class Data {
             budgetList.add(category + ": $" + String.format("%.2f", limit));
         }
         return budgetList;
-    }
-
-    // Check functions
-    public static boolean subscriptionExists(String name) {
-        return names.contains(name);
     }
 
     //Calculates Monthly spend of the user
@@ -75,6 +95,7 @@ public class Data {
     public static double calculateYearlySpend() {
         return 0;
     }
+
     /**
      * Finds the index of subscription in outer ArrayList by ensuring the name matches.
      * @author Ramsha
@@ -86,7 +107,7 @@ public class Data {
         for (int i = 0; i < subscriptions.size(); i++) {
             //get(i) - subscription row
             //get(0) - name at index 0
-            if (subscriptions.get(i).get(0).equalsIgnoreCase(name)) {
+            if (subscriptions.get(i).get(INDEX_NAME).equalsIgnoreCase(name)) {
                 return i;//found - return its position
             }
         }
@@ -106,6 +127,13 @@ public class Data {
         subscriptions.get(subIndex).set(choiceIndex, newChoice);
     }
 
+
+    //--------------------------------Valid Checks----------------------------------------//
+
+    public static boolean subscriptionExists(String name) {
+        return names.contains(name.toLowerCase());
+    }
+
     /**
      * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
      * @author Ramsha
@@ -113,8 +141,6 @@ public class Data {
      * @return true if valid, false if invalid
      */
 
-    //--------------------------------Valid Checks----------------------------------------//
-    //loop through STATUS_OPTIONS string array and check that one matches
     public static boolean isValidStatus(String status) {
         for (String validString : STATUS_OPTIONS) {
             if (validString.equals(status)) {
@@ -167,15 +193,6 @@ public class Data {
     public static boolean isValidCost(String cost) {
         try {
             double value = Double.parseDouble(cost);
-            return value > 0;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    public static boolean isValidBudget(String budget) {
-        try {
-            double value = Double.parseDouble(budget);
             return value > 0;
         } catch (NumberFormatException e) {
             return false;
