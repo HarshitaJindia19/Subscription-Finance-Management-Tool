@@ -184,7 +184,6 @@ public class Data {
      *
      * This method doesn't return a value, only printing messages to console
      */
-
     public static void showBudgetAlerts() {
     ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
 
