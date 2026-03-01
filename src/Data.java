@@ -237,9 +237,18 @@ public class Data {
       }
     }
 
-    //new method here, add javadoc comments later
+    /**
+     * printTable prints a formatted table of subscriptions to the console/ interface
+     *Each subscription is printed as one row with aligned columns of:
+     * Name, Cost, Category, Billing, Start Date, End Date, and Status
+     * If the end date is null/ empty, "-" is printed
+     * @param subs is the list of subscriptions to display
+     */
     public static void printTable(ArrayList<ArrayList<String>> subs) {
-        //look into how to make the interface later
+        // Used printf for column alignment (Java standard library formatting)
+        System.out.printf("%-15s %-8s %-15s %-10s %-15s %-15s %-10s%n",
+                "Name", "Cost", "Category", "Billing", "Start", "End", "Status");
+
         for (int i = 0; i < subs.size(); i++) {
             ArrayList<String> sub = subs.get(i);
 
@@ -260,6 +269,11 @@ public class Data {
             } else if (end.isEmpty()) {
                 end = "-";
             }
+
+       System.out.printf("%-15s $%-7s %-15s %-10s %-15s %-15s %-10s%n",
+       subName, costStr, subCategory, billing, start, end, status);
+            }
+        }
 
         /**
         * Updates a specific field of a subscription using .set(index,newValue).
