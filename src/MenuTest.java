@@ -9,4 +9,3 @@ class Menu {
         assertEquals(5, calc.add(2, 3));
     }
 }
- */

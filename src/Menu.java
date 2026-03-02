@@ -56,31 +56,11 @@ public class Menu {
                     break;
                 case "3":
                     //View all subscriptions
-                    System.out.println("=== All Subscriptions ===");
-                    if (Data.subscriptions.size() == 0) {
-                        System.out.println("No subscriptions found.");
-                    } else {
-                        Data.printTable(Data.subscriptions);
-                    }
+                    showAllSubscriptions();
                     break;
                 case "4":
                     // View only ACTIVE status subscriptions
-                    System.out.println("=== Active Subscriptions ===");
-                    ArrayList<ArrayList<String>> activeSubs = new ArrayList<>();
-                    for (int i = 0; i < Data.subscriptions.size(); i++) {
-                        ArrayList<String> sub = Data.subscriptions.get(i);
-                        if (sub.size() > 6) {
-                            String status = sub.get(6);
-                            if (status.equalsIgnoreCase("active")) {
-                                activeSubs.add(sub);
-                            }
-                        }
-                    }
-                    if (activeSubs.size() == 0) {
-                        System.out.println("No active subscriptions found.");
-                    } else {
-                        Data.printTable(activeSubs);
-                    }
+                    showActiveSubscriptions();
                     break;
                     case "5":
                     // harshitas work
@@ -90,58 +70,19 @@ public class Menu {
                     break;
                 case "7":
                         //Upcoming bills in the next week
-                        System.out.println("=== Upcoming Bills (Next Week) ===");
-                        ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
-                        if (upcoming.size() == 0) {
-                            System.out.println("No upcoming bills in the next week.");
-                        } else {
-                            Data.printTable(upcoming);
-                        }
+                    showUpcomingBills();
                         break;
                 case "8":
                     // Paused subscriptions
-                    System.out.println("=== Paused Subscriptions ===");
-                    ArrayList<ArrayList<String>> pausedSubs = new ArrayList<>();
-                    for (int i = 0; i < Data.subscriptions.size(); i++) {
-                        ArrayList<String> sub = Data.subscriptions.get(i);
-                        if (sub.size() > 6) {
-                            String status = sub.get(6);
-
-                            if (status.equalsIgnoreCase("paused")) {
-                                pausedSubs.add(sub);
-                            }
-                        }
-                    }
-                    if (pausedSubs.size() == 0) {
-                        System.out.println("No paused subscriptions.");
-                    } else {
-                        Data.printTable(pausedSubs);
-                    }
+                    showPausedSubscriptions();
                     break;
                 case "9":
                         // Budget % used by category
-                        System.out.println("=== Budget % used by Category ===");
-                        System.out.print("Enter category to check budget usage: ");
-                        String category = input.nextLine().trim();
-                        double percentage = Data.getCategoryBudgetUsage(category);
-
-                        if (percentage < 0) {
-                            System.out.println("No budget set for this category.");
-                        } else {
-                            System.out.println("Category '" + category + "' Budget used: " + String.format("%.2f", percentage) + "%");
-                        }
+                    showCategoryBudgetUsage(input);
                         break;
                 case "10":
                     // High-expense bills
-                    System.out.print("Enter threshold amount: $");
-                    double threshold = Double.parseDouble(input.nextLine().trim());
-                    ArrayList<ArrayList<String>> highExpense = Data.getHighExpenseBills(threshold);
-                    if (highExpense.size() == 0) {
-                        System.out.println("No high-expense bills were found.");
-                    } else {
-                        System.out.println("=== High-Expense Subscriptions ===");
-                        Data.printTable(highExpense);
-                    }
+                    showHighExpenseSubscriptions(input);
                     break;
                 case "11":
                     // Budget alert
@@ -149,23 +90,8 @@ public class Menu {
                     Data.showBudgetAlerts();
                     break;
                 case "12":
-                        // Search subscriptions by name or category
-                        System.out.print("Search by (1) Name or (2) Category: ");
-                        String searchNumber = input.nextLine().trim();
-                        System.out.print("Enter search keyword: ");
-                        String keyword = input.nextLine().trim();
-                        ArrayList<ArrayList<String>> results;
-                        if (searchNumber.equals("1")) {
-                            results = Data.searchByName(keyword);
-                        } else {
-                            results = Data.searchByCategory(keyword);
-                        }
-                        if (results.isEmpty()) {
-                            System.out.println("No matching subscriptions found.");
-                        } else {
-                            System.out.println("=== Search Results ===");
-                            Data.printTable(results);
-                        }
+                        //Search subscriptions by name or category
+                    showSearchResults(input);
                         break;
                 case "13":
                     // harshitas work
@@ -426,3 +352,127 @@ public class Menu {
 
         }
     }}
+
+//add javadoc comments
+public static void showAllSubscriptions() {
+    System.out.println("=== All Subscriptions ===");
+
+    if (Data.subscriptions.size() == 0) {
+        System.out.println("No subscriptions found.");
+    } else {
+        Data.printTable(Data.subscriptions);
+    }
+}
+//
+public static void showActiveSubscriptions() {
+    System.out.println("=== Active Subscriptions ===");
+
+    ArrayList<ArrayList<String>> activeSubs = new ArrayList<>();
+
+    for (int i = 0; i < Data.subscriptions.size(); i++) {
+        ArrayList<String> sub = Data.subscriptions.get(i);
+
+        if (sub.size() > 6) {
+            String status = sub.get(6);
+            if (status.equalsIgnoreCase("active")) {
+                activeSubs.add(sub);
+            }
+        }
+    }
+
+    if (activeSubs.size() == 0) {
+        System.out.println("No active subscriptions found.");
+    } else {
+        Data.printTable(activeSubs);
+    }
+}
+//
+public static void showUpcomingBills() {
+    System.out.println("=== Upcoming Bills (Next Week) ===");
+
+    ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
+
+    if (upcoming.size() == 0) {
+        System.out.println("No upcoming bills in the next week.");
+    } else {
+        Data.printTable(upcoming);
+    }
+}
+//
+public static void showPausedSubscriptions() {
+    System.out.println("=== Paused Subscriptions ===");
+
+    ArrayList<ArrayList<String>> pausedSubs = new ArrayList<>();
+
+    for (int i = 0; i < Data.subscriptions.size(); i++) {
+        ArrayList<String> sub = Data.subscriptions.get(i);
+
+        if (sub.size() > 6) {
+            String status = sub.get(6);
+
+            if (status.equalsIgnoreCase("paused")) {
+                pausedSubs.add(sub);
+            }
+        }
+    }
+
+    if (pausedSubs.size() == 0) {
+        System.out.println("No paused subscriptions.");
+    } else {
+        Data.printTable(pausedSubs);
+    }
+}
+//
+public static void showCategoryBudgetUsage(Scanner input) {
+    System.out.println("=== Budget % used by Category ===");
+    System.out.print("Enter category to check budget usage: ");
+
+    String category = input.nextLine().trim();
+    double percentage = Data.getCategoryBudgetUsage(category);
+
+    if (percentage < 0) {
+        System.out.println("No budget set for this category.");
+    } else {
+        System.out.println(
+                "Category '" + category + "' Budget used: "
+                        + String.format("%.2f", percentage) + "%"
+        );
+    }
+}
+//
+public static void showHighExpenseSubscriptions(Scanner input) {
+    System.out.print("Enter threshold amount: $");
+    double threshold = Double.parseDouble(input.nextLine().trim());
+
+    ArrayList<ArrayList<String>> highExpense = Data.getHighExpenseBills(threshold);
+
+    if (highExpense.size() == 0) {
+        System.out.println("No high-expense bills were found.");
+    } else {
+        System.out.println("=== High-Expense Subscriptions ===");
+        Data.printTable(highExpense);
+    }
+}
+//
+public static void showSearchResults(Scanner input) {
+    System.out.print("Search by (1) Name or (2) Category: ");
+    String searchNumber = input.nextLine().trim();
+
+    System.out.print("Enter search keyword: ");
+    String keyword = input.nextLine().trim();
+
+    ArrayList<ArrayList<String>> results;
+
+    if (searchNumber.equals("1")) {
+        results = Data.searchByName(keyword);
+    } else {
+        results = Data.searchByCategory(keyword);
+    }
+
+    if (results.size() == 0) {
+        System.out.println("No matching subscriptions found.");
+    } else {
+        System.out.println("=== Search Results ===");
+        Data.printTable(results);
+    }
+}

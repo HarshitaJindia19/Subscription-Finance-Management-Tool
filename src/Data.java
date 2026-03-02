@@ -210,51 +210,49 @@ public static void printTable(ArrayList<ArrayList<String>> subs) {
      * This method doesn't return a value, only printing messages to console
      */
     public static void showBudgetAlerts() {
-    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
+            ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
 
-    for (int i = 0; i < categories.size(); i++) {
-       String category = categories.get(i);
+            for (int i = 0; i < categories.size(); i++) {
+                String category = categories.get(i);
 
-        double limit= categoryBudgets.get(category);
-        double total= 0;
+                double limit = categoryBudgets.get(category);
+                double total = 0;
 
-        for (int j=0; j< subscriptions.size(); j++) {
-            ArrayList<String> sub = subscriptions.get(j);
+                for (int j = 0; j < subscriptions.size(); j++) {
+                    ArrayList<String> sub = subscriptions.get(j);
 
-            if (sub.size() <= 6) {
-                continue;
-            }
-
-            String subName = sub.get(0);
-            String costStr = sub.get(1);
-            String subCategory = sub.get(2);
-            String status = sub.get(6);
-
-            if (subCategory.toLowerCase().equals(category.toLowerCase())) {
-                if (status.toLowerCase().equals("active")) {
-                    costStr = costStr.replace("$", "").trim();
-
-                    if (costStr.equals("") == false) {
-                        try {
-                            double cost = Double.parseDouble(costStr);
-                            total += cost;
-                        } catch (RuntimeException e) {
-                            System.out.println("Could not read the cost for: " + subName);
-                        }
-                    } else {
+                    if (sub.size() <= 6) {
+                        continue;
                     }
-                } else {
+
+                    String subName = sub.get(0);
+                    String costStr = sub.get(1);
+                    String subCategory = sub.get(2);
+                    String status = sub.get(6);
+
+                    if (subCategory.toLowerCase().equals(category.toLowerCase())) {
+                        if (status.toLowerCase().equals("active")) {
+                            costStr = costStr.replace("$", "").trim();
+
+                            if (costStr.equals("") == false) {
+                                try {
+                                    double cost = Double.parseDouble(costStr);
+                                    total += cost;
+                                } catch (RuntimeException e) {
+                                    System.out.println("Could not read the cost for: " + subName);
+
+                                    if (total > limit) {
+                                        System.out.println("🚨 Budget exceeded for " + category);
+                                        System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
+                                    }
+                                }
+
+                            }
+                        }
+                    }
                 }
-            } else {
             }
         }
-        if (total > limit) {
-            System.out.println("🚨 Budget exceeded for " + category);
-            System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
-        } else {
-        }
-      }
-    }
         
 
         /**
