@@ -226,15 +226,14 @@ public class Data {
 
             if (sub.size() > 0) {
                 String subName= sub.get(INDEX_NAME);
+                if (subName == null) continue;
 
                 String subNameLower= subName.toLowerCase();
                 String newNameLower= name.toLowerCase();
 
                 if (subNameLower.equals(newNameLower)) {
                     results.add(sub);
-                }else {
                 }
-            }else {
             }
         }
         return results;
@@ -248,84 +247,19 @@ public class Data {
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
+        if (category == null) return results;
 
         for (int i = 0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub= subscriptions.get(i);
+            ArrayList<String> sub = subscriptions.get(i);
             if (sub.size() > 2) {
-                String subCategory= sub.get(INDEX_CATEGORY);
-
-                String subCategoryLower= subCategory.toLowerCase();
-                String categoryNewLower= category.toLowerCase();
-
-                if (subCategoryLower.equals(categoryNewLower)) {
+                String subCategory = sub.get(2);
+                if (subCategory == null) continue;
+                {
                     results.add(sub);
-                }else {
-                }
-            }else {
-            }
-        }
-        return results;
-    }
-
-    /**
-     * Finds all ACTIVE subscriptions with a cost >= to the given threshold
-     *@param threshold the minimum cost to take into account
-     * @return ArrayList of ArrayLists, where each of the inner list represents a subscription
-     *where the cost will either meets or exceeds the threshold (>=)
-     */
-    public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
-        ArrayList<ArrayList<String>> results = new ArrayList<>();
-
-        for (ArrayList<String> sub : subscriptions) {
-            if (sub.size() > 6) {
-                String status = sub.get(INDEX_STATUS);
-
-                if (status.equalsIgnoreCase("ACTIVE")) {
-                    String costStr = sub.get(INDEX_COST);
-
-                    if (!costStr.isEmpty()) {
-                        try {
-                            double cost = Double.parseDouble(costStr);
-
-                            if (cost >= threshold) {
-                                results.add(sub);
-                            }
-                        } catch (RuntimeException e) {
-                            System.out.println("Invalid cost for: " + sub.get(INDEX_NAME));
-                        }
-                    } else {
-                        System.out.println("Cost not entered for: " + sub.get(INDEX_NAME));
-                    }
                 }
             }
         }
         return results;
-    }
-
-    //add Javadoc comments later
-    public static void showBudgetAlerts() {
-        ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
-
-        for (int i = 0; i < categories.size(); i++) {
-            String category = categories.get(i);
-
-            double limit = categoryBudgets.get(category);
-            double total = 0;
-
-            for (int j = 0; j < subscriptions.size(); j++) {
-                ArrayList<String> sub = subscriptions.get(j);
-
-                if (sub.size() <= 6) {
-                    continue;
-                }
-
-                String subName = sub.get(INDEX_NAME);
-                String costStr = sub.get(INDEX_COST);
-                String subCategory = sub.get(INDEX_CATEGORY);
-                String status = sub.get(INDEX_STATUS);
-
-            }
-        }
     }
 
    /**
