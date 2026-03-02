@@ -474,3 +474,169 @@ public class Menu {
         }
     }
 }
+
+/**
+ * printTable prints a formatted table of subscriptions to the console/ interface
+ *Each subscription is printed as one row with aligned columns of:
+ * Name, Cost, Category, Billing, Start Date, End Date, and Status
+ * If the end date is null/ empty, "-" is printed
+ * @param subs is the list of subscriptions to display
+ */
+public static void printTable(ArrayList<ArrayList<String>> subs) {
+    // Used printf for column alignment (Java standard library formatting)
+    System.out.printf("%-15s %-8s %-15s %-10s %-15s %-15s %-10s%n",
+            "Name", "Cost", "Category", "Billing", "Start", "End", "Status");
+
+    for (int i = 0; i < subs.size(); i++) {
+        ArrayList<String> sub = subs.get(i);
+
+        if (sub.size() <= 6) {
+            continue;
+        }
+
+        String subName = sub.get(0);
+        String costStr = sub.get(1);
+        String subCategory = sub.get(2);
+        String billing = sub.get(3);
+        String start = sub.get(4);
+        String end = sub.get(5);
+        String status = sub.get(6);
+
+        if (end == null) {
+            end = "-";
+        } else if (end.isEmpty()) {
+            end = "-";
+        }
+
+        System.out.printf("%-15s $%-7s %-15s %-10s %-15s %-15s %-10s%n",
+                subName, costStr, subCategory, billing, start, end, status);
+    }
+}
+
+/**
+ * Checks all subscription categories with their budget limits and prints alerts
+ * Used for categories where total spending on ACTIVE subscriptions exceeds the budget
+ *
+ * For each category, this method sums the costs of all ACTIVE subscriptions in that category
+ * If the total spending > budget for category = budget alert
+ * is printed to the console showing the category name, amount spent, and budget limit
+ *
+ * This method doesn't return a value, only printing messages to console
+ */
+public static void showBudgetAlerts() {
+    ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
+
+    for (int i = 0; i < categories.size(); i++) {
+        String category = categories.get(i);
+
+        double limit = categoryBudgets.get(category);
+        double total = 0;
+
+        for (int j = 0; j < subscriptions.size(); j++) {
+            ArrayList<String> sub = subscriptions.get(j);
+
+            if (sub.size() <= 6) {
+                continue;
+            }
+
+            String subName = sub.get(INDEX_NAME);
+            String costStr = sub.get(INDEX_COST);
+            String subCategory = sub.get(INDEX_CATEGORY);
+            String status = sub.get(INDEX_STATUS);
+
+            // only count ACTIVE subscriptions in the correct category
+            if (subCategory.equalsIgnoreCase(category) && status.equalsIgnoreCase("ACTIVE")) {
+
+                if (costStr.equals("") == false) {
+                    try {
+                        double cost = Double.parseDouble(costStr);
+                        total += cost;
+                    } catch (RuntimeException e) {
+                        System.out.println("Could not read the cost for: " + subName);
+                    }
+                }
+            }
+        }
+
+        if (total > limit) {
+            System.out.println("🚨 Budget exceeded for " + category);
+            System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
+        }
+    }
+}
+
+/**
+ * Finds all ACTIVE subscriptions with a cost >= to the given threshold
+ *@param threshold the minimum cost to take into account
+ * @return ArrayList of ArrayLists, where each of the inner list represents a subscription
+ *where the cost will either meets or exceeds the threshold (>=)
+ */
+public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
+    ArrayList<ArrayList<String>> results = new ArrayList<>();
+
+    for (ArrayList<String> sub : subscriptions) {
+        if (sub.size() > 6) {
+            String status = sub.get(INDEX_STATUS);
+
+            if (status.equalsIgnoreCase("ACTIVE")) {
+                String costStr = sub.get(INDEX_COST);
+
+                if (!costStr.isEmpty()) {
+                    try {
+                        double cost = Double.parseDouble(costStr);
+
+                        if (cost >= threshold) {
+                            results.add(sub);
+                        }
+                    } catch (RuntimeException e) {
+                        System.out.println("Invalid cost for: " + sub.get(INDEX_NAME));
+                    }
+                } else {
+                    System.out.println("Cost not entered for: " + sub.get(INDEX_NAME));
+                }
+            }
+        }
+    }
+    return results;
+}
+/**
+ * Calculates the percentage of the budget used for a given category
+ * Iterates through all ACTIVE subscriptions in the category,
+ * sums their costs, then divides by the budget limit
+ * @param category is the name of the category
+ * @return percentage of budget used (0-100) and -1 if category not found
+ */
+
+public static double getCategoryBudgetUsage(String category) {
+    if (categoryBudgets.containsKey(category.toLowerCase()) == false) {
+        return -1;
+    }
+
+    double totalSpent = 0;
+    for (int i = 0; i < subscriptions.size(); i++) {
+        ArrayList<String> sub = subscriptions.get(i);
+        if (sub.size() > 6) {
+            String subCategory = sub.get(2);
+            String status = sub.get(6);
+
+            if (subCategory.equalsIgnoreCase(category) == true && status.equalsIgnoreCase("active") == true) {
+                String costStr = sub.get(1).replace("$", "").trim();
+                if (costStr.isEmpty() == false) {
+                    try {
+                        totalSpent += Double.parseDouble(costStr);
+                    } catch (RuntimeException e) {
+                        System.out.println("Invalid cost for subscription: " + sub.get(0));
+                    }
+                }
+            }
+        }
+    }
+    double budgetLimit = categoryBudgets.get(category.toLowerCase());
+    double percentageUsed = (totalSpent / budgetLimit) * 100;
+
+    if (percentageUsed > 100) {
+        percentageUsed = 100;
+    }
+
+    return percentageUsed;
+}
