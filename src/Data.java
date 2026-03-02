@@ -96,6 +96,7 @@ public class Data {
 
             if (sub.size() > 0) {
                 String subName= sub.get(0);
+                if (subName == null) continue;
 
                 String subNameLower= subName.toLowerCase();
                 String newNameLower= name.toLowerCase();
@@ -118,11 +119,13 @@ public class Data {
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
+        if (category == null) return results;
 
         for (int i = 0; i < subscriptions.size(); i++) {
             ArrayList<String> sub= subscriptions.get(i);
             if (sub.size() > 2) {
                 String subCategory= sub.get(2);
+                if (subCategory == null) continue;
 
                 String subCategoryLower= subCategory.toLowerCase();
                 String categoryNewLower= category.toLowerCase();
