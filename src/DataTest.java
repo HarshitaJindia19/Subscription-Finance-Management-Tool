@@ -33,8 +33,35 @@ public class DataTest {
 
         int index = Data.findingSubscriptionIndex("Netflix");
         assertEquals(0, index, "Netflix should be in index 0");
-
     }
+
+    @Test
+    void findSubscriptionIndex_notFound() {
+        Data.subscriptions.clear();
+        Data.names.clear();
+
+        int index = Data.findingSubscriptionIndex("Hulu");
+        assertEquals(-1, index, "should return -1 when subscription not found");
+    }
+
+    @Test
+    void findSubscriptionIndex_caseInsensitive() {
+        Data.subscriptions.clear();
+        Data.names.clear();
+        ArrayList<String> subscription = new ArrayList<>();
+        subscription.add("Netflix");
+        subscription.add("17.99");
+        subscription.add("Entertainment");
+        subscription.add("Monthly");
+        subscription.add("03/01/2025");
+        subscription.add("03/01/2026");
+        subscription.add("ACTIVE");
+        Data.subscriptions.add(subscription);
+
+        int index = Data.findingSubscriptionIndex("netflix");
+        assertEquals(0, index, "should find subscription even if lowercase.");
+    }
+
     @Test
     void updateSubscriptionChoice(){
         ArrayList<String> subscription= new ArrayList<>();
