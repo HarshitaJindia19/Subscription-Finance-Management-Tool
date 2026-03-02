@@ -265,7 +265,6 @@ public class DataTest {
     }
     }
 //------------------------------------- Search Engine --------------------------------------//
-
     @Test
     public void searchByNameFound() {
         // Clear any existing subs
