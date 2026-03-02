@@ -1,0 +1,52 @@
+Index: src/MenuTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n/*\nclass Menu {\n\n    @Test\n    void addsTwoNumbers() {\n        Calculator calc = new Calculator();\n        assertEquals(5, calc.add(2, 3));\n    }\n}\n */\nclass Menu {\n    @Test\n    public void searchByNameFound() {\n        Data.subscriptions.clear();\n\n        ArrayList<String> sub = new ArrayList<>();\n        sub.add(\"Spotify\");\n        sub.add(\"9.99\");\n        sub.add(\"Music\");\n        sub.add(\"Monthly\");\n        sub.add(\"March 5\");\n        sub.add(null);\n        sub.add(\"ACTIVE\");\n\n        Data.subscriptions.add(sub);\n\n        ArrayList<ArrayList<String>> results = Data.searchByName(\"Spotify\");\n\n        assertEquals(1, results.size(), \"Searching for existing subscription name should return exactly 1 result.\");\n        assertEquals(\"Spotify\", results.get(0).get(0), \"Returned subscription name should be Spotify.\");\n    }\n@Test\npublic void searchByCategoryNotFound() {\n    Data.subscriptions.clear();\n\n    ArrayList<String> sub = new ArrayList<>();\n    sub.add(\"Netflix\");\n    sub.add(\"15.99\");\n    sub.add(\"Entertainment\");\n    sub.add(\"Monthly\");\n    sub.add(\"March 3\");\n    sub.add(null);\n    sub.add(\"ACTIVE\");\n\n    Data.subscriptions.add(sub);\n\n    ArrayList<ArrayList<String>> results = Data.searchByCategory(\"Fitness\");\n\n    assertTrue(results.isEmpty(), \"Searching for non-existent category should return empty list.\");\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MenuTest.java b/src/MenuTest.java
+--- a/src/MenuTest.java	(revision bbcdc61559fa5f872f0b81624a17a2786fe8cbe7)
++++ b/src/MenuTest.java	(date 1772463419677)
+@@ -10,6 +10,41 @@
+     }
+ }
+  */
++
++@Test
++public void searchByNameFound() {
++    // Clear any existing subs
++    Data.subscriptions.clear();
++    ArrayList<String> sub = new ArrayList<>();
++    sub.add("Spotify");
++    sub.add("7.89");
++    sub.add("Music");
++    sub.add("Yearly");
++    sub.add("March 2");
++    sub.add(null);
++    sub.add("ACTIVE");
++    Data.subscriptions.add(sub);
++
++    //Do a search
++    ArrayList<ArrayList<String>> results = Data.searchByName("Spotify");
++    //Give the result size
++    assertEquals(1, results.size(), "Should find 1 subscription named Spotify");
++    //Give the name of the first result
++    ArrayList<String> numOneResult = results.get(0);
++    String name = numOneResult.get(0);
++
++    assertEquals("Spotify", name);
++}
++@Test
++void searchByNameNotFound() {
++    // Clear any existing subs
++    Data.subscriptions.clear();
++    //Do a search
++    ArrayList<ArrayList<String>> results = Data.searchByName("Netflix");
++    //Show no results found
++    assertTrue(results.size() == 0, "No subscriptions should match Netflix");
++}
++
+ class Menu {
+     @Test
+     public void searchByNameFound() {
