@@ -89,6 +89,7 @@ public class Data {
     //Calculates Monthly spend of the user
     public static double calculateMonthlySpend() {
         double total = 0.0;
+        double numOfMonths = 12;
 
         for (ArrayList<String> sub : subscriptions) {
 
@@ -99,7 +100,7 @@ public class Data {
                 if (renewal.equalsIgnoreCase("MONTHLY")) {
                     total += cost;
                 } else if (renewal.equalsIgnoreCase("YEARLY")) {
-                    total += cost / 12; // convert yearly to monthly by dividing costs amongst months
+                    total += cost / numOfMonths; // convert yearly to monthly by dividing costs amongst months
                 }
             }
         }
@@ -109,7 +110,25 @@ public class Data {
 
     //Calculates yearly spend of the user
     public static double calculateYearlySpend() {
-        return 0;
+
+        double total = 0.0;
+        double numOfMonths = 12;
+
+        for (ArrayList<String> sub : subscriptions) {
+
+            if (sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) {
+                double cost = Double.parseDouble(sub.get(INDEX_COST));
+                String renewal = sub.get(INDEX_RENEWAL);
+
+                if (renewal.equalsIgnoreCase("MONTHLY")) {
+                    total += cost * numOfMonths; // convert monthly to yearly
+                } else if (renewal.equalsIgnoreCase("YEARLY")) {
+                    total += cost; // convert yearly to monthly by dividing costs amongst months
+                }
+            }
+        }
+
+        return total;
     }
 
     /**
@@ -144,7 +163,7 @@ public class Data {
             ArrayList<String> sub= subscriptions.get(i);
 
             if (sub.size() > 0) {
-                String subName= sub.get(0);
+                String subName= sub.get(INDEX_NAME);
 
                 String subNameLower= subName.toLowerCase();
                 String newNameLower= name.toLowerCase();
@@ -171,7 +190,7 @@ public class Data {
         for (int i = 0; i < subscriptions.size(); i++) {
             ArrayList<String> sub= subscriptions.get(i);
             if (sub.size() > 2) {
-                String subCategory= sub.get(2);
+                String subCategory= sub.get(INDEX_CATEGORY);
 
                 String subCategoryLower= subCategory.toLowerCase();
                 String categoryNewLower= category.toLowerCase();
@@ -195,16 +214,14 @@ public class Data {
     public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
 
-        for (int i=0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub= subscriptions.get(i);
-
-        if (sub.size() > 6) {
-            String status= sub.get(6);
+        for (ArrayList<String> sub : subscriptions) {
+            if (sub.size() > 6) {
+                String status = sub.get(INDEX_STATUS);
 
                 if (status.equalsIgnoreCase("ACTIVE")) {
-                    String costStr = sub.get(1);
+                    String costStr = sub.get(INDEX_COST);
 
-                    if (costStr.equals("") == false) {
+                    if (!costStr.isEmpty()) {
                         try {
                             double cost = Double.parseDouble(costStr);
 
@@ -212,13 +229,13 @@ public class Data {
                                 results.add(sub);
                             }
                         } catch (RuntimeException e) {
-                            System.out.println("Invalid cost for: " + sub.get(0));
+                            System.out.println("Invalid cost for: " + sub.get(INDEX_NAME));
                         }
                     } else {
-                        System.out.println("Cost not entered for: " + sub.get(0));
+                        System.out.println("Cost not entered for: " + sub.get(INDEX_NAME));
                     }
                 }
-             }
+            }
         }
         return results;
     }
@@ -240,11 +257,10 @@ public class Data {
                     continue;
                 }
 
-                String subName = sub.get(0);
-                String costStr = sub.get(1);
-                String subCategory = sub.get(2);
-                String status = sub.get(6);
-
+                String subName = sub.get(INDEX_NAME);
+                String costStr = sub.get(INDEX_COST);
+                String subCategory = sub.get(INDEX_CATEGORY);
+                String status = sub.get(INDEX_STATUS);
 
             }
         }

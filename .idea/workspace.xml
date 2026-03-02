@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="merged main into my branch">
+    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added the initial logic for calculating monthly spend.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
@@ -107,7 +105,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772413661888</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added the initial logic for calculating monthly spend.">
+      <option name="closed" value="true" />
+      <created>1772416201724</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772416201725</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +134,7 @@
     <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
     <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
     <MESSAGE value="merged main into my branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged main into my branch" />
+    <MESSAGE value="Added the initial logic for calculating monthly spend." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the initial logic for calculating monthly spend." />
   </component>
 </project>

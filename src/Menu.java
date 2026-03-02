@@ -69,7 +69,8 @@ public class Menu {
                     showMonthlySpend();
                     break;
                 case "6":
-                    // harshitas work
+                    // Harshita
+                    showYearlySpend();
                     break;
                 case "7":
                     // mehrins work
@@ -240,6 +241,12 @@ public class Menu {
     private static void showMonthlySpend() {
         double total = Data.calculateMonthlySpend();
         System.out.println("\n--- Total Monthly Spend ---");
+        System.out.println("Total: $" + String.format("%.2f", total));
+    }
+
+    private static void showYearlySpend() {
+        double total = Data.calculateYearlySpend();
+        System.out.println("\n--- Total Annual Spend ---");
         System.out.println("Total: $" + String.format("%.2f", total));
     }
 
