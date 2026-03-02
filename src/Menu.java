@@ -49,6 +49,10 @@ public class Menu {
             System.out.println("Please select an option: ");
             String choice = input.nextLine().trim();
 
+            if (choice.isEmpty()) {
+                continue;
+            }
+
 
             switch (choice) { //switch to guide user to correct action based on choice
                 case "1":
@@ -99,6 +103,11 @@ public class Menu {
                     break;
                 default:
                     System.out.println("Invalid choice, please enter a number from the menu.");
+            }
+            //press enter to continue
+            if (!choice.equals("0") && !choice.isEmpty()) {
+                System.out.println("\nPress enter to continue.");
+                input.nextLine();
             }
         }
         input.close();//close scanner when program ends
