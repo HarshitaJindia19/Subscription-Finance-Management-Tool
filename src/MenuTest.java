@@ -44,4 +44,34 @@ void searchByNameNotFound() {
     //Show no results found
     assertTrue(results.size() == 0, "No subscriptions should match Netflix");
 }
+@Test
+public void searchByNameNotFound() {
+    //Clear subs
+    Data.subscriptions.clear();
+    //search for a sub that doesnt exist
+    ArrayList<ArrayList<String>> results = Data.searchByName("Netflix");
+    //Not found
+    assertTrue(results.isEmpty(), "No subscriptions should match Netflix");
+}
+@Test
+public void searchByNameEmptyInput() {
+    // Clear subscriptions
+    Data.subscriptions.clear();
+    ArrayList<String> sub = new ArrayList<>();
+    sub.add("Netflix");
+    sub.add("8.00");
+    sub.add("Music");
+    sub.add("Yearly");
+    sub.add("March 3");
+    sub.add(null);
+    sub.add("ACTIVE");
+    Data.subscriptions.add(sub);
 
+    //Search with empty string
+    ArrayList<ArrayList<String>> results = Data.searchByName("");
+    assertTrue(results.size() == 0, "Empty input should have no results");
+
+    //Search with null
+    results = Data.searchByName(null);
+    assertTrue(results.size() == 0, "Null input should have no results");
+}
