@@ -254,11 +254,7 @@ public class Data {
             if (sub.size() > 2) {
                 String subCategory = sub.get(2);
                 if (subCategory == null) continue;
-
-                String subCategoryLower = subCategory.toLowerCase();
-                String categoryNewLower = category.toLowerCase();
-
-                if (subNameLower.equals(newNameLower)) {
+                {
                     results.add(sub);
                 }
             }
