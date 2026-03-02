@@ -63,10 +63,12 @@ public class Menu {
                     updateProcess();//update subscription
                     break;
                 case "3":
-                    // mehrins work
+                    //View all subscriptions
+                    showAllSubscriptions();
                     break;
                 case "4":
-                    // mehrins work
+                    // View only ACTIVE status subscriptions
+                    showActiveSubscriptions();
                     break;
                 case "5":
                     // Harshita
@@ -78,22 +80,28 @@ public class Menu {
                     break;
                 case "7":
                     upcomingBills();
-                    break;
+                    return results;
                 case "8":
-                    // mehrins work
+                    // Paused subscriptions
+                    showPausedSubscriptions();
                     break;
                 case "9":
-                    // mehrins work
-                    break;
+                        // Budget % used by category
+                    showCategoryBudgetUsage(input);
+                        break;
                 case "10":
-                    // mehrins work
+                    // High-expense bills
+                    showHighExpenseSubscriptions(input);
                     break;
                 case "11":
-                    // mehrins work
+                    // Budget alert
+                    System.out.println("=== Budget Alert ===");
+                    Data.showBudgetAlerts();
                     break;
                 case "12":
-                    // mehrins work
-                    break;
+                        //Search subscriptions by name or category
+                    showSearchResults(input);
+                        break;
                 case "13":
                     addCategoryBudget();
                     break;
@@ -120,7 +128,6 @@ public class Menu {
      */
     private static void addNewSubscription() {
         boolean success = false;
-
         do {
             String name = getName();
             String cost = getCost();
@@ -619,6 +626,117 @@ public static double getCategoryBudgetUsage(String category) {
             String subCategory = sub.get(2);
             String status = sub.get(6);
 
+//add javadoc comments
+public static void showAllSubscriptions() {
+    System.out.println("=== All Subscriptions ===");
+
+    if (Data.subscriptions.size() == 0) {
+        System.out.println("No subscriptions found.");
+    } else {
+        Data.printTable(Data.subscriptions);
+    }
+}
+//
+public static void showActiveSubscriptions() {
+    System.out.println("=== Active Subscriptions ===");
+
+    ArrayList<ArrayList<String>> activeSubs = new ArrayList<>();
+
+    for (int i = 0; i < Data.subscriptions.size(); i++) {
+        ArrayList<String> sub = Data.subscriptions.get(i);
+
+        if (sub.size() > 6) {
+            String status = sub.get(6);
+            if (status.equalsIgnoreCase("active")) {
+                activeSubs.add(sub);
+            }
+        }
+    }
+
+    if (activeSubs.size() == 0) {
+        System.out.println("No active subscriptions found.");
+    } else {
+        Data.printTable(activeSubs);
+    }
+}
+//
+public static void showPausedSubscriptions() {
+    System.out.println("=== Paused Subscriptions ===");
+
+    ArrayList<ArrayList<String>> pausedSubs = new ArrayList<>();
+
+    for (int i = 0; i < Data.subscriptions.size(); i++) {
+        ArrayList<String> sub = Data.subscriptions.get(i);
+
+        if (sub.size() > 6) {
+            String status = sub.get(6);
+
+            if (status.equalsIgnoreCase("paused")) {
+                pausedSubs.add(sub);
+            }
+        }
+    }
+
+    if (pausedSubs.size() == 0) {
+        System.out.println("No paused subscriptions.");
+    } else {
+        Data.printTable(pausedSubs);
+    }
+}
+//
+public static void showCategoryBudgetUsage(Scanner input) {
+    System.out.println("=== Budget % used by Category ===");
+    System.out.print("Enter category to check budget usage: ");
+
+    String category = input.nextLine().trim();
+    double percentage = Data.getCategoryBudgetUsage(category);
+
+    if (percentage < 0) {
+        System.out.println("No budget set for this category.");
+    } else {
+        System.out.println(
+                "Category '" + category + "' Budget used: "
+                        + String.format("%.2f", percentage) + "%"
+        );
+    }
+}
+//
+public static void showHighExpenseSubscriptions(Scanner input) {
+    System.out.print("Enter threshold amount: $");
+    double threshold = Double.parseDouble(input.nextLine().trim());
+
+    ArrayList<ArrayList<String>> highExpense = Data.getHighExpenseBills(threshold);
+
+    if (highExpense.size() == 0) {
+        System.out.println("No high-expense bills were found.");
+    } else {
+        System.out.println("=== High-Expense Subscriptions ===");
+        Data.printTable(highExpense);
+    }
+}
+//
+public static void showSearchResults(Scanner input) {
+    System.out.print("Search by (1) Name or (2) Category: ");
+    String searchNumber = input.nextLine().trim();
+
+    System.out.print("Enter search keyword: ");
+    String keyword = input.nextLine().trim();
+
+    ArrayList<ArrayList<String>> results;
+
+    if (searchNumber.equals("1")) {
+        results = Data.searchByName(keyword);
+    } else {
+        results = Data.searchByCategory(keyword);
+    }
+
+    if (results.size() == 0) {
+        System.out.println("No matching subscriptions found.");
+    } else {
+        System.out.println("=== Search Results ===");
+        Data.printTable(results);
+    }
+}
             if (subCategory.equalsIgnoreCase(category) == true && status.equalsIgnoreCase("active") == true) {
                 String costStr = sub.get(1).replace("$", "").trim();
                 if (costStr.isEmpty() == false) {
