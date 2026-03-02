@@ -231,7 +231,7 @@ public class Data {
                 String subNameLower= subName.toLowerCase();
                 String newNameLower= name.toLowerCase();
 
-                if (subNameLower.equals(newNameLower)) {
+                if (subNameLower.contains(newNameLower)) {
                     results.add(sub);
                 }
             }
@@ -258,7 +258,7 @@ public class Data {
                 String subCategoryLower = subCategory.toLowerCase();
                 String categoryNewLower = category.toLowerCase();
 
-                if (subNameLower.equals(newNameLower)) {
+                if (subCategoryLower.contains(categoryNewLower)) {
                     results.add(sub);
                 }
             }
