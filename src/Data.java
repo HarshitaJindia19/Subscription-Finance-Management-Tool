@@ -12,16 +12,29 @@ public class Data {
 
     // Store Index for each subscription information
 
-    private static final int INDEX_NAME = 0;
-    private static final int INDEX_COST = 1;
-    private static final int INDEX_CATEGORY = 2;
-    private static final int INDEX_RENEWAL = 3;
-    private static final int INDEX_START_DATE = 4;
-    private static final int INDEX_END_DATE = 5;
-    private static final int INDEX_STATUS = 6;
+    public static final int INDEX_NAME = 0;
+    public static final int INDEX_COST = 1;
+    public static final int INDEX_CATEGORY = 2;
+    public static final int INDEX_RENEWAL = 3;
+    public static final int INDEX_START_DATE = 4;
+    public static final int INDEX_END_DATE = 5;
+    public static final int INDEX_STATUS = 6;
 
 
-    // Create function to add new subscription
+    /**
+     * Checks if subscription is new, and adds it to the subscription ArrayList
+     * Adds categories and names to their respective HashSets
+     *
+     * @author Harshita
+     * @param name of subscription - e.g. Netflix
+     * @param cost of subscription e.g. 56.99
+     * @param category of subscription - e.g. Health
+     * @param renewal of subscription - e.g. Monthly
+     * @param startDate of subscription - e.g. 05/20/2027
+     * @param endDate of subscription - e.g. 05/20/2027 or N/A
+     * @param status of subscription - e.g. PAUSED
+     * @return boolean - true if subscription was new and was stored into list, false otherwise
+     */
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
         if (!subscriptionExists(name)) {
             ArrayList<String> subscription = new ArrayList<>();
@@ -33,8 +46,8 @@ public class Data {
             subscription.add(endDate);
             subscription.add(status);
             subscriptions.add(subscription);
-            names.add(name);
-            categories.add(category); //no duplicates
+            names.add(name.toLowerCase());
+            categories.add(formatTitleCase(category)); //no duplicates
             return true;
         } else {
             return false;
@@ -44,9 +57,13 @@ public class Data {
     /**
      * Formats category string to title case
      * Stores received budget/limit from Menu.java
+     *
+     * @author Harshita
+     * @param category of subscription chosen by user
+     * @param limit of the budget set by the user
      */
     public static void setCategoryBudget(String category, double limit) {
-        // Format to title case: "netflix" -> "Netflix"
+        // format to title case "netflix" -> "Netflix"
         String cleanCategory = formatTitleCase(category);
 
         categoryBudgets.put(cleanCategory, limit);
@@ -55,6 +72,7 @@ public class Data {
 
     /**
      * Formats user input into title case for clean data storage
+     * @author Harshita
      * @param input from user
      * @return formatted input
      */
@@ -66,6 +84,7 @@ public class Data {
 
     /**
      * Gets the budget for the specified category if it already exists
+     * @author Harshita
      * @param category selected by the user for their subscription
      * @return budget for the category, -1 if not found
      */
@@ -75,6 +94,7 @@ public class Data {
 
     /**
      * Lists all categories and budgets in a clean format
+     * @author Harshita
      * @return all the budgets currently stored by category
      */
     public static ArrayList<String> getAllBudgets() {
@@ -86,7 +106,12 @@ public class Data {
         return budgetList;
     }
 
-    //Calculates Monthly spend of the user
+
+    /**
+     * Takes in all active subscriptions and totals their cost for monthly spend
+     * @author Harshita
+     * @return total monthly spend of user as double
+     */
     public static double calculateMonthlySpend() {
         double total = 0.0;
         double numOfMonths = 12;
@@ -108,7 +133,11 @@ public class Data {
         return total;
     }
 
-    //Calculates yearly spend of the user
+    /**
+     * Takes in all active subscriptions and totals their cost for yearly spend
+     * @author Harshita
+     * @return total monthly spend of user as double
+     */
     public static double calculateYearlySpend() {
 
         double total = 0.0;
@@ -304,6 +333,8 @@ public class Data {
     }
 
     /**
+     * Checks if date (start/end) are valid
+     * @author Harshita
      * @param date (end/start) of the subscription ( user input )
      * @return boolean true if valid, false otherwise
      */
@@ -340,6 +371,8 @@ public class Data {
     }
 
     /**
+     * Checks if cost is valid
+     * @author Harshita
      * @param cost for new subscription
      * @return boolean true if cost is double, false otherwise
      */

@@ -386,17 +386,21 @@ public class Menu {
      * @return endDate for subscription (user input)
      */
     private static String getEndDate() {
-        String endDate;
-        System.out.println("Enter the end date (MM/DD/YYYY): ");
 
-        do {
+        System.out.println("Enter the end date (MM/DD/YYYY) or press Enter to skip:");
+        String endDate = input.nextLine().trim();
+
+        if (endDate.isEmpty()) {
+            return "N/A";
+        }
+
+        while (!Data.isValidDate(endDate)) {
+            System.out.println("Invalid date. Please use MM/DD/YYYY or press Enter to skip:");
             endDate = input.nextLine().trim();
-            if (!Data.isValidDate(endDate)) {
-                System.out.println("Invalid date. Please use the format MM/DD/YYYY (e.g. 03/05/2016).");
+            if (endDate.isEmpty()) {
+                return "N/A";
             }
-
-        } while (!Data.isValidDate(endDate));
-
+        }
         return endDate;
     }
 

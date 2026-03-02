@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added the initial yearly spend calculation. Changed magic numbers with index constants.">
+    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Merged main into my branch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,18 +21,30 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_11_DataTest.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_3_DataTest.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_6_DataTest.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
     "JUnit.DataTest.executor": "Run",
+    "JUnit.DataTest.formatTitleCase_CheckValid.executor": "Run",
+    "JUnit.DataTest.getAllBudgets_MultipleBudgets.executor": "Run",
     "JUnit.DataTest.monthlySpend_OnlyChecksActive.executor": "Run",
     "JUnit.DataTest.monthlySpend_YearDividedBy12.executor": "Run",
     "JUnit.DataTest.monthlySpend_allActive.executor": "Run",
+    "JUnit.DataTest.testStoreNewSubscription_duplicateName.executor": "Run",
     "JUnit.DataTest.yearlySpend_AllActive.executor": "Run",
-    "git-widget-placeholder": "math__logic"
+    "git-widget-placeholder": "add__data__logic"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.DataTest.yearlySpend_OnlyChecksActive">
+  <component name="RunManager" selected="JUnit.DataTest.testStoreNewSubscription_duplicateName">
     <configuration name="DataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cpsc233w26project1" />
       <option name="PACKAGE_NAME" value="" />
@@ -41,31 +54,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataTest.monthlySpend_OnlyChecksActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataTest.formatTitleCase_CheckValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cpsc233w26project1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="monthlySpend_OnlyChecksActive" />
+      <option name="METHOD_NAME" value="formatTitleCase_CheckValid" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataTest.monthlySpend_YearDividedBy12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataTest.getAllBudgets_MultipleBudgets" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cpsc233w26project1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="monthlySpend_YearDividedBy12" />
+      <option name="METHOD_NAME" value="getAllBudgets_MultipleBudgets" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataTest.yearlySpend_AllActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataTest.testStoreNewSubscription_duplicateName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cpsc233w26project1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="yearlySpend_AllActive" />
+      <option name="METHOD_NAME" value="testStoreNewSubscription_duplicateName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -83,13 +96,20 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataTest.yearlySpend_OnlyChecksActive" />
-        <item itemvalue="JUnit.DataTest.monthlySpend_OnlyChecksActive" />
-        <item itemvalue="JUnit.DataTest.yearlySpend_AllActive" />
-        <item itemvalue="JUnit.DataTest.monthlySpend_YearDividedBy12" />
+        <item itemvalue="JUnit.DataTest.testStoreNewSubscription_duplicateName" />
         <item itemvalue="JUnit.DataTest" />
+        <item itemvalue="JUnit.DataTest.getAllBudgets_MultipleBudgets" />
+        <item itemvalue="JUnit.DataTest.formatTitleCase_CheckValid" />
+        <item itemvalue="JUnit.DataTest.yearlySpend_OnlyChecksActive" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
@@ -172,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772419161137</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Merged main into my branch">
+      <option name="closed" value="true" />
+      <created>1772429199234</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1772429199236</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
