@@ -88,7 +88,23 @@ public class Data {
 
     //Calculates Monthly spend of the user
     public static double calculateMonthlySpend() {
-        return 0;
+        double total = 0.0;
+
+        for (ArrayList<String> sub : subscriptions) {
+
+            if (sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) {
+                double cost = Double.parseDouble(sub.get(INDEX_COST));
+                String renewal = sub.get(INDEX_RENEWAL);
+
+                if (renewal.equalsIgnoreCase("MONTHLY")) {
+                    total += cost;
+                } else if (renewal.equalsIgnoreCase("YEARLY")) {
+                    total += cost / 12; // convert yearly to monthly by dividing costs amongst months
+                }
+            }
+        }
+
+        return total;
     }
 
     //Calculates yearly spend of the user
@@ -318,5 +334,17 @@ public class Data {
         } catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    //======================================== TEST DATA =========================================//
+
+    public static void loadTestData() {
+        storeNewSubscription("Netflix", "15.99", "Entertainment", "Monthly", "01/01/2025", null, "ACTIVE");
+        storeNewSubscription("GoodEarth", "9.99", "Food", "Monthly", "02/01/2025", null, "ACTIVE");
+        storeNewSubscription("GoodLife", "50.00", "Fitness", "Monthly", "03/01/2025", null, "ACTIVE");
+        storeNewSubscription("YouTube Premium", "13.99", "Entertainment", "Monthly", "04/01/2025", null, "PAUSED");
+
+        setCategoryBudget("Entertainment", 60.00);
+        setCategoryBudget("Fitness", 100.00);
     }
 }
