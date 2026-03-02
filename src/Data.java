@@ -177,6 +177,39 @@ public class Data {
         }
         return -1;//not found
     }
+    /**
+     * Finds subscriptions with a start date within the next 7 days.
+     * @author Ramsha
+     * @return ArrayList of subscriptions renewing within 7 days
+     */
+    public static ArrayList<ArrayList<String>> getUpcomingBills() {
+        ArrayList<ArrayList<String>> results = new ArrayList<>();
+
+        //get todays date
+        java.time.LocalDate today = java.time.LocalDate.now();
+        java.time.LocalDate sevenDaysLater = today.plusDays(7);
+
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+            if (sub.size() <= 6) continue;
+
+            String dateStr = sub.get(4); //start date at index 4
+
+            try {
+                //parse MM/DD/YYYY format
+                java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy");
+                java.time.LocalDate subDate = java.time.LocalDate.parse(dateStr, formatter);
+
+                //check if date is within next 7 days
+                if (!subDate.isBefore(today) && !subDate.isAfter(sevenDaysLater)) {
+                    results.add(sub);
+                }
+            } catch (Exception e) {
+                //skip if date cant be parsed
+            }
+        }
+        return results;
+    }
 
     /**
      * Search Engine to find all the subscriptions under the given name

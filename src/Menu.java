@@ -49,6 +49,10 @@ public class Menu {
             System.out.println("Please select an option: ");
             String choice = input.nextLine().trim();
 
+            if (choice.isEmpty()) {
+                continue;
+            }
+
 
             switch (choice) { //switch to guide user to correct action based on choice
                 case "1":
@@ -73,7 +77,7 @@ public class Menu {
                     showYearlySpend();
                     break;
                 case "7":
-                    // mehrins work
+                    upcomingBills();
                     break;
                 case "8":
                     // mehrins work
@@ -99,6 +103,11 @@ public class Menu {
                     break;
                 default:
                     System.out.println("Invalid choice, please enter a number from the menu.");
+            }
+            //press enter to continue
+            if (!choice.equals("0") && !choice.isEmpty()) {
+                System.out.println("\nPress enter to continue.");
+                input.nextLine();
             }
         }
         input.close();//close scanner when program ends
@@ -236,6 +245,19 @@ public class Menu {
         //call Data to update field using .set(index,newValue)
         Data.changeSubscriptionChoice(index, choiceIndex, newChoice);
         System.out.println("Update complete.");
+    }
+    /**
+     * displays subscriptions renewing in the next 7 days.
+     * @author Ramsha
+     */
+    public static void upcomingBills() {
+        ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
+        if (upcoming.isEmpty()) {
+            System.out.println("No upcoming bills in the next 7 days.");
+        } else {
+            System.out.println("Upcoming bills in the next 7 days:");
+            Data.printTable(upcoming);
+        }
     }
 
     private static void showMonthlySpend() {
