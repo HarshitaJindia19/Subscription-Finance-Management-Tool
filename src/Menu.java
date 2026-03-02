@@ -73,7 +73,7 @@ public class Menu {
                     showYearlySpend();
                     break;
                 case "7":
-                    // mehrins work
+                    upcomingBills();
                     break;
                 case "8":
                     // mehrins work
@@ -236,6 +236,19 @@ public class Menu {
         //call Data to update field using .set(index,newValue)
         Data.changeSubscriptionChoice(index, choiceIndex, newChoice);
         System.out.println("Update complete.");
+    }
+    /**
+     * displays subscriptions renewing in the next 7 days.
+     * @author Ramsha
+     */
+    public static void upcomingBills() {
+        ArrayList<ArrayList<String>> upcoming = Data.getUpcomingBills();
+        if (upcoming.isEmpty()) {
+            System.out.println("No upcoming bills in the next 7 days.");
+        } else {
+            System.out.println("Upcoming bills in the next 7 days:");
+            Data.printTable(upcoming);
+        }
     }
 
     private static void showMonthlySpend() {
