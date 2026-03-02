@@ -1,0 +1,36 @@
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\n\n    public static void main(String[] args) {\n        Menu.runMenu();\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision b8ef72794d13394c577860b9ae32cc4853919141)
++++ b/src/Main.java	(date 1772383617196)
+@@ -3,4 +3,10 @@
+     public static void main(String[] args) {
+         Menu.runMenu();
+     }
++}
++public class Main {
++
++    public static void main(String[] args) {
++        Menu.runMenu();
++    }
+ }
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.idea/\r\n/.idea/workspace.xml\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-16LE
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision b8ef72794d13394c577860b9ae32cc4853919141)
++++ b/.gitignore	(date 1772383617198)
+@@ -1,2 +1,3 @@
+ .idea/
+ /.idea/workspace.xml
++/.idea/workspace.xml
