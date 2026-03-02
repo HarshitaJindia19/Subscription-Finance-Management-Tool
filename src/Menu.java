@@ -689,6 +689,8 @@ public static void showCategoryBudgetUsage(Scanner input) {
     System.out.print("Enter category to check budget usage: ");
 
     String category = input.nextLine().trim();
+    String displayCategory = category;
+
     double percentage = Data.getCategoryBudgetUsage(category);
 
     if (percentage < 0) {
