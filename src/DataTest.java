@@ -263,8 +263,8 @@ public class DataTest {
     void isValidDate_ValidDates() {
         assertTrue(Data.isValidDate("03/01/2026"), "Date is valid!");
     }
-    }
-//------------------------------------- Search Engine --------------------------------------//
+
+    //------------------------------------- Search Engine --------------------------------------//
     @Test
     public void searchByNameFound() {
         // Clear any existing subs
@@ -289,20 +289,12 @@ public class DataTest {
 
         assertEquals("Spotify", name);
     }
-    @Test
-    void searchByNameNotFound() {
-        // Clear any existing subs
-        Data.subscriptions.clear();
-        //Do a search
-        ArrayList<ArrayList<String>> results = Data.searchByName("Netflix");
-        //Show no results found
-        assertTrue(results.size() == 0, "No subscriptions should match Netflix");
-    }
+
     @Test
     public void searchByNameNotFound() {
         //Clear subs
         Data.subscriptions.clear();
-        //search for a sub that doesnt exist
+        //search for a sub that doesn't exist
         ArrayList<ArrayList<String>> results = Data.searchByName("Netflix");
         //Not found
         assertTrue(results.isEmpty(), "No subscriptions should match Netflix");
@@ -323,10 +315,10 @@ public class DataTest {
 
         //Search with empty string
         ArrayList<ArrayList<String>> results = Data.searchByName("");
-        assertTrue(results.size() == 0, "Empty input should have no results");
+        assertTrue(results.isEmpty(), "Empty input should have no results");
 
         //Search with null
         results = Data.searchByName(null);
-        assertTrue(results.size() == 0, "Null input should have no results");
+        assertTrue(results.isEmpty(), "Null input should have no results");
     }
 }
