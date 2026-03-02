@@ -1,0 +1,260 @@
+Index: src/MenuTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n/*\nclass Menu {\n\n    @Test\n    void addsTwoNumbers() {\n        Calculator calc = new Calculator();\n        assertEquals(5, calc.add(2, 3));\n    }\n}\n */\n\n@Test\npublic void searchByNameFound() {\n    // Clear any existing subs\n    Data.subscriptions.clear();\n    ArrayList<String> sub = new ArrayList<>();\n    sub.add(\"Spotify\");\n    sub.add(\"7.89\");\n    sub.add(\"Music\");\n    sub.add(\"Yearly\");\n    sub.add(\"March 2\");\n    sub.add(null);\n    sub.add(\"ACTIVE\");\n    Data.subscriptions.add(sub);\n\n    //Do a search\n    ArrayList<ArrayList<String>> results = Data.searchByName(\"Spotify\");\n    //Give the result size\n    assertEquals(1, results.size(), \"Should find 1 subscription named Spotify\");\n    //Give the name of the first result\n    ArrayList<String> numOneResult = results.get(0);\n    String name = numOneResult.get(0);\n\n    assertEquals(\"Spotify\", name);\n}\n@Test\nvoid searchByNameNotFound() {\n    // Clear any existing subs\n    Data.subscriptions.clear();\n    //Do a search\n    ArrayList<ArrayList<String>> results = Data.searchByName(\"Netflix\");\n    //Show no results found\n    assertTrue(results.size() == 0, \"No subscriptions should match Netflix\");\n}\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/MenuTest.java b/src/MenuTest.java
+--- a/src/MenuTest.java	(revision d746b3a11b3679e402de78aada97c78d7d0696cd)
++++ b/src/MenuTest.java	(date 1772462672328)
+@@ -10,10 +10,10 @@
+     }
+ }
+  */
+-
++//----------------------------------- Add Search Engine Tests ---------------------------------//
+ @Test
+ public void searchByNameFound() {
+-    // Clear any existing subs
++    //Clear any existing subs
+     Data.subscriptions.clear();
+     ArrayList<String> sub = new ArrayList<>();
+     sub.add("Spotify");
+@@ -37,11 +37,235 @@
+ }
+ @Test
+ void searchByNameNotFound() {
+-    // Clear any existing subs
++    //Clear any existing subs
+     Data.subscriptions.clear();
+     //Do a search
+     ArrayList<ArrayList<String>> results = Data.searchByName("Netflix");
+     //Show no results found
+     assertTrue(results.size() == 0, "No subscriptions should match Netflix");
+ }
++//----------------------------------- Add Budget Alert Tests ---------------------------------//
++
++@Test
++public void showBudgetAlertsTest() {
++    //Clear any existing subs
++    Data.subscriptions.clear();
++    Data.categoryBudgets.clear();
++
++    //Set the category budget - user inputs this
++    Data.categoryBudgets.put("Entertainment", 30.00);
++
++
++    ArrayList<String> sub1 = new ArrayList<>();
++    sub1.add("Netflix");
++    sub1.add("14.98");
++    sub1.add("Entertainment");
++    sub1.add("Monthly");
++    sub1.add("Mar 2");
++    sub1.add(null);
++    sub1.add("ACTIVE");
++
++    ArrayList<String> sub2 = new ArrayList<>();
++    sub2.add("HBO Max");
++    sub2.add("19.99");
++    sub2.add("Entertainment");
++    sub2.add("Monthly");
++    sub2.add("Mar 3");
++    sub2.add(null);
++    sub2.add("ACTIVE");
++
++    //Add subs to Data
++    Data.subscriptions.add(sub1);
++    Data.subscriptions.add(sub2);
++
++    //Call budget alert ()
++    Data.showBudgetAlerts();
++
++    //Check if total spent > budget
++    double total = 0;
++
++    //Go through each subscription in the list
++    for (int i = 0; i < Data.subscriptions.size(); i++) {
++        ArrayList<String> sub = Data.subscriptions.get(i);
++
++        //Get the cost as string and convert into number
++        String costStr = sub.get(1);
++        double cost = Double.parseDouble(costStr);
++
++        //Add to the total
++        total += cost;
++    }
++
++// Check if total spending exceeds the budget for "Entertainment"
++    double budget = Data.categoryBudgets.get("Entertainment");
++    assertTrue(total > budget, "Total spent should exceed the budget for Entertainment");
++
++}
++
++@Test
++public void showBudgetAlerts_OnlyActiveCounted() {
++    //Clear any existing subs
++    Data.subscriptions.clear();
++    Data.categoryBudgets.clear();
++
++    //Set the category budget - user inputs this
++    Data.categoryBudgets.put("Entertainment", 50.00);
++
++    ArrayList<String> sub1 = new ArrayList<>();
++    sub1.add("Netflix");
++    sub1.add("14.98");
++    sub1.add("Entertainment");
++    sub1.add("Monthly");
++    sub1.add("Mar 2");
++    sub1.add(null);
++    sub1.add("ACTIVE");
++
++    ArrayList<String> sub2 = new ArrayList<>();
++    sub2.add("HBO Max");
++    sub2.add("19.99");
++    sub2.add("Entertainment");
++    sub2.add("Monthly");
++    sub2.add("Mar 3");
++    sub2.add(null);
++    sub2.add("PAUSED");
++
++    //Add subs to Data
++    Data.subscriptions.add(sub1);
++    Data.subscriptions.add(sub2);
++
++    //Call budget alert ()
++    Data.showBudgetAlerts();
++
++    //Check only ACTIVE subscriptions counted
++    double total = 0;
++
++    //Go through each subscription in the list
++    for (int i = 0; i < Data.subscriptions.size(); i++) {
++        ArrayList<String> sub = Data.subscriptions.get(i);
++
++        //Check if the sub status is "ACTIVE"
++        String status = sub.get(6);
++        if (status.equalsIgnoreCase("ACTIVE")) {
++
++            //Get the cost as string and convert into number
++            String costStr = sub.get(1);
++            double cost = Double.parseDouble(costStr);
++
++            //Add to the total
++            total += cost;
++        }
++    }
++
++// Check if the total matches what we expect
++    assertEquals(14.98, total, 0.001, "Only ACTIVE subscriptions should be counted toward budget");
++}
++
++@Test
++public void showBudgetAlerts_CorrectCategory() {
++    //Clear any existing subs
++    Data.subscriptions.clear();
++    Data.categoryBudgets.clear();
++
++    //Set the category budget - user inputs this
++    Data.categoryBudgets.put("Entertainment", 50.00);
++
++    ArrayList<String> sub1 = new ArrayList<>();
++    sub1.add("Netflix");
++    sub1.add("14.98");
++    sub1.add("Entertainment");
++    sub1.add("Monthly");
++    sub1.add("Mar 2");
++    sub1.add(null);
++    sub1.add("ACTIVE");
++
++    ArrayList<String> sub2 = new ArrayList<>();
++    sub2.add("Gym");
++    sub2.add("30.00");
++    sub2.add("Fitness");
++    sub2.add("Monthly");
++    sub2.add("Mar 2");
++    sub2.add(null);
++    sub2.add("ACTIVE");
++
++    //Add subs to Data
++    Data.subscriptions.add(sub1);
++    Data.subscriptions.add(sub2);
++
++    //Call budget alert ()
++    Data.showBudgetAlerts();
++
++    //Check only subscriptions in the correct category are counted
++    double total = 0;
++
++    //Go through each subscription in the list
++    for (int i = 0; i < Data.subscriptions.size(); i++) {
++        ArrayList<String> sub = Data.subscriptions.get(i);
++
++        // Check if the category matches "Entertainment"
++        String category = sub.get(2);
++        if (category.equalsIgnoreCase("Entertainment")) {
++
++            // Get the cost as string and convert into number
++            String costStr = sub.get(1);
++            double cost = Double.parseDouble(costStr);
++
++            // Add to the total
++            total += cost;
++        }
++    }
++    //Check if the total matches what we expect
++    assertEquals(14.98, total, 0.001, "Only subscriptions in the correct category should be counted");
++}
++//----------------------------------- Add High Expense Bills Tests ---------------------------------//
++@Test
++public void getHighExpenseBillsTest() {
++    //Clear existing subs
++    Data.subscriptions.clear();
++
++    //Add subs
++    ArrayList<String> sub1 = new ArrayList<>();
++    sub1.add("Netflix");
++    sub1.add("14.89");
++    sub1.add("Entertainment");
++    sub1.add("Yearly");
++    sub1.add("Mar 2");
++    sub1.add(null);
++    sub1.add("ACTIVE");
++
++    ArrayList<String> sub2 = new ArrayList<>();
++    sub2.add("Gym");
++    sub2.add("50.00");
++    sub2.add("Fitness");
++    sub2.add("Yearly");
++    sub2.add("Mar 2");
++    sub2.add(null);
++    sub2.add("PAUSED");
++
++    ArrayList<String> sub3 = new ArrayList<>();
++    sub3.add("Hulu");
++    sub3.add("18.79");
++    sub3.add("Entertainment");
++    sub3.add("Yearly");
++    sub3.add("Mar 2");
++    sub3.add(null);
++    sub3.add("ACTIVE");
++
++    //Add subs to Data
++    Data.subscriptions.add(sub1);
++    Data.subscriptions.add(sub2);
++    Data.subscriptions.add(sub3);
++
++    //Call get high-expense bills()
++    ArrayList<ArrayList<String>> results = Data.getHighExpenseBills(16.0);
++
++    // Check if only the correct subscription is returned
++    assertEquals(1, results.size(), "Only one subscription should exceed the threshold");
++    //Store first result in a var
++    ArrayList<String> firstResult = results.get(0);
++    String firstName = firstResult.get(0);
++
++    //Output the name
++    assertEquals("Hulu", firstName, "Hulu should be the subscription returned");
++}
++
+ 

@@ -1,0 +1,76 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"290af54c-5f35-4959-a0c1-f4ade5fd1c3e\" name=\"Changes\" comment=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\">\n      <change beforePath=\"$PROJECT_DIR$/src/Data.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Data.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"SearchEngine\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n    <option name=\"UPDATE_TYPE\" value=\"REBASE\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"git-widget-placeholder\": \"main\"\n  }\n}]]></component>\n  <component name=\"TaskManager\">\n    <task id=\"LOCAL-00001\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772285804985</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772285804985</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772286055269</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772286055269</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772304610715</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772304610715</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371198332</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371198332</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371920181</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371920181</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772371967446</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772371967446</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1772373634223</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1772373634223</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"8\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results\" />\n    <MESSAGE value=\"Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions\" />\n    <MESSAGE value=\"Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface\" />\n    <MESSAGE value=\"Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments\" />\n    <MESSAGE value=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e283059b3159bd9d50e6d7d429499ff36dd61651)
++++ b/.idea/workspace.xml	(date 1772388134333)
+@@ -1,9 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
+-      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+-    </list>
++    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="-commit to ensure all cases are in place" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -12,17 +10,23 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="SearchEngine" />
++        <entry key="$PROJECT_DIR$" value="feature-special-outputs" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+     <option name="UPDATE_TYPE" value="REBASE" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "git-widget-placeholder": "main"
++  <component name="GitLabMergeRequestsSettings"><![CDATA[{
++  "selectedUrlAndAccountId": {
++    "first": "https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git",
++    "second": "5bebe6fe-677a-47f8-a476-b2c68450b87f"
+   }
+ }]]></component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;
++  }
++}</component>
+   <component name="TaskManager">
+     <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
+       <option name="closed" value="true" />
+@@ -80,7 +84,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1772373634223</updated>
+     </task>
+-    <option name="localTasksCounter" value="8" />
++    <task id="LOCAL-00008" summary="-commit to ensure all cases are in place">
++      <option name="closed" value="true" />
++      <created>1772387595014</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1772387595014</updated>
++    </task>
++    <option name="localTasksCounter" value="9" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -100,6 +112,7 @@
+     <MESSAGE value="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface" />
+     <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
+     <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
++    <MESSAGE value="-commit to ensure all cases are in place" />
++    <option name="LAST_COMMIT_MESSAGE" value="-commit to ensure all cases are in place" />
+   </component>
+ </project>
+\ No newline at end of file
