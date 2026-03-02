@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added the initial yearly spend calculation. Changed magic numbers with index constants.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/Data.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/Menu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,24 +24,29 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "JUnit.DataTest.executor": "Run",
+    "JUnit.DataTest.monthlySpend_OnlyChecksActive.executor": "Run",
     "JUnit.DataTest.monthlySpend_YearDividedBy12.executor": "Run",
     "JUnit.DataTest.monthlySpend_allActive.executor": "Run",
+    "JUnit.DataTest.yearlySpend_AllActive.executor": "Run",
     "git-widget-placeholder": "math__logic"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.DataTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="cpsc233w26project1" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.DataTest.yearlySpend_OnlyChecksActive">
     <configuration name="DataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cpsc233w26project1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DataTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataTest.monthlySpend_OnlyChecksActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cpsc233w26project1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DataTest" />
+      <option name="METHOD_NAME" value="monthlySpend_OnlyChecksActive" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -58,11 +61,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DataTest.monthlySpend_allActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DataTest.yearlySpend_AllActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="cpsc233w26project1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="monthlySpend_allActive" />
+      <option name="METHOD_NAME" value="yearlySpend_AllActive" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DataTest.yearlySpend_OnlyChecksActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="cpsc233w26project1" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="DataTest" />
+      <option name="METHOD_NAME" value="yearlySpend_OnlyChecksActive" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -70,10 +83,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.DataTest" />
+        <item itemvalue="JUnit.DataTest.yearlySpend_OnlyChecksActive" />
+        <item itemvalue="JUnit.DataTest.monthlySpend_OnlyChecksActive" />
+        <item itemvalue="JUnit.DataTest.yearlySpend_AllActive" />
         <item itemvalue="JUnit.DataTest.monthlySpend_YearDividedBy12" />
-        <item itemvalue="JUnit.DataTest.monthlySpend_allActive" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.DataTest" />
       </list>
     </recent_temporary>
   </component>
