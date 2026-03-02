@@ -102,7 +102,7 @@ public class DataTest {
         assertEquals("ACTIVE", sub.get(Data.INDEX_STATUS), "ACTIVE should be stored. Something else was stored!");
 
         // Check if it was also stored in categories and names
-        assertTrue(Data.names.contains("Netflix"));
+        assertTrue(Data.names.contains("netflix"));
         assertTrue(Data.categories.contains("Entertainment"));
 
     }
