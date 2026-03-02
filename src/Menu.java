@@ -37,6 +37,7 @@ public class Menu {
      * shows menu, reads user input, calls the corresponding method
      */
     public static void runMenu() {
+        Data.loadTestData();
         boolean active = true; //loop keeps going
         while (active) {
             System.out.println("\n====SUBSCRIPTION MANAGER MENU OPTIONS====");
@@ -64,10 +65,12 @@ public class Menu {
                     // mehrins work
                     break;
                 case "5":
-                    // harshitas work
+                    // Harshita
+                    showMonthlySpend();
                     break;
                 case "6":
-                    // harshitas work
+                    // Harshita
+                    showYearlySpend();
                     break;
                 case "7":
                     // mehrins work
@@ -233,6 +236,18 @@ public class Menu {
         //call Data to update field using .set(index,newValue)
         Data.changeSubscriptionChoice(index, choiceIndex, newChoice);
         System.out.println("Update complete.");
+    }
+
+    private static void showMonthlySpend() {
+        double total = Data.calculateMonthlySpend();
+        System.out.println("\n--- Total Monthly Spend ---");
+        System.out.println("Total: $" + String.format("%.2f", total));
+    }
+
+    private static void showYearlySpend() {
+        double total = Data.calculateYearlySpend();
+        System.out.println("\n--- Total Annual Spend ---");
+        System.out.println("Total: $" + String.format("%.2f", total));
     }
 
     //=====================================DISPLAY MESSAGES===============================//
@@ -431,4 +446,5 @@ public class Menu {
                 return -1;
 
         }
-    }}
+    }
+}
