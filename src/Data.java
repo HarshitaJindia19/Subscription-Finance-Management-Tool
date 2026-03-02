@@ -226,6 +226,7 @@ public class Data {
 
             if (sub.size() > 0) {
                 String subName= sub.get(INDEX_NAME);
+                if (subName == null) continue;
 
                 String subNameLower= subName.toLowerCase();
                 String newNameLower= name.toLowerCase();
@@ -248,11 +249,13 @@ public class Data {
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
+        if (category == null) return results;
 
         for (int i = 0; i < subscriptions.size(); i++) {
             ArrayList<String> sub= subscriptions.get(i);
             if (sub.size() > 2) {
-                String subCategory= sub.get(INDEX_CATEGORY);
+                String subCategory= sub.get(2);
+                if (subCategory == null) continue;
 
                 String subCategoryLower= subCategory.toLowerCase();
                 String categoryNewLower= category.toLowerCase();
@@ -302,7 +305,16 @@ public class Data {
         return results;
     }
 
-    //add Javadoc comments later
+    /**
+     * Checks all subscription categories with their budget limits and prints alerts
+     * Used for categories where total spending on ACTIVE subscriptions exceeds the budget
+     *
+     * For each category, this method sums the costs of all ACTIVE subscriptions in that category
+     * If the total spending > budget for category = budget alert
+     * is printed to the console showing the category name, amount spent, and budget limit
+     *
+     * This method doesn't return a value, only printing messages to console
+     */
     public static void showBudgetAlerts() {
         ArrayList<String> categories = new ArrayList<>(categoryBudgets.keySet());
 
@@ -324,8 +336,108 @@ public class Data {
                 String subCategory = sub.get(INDEX_CATEGORY);
                 String status = sub.get(INDEX_STATUS);
 
+                    if (costStr.equals("") == false) {
+                        try {
+                            double cost = Double.parseDouble(costStr);
+                            total += cost;
+                            overBudgetSubs.add(sub);
+                        } catch (RuntimeException e) {
+                            System.out.println("Could not read the cost for: " + subName);
+                        }
+                    } else {
+                    }
+                } else {
+                }
+            } else {
             }
         }
+        if (total > limit) {
+            System.out.println("🚨 Budget exceeded for " + category);
+            System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
+            System.out.println("Subscriptions causing alert:");
+            Data.printTable(overBudgetSubs);
+        } else {
+        }
+      }
+    }
+
+    /**
+     * printTable prints a formatted table of subscriptions to the console/ interface
+     *Each subscription is printed as one row with aligned columns of:
+     * Name, Cost, Category, Billing, Start Date, End Date, and Status
+     * If the end date is null/ empty, "-" is printed
+     * @param subs is the list of subscriptions to display
+     */
+    public static void printTable(ArrayList<ArrayList<String>> subs) {
+        // Used printf for column alignment (Java standard library formatting)
+        System.out.printf("%-15s %-8s %-15s %-10s %-15s %-15s %-10s%n",
+                "Name", "Cost", "Category", "Billing", "Start", "End", "Status");
+
+        for (int i = 0; i < subs.size(); i++) {
+            ArrayList<String> sub = subs.get(i);
+
+            if (sub.size() <= 6) {
+                continue;
+            }
+
+            String subName = sub.get(0);
+            String costStr = sub.get(1);
+            String subCategory = sub.get(2);
+            String billing = sub.get(3);
+            String start = sub.get(4);
+            String end = sub.get(5);
+            String status = sub.get(6);
+
+            if (end == null) {
+                end = "-";
+            } else if (end.isEmpty()) {
+                end = "-";
+            }
+
+       System.out.printf("%-15s $%-7s %-15s %-10s %-15s %-15s %-10s%n",
+       subName, costStr, subCategory, billing, start, end, status);
+            }
+        }
+    /**
+     * Calculates the percentage of the budget used for a given category
+     * Iterates through all ACTIVE subscriptions in the category,
+     * sums their costs, then divides by the budget limit
+     * @param category is the name of the category
+     * @return percentage of budget used (0-100) and -1 if category not found
+     */
+
+    public static double getCategoryBudgetUsage(String category) {
+        if (categoryBudgets.containsKey(category.toLowerCase()) == false) {
+            return -1;
+        }
+
+        double totalSpent = 0;
+        for (int i = 0; i < subscriptions.size(); i++) {
+            ArrayList<String> sub = subscriptions.get(i);
+            if (sub.size() > 6) {
+                String subCategory = sub.get(2);
+                String status = sub.get(6);
+
+                if (subCategory.equalsIgnoreCase(category) == true && status.equalsIgnoreCase("active") == true) {
+                    String costStr = sub.get(1).replace("$", "").trim();
+                    if (costStr.isEmpty() == false) {
+                        try {
+                            totalSpent += Double.parseDouble(costStr);
+                        } catch (RuntimeException e) {
+                            System.out.println("Invalid cost for subscription: " + sub.get(0));
+                        }
+                    }
+                }
+            }
+        }
+        double budgetLimit = categoryBudgets.get(category.toLowerCase());
+        double percentageUsed = (totalSpent / budgetLimit) * 100;
+
+        if (percentageUsed > 100) {
+            percentageUsed = 100;
+        }
+
+        return percentageUsed;
     }
 
    /**
