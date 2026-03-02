@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="290af54c-5f35-4959-a0c1-f4ade5fd1c3e" name="Changes" comment="Added the initial yearly spend calculation. Changed magic numbers with index constants.">
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="fixed some bugs in files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,168 +12,145 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="add_data_logic" />
-      </map>
-    </option>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="main" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;ramsha.oad&quot;,
+      &quot;fullname&quot;: &quot;Ramsha OAD&quot;
+    }
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git&quot;,
+    &quot;second&quot;: &quot;1def89c3-24eb-4d88-98f8-dac7a664f202&quot;
+  }
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="3A7vv0WcKukAUlhpfoUM0TJ33WI" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
-    "JUnit.DataTest.executor": "Run",
-    "JUnit.DataTest.monthlySpend_OnlyChecksActive.executor": "Run",
-    "JUnit.DataTest.monthlySpend_YearDividedBy12.executor": "Run",
-    "JUnit.DataTest.monthlySpend_allActive.executor": "Run",
-    "JUnit.DataTest.yearlySpend_AllActive.executor": "Run",
-    "git-widget-placeholder": "math__logic"
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "feature-main-menu",
+    "kotlin-language-version-configured": "true",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.DataTest.yearlySpend_OnlyChecksActive">
-    <configuration name="DataTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cpsc233w26project1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataTest.monthlySpend_OnlyChecksActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cpsc233w26project1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="monthlySpend_OnlyChecksActive" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataTest.monthlySpend_YearDividedBy12" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cpsc233w26project1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="monthlySpend_YearDividedBy12" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataTest.yearlySpend_AllActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cpsc233w26project1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="yearlySpend_AllActive" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DataTest.yearlySpend_OnlyChecksActive" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="cpsc233w26project1" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="DataTest" />
-      <option name="METHOD_NAME" value="yearlySpend_OnlyChecksActive" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.DataTest.yearlySpend_OnlyChecksActive" />
-        <item itemvalue="JUnit.DataTest.monthlySpend_OnlyChecksActive" />
-        <item itemvalue="JUnit.DataTest.yearlySpend_AllActive" />
-        <item itemvalue="JUnit.DataTest.monthlySpend_YearDividedBy12" />
-        <item itemvalue="JUnit.DataTest" />
-      </list>
-    </recent_temporary>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.240" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="TaskManager">
-    <task id="LOCAL-00001" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="" />
+      <created>1771956649713</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1771956649713</updated>
+      <workItem from="1771956651084" duration="1247000" />
+      <workItem from="1771957904901" duration="75000" />
+      <workItem from="1771957982084" duration="2000" />
+      <workItem from="1771957996639" duration="1069000" />
+      <workItem from="1771959119740" duration="140000" />
+      <workItem from="1771959263244" duration="4187000" />
+      <workItem from="1771979718354" duration="7549000" />
+      <workItem from="1772061190360" duration="12360000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial project files setup">
       <option name="closed" value="true" />
-      <created>1772285804985</created>
+      <created>1771957177733</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1772285804985</updated>
+      <updated>1771957177733</updated>
     </task>
-    <task id="LOCAL-00002" summary="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results">
+    <task id="LOCAL-00002" summary="initial project files setup">
       <option name="closed" value="true" />
-      <created>1772286055269</created>
+      <created>1771959313477</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1772286055269</updated>
+      <updated>1771959313477</updated>
     </task>
-    <task id="LOCAL-00003" summary="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions">
+    <task id="LOCAL-00003" summary="imported ArrayList, HashMap, HashSet">
       <option name="closed" value="true" />
-      <created>1772304610715</created>
+      <created>1771959382581</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1772304610715</updated>
+      <updated>1771959382581</updated>
     </task>
-    <task id="LOCAL-00004" summary="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface">
+    <task id="LOCAL-00004" summary="updating changes">
       <option name="closed" value="true" />
-      <created>1772371198332</created>
+      <created>1772061534502</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1772371198332</updated>
+      <updated>1772061534502</updated>
     </task>
-    <task id="LOCAL-00005" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
+    <task id="LOCAL-00005" summary="fixed some bugs in files">
       <option name="closed" value="true" />
-      <created>1772371920181</created>
+      <created>1772081935683</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1772371920181</updated>
+      <updated>1772081935683</updated>
     </task>
-    <task id="LOCAL-00006" summary="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments">
-      <option name="closed" value="true" />
-      <created>1772371967446</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1772371967446</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank">
-      <option name="closed" value="true" />
-      <created>1772373634223</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1772373634223</updated>
-    </task>
-    <task id="LOCAL-00008" summary="merged main into my branch">
-      <option name="closed" value="true" />
-      <created>1772413661888</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1772413661888</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added the initial logic for calculating monthly spend.">
-      <option name="closed" value="true" />
-      <created>1772416201724</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1772416201725</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Added the initial yearly spend calculation. Changed magic numbers with index constants.">
-      <option name="closed" value="true" />
-      <created>1772419161135</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1772419161137</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -187,14 +164,10 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add searchByName method on the SearchEngine branch&#10;&#10;-For loop iterates through the subscriptions to find matches by name &#10;- Handle case upper/lowecase issues that may arise&#10;- Handle null input without crashing&#10;-Check that each subscription has at least one element&#10;-Gives an ArrayList of all matching results" />
-    <MESSAGE value="Add searchByCategory method on SearchEngine branch&#10;&#10;- For iterates through the subscriptions to find matches by category&#10;- Handle uppercase/lowercase differences&#10;- Check that each subscription has a category part&#10;- Return a list of all matching subscriptions" />
-    <MESSAGE value="Added showBudgetAlerts method-5&#10;&#10;Updated:&#10;-Check if total spending exceeds the category budget (total &gt; limit)&#10;-Added output messages to alert user when budget is exceeded&#10;&#10;Next Step:&#10;-Ask team members to review interface" />
-    <MESSAGE value="Added showBudgetAlerts method-6&#10;&#10;Updated:&#10;-Added Javadoc comments" />
-    <MESSAGE value="Added printTable method-1&#10;&#10;Done:&#10;-The for loop iterates through all subscriptions in subs&#10;-If theres less than 7 elements, subscription skipped to next&#10;-We use variables instead of .get() multiple times, this is easier to read and write&#10;-End date is handled if null returns a dash instead of blank" />
-    <MESSAGE value="merged main into my branch" />
-    <MESSAGE value="Added the initial logic for calculating monthly spend." />
-    <MESSAGE value="Added the initial yearly spend calculation. Changed magic numbers with index constants." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added the initial yearly spend calculation. Changed magic numbers with index constants." />
+    <MESSAGE value="initial project files setup" />
+    <MESSAGE value="imported ArrayList, HashMap, HashSet" />
+    <MESSAGE value="updating changes" />
+    <MESSAGE value="fixed some bugs in files" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed some bugs in files" />
   </component>
 </project>
