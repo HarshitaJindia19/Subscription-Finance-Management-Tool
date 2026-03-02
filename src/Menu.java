@@ -105,7 +105,7 @@ public class Menu {
                     System.out.println("Invalid choice, please enter a number from the menu.");
             }
             //press enter to continue
-            if (!choice.equals("0") && !choice.isEmpty()) {
+            if (!choice.equals("0")) {
                 System.out.println("\nPress enter to continue.");
                 input.nextLine();
             }
