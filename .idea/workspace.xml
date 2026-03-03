@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="Fixed a unit test error">
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="-fixed getCategoryBudgetUsage so menu runs">
+      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +195,31 @@
       <option name="project" value="LOCAL" />
       <updated>1772486512163</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-added validity cases on showSearchResults()">
+      <option name="closed" value="true" />
+      <created>1772496617414</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772496617414</updated>
+    </task>
+    <task id="LOCAL-00008" summary="-fixed getCategoryBudgetUsage so menu runs">
+      <option name="closed" value="true" />
+      <created>1772498222692</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1772498222692</updated>
+    </task>
+    <task id="LOCAL-00009" summary="-fixed getCategoryBudgetUsage so menu runs">
+      <option name="closed" value="true" />
+      <created>1772498487331</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1772498487331</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +242,8 @@
     <MESSAGE value="updating changes" />
     <MESSAGE value="fixed some bugs in files" />
     <MESSAGE value="Fixed a unit test error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a unit test error" />
+    <MESSAGE value="-added validity cases on showSearchResults()" />
+    <MESSAGE value="-fixed getCategoryBudgetUsage so menu runs" />
+    <option name="LAST_COMMIT_MESSAGE" value="-fixed getCategoryBudgetUsage so menu runs" />
   </component>
 </project>

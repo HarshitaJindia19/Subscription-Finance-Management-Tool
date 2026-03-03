@@ -219,19 +219,23 @@ public class Data {
      */
     public static ArrayList<ArrayList<String>> searchByName(String name) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (name == null) return results;
+        if (name == null) {
+            return results;
+        }
+        name = name.trim();
+
+        if (name.isEmpty()) {
+            return results;
+        }
+
+        String keyword = name.toLowerCase();
 
         for (int i = 0; i < subscriptions.size(); i++) {
             ArrayList<String> sub= subscriptions.get(i);
 
             if (sub.size() > 0) {
                 String subName= sub.get(INDEX_NAME);
-                if (subName == null) continue;
-
-                String subNameLower= subName.toLowerCase();
-                String newNameLower= name.toLowerCase();
-
-                if (subNameLower.equals(newNameLower)) {
+                if (subName != null && subName.toLowerCase().contains(keyword)) {
                     results.add(sub);
                 }
             }
@@ -247,14 +251,22 @@ public class Data {
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (category == null) return results;
+        if (category == null) {
+            return results;
+        }
+        category = category.trim();
+
+        if (category.isEmpty()) {
+            return results;
+        }
+
+        String keyword = category.toLowerCase();
 
         for (int i = 0; i < subscriptions.size(); i++) {
             ArrayList<String> sub = subscriptions.get(i);
             if (sub.size() > 2) {
                 String subCategory = sub.get(2);
-                if (subCategory == null) continue;
-                {
+                if (subCategory != null && subCategory.toLowerCase().contains(keyword)) {
                     results.add(sub);
                 }
             }
