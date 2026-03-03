@@ -29,15 +29,15 @@ public class Data {
      * Checks if subscription is new, and adds it to the subscription ArrayList
      * Adds categories and names to their respective HashSets
      *
-     * @author Harshita
-     * @param name of subscription - e.g. Netflix
-     * @param cost of subscription e.g. 56.99
-     * @param category of subscription - e.g. Health
-     * @param renewal of subscription - e.g. Monthly
+     * @param name      of subscription - e.g. Netflix
+     * @param cost      of subscription e.g. 56.99
+     * @param category  of subscription - e.g. Health
+     * @param renewal   of subscription - e.g. Monthly
      * @param startDate of subscription - e.g. 05/20/2027
-     * @param endDate of subscription - e.g. 05/20/2027 or N/A
-     * @param status of subscription - e.g. PAUSED
+     * @param endDate   of subscription - e.g. 05/20/2027 or N/A
+     * @param status    of subscription - e.g. PAUSED
      * @return boolean - true if subscription was new and was stored into list, false otherwise
+     * @author Harshita
      */
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
         String cleanName = formatTitleCase(name);
@@ -66,9 +66,9 @@ public class Data {
      * Formats category string to title case
      * Stores received budget/limit from Menu.java
      *
-     * @author Harshita
      * @param category of subscription chosen by user
-     * @param limit of the budget set by the user
+     * @param limit    of the budget set by the user
+     * @author Harshita
      */
     public static void setCategoryBudget(String category, double limit) {
         // format to title case "netflix" -> "Netflix"
@@ -80,9 +80,10 @@ public class Data {
 
     /**
      * Formats user input into title case for clean data storage
-     * @author Harshita
+     *
      * @param input from user
      * @return formatted input
+     * @author Harshita
      */
     public static String formatTitleCase(String input) {
         if (input.isEmpty()) return "";
@@ -90,6 +91,12 @@ public class Data {
                 input.substring(1).toLowerCase();
     }
 
+    /**
+     * Validates if a String contains only characters and spaces (no special characters and numbers)
+     *
+     * @param input collected from Menu.java
+     * @return True if input String contains only letters or spaces
+     */
     public static boolean isOnlyText(String input) {
         if (input == null || input.isEmpty()) {
             return false;
@@ -99,9 +106,10 @@ public class Data {
 
     /**
      * Gets the budget for the specified category if it already exists
-     * @author Harshita
+     *
      * @param category selected by the user for their subscription
      * @return budget for the category, -1 if not found
+     * @author Harshita
      */
     public static double getCategoryBudget(String category) {
         return categoryBudgets.getOrDefault(formatTitleCase(category), -1.0);
@@ -109,12 +117,13 @@ public class Data {
 
     /**
      * Lists all categories and budgets in a clean format
-     * @author Harshita
+     *
      * @return all the budgets currently stored by category
+     * @author Harshita
      */
     public static ArrayList<String> getAllBudgets() {
         ArrayList<String> budgetList = new ArrayList<>();
-        for (String category: categoryBudgets.keySet()) {
+        for (String category : categoryBudgets.keySet()) {
             double limit = categoryBudgets.get(category);
             budgetList.add(category + ": $" + String.format("%.2f", limit));
         }
@@ -124,8 +133,9 @@ public class Data {
 
     /**
      * Takes in all active subscriptions and totals their cost for monthly spend
-     * @author Harshita
+     *
      * @return total monthly spend of user as double
+     * @author Harshita
      */
     public static double calculateMonthlySpend() {
         double total = 0.0;
@@ -150,8 +160,9 @@ public class Data {
 
     /**
      * Takes in all active subscriptions and totals their cost for yearly spend
-     * @author Harshita
+     *
      * @return total monthly spend of user as double
+     * @author Harshita
      */
     public static double calculateYearlySpend() {
 
@@ -177,9 +188,10 @@ public class Data {
 
     /**
      * Finds the index of subscription in outer ArrayList by ensuring the name matches.
-     * @author Ramsha
+     *
      * @param name the name of subscription to search for
      * @return index of subscription in outer ArrayList or -1 if not found
+     * @author Ramsha
      */
     public static int findingSubscriptionIndex(String name) {
         //loop through every subscription in list
@@ -192,34 +204,55 @@ public class Data {
         }
         return -1;//not found
     }
+
     /**
      * Finds subscriptions with a start date within the next 7 days.
-     * @author Ramsha
+     *
      * @return ArrayList of subscriptions renewing within 7 days
+     * @author Ramsha
      */
     public static ArrayList<ArrayList<String>> getUpcomingBills() {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
 
         //get todays date
-        java.time.LocalDate today = java.time.LocalDate.now();
-        java.time.LocalDate sevenDaysLater = today.plusDays(7);
+        LocalDate today = LocalDate.now();
+        LocalDate sevenDaysLater = today.plusDays(7);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
         for (ArrayList<String> sub : subscriptions) {
             if (sub.size() <= 6) continue;
+            if (!sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) continue;
 
-            String dateStr = sub.get(4); //start date at index 4
+            String renewal = sub.get(INDEX_RENEWAL);
+            String startDateStr = sub.get(INDEX_START_DATE);
 
             try {
                 //parse MM/DD/YYYY format
-                java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                java.time.LocalDate subDate = java.time.LocalDate.parse(dateStr, formatter);
+                LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+                LocalDate nextRenewal;
 
                 //check if date is within next 7 days
-                if (!subDate.isBefore(today) && !subDate.isAfter(sevenDaysLater)) {
+                if (renewal.equalsIgnoreCase("YEARLY")) {
+                    nextRenewal = startDate.withYear(today.getYear());
+                    if (nextRenewal.isBefore(today)) {
+                        nextRenewal = nextRenewal.plusYears(1);
+
+                    }
+                } else if (renewal.equalsIgnoreCase("MONTHLY")) {
+                    nextRenewal = startDate.withMonth(today.getMonthValue()).withYear(today.getYear());
+                    if (nextRenewal.isBefore(today)) {
+                        nextRenewal = nextRenewal.plusMonths(1);
+                    }
+                } else {
+                    continue;
+                }
+
+                // Check if this calculated renewal date is within the next 7 days
+                if (!nextRenewal.isBefore(today) && !nextRenewal.isAfter(sevenDaysLater)) {
                     results.add(sub);
                 }
             } catch (Exception e) {
-                //skip if date cant be parsed
+                //skip if date format is invalid
             }
         }
         return results;
@@ -227,6 +260,7 @@ public class Data {
 
     /**
      * Search Engine to find all the subscriptions under the given name
+     *
      * @param name the name of subscription to search for
      * @return ArrayList of ArrayLists, where inner list shows a
      * subscription that matches the name
@@ -254,11 +288,13 @@ public class Data {
         }
         return results; // Return list of matching subs
     }
+
     /**
      * Search Engine to find all the subscriptions under the given category
+     *
      * @param category is the category of subscription to search for
      * @return ArrayList of ArrayLists, where each inner list shows a
-     *subscription that matches the category
+     * subscription that matches the category
      */
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
@@ -286,13 +322,14 @@ public class Data {
         return results; // Return list of matching subs
     }
 
-   /**
-   * Updates a specific field of a subscription using .set(index,newValue).
-   * @author Ramsha
-   * @param subIndex index of subscription in outer ArrayList
-   * @param choiceIndex index of field to update in inner ArrayList
-   * @param newChoice   new value to set
-    */
+    /**
+     * Updates a specific field of a subscription using .set(index,newValue).
+     *
+     * @param subIndex    index of subscription in outer ArrayList
+     * @param choiceIndex index of field to update in inner ArrayList
+     * @param newChoice   new value to set
+     * @author Ramsha
+     */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
@@ -309,9 +346,10 @@ public class Data {
 
     /**
      * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
-     * @author Ramsha
+     *
      * @param status status string to ensure is right
      * @return true if valid, false if invalid
+     * @author Ramsha
      */
 
     public static boolean isValidStatus(String status) {
@@ -325,32 +363,39 @@ public class Data {
 
     /**
      * Checks if date (start/end) are valid
-     * @author Harshita
+     *
      * @param date (end/start) of the subscription ( user input )
      * @return boolean true if valid, false otherwise
+     * @author Harshita
      */
     public static boolean isValidDate(String date) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu").withResolverStyle(ResolverStyle.STRICT);
-            LocalDate parsedDate = LocalDate.parse(date, formatter);
-
-            // Check against today's date
-            LocalDate today = LocalDate.now();
-            if (parsedDate.isAfter(today)) {
-                return false; // Date is in the future
-            }
+            LocalDate.parse(date, formatter);
             return true;
-
         } catch (DateTimeParseException e) {
             return false;
         }
     }
 
     /**
+     * Checks if date is in the future
+     *
+     * @param date (end/start) of the subscription ( user input )
+     * @return boolean true if Date is in the future, false otherwise
+     */
+    public static boolean isFutureDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu");
+        LocalDate parsedDate = LocalDate.parse(date, formatter);
+        return parsedDate.isAfter(LocalDate.now());
+    }
+
+    /**
      * Checks if cost is valid
-     * @author Harshita
+     *
      * @param cost for new subscription
      * @return boolean true if cost is double, false otherwise
+     * @author Harshita
      */
     public static boolean isValidCost(String cost) {
         try {
@@ -365,7 +410,7 @@ public class Data {
 
     public static void loadTestData() {
         // These dates will show up in "Upcoming Bills"
-        storeNewSubscription("Netflix", "15.99", "Entertainment", "Yearly", "03/03/2026", "N/A", "ACTIVE");
+        storeNewSubscription("Netflix", "15.99", "Entertainment", "Yearly", "03/07/2025", "N/A", "ACTIVE");
         storeNewSubscription("Spotify", "10.99", "Entertainment", "Monthly", "03/05/2026", "N/A", "ACTIVE");
         storeNewSubscription("Gym", "50.00", "Fitness", "Yearly", "02/15/2026", "N/A", "ACTIVE");
         storeNewSubscription("Cloud Storage", "2.99", "Tech", "Monthly", "03/08/2026", "N/A", "ACTIVE");

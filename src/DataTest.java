@@ -326,8 +326,8 @@ public class DataTest {
         //Give the result size
         assertEquals(1, results.size(), "Should find 1 subscription named Spotify");
         //Give the name of the first result
-        ArrayList<String> numOneResult = results.get(0);
-        String name = numOneResult.get(0);
+        ArrayList<String> numOneResult = results.get(Data.INDEX_NAME);
+        String name = numOneResult.get(Data.INDEX_NAME);
 
         assertEquals("Spotify", name);
     }
