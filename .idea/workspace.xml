@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="Fixed a unit test error">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="Fixed a unit test error" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +23,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="add_data_logic" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -42,12 +39,12 @@
     }
   }
 }</component>
-  <component name="GitLabMergeRequestsSettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git&quot;,
-    &quot;second&quot;: &quot;1def89c3-24eb-4d88-98f8-dac7a664f202&quot;
+  <component name="GitLabMergeRequestsSettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "first": "https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git",
+    "second": "4c0cd5fa-5db9-45dc-b3ac-56a5979fe39f"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -117,6 +114,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DataTest.storeNewSubscription_CorrectDataStored" />
+        <item itemvalue="JUnit.DataTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.DataTest.storeNewSubscription_CorrectDataStored" />
         <item itemvalue="JUnit.DataTest" />
