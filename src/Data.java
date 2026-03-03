@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 public class Data {
 
@@ -36,18 +40,22 @@ public class Data {
      * @return boolean - true if subscription was new and was stored into list, false otherwise
      */
     public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
+        String cleanName = formatTitleCase(name);
+        String cleanCategory = formatTitleCase(category);
+        String cleanRenewal = formatTitleCase(renewal);
+
         if (!subscriptionExists(name)) {
             ArrayList<String> subscription = new ArrayList<>();
-            subscription.add(name.toLowerCase());
+            subscription.add(cleanName);
             subscription.add(cost);
-            subscription.add(formatTitleCase(category));
-            subscription.add(renewal);
+            subscription.add(cleanCategory);
+            subscription.add(cleanRenewal);
             subscription.add(startDate);
             subscription.add(endDate);
             subscription.add(status);
             subscriptions.add(subscription);
-            names.add(name.toLowerCase());
-            categories.add(formatTitleCase(category)); //no duplicates
+            names.add(cleanName);
+            categories.add(cleanCategory); //no duplicates
             return true;
         } else {
             return false;
@@ -80,6 +88,13 @@ public class Data {
         if (input.isEmpty()) return "";
         return input.substring(0, 1).toUpperCase() +
                 input.substring(1).toLowerCase();
+    }
+
+    public static boolean isOnlyText(String input) {
+        if (input == null || input.isEmpty()) {
+            return false;
+        }
+        return input.matches("^[a-zA-Z\\s]+$"); // https://stackoverflow.com/questions/24191040/checking-to-see-if-a-string-is-letters-spaces-only
     }
 
     /**
@@ -119,7 +134,7 @@ public class Data {
         for (ArrayList<String> sub : subscriptions) {
 
             if (sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) {
-                double cost = Double.parseDouble(sub.get(INDEX_COST));
+                double cost = Double.parseDouble(sub.get(INDEX_COST).replace("$", ""));
                 String renewal = sub.get(INDEX_RENEWAL);
 
                 if (renewal.equalsIgnoreCase("MONTHLY")) {
@@ -146,7 +161,7 @@ public class Data {
         for (ArrayList<String> sub : subscriptions) {
 
             if (sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) {
-                double cost = Double.parseDouble(sub.get(INDEX_COST));
+                double cost = Double.parseDouble(sub.get(INDEX_COST).replace("$", ""));
                 String renewal = sub.get(INDEX_RENEWAL);
 
                 if (renewal.equalsIgnoreCase("MONTHLY")) {
@@ -189,8 +204,7 @@ public class Data {
         java.time.LocalDate today = java.time.LocalDate.now();
         java.time.LocalDate sevenDaysLater = today.plusDays(7);
 
-        for (int i = 0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub = subscriptions.get(i);
+        for (ArrayList<String> sub : subscriptions) {
             if (sub.size() <= 6) continue;
 
             String dateStr = sub.get(4); //start date at index 4
@@ -218,25 +232,27 @@ public class Data {
      * subscription that matches the name
      */
     public static ArrayList<ArrayList<String>> searchByName(String name) {
-        ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (name == null) return results;
+        ArrayList<ArrayList<String>> results = new ArrayList<>(); // Initialize results list
+        if (name == null) {// If input is null, return empty list
+            return results;
+        }
+        name = name.trim();// Remove leading/trailing spaces
 
-        for (int i = 0; i < subscriptions.size(); i++) {
-            ArrayList<String> sub= subscriptions.get(i);
+        if (name.isEmpty()) {// If input is empty after trimming, return empty list
+            return results;
+        }
 
-            if (sub.size() > 0) {
-                String subName= sub.get(INDEX_NAME);
-                if (subName == null) continue;
+        String keyword = name.toLowerCase(); // Convert search to lowercase
 
-                String subNameLower= subName.toLowerCase();
-                String newNameLower= name.toLowerCase();
-
-                if (subNameLower.equals(newNameLower)) {
-                    results.add(sub);
+        for (ArrayList<String> sub : subscriptions) { // Loop through all subs
+            if (!sub.isEmpty()) {  // Check subs has at least 1 element
+                String subName = sub.get(INDEX_NAME); //Get the subs name using constant index
+                if (subName != null && subName.toLowerCase().contains(keyword)) {// Check if name contains keyword
+                    results.add(sub);// Add matching subs to results
                 }
             }
         }
-        return results;
+        return results; // Return list of matching subs
     }
     /**
      * Search Engine to find all the subscriptions under the given category
@@ -247,19 +263,27 @@ public class Data {
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (category == null) return results;
+        if (category == null) { // Return empty list if input is null
+            return results;
+        }
+        category = category.trim();// Remove extra spaces
 
-        for (int i = 0; i < subscriptions.size(); i++) {
+        if (category.isEmpty()) {// Return empty list if input is empty after trimming
+            return results;
+        }
+
+        String keyword = category.toLowerCase(); // Convert search to lowercase
+
+        for (int i = 0; i < subscriptions.size(); i++) { // Loop through all subs
             ArrayList<String> sub = subscriptions.get(i);
-            if (sub.size() > 2) {
-                String subCategory = sub.get(2);
-                if (subCategory == null) continue;
-                {
-                    results.add(sub);
+            if (sub.size() > 2) { // Check subs has at least 3 elements (name, cost, category)
+                String subCategory = sub.get(2); // Get the subs category
+                if (subCategory != null && subCategory.toLowerCase().contains(keyword)) {// Check if category contains keyword
+                    results.add(sub); // Add matching subs to results
                 }
             }
         }
-        return results;
+        return results; // Return list of matching subs
     }
 
    /**
@@ -280,7 +304,7 @@ public class Data {
     //--------------------------------Valid Checks----------------------------------------//
 
     public static boolean subscriptionExists(String name) {
-        return names.contains(name.toLowerCase());
+        return names.contains(formatTitleCase(name));
     }
 
     /**
@@ -306,33 +330,18 @@ public class Data {
      * @return boolean true if valid, false otherwise
      */
     public static boolean isValidDate(String date) {
-
-        // check the basic format MM/DD/YYYY
-        if (date.length() != 10) {
-            return false;
-        }
-        if (date.charAt(2) != '/' || date.charAt(5) != '/') {
-            return false;
-        }
-
-        // Check bounds of month, day, year
         try {
-            int month = Integer.parseInt(date.substring(0, 2));
-            int day = Integer.parseInt(date.substring(3, 5));
-            int year = Integer.parseInt(date.substring(6, 10));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu").withResolverStyle(ResolverStyle.STRICT);
+            LocalDate parsedDate = LocalDate.parse(date, formatter);
 
-            if (month < 1 || month > 12) {
-                return false;
-            }
-            if (day < 1 || day > 31) {
-                return false;
-            }
-            if (year < 2000) {
-                return false;
+            // Check against today's date
+            LocalDate today = LocalDate.now();
+            if (parsedDate.isAfter(today)) {
+                return false; // Date is in the future
             }
             return true;
 
-        } catch (NumberFormatException e) {
+        } catch (DateTimeParseException e) {
             return false;
         }
     }
@@ -355,12 +364,13 @@ public class Data {
     //======================================== TEST DATA =========================================//
 
     public static void loadTestData() {
-        storeNewSubscription("Netflix", "15.99", "Entertainment", "Monthly", "01/01/2025", null, "ACTIVE");
-        storeNewSubscription("GoodEarth", "9.99", "Food", "Monthly", "02/01/2025", null, "ACTIVE");
-        storeNewSubscription("GoodLife", "50.00", "Fitness", "Monthly", "03/01/2025", null, "ACTIVE");
-        storeNewSubscription("YouTube Premium", "13.99", "Entertainment", "Monthly", "04/01/2025", null, "PAUSED");
+        // These dates will show up in "Upcoming Bills"
+        storeNewSubscription("Netflix", "15.99", "Entertainment", "Yearly", "03/03/2026", "N/A", "ACTIVE");
+        storeNewSubscription("Spotify", "10.99", "Entertainment", "Monthly", "03/05/2026", "N/A", "ACTIVE");
+        storeNewSubscription("Gym", "50.00", "Fitness", "Yearly", "02/15/2026", "N/A", "ACTIVE");
+        storeNewSubscription("Cloud Storage", "2.99", "Tech", "Monthly", "03/08/2026", "N/A", "ACTIVE");
 
-        setCategoryBudget("Entertainment", 60.00);
+        setCategoryBudget("Entertainment", 20.00); // This will trigger a budget alert for Netflix + Spotify
         setCategoryBudget("Fitness", 100.00);
     }
 }

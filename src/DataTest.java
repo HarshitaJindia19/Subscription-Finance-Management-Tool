@@ -14,13 +14,12 @@ public class DataTest {
         Data.categoryBudgets.clear();
     }
 
-    /**
-     * @author Ramsha
-     * Tests that findSubscriptionIndex returns the right index
-     */
-
     @Test
     void findSubscriptionIndex() {
+        //clear any existing data so tests dont interfere
+        Data.subscriptions.clear();
+        Data.names.clear();
+        //create test subscription and add to subscriptions ArrayList
         ArrayList<String> subscription = new ArrayList<>();
         subscription.add("Netflix");
         subscription.add("18.99");
@@ -31,6 +30,7 @@ public class DataTest {
         subscription.add("ACTIVE");
         Data.subscriptions.add(subscription);
 
+        //searching for Netflix which should be at index 0
         int index = Data.findingSubscriptionIndex("Netflix");
         assertEquals(0, index, "Netflix should be in index 0");
     }
@@ -39,7 +39,7 @@ public class DataTest {
     void findSubscriptionIndex_notFound() {
         Data.subscriptions.clear();
         Data.names.clear();
-
+        //searching for a subscription that was never added (should return -1)
         int index = Data.findingSubscriptionIndex("Hulu");
         assertEquals(-1, index, "should return -1 when subscription not found");
     }
@@ -48,6 +48,7 @@ public class DataTest {
     void findSubscriptionIndex_caseInsensitive() {
         Data.subscriptions.clear();
         Data.names.clear();
+        //add subscription with uppercase Netflix
         ArrayList<String> subscription = new ArrayList<>();
         subscription.add("Netflix");
         subscription.add("17.99");
@@ -58,12 +59,14 @@ public class DataTest {
         subscription.add("ACTIVE");
         Data.subscriptions.add(subscription);
 
+        //search using lowercase Netflix
         int index = Data.findingSubscriptionIndex("netflix");
         assertEquals(0, index, "should find subscription even if lowercase.");
     }
 
     @Test
     void updateSubscriptionChoice(){
+        //add test subscription with ACTIVE status
         ArrayList<String> subscription= new ArrayList<>();
         subscription.add("Netflix");
         subscription.add("18.99");
@@ -74,9 +77,48 @@ public class DataTest {
         subscription.add("ACTIVE");
         Data.subscriptions.add(subscription);
 
+        //update status field (INDEX_STATUS=9) to "PAUSED"
         Data.changeSubscriptionChoice(0,6, "PAUSED");
+        //verify that status was updated correctly
         assertEquals("PAUSED",Data.subscriptions.get(0).get(6), "Should update status to PAUSED");
 
+    }
+    @Test
+    void changeSubscriptionChoice_updateCost() {
+        Data.subscriptions.clear();
+        Data.names.clear();
+        //add test subscription with cost 15.99
+        ArrayList<String> subscription = new ArrayList<>();
+        subscription.add("Netflix");
+        subscription.add("15.99");
+        subscription.add("Entertainment");
+        subscription.add("Monthly");
+        subscription.add("03/01/2025");
+        subscription.add("03/01/2026");
+        subscription.add("ACTIVE");
+        Data.subscriptions.add(subscription);
+        //update cost field (INDEX_COST =1) tp "19.99"
+        Data.changeSubscriptionChoice(0, Data.INDEX_COST, "19.99");
+        //verify cost was updated correctly
+        assertEquals("19.99", Data.subscriptions.get(0).get(Data.INDEX_COST), "Should update cost to 19.99");
+    }
+
+    @Test
+    void isValidStatus_validInput() {
+        //all three values in STATUS_OPTIONS should return true
+        assertTrue(Data.isValidStatus("ACTIVE"), "ACTIVE should be valid");
+        assertTrue(Data.isValidStatus("PAUSED"), "PAUSED should be valid");
+        assertTrue(Data.isValidStatus("CANCELLED"), "CANCELLED should be valid");
+    }
+
+    @Test
+    void isValidStatus_invalidInput() {
+        //lowercase active shouldn't match any STATUS_OPTIONS
+        assertFalse(Data.isValidStatus("active"), "Lowercase should be invalid");
+        //random string HELLO shouldn't match any STATUS_OPTIONS
+        assertFalse(Data.isValidStatus("HELLO"), "Random string should be invalid");
+        //empty string shouldn't match any STATUS_OPTIONS
+        assertFalse(Data.isValidStatus(""), "Empty string should be invalid");
     }
 
     //------------------------------ Store New Subscription ----------------------------//
