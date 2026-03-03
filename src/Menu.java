@@ -628,38 +628,52 @@ public class Menu {
      */
 
     public static double getCategoryBudgetUsage(String category) {
-        double percentageUsed = 0.0;
-        if (Data.categoryBudgets.containsKey(category.toLowerCase()) == false) {
+        if (category == null) {
             return -1;
+        }
+        category = category.trim();
+
+        if (category.isEmpty()) {
+            return -1;
+        }
+        String formattedCategory = category.toUpperCase();
+
+        if (!categoryBudgets.containsKey(formattedCategory)) {
+            return -1;
+        }
+        double budgetLimit = categoryBudgets.get(formattedCategory);
+        if (budgetLimit <= 0){
+            return 0.0;
         }
 
         double totalSpent = 0;
         for (int i = 0; i < Data.subscriptions.size(); i++) {
             ArrayList<String> sub = Data.subscriptions.get(i);
+
             if (sub.size() > 6) {
                 String subCategory = sub.get(2);
                 String status = sub.get(6);
-                if (subCategory.equalsIgnoreCase(category) == true && status.equalsIgnoreCase("active") == true) {
-                    String costStr = sub.get(1).replace("$", "").trim();
-                    if (costStr.isEmpty() == false) {
-                        try {
+
+                if ((subCategory != null) == true && (status != null) == true
+                        && subCategory.toUpperCase().equals(formattedCategory) == true && status.equalsIgnoreCase("ACTIVE") == true) {
+
+                    try {
+                        String costStr = sub.get(1).replace("$", "").trim();
+                        if (costStr.isEmpty() == false) {
                             totalSpent += Double.parseDouble(costStr);
-                        } catch (RuntimeException e) {
-                            System.out.println("Invalid cost for subscription: " + sub.get(0));
                         }
+                    } catch (RuntimeException e) {
+                        System.out.println("Invalid cost for subscription: " + sub.get(0));
                     }
-                }
-
-                double budgetLimit = Data.categoryBudgets.get(category.toLowerCase());
-                percentageUsed = (totalSpent / budgetLimit) * 100;
-
-                if (percentageUsed>100){
-                    percentageUsed=100;
                 }
             }
         }
+        double percentageUsed = (totalSpent / budgetLimit) * 100;
+        percentageUsed = Math.round(percentageUsed * 100.0) / 100.0;
+
         return percentageUsed;
     }
+
 //add javadoc comments
     public static void showAllSubscriptions() {
         System.out.println("=== All Subscriptions ===");
