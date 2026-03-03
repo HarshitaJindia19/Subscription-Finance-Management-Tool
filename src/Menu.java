@@ -517,9 +517,9 @@ public class Menu {
             String subName = sub.get(Data.INDEX_NAME);
             String costStr = sub.get(Data.INDEX_COST);
             String subCategory = sub.get(Data.INDEX_CATEGORY);
-            String billing = sub.get(Data.INDEX_BILLING);
-            String start = sub.get(Data.INDEX_START);
-            String end = sub.get(Data.INDEX_END);
+            String billing = sub.get(Data.INDEX_RENEWAL);
+            String start = sub.get(Data.INDEX_START_DATE);
+            String end = sub.get(Data.INDEX_END_DATE);
             String status = sub.get(Data.INDEX_STATUS);
 
             //if null or empty end dates then replace with "-"
@@ -647,10 +647,10 @@ public class Menu {
             return -1;
         }
 
-        if (!categoryBudgets.containsKey(key)) {
+        if (!Data.categoryBudgets.containsKey(key)) {
             return -1;
         }
-        double budgetLimit = categoryBudgets.get(key);
+        double budgetLimit = Data.categoryBudgets.get(key);
         if (budgetLimit <= 0){
             return 0.0;
         }
@@ -661,15 +661,15 @@ public class Menu {
             ArrayList<String> sub = Data.subscriptions.get(i);
 
             if (sub.size() > 6) {
-                String subCategory = sub.get(INDEX_CATEGORY);
-                String status = sub.get(INDEX_STATUS);
+                String subCategory = sub.get(Data.INDEX_CATEGORY);
+                String status = sub.get(Data.INDEX_STATUS);
 
                 // Only count ACTIVE subs in the correct category
                 if ((subCategory != null) == true && (status != null) == true
                         && subCategory.trim().toLowerCase().equals(key)== true && status.equalsIgnoreCase("ACTIVE") == true) {
 
                     try {
-                        String costStr = sub.get(INDEX_COST).replace("$", "").trim();
+                        String costStr = sub.get(Data.INDEX_COST).replace("$", "").trim();
                         if (costStr.isEmpty() == false) {
                             totalSpent += Double.parseDouble(costStr);
                         }
@@ -700,7 +700,7 @@ public class Menu {
             ArrayList<String> sub = Data.subscriptions.get(i);
 
             if (sub.size() > 6) {
-                String status = sub.get(INDEX_STATUS);
+                String status = sub.get(Data.INDEX_STATUS);
                 if (status.equalsIgnoreCase("active")) {
                     activeSubs.add(sub);
                 }
@@ -732,7 +732,7 @@ public class Menu {
             ArrayList<String> sub = Data.subscriptions.get(i);
 
             if (sub.size() > 6) {
-                String status = sub.get(INDEX_STATUS);
+                String status = sub.get(Data.INDEX_STATUS);
 
                 if (status.equalsIgnoreCase("paused")) {
                     pausedSubs.add(sub);
@@ -744,6 +744,14 @@ public class Menu {
             System.out.println("No paused subscriptions.");
         } else {
             printTable(pausedSubs);
+        }
+    }
+    public static void showAllSubscriptions() {
+        System.out.println("=== All Subscriptions ===");
+        if (Data.subscriptions.isEmpty()) {
+            System.out.println("No subscriptions found.");
+        } else {
+            printTable(Data.subscriptions);
         }
     }
     /**
