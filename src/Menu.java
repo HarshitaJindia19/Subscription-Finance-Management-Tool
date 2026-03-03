@@ -631,17 +631,16 @@ public class Menu {
         if (category == null) {
             return -1;
         }
-        category = category.trim();
+        String key = category.trim().toLowerCase();
 
-        if (category.isEmpty()) {
+        if (key.isEmpty()) {
             return -1;
         }
-        String formattedCategory = category.toUpperCase();
 
-        if (!categoryBudgets.containsKey(formattedCategory)) {
+        if (!categoryBudgets.containsKey(key)) {
             return -1;
         }
-        double budgetLimit = categoryBudgets.get(formattedCategory);
+        double budgetLimit = categoryBudgets.get(key);
         if (budgetLimit <= 0){
             return 0.0;
         }
@@ -655,7 +654,7 @@ public class Menu {
                 String status = sub.get(6);
 
                 if ((subCategory != null) == true && (status != null) == true
-                        && subCategory.toUpperCase().equals(formattedCategory) == true && status.equalsIgnoreCase("ACTIVE") == true) {
+                        && subCategory.trim().toLowerCase().equals(key)== true && status.equalsIgnoreCase("ACTIVE") == true) {
 
                     try {
                         String costStr = sub.get(1).replace("$", "").trim();
