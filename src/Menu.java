@@ -752,8 +752,20 @@ public class Menu {
         System.out.print("Search by (1) Name or (2) Category: ");
         String searchNumber = input.nextLine().trim();
 
+        //validate menu input
+        if (!searchNumber.equals("1") && !searchNumber.equals("2")) {
+            System.out.println("Invalid search type selected. Please enter 1 or 2.");
+            return;
+        }
+
         System.out.print("Enter search keyword: ");
         String keyword = input.nextLine().trim();
+
+        //validate keyword
+        if (keyword.isEmpty()) {
+            System.out.println("Search keyword cannot be empty.");
+            return;
+        }
 
         ArrayList<ArrayList<String>> results;
 
