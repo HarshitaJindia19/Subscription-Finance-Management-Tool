@@ -126,17 +126,30 @@ public class Menu {
      * Adds/stores new subscription with information
      */
     private static void addNewSubscription() {
-        boolean success = false;
-        do {
-            String name = getName();
-            String cost = getCost();
-            String category = getCategory();
-            String renewal = getRenewal();
-            String startDate = getStartDate();
-            String endDate = getEndDate();
-            String status = getStatus();
-            success = Data.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
-        } while (!success);
+        System.out.println("\n==== ADD NEW SUBSCRIPTION ====");
+
+        // Get the name first to check if it already exists
+        String name = getName();
+
+        if (Data.subscriptionExists(name)) {
+            System.out.println("ERROR: A subscription with the name '" + name + "' already exists.");
+            System.out.println("Please use the 'Update' option if you wish to change it.");
+            return;
+        }
+
+        // if subscription is new prompt user for other information
+        String cost = getCost();
+        String category = getCategory();
+        String renewal = getRenewal();
+        String startDate = getStartDate();
+        String endDate = getEndDate();
+        String status = getStatus();
+
+        boolean success = Data.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
+
+        if (success) {
+            System.out.println("\n✅Subscription added successfully!");
+        }
     }
 
     /**
@@ -150,7 +163,6 @@ public class Menu {
         displayAllBudgets();
 
         // Get category from user
-        System.out.println("Choose the category you want to add the subscription for: ");
         String category = getCategory();
 
         // Update category budget
@@ -326,10 +338,13 @@ public class Menu {
      * @return name/brand of subscription
      */
     private static String getName() {
-        System.out.println("\nEnter the name:");
         String name;
         do {
+            System.out.println("\nEnter the name:");
             name = input.nextLine().trim();
+            if(!Data.isOnlyText(name)) {
+                System.out.println("ERROR: Name must contain only letters. Please try again.");
+            }
         } while (name.isEmpty());
         return name;
     }
@@ -346,7 +361,7 @@ public class Menu {
         do {
             cost = input.nextLine().trim().replace("$", "");
             if (!Data.isValidCost(cost)) {
-                System.out.println("Invalid cost. Please enter a valid cost (ex. 15.99)");
+                System.out.println("Invalid cost. Please enter a valid cost (ex. 15.99):");
             }
         } while (!Data.isValidCost(cost));
 
@@ -371,10 +386,10 @@ public class Menu {
         String category;
         do {
             category = input.nextLine().trim();
-            if (category.isEmpty()) {
-                System.out.println("Category cannot be empty, please enter a category: ");
+            if (!Data.isOnlyText(category)) {
+                System.out.println("ERROR: Category must only contain letters. Please enter the category: ");
             }
-        } while (category.isEmpty());
+        } while (!Data.isOnlyText(category));
         return category;
     }
 
@@ -394,7 +409,7 @@ public class Menu {
             }
         } while (!renewal.equalsIgnoreCase("monthly") && !renewal.equalsIgnoreCase("yearly"));
 
-        return renewal;
+        return Data.formatTitleCase(renewal); // return formatted version for clean output
     }
 
     /**
@@ -457,7 +472,7 @@ public class Menu {
                 System.out.println("Please enter one of the options provided:");
             }
         } while (!Data.isValidStatus(status));
-        return status;
+        return status.toUpperCase();
     }
 
     /**
@@ -509,7 +524,7 @@ public class Menu {
             ArrayList<String> sub = subs.get(i);
 
             //skips invalid sub enteries
-            if (sub.size() <= 6) {
+            if (sub.size() < 7) {
                 continue;
             }
 
@@ -549,9 +564,7 @@ public class Menu {
         System.out.println("=== Budget Alert ===");
 
         //Loop through each category
-        for (int i = 0; i < categories.size(); i++) {
-            String category = categories.get(i);
-
+        for (String category : categories) {
             // Sum of ACTIVE subs costs in this category
             double limit = Data.categoryBudgets.get(category);
             double total = 0;
@@ -564,18 +577,18 @@ public class Menu {
                 }
 
                 String subName = sub.get(Data.INDEX_NAME);
-                String costStr = sub.get(Data.INDEX_COST);
-                String subCategory = sub.get(Data.INDEX_CATEGORY);
+                String costStr = sub.get(Data.INDEX_COST).replace("$", "").trim();;
+                String subCategory = Data.formatTitleCase(sub.get(Data.INDEX_CATEGORY));
                 String status = sub.get(Data.INDEX_STATUS);
 
                 // only count ACTIVE subscriptions in the correct category
                 if (subCategory.equalsIgnoreCase(category) && status.equalsIgnoreCase("ACTIVE")) {
 
-                    if (costStr.equals("") == false) {
+                    if (!costStr.isEmpty()) {
                         try {
                             double cost = Double.parseDouble(costStr);
                             total += cost;
-                        } catch (RuntimeException e) {
+                        } catch (NumberFormatException e) {
                             System.out.println("Could not read the cost for: " + subName);
                         }
                     }
@@ -641,7 +654,9 @@ public class Menu {
         if (category == null) {
             return -1;
         }
-        String key = category.trim().toLowerCase();
+
+        // keep formatting consistent throughout the program
+        String key = Data.formatTitleCase(category.trim());
 
         if (key.isEmpty()) {
             return -1;
@@ -664,17 +679,18 @@ public class Menu {
                 String subCategory = sub.get(Data.INDEX_CATEGORY);
                 String status = sub.get(Data.INDEX_STATUS);
 
+                String cleanSubCategory = Data.formatTitleCase(subCategory);
+
                 // Only count ACTIVE subs in the correct category
-                if ((subCategory != null) == true && (status != null) == true
-                        && subCategory.trim().toLowerCase().equals(key)== true && status.equalsIgnoreCase("ACTIVE") == true) {
+                if (status != null && cleanSubCategory.trim().equals(key) && status.equalsIgnoreCase("ACTIVE")) {
 
                     try {
                         String costStr = sub.get(Data.INDEX_COST).replace("$", "").trim();
-                        if (costStr.isEmpty() == false) {
+                        if (!costStr.isEmpty()) {
                             totalSpent += Double.parseDouble(costStr);
                         }
-                    } catch (RuntimeException e) {
-                        System.out.println("Invalid cost for subscription: " + sub.get(0));
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid cost for subscription: " + sub.get(Data.INDEX_NAME));
                     }
                 }
             }
@@ -701,14 +717,14 @@ public class Menu {
 
             if (sub.size() > 6) {
                 String status = sub.get(Data.INDEX_STATUS);
-                if (status.equalsIgnoreCase("active")) {
+                if (status.equalsIgnoreCase(Data.STATUS_OPTIONS[0])) {
                     activeSubs.add(sub);
                 }
             }
         }
 
         // Print table or message if none found
-            if (activeSubs.size() == 0) {
+            if (activeSubs.isEmpty()) {
                 System.out.println("No active subscriptions found.");
             } else {
                 printTable(activeSubs);
@@ -734,13 +750,13 @@ public class Menu {
             if (sub.size() > 6) {
                 String status = sub.get(Data.INDEX_STATUS);
 
-                if (status.equalsIgnoreCase("paused")) {
+                if (status.equalsIgnoreCase(Data.STATUS_OPTIONS[1])) {
                     pausedSubs.add(sub);
                 }
             }
         }
         // Print table or message if none found
-        if (pausedSubs.size() == 0) {
+        if (pausedSubs.isEmpty()) {
             System.out.println("No paused subscriptions.");
         } else {
             printTable(pausedSubs);
@@ -760,7 +776,7 @@ public class Menu {
      * of a % of budget
      *
      * If no budget is set for the entered category, message printed
-     * other wise % is rounded to two decimal places
+     * otherwise % is rounded to two decimal places
      */
     public static void showCategoryBudgetUsage() {
         System.out.println("=== Budget % used by Category ===");
@@ -768,7 +784,7 @@ public class Menu {
 
         String category = input.nextLine().trim(); // Read user input and remove extra spaces
         double percentage = getCategoryBudgetUsage(category); // Calculate budget usage for the category
-// Check if category has a budget set
+        // Check if category has a budget set
         if (percentage < 0) {
             System.out.println("No budget set for this category.");// Print message if no budget exists
         } else {
@@ -795,7 +811,7 @@ public class Menu {
 
         ArrayList<ArrayList<String>> highExpense = getHighExpenseBills(threshold);// Get subscriptions above threshold
         // Check if any subscriptions meet the threshold
-        if (highExpense.size() == 0) {
+        if (highExpense.isEmpty()) {
             System.out.println("No high-expense bills were found.");// Print message if none found
         } else {
             System.out.println("=== High-Expense Subscriptions ===");
@@ -840,7 +856,7 @@ public class Menu {
             results = Data.searchByCategory(keyword); //search by category
         }
         // Print results or message if none found
-        if (results.size() == 0) {
+        if (results.isEmpty()) {
             System.out.println("No matching subscriptions found.");
         } else {
             System.out.println("=== Search Results ===");
