@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="-fixed getCategoryBudgetUsage so menu runs">
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/Data.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/Data.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/DataTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/cpsc233w26project1/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/cpsc233w26project1/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772498487331</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs.">
+      <option name="closed" value="true" />
+      <created>1772519272806</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1772519272806</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +253,7 @@
     <MESSAGE value="Fixed a unit test error" />
     <MESSAGE value="-added validity cases on showSearchResults()" />
     <MESSAGE value="-fixed getCategoryBudgetUsage so menu runs" />
-    <option name="LAST_COMMIT_MESSAGE" value="-fixed getCategoryBudgetUsage so menu runs" />
+    <MESSAGE value="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs." />
   </component>
 </project>
