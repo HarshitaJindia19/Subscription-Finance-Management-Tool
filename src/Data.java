@@ -218,29 +218,29 @@ public class Data {
      * subscription that matches the name
      */
     public static ArrayList<ArrayList<String>> searchByName(String name) {
-        ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (name == null) {
+        ArrayList<ArrayList<String>> results = new ArrayList<>(); // Initialize results list
+        if (name == null) {// If input is null, return empty list
             return results;
         }
-        name = name.trim();
+        name = name.trim();// Remove leading/trailing spaces
 
-        if (name.isEmpty()) {
+        if (name.isEmpty()) {// If input is empty after trimming, return empty list
             return results;
         }
 
-        String keyword = name.toLowerCase();
+        String keyword = name.toLowerCase(); // Convert search to lowercase
 
-        for (int i = 0; i < subscriptions.size(); i++) {
+        for (int i = 0; i < subscriptions.size(); i++) { // Loop through all subs
             ArrayList<String> sub= subscriptions.get(i);
 
-            if (sub.size() > 0) {
-                String subName= sub.get(INDEX_NAME);
-                if (subName != null && subName.toLowerCase().contains(keyword)) {
-                    results.add(sub);
+            if (sub.size() > 0) {  // Check subs has at least 1 element
+                String subName= sub.get(INDEX_NAME); //Get the subs name using constant index
+                if (subName != null && subName.toLowerCase().contains(keyword)) {// Check if name contains keyword
+                    results.add(sub);// Add matching subs to results
                 }
             }
         }
-        return results;
+        return results; // Return list of matching subs
     }
     /**
      * Search Engine to find all the subscriptions under the given category
@@ -251,27 +251,27 @@ public class Data {
 
     public static ArrayList<ArrayList<String>> searchByCategory(String category) {
         ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (category == null) {
+        if (category == null) { // Return empty list if input is null
             return results;
         }
-        category = category.trim();
+        category = category.trim();// Remove extra spaces
 
-        if (category.isEmpty()) {
+        if (category.isEmpty()) {// Return empty list if input is empty after trimming
             return results;
         }
 
-        String keyword = category.toLowerCase();
+        String keyword = category.toLowerCase(); // Convert search to lowercase
 
-        for (int i = 0; i < subscriptions.size(); i++) {
+        for (int i = 0; i < subscriptions.size(); i++) { // Loop through all subs
             ArrayList<String> sub = subscriptions.get(i);
-            if (sub.size() > 2) {
-                String subCategory = sub.get(2);
-                if (subCategory != null && subCategory.toLowerCase().contains(keyword)) {
-                    results.add(sub);
+            if (sub.size() > 2) { // Check subs has at least 3 elements (name, cost, category)
+                String subCategory = sub.get(2); // Get the subs category
+                if (subCategory != null && subCategory.toLowerCase().contains(keyword)) {// Check if category contains keyword
+                    results.add(sub); // Add matching subs to results
                 }
             }
         }
-        return results;
+        return results; // Return list of matching subs
     }
 
    /**

@@ -500,30 +500,36 @@ public class Menu {
      */
     public static void printTable(ArrayList<ArrayList<String>> subs) {
         // Used printf for column alignment (Java standard library formatting)
+        //Print table headers
         System.out.printf("%-15s %-8s %-15s %-10s %-15s %-15s %-10s%n",
                 "Name", "Cost", "Category", "Billing", "Start", "End", "Status");
 
+        // Loop through all subs
         for (int i = 0; i < subs.size(); i++) {
             ArrayList<String> sub = subs.get(i);
 
+            //skips invalid sub enteries
             if (sub.size() <= 6) {
                 continue;
             }
 
-            String subName = sub.get(0);
-            String costStr = sub.get(1);
-            String subCategory = sub.get(2);
-            String billing = sub.get(3);
-            String start = sub.get(4);
-            String end = sub.get(5);
-            String status = sub.get(6);
+            // Get subscription details using constants
+            String subName = sub.get(Data.INDEX_NAME);
+            String costStr = sub.get(Data.INDEX_COST);
+            String subCategory = sub.get(Data.INDEX_CATEGORY);
+            String billing = sub.get(Data.INDEX_BILLING);
+            String start = sub.get(Data.INDEX_START);
+            String end = sub.get(Data.INDEX_END);
+            String status = sub.get(Data.INDEX_STATUS);
 
+            //if null or empty end dates then replace with "-"
             if (end == null) {
                 end = "-";
             } else if (end.isEmpty()) {
                 end = "-";
             }
 
+            //Description Row printed
             System.out.printf("%-15s $%-7s %-15s %-10s %-15s %-15s %-10s%n",
                     subName, costStr, subCategory, billing, start, end, status);
         }
@@ -532,27 +538,28 @@ public class Menu {
     /**
      * Checks all subscription categories with their budget limits and prints alerts
      * Used for categories where total spending on ACTIVE subscriptions exceeds the budget
-     * <p>
+     *
      * For each category, this method sums the costs of all ACTIVE subscriptions in that category
      * If the total spending > budget for category = budget alert
      * is printed to the console showing the category name, amount spent, and budget limit
-     * <p>
-     * This method doesn't return a value, only printing messages to console
+     *
      */
     public static void showBudgetAlerts() {
         ArrayList<String> categories = new ArrayList<>(Data.categoryBudgets.keySet());
         System.out.println("=== Budget Alert ===");
 
+        //Loop through each category
         for (int i = 0; i < categories.size(); i++) {
             String category = categories.get(i);
 
+            // Sum of ACTIVE subs costs in this category
             double limit = Data.categoryBudgets.get(category);
             double total = 0;
 
             for (int j = 0; j < Data.subscriptions.size(); j++) {
                 ArrayList<String> sub = Data.subscriptions.get(j);
 
-                if (sub.size() <= 6) {
+                if (sub.size() <= 6) { // skip invalid entries
                     continue;
                 }
 
@@ -575,6 +582,7 @@ public class Menu {
                 }
             }
 
+            // Alert if budget exceeded
             if (total > limit) {
                 System.out.println("🚨 Budget exceeded for " + category);
                 System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
@@ -596,6 +604,7 @@ public class Menu {
             if (sub.size() > 6) {
                 String status = sub.get(Data.INDEX_STATUS);
 
+                // Only consider ACTIVE subscriptions
                 if (status.equalsIgnoreCase("ACTIVE")) {
                     String costStr = sub.get(Data.INDEX_COST);
 
@@ -603,6 +612,7 @@ public class Menu {
                         try {
                             double cost = Double.parseDouble(costStr);
 
+                            // Add to results if cost >= threshold
                             if (cost >= threshold) {
                                 results.add(sub);
                             }
@@ -645,19 +655,21 @@ public class Menu {
             return 0.0;
         }
 
+        // Loop through subscriptions
         double totalSpent = 0;
         for (int i = 0; i < Data.subscriptions.size(); i++) {
             ArrayList<String> sub = Data.subscriptions.get(i);
 
             if (sub.size() > 6) {
-                String subCategory = sub.get(2);
-                String status = sub.get(6);
+                String subCategory = sub.get(INDEX_CATEGORY);
+                String status = sub.get(INDEX_STATUS);
 
+                // Only count ACTIVE subs in the correct category
                 if ((subCategory != null) == true && (status != null) == true
                         && subCategory.trim().toLowerCase().equals(key)== true && status.equalsIgnoreCase("ACTIVE") == true) {
 
                     try {
-                        String costStr = sub.get(1).replace("$", "").trim();
+                        String costStr = sub.get(INDEX_COST).replace("$", "").trim();
                         if (costStr.isEmpty() == false) {
                             totalSpent += Double.parseDouble(costStr);
                         }
@@ -667,100 +679,132 @@ public class Menu {
                 }
             }
         }
+        // Calculate percentage used and round to 2 decimals
         double percentageUsed = (totalSpent / budgetLimit) * 100;
         percentageUsed = Math.round(percentageUsed * 100.0) / 100.0;
 
         return percentageUsed;
     }
 
-//add javadoc comments
-    public static void showAllSubscriptions() {
-        System.out.println("=== All Subscriptions ===");
-
-        if (Data.subscriptions.size() == 0) {
-            System.out.println("No subscriptions found.");
-        } else {
-            printTable(Data.subscriptions);
-        }
-    }
-//
+    /**
+     * Displays all subscriptions stored in the system
+     * Prints a formatted table showing all details for each subscription
+     */
     public static void showActiveSubscriptions() {
         System.out.println("=== Active Subscriptions ===");
 
         ArrayList<ArrayList<String>> activeSubs = new ArrayList<>();
 
+        // Filter for ACTIVE subs
         for (int i = 0; i < Data.subscriptions.size(); i++) {
             ArrayList<String> sub = Data.subscriptions.get(i);
 
             if (sub.size() > 6) {
-                String status = sub.get(6);
+                String status = sub.get(INDEX_STATUS);
                 if (status.equalsIgnoreCase("active")) {
                     activeSubs.add(sub);
                 }
             }
         }
+
+        // Print table or message if none found
             if (activeSubs.size() == 0) {
                 System.out.println("No active subscriptions found.");
             } else {
                 printTable(activeSubs);
             }
     }
-//
+    /**
+     * Displays all subscriptions that are currently paused
+     *Loop through all subscriptions in the system and gets
+     * "PAUSED" status and prints as a formatted table showing
+     *
+     * If no paused subscriptions exist, a message is printed instead.
+     *
+     */
     public static void showPausedSubscriptions() {
         System.out.println("=== Paused Subscriptions ===");
 
         ArrayList<ArrayList<String>> pausedSubs = new ArrayList<>();
 
+        // Filter for PAUSED subs
         for (int i = 0; i < Data.subscriptions.size(); i++) {
             ArrayList<String> sub = Data.subscriptions.get(i);
 
             if (sub.size() > 6) {
-                String status = sub.get(6);
+                String status = sub.get(INDEX_STATUS);
 
                 if (status.equalsIgnoreCase("paused")) {
                     pausedSubs.add(sub);
                 }
             }
         }
-
+        // Print table or message if none found
         if (pausedSubs.size() == 0) {
             System.out.println("No paused subscriptions.");
         } else {
             printTable(pausedSubs);
         }
     }
-//
+    /**
+     * Displays the percentage of the budget used for a category
+     *user to enter category name, then calculates ACTIVE sub costs
+     * of a % of budget
+     *
+     * If no budget is set for the entered category, message printed
+     * other wise % is rounded to two decimal places
+     */
     public static void showCategoryBudgetUsage() {
         System.out.println("=== Budget % used by Category ===");
         System.out.print("Enter category to check budget usage: ");
 
-        String category = input.nextLine().trim();
-        double percentage = getCategoryBudgetUsage(category);
-
+        String category = input.nextLine().trim(); // Read user input and remove extra spaces
+        double percentage = getCategoryBudgetUsage(category); // Calculate budget usage for the category
+// Check if category has a budget set
         if (percentage < 0) {
-            System.out.println("No budget set for this category.");
+            System.out.println("No budget set for this category.");// Print message if no budget exists
         } else {
+            // Print the budget usage rounded to two decimal places
             System.out.println(
                     "Category '" + category + "' Budget used: "
                             + String.format("%.2f", percentage) + "%"
             );
         }
     }
-//
+
+    /**
+     * Displays all ACTIVE subs with cost >= thershold
+     * user enters a threshold amount
+     * getHighExpenseBills(double threshold) called
+     *
+     * Results are printed in a formatted table
+     * If no subscriptions meet threshold, a message is displayed
+     *
+     */
     public static void showHighExpenseSubscriptions() {
         System.out.print("Enter threshold amount: $");
-        double threshold = Double.parseDouble(input.nextLine().trim());
+        double threshold = Double.parseDouble(input.nextLine().trim()); // Read and convert input to double
 
-        ArrayList<ArrayList<String>> highExpense = getHighExpenseBills(threshold);
-
+        ArrayList<ArrayList<String>> highExpense = getHighExpenseBills(threshold);// Get subscriptions above threshold
+        // Check if any subscriptions meet the threshold
         if (highExpense.size() == 0) {
-            System.out.println("No high-expense bills were found.");
+            System.out.println("No high-expense bills were found.");// Print message if none found
         } else {
             System.out.println("=== High-Expense Subscriptions ===");
-            printTable(highExpense);
+            printTable(highExpense);// Print the subscriptions in a formatted table
         }
     }
-//
+    /**
+     * user searches subs by name/ category and displays the results
+     * The method asks the user to enter a search type:
+     * "1" for searching by sub name, or "2" for category
+     * then it asks for a keyword to search for and results are displayed in a formatted table
+     *
+     * Input validation:
+     * Only "1" or "2" is accepted for search type
+     * The keyword cannot be empty
+     *If no matching subs are found, a message is displayed
+     */
     public static void showSearchResults() {
         System.out.print("Search by (1) Name or (2) Category: ");
         String searchNumber = input.nextLine().trim();
@@ -783,11 +827,11 @@ public class Menu {
         ArrayList<ArrayList<String>> results;
 
         if (searchNumber.equals("1")) {
-            results = Data.searchByName(keyword);
+            results = Data.searchByName(keyword); //search by name
         } else {
-            results = Data.searchByCategory(keyword);
+            results = Data.searchByCategory(keyword); //search by category
         }
-
+        // Print results or message if none found
         if (results.size() == 0) {
             System.out.println("No matching subscriptions found.");
         } else {
