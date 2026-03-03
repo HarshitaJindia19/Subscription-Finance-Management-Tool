@@ -279,7 +279,7 @@ public class Data {
         String keyword = name.toLowerCase(); // Convert search to lowercase
 
         for (ArrayList<String> sub : subscriptions) { // Loop through all subs
-            if (!sub.isEmpty()) {  // Check subs has at least 1 element
+            if (!sub.isEmpty()) {  // Check subs has at least 1 element, and is not empty
                 String subName = sub.get(INDEX_NAME); //Get the subs name using constant index
                 if (subName != null && subName.toLowerCase().contains(keyword)) {// Check if name contains keyword
                     results.add(sub);// Add matching subs to results

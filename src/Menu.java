@@ -468,7 +468,7 @@ public class Menu {
             if (Data.isValidDate(endDate)) {
                 return endDate; // It's a valid date (past or future is fine here)
             } else {
-                System.out.println("ERROR: Invalid format or calendar date. Please use MM/DD/YYYY or press Enter to skip:");
+                System.out.println("Invalid format or calendar date. Please use MM/DD/YYYY or press Enter to skip:");
                 // Loop continues
             }
         }
@@ -580,26 +580,27 @@ public class Menu {
      *
      */
     public static void showBudgetAlerts() {
-        ArrayList<String> categories = new ArrayList<>(Data.categoryBudgets.keySet());
+        ArrayList<String> categories = new ArrayList<>(Data.categoryBudgets.keySet());//Gets all categories that have budgets
+        //convert into a list
         System.out.println("=== Budget Alert ===");
 
         //Loop through each category
-        for (String category : categories) {
+        for (String category : categories) {// loops through each category
             // Sum of ACTIVE subs costs in this category
-            double limit = Data.categoryBudgets.get(category);
-            double total = 0;
+            double limit = Data.categoryBudgets.get(category);//Gets the budget limit for that category
+            double total = 0; //Initializes total spending for that category
 
-            for (int j = 0; j < Data.subscriptions.size(); j++) {
+            for (int j = 0; j < Data.subscriptions.size(); j++) {//Loops through subs
                 ArrayList<String> sub = Data.subscriptions.get(j);
 
                 if (sub.size() <= 6) { // skip invalid entries
                     continue;
                 }
 
-                String subName = sub.get(Data.INDEX_NAME);
-                String costStr = sub.get(Data.INDEX_COST).replace("$", "").trim();;
-                String subCategory = Data.formatTitleCase(sub.get(Data.INDEX_CATEGORY));
-                String status = sub.get(Data.INDEX_STATUS);
+                String subName = sub.get(Data.INDEX_NAME);//gets the sub name
+                String costStr = sub.get(Data.INDEX_COST).replace("$", "").trim(); //gets cost
+                String subCategory = Data.formatTitleCase(sub.get(Data.INDEX_CATEGORY));// get category and make title case
+                String status = sub.get(Data.INDEX_STATUS); //get sub status
 
                 // only count ACTIVE subscriptions in the correct category
                 if (subCategory.equalsIgnoreCase(category) && status.equalsIgnoreCase("ACTIVE")) {
@@ -631,11 +632,12 @@ public class Menu {
      * where the cost will either meets or exceeds the threshold (>=)
      */
     public static ArrayList<ArrayList<String>> getHighExpenseBills(double threshold) {
-        ArrayList<ArrayList<String>> results = new ArrayList<>();
+        ArrayList<ArrayList<String>> results = new ArrayList<>();//Creates empty list to store expensive subscriptions
+        //Returns a list of subscriptions and takes a # (threshold) as minimum cost
 
-        for (ArrayList<String> sub : Data.subscriptions) {
-            if (sub.size() > 6) {
-                String status = sub.get(Data.INDEX_STATUS);
+        for (ArrayList<String> sub : Data.subscriptions) { //loop through all subs
+            if (sub.size() > 6) { // make sure all 7 indexes are there
+                String status = sub.get(Data.INDEX_STATUS); //gets sub status
 
                 // Only consider ACTIVE subscriptions
                 if (status.equalsIgnoreCase("ACTIVE")) {
@@ -643,9 +645,9 @@ public class Menu {
 
                     if (!costStr.isEmpty()) {
                         try {
-                            double cost = Double.parseDouble(costStr);
+                            double cost = Double.parseDouble(costStr);//Gets cost as a string and converts to double
 
-                            // Add to results if cost >= threshold
+                            // Add to expesnive sub to results list if cost >= threshold
                             if (cost >= threshold) {
                                 results.add(sub);
                             }
