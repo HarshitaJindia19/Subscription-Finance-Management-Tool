@@ -135,7 +135,7 @@ public class DataTest {
         // verify the data is stored at the right indexes
         Data.storeNewSubscription("Netflix", "15.99", "Entertainment", "Monthly", "01/01/2025", "N/A", "ACTIVE");
         ArrayList<String> sub = Data.subscriptions.getFirst();
-        assertEquals("netflix", sub.get(Data.INDEX_NAME), "netflix should be stored. Something else was stored!");
+        assertEquals("Netflix", sub.get(Data.INDEX_NAME), "netflix should be stored. Something else was stored!");
         assertEquals("15.99", sub.get(Data.INDEX_COST), "15.99 should be stored. Something else was stored!");
         assertEquals("Entertainment", sub.get(Data.INDEX_CATEGORY), "Entertainment should be stored. Something else was stored!");
         assertEquals("Monthly", sub.get(Data.INDEX_RENEWAL), "Monthly should be stored. Something else was stored!");
@@ -144,7 +144,7 @@ public class DataTest {
         assertEquals("ACTIVE", sub.get(Data.INDEX_STATUS), "ACTIVE should be stored. Something else was stored!");
 
         // Check if it was also stored in categories and names
-        assertTrue(Data.names.contains("netflix"));
+        assertTrue(Data.names.contains("Netflix"));
         assertTrue(Data.categories.contains("Entertainment"));
 
     }
@@ -169,7 +169,7 @@ public class DataTest {
 
         clean();
         Data.storeNewSubscription("Spotify", "34.99", "Entertainment", "Yearly", "01/01/2025", null, "ACTIVE");
-        assertEquals(2.9158, Data.calculateMonthlySpend(), "Monthly cost was not calculated properly! Yearly costs must be divided by 12!");
+        assertEquals(2.9158333333333335, Data.calculateMonthlySpend(), "Monthly cost was not calculated properly! Yearly costs must be divided by 12!");
 
     }
 

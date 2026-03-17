@@ -349,7 +349,7 @@ public class Menu {
             if(!Data.isOnlyText(name)) {
                 System.out.println("ERROR: Name must contain only letters. Please try again.");
             }
-        } while (name.isEmpty());
+        } while (!Data.isOnlyText(name));
         return name;
     }
 
