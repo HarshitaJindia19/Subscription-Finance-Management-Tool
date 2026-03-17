@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.time.LocalDate;
@@ -8,21 +9,12 @@ import java.time.format.ResolverStyle;
 
 public class Data {
 
-    public static final ArrayList<ArrayList<String>> subscriptions = new ArrayList<>();
+    public static final ArrayList<Subscription> subscriptions = new ArrayList<>();
     public static final HashMap<String, Double> categoryBudgets = new HashMap<>();
     public static final HashSet<String> categories = new HashSet<>();
     public static final HashSet<String> names = new HashSet<>();
     public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
-    // Store Index for each subscription information
-
-    public static final int INDEX_NAME = 0;
-    public static final int INDEX_COST = 1;
-    public static final int INDEX_CATEGORY = 2;
-    public static final int INDEX_RENEWAL = 3;
-    public static final int INDEX_START_DATE = 4;
-    public static final int INDEX_END_DATE = 5;
-    public static final int INDEX_STATUS = 6;
 
 
     /**
@@ -39,20 +31,13 @@ public class Data {
      * @param status of subscription - e.g. PAUSED
      * @return boolean - true if subscription was new and was stored into list, false otherwise
      */
-    public static boolean storeNewSubscription(String name, String cost, String category, String renewal, String startDate, String endDate, String status) {
+    public static boolean storeNewSubscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, String status) {
         String cleanName = formatTitleCase(name);
         String cleanCategory = formatTitleCase(category);
         String cleanRenewal = formatTitleCase(renewal);
 
-        if (!subscriptionExists(name)) {
-            ArrayList<String> subscription = new ArrayList<>();
-            subscription.add(cleanName);
-            subscription.add(cost);
-            subscription.add(cleanCategory);
-            subscription.add(cleanRenewal);
-            subscription.add(startDate);
-            subscription.add(endDate);
-            subscription.add(status);
+        if (!subscriptionExists(cleanName)) {
+            Subscription subscription = new Subscription(cleanName, cost, cleanCategory, cleanRenewal, startDate, endDate, status);
             subscriptions.add(subscription);
             names.add(cleanName);
             categories.add(cleanCategory); //no duplicates
@@ -131,11 +116,11 @@ public class Data {
         double total = 0.0;
         double numOfMonths = 12;
 
-        for (ArrayList<String> sub : subscriptions) {
+        for (Subscription sub : subscriptions) {
 
-            if (sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) {
-                double cost = Double.parseDouble(sub.get(INDEX_COST).replace("$", ""));
-                String renewal = sub.get(INDEX_RENEWAL);
+            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+                double cost = sub.getCost();
+                String renewal = sub.getRenewal();
 
                 if (renewal.equalsIgnoreCase("MONTHLY")) {
                     total += cost;
@@ -158,11 +143,11 @@ public class Data {
         double total = 0.0;
         double numOfMonths = 12;
 
-        for (ArrayList<String> sub : subscriptions) {
+        for (Subscription sub : subscriptions) {
 
-            if (sub.get(INDEX_STATUS).equalsIgnoreCase("ACTIVE")) {
-                double cost = Double.parseDouble(sub.get(INDEX_COST).replace("$", ""));
-                String renewal = sub.get(INDEX_RENEWAL);
+            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+                double cost = sub.getCost();
+                String renewal = sub.getRenewal();
 
                 if (renewal.equalsIgnoreCase("MONTHLY")) {
                     total += cost * numOfMonths; // convert monthly to yearly
@@ -186,7 +171,7 @@ public class Data {
         for (int i = 0; i < subscriptions.size(); i++) {
             //get(i) - subscription row
             //get(0) - name at index 0
-            if (subscriptions.get(i).get(INDEX_NAME).equalsIgnoreCase(name)) {
+            if (subscriptions.get(i).getName().equalsIgnoreCase(name)) {
                 return i;//found - return its position
             }
         }
@@ -197,17 +182,16 @@ public class Data {
      * @author Ramsha
      * @return ArrayList of subscriptions renewing within 7 days
      */
-    public static ArrayList<ArrayList<String>> getUpcomingBills() {
-        ArrayList<ArrayList<String>> results = new ArrayList<>();
+    public static ArrayList<Subscription> getUpcomingBills() {
+        ArrayList<Subscription> results = new ArrayList<>();
 
-        //get todays date
-        java.time.LocalDate today = java.time.LocalDate.now();
-        java.time.LocalDate sevenDaysLater = today.plusDays(7);
+        //get today's date
+        LocalDate today = LocalDate.now();
+        LocalDate sevenDaysLater = today.plusDays(7);
 
-        for (ArrayList<String> sub : subscriptions) {
-            if (sub.size() <= 6) continue;
+        for (Subscription sub : subscriptions) {
 
-            String dateStr = sub.get(4); //start date at index 4
+            LocalDate dateStr = sub.getStartDate(); //start date at index 4
 
             try {
                 //parse MM/DD/YYYY format
@@ -231,25 +215,19 @@ public class Data {
      * @return ArrayList of ArrayLists, where inner list shows a
      * subscription that matches the name
      */
-    public static ArrayList<ArrayList<String>> searchByName(String name) {
-        ArrayList<ArrayList<String>> results = new ArrayList<>(); // Initialize results list
-        if (name == null) {// If input is null, return empty list
-            return results;
-        }
-        name = name.trim();// Remove leading/trailing spaces
+    public static ArrayList<Subscription> searchByName(String name) {
+        ArrayList<Subscription> results = new ArrayList<>(); // Initialize results list
 
-        if (name.isEmpty()) {// If input is empty after trimming, return empty list
+        if (name == null || name.trim().isEmpty()) {// If input is null or isEmpty, return empty list
             return results;
         }
 
-        String keyword = name.toLowerCase(); // Convert search to lowercase
+        String keyword = name.trim().toLowerCase(); // Convert search to lowercase
 
-        for (ArrayList<String> sub : subscriptions) { // Loop through all subs
-            if (!sub.isEmpty()) {  // Check subs has at least 1 element
-                String subName = sub.get(INDEX_NAME); //Get the subs name using constant index
-                if (subName != null && subName.toLowerCase().contains(keyword)) {// Check if name contains keyword
-                    results.add(sub);// Add matching subs to results
-                }
+        for (Subscription sub : subscriptions) { // Loop through all subs
+            String subName = sub.getName(); //Get the subs name using constant index
+            if (subName != null && subName.toLowerCase().contains(keyword)) {// Check if name contains keyword
+                results.add(sub);// Add matching subs to results
             }
         }
         return results; // Return list of matching subs
@@ -261,27 +239,21 @@ public class Data {
      *subscription that matches the category
      */
 
-    public static ArrayList<ArrayList<String>> searchByCategory(String category) {
-        ArrayList<ArrayList<String>> results = new ArrayList<>();
-        if (category == null) { // Return empty list if input is null
-            return results;
-        }
-        category = category.trim();// Remove extra spaces
+    public static ArrayList<Subscription> searchByCategory(String category) {
+        ArrayList<Subscription> results = new ArrayList<>();
 
-        if (category.isEmpty()) {// Return empty list if input is empty after trimming
+        if (category == null || category.trim().isEmpty()) { // Return empty list if input is null
             return results;
         }
 
-        String keyword = category.toLowerCase(); // Convert search to lowercase
+        String keyword = category.trim().toLowerCase(); // Convert search to lowercase
 
-        for (int i = 0; i < subscriptions.size(); i++) { // Loop through all subs
-            ArrayList<String> sub = subscriptions.get(i);
-            if (sub.size() > 2) { // Check subs has at least 3 elements (name, cost, category)
-                String subCategory = sub.get(2); // Get the subs category
-                if (subCategory != null && subCategory.toLowerCase().contains(keyword)) {// Check if category contains keyword
-                    results.add(sub); // Add matching subs to results
-                }
+        for (Subscription sub : subscriptions) { // Loop through all subs
+
+            if (sub.getCategory().toLowerCase().contains(keyword)) {// Check if category contains keyword
+                results.add(sub); // Add matching subs to results
             }
+
         }
         return results; // Return list of matching subs
     }
@@ -359,18 +331,5 @@ public class Data {
         } catch (NumberFormatException e) {
             return false;
         }
-    }
-
-    //======================================== TEST DATA =========================================//
-
-    public static void loadTestData() {
-        // These dates will show up in "Upcoming Bills"
-        storeNewSubscription("Netflix", "15.99", "Entertainment", "Yearly", "03/03/2026", "N/A", "ACTIVE");
-        storeNewSubscription("Spotify", "10.99", "Entertainment", "Monthly", "03/05/2026", "N/A", "ACTIVE");
-        storeNewSubscription("Gym", "50.00", "Fitness", "Yearly", "02/15/2026", "N/A", "ACTIVE");
-        storeNewSubscription("Cloud Storage", "2.99", "Tech", "Monthly", "03/08/2026", "N/A", "ACTIVE");
-
-        setCategoryBudget("Entertainment", 20.00); // This will trigger a budget alert for Netflix + Spotify
-        setCategoryBudget("Fitness", 100.00);
     }
 }
