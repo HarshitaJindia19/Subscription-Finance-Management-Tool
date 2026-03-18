@@ -44,9 +44,16 @@ public class Subscription {
         return startDate;
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+    public LocalDate getEndDate() {return endDate;}
+
+    public void setName(String name) { this.name = name; }
+    public void setCost(double cost) { this.cost = cost; }
+    public void setCategory(String category) { this.category = category; }
+    public void setRenewal(String renewal) { this.renewal = renewal; }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
+    public void setStatus(String status) { this.status = status; }
+
 
     public double getMonthlyCost() { return getCost(); }
 
