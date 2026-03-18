@@ -308,9 +308,6 @@ public class Data {
 
             // Check against today's date
             LocalDate today = LocalDate.now();
-            if (parsedDate.isAfter(today)) {
-                return false; // Date is in the future
-            }
             return true;
 
         } catch (DateTimeParseException e) {

@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Subscription {
 
@@ -49,14 +50,17 @@ public class Subscription {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        String endDateDisplay = (endDate != null) ? endDate.format(formatter) : "N/A";
+
         return "Subscription{" +
                 "name='" + name + '\'' +
                 ", category='" + category + '\'' +
                 ", renewal='" + renewal + '\'' +
                 ", status='" + status + '\'' +
                 ", cost=" + cost +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", startDate=" + startDate.format(formatter) +
+                ", endDate=" + endDateDisplay +
                 '}';
     }
 }
