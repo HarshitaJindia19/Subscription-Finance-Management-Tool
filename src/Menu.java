@@ -12,6 +12,7 @@ import java.util.ArrayList;
  *
  */
 public class Menu {
+
     private static final Scanner input = new Scanner(System.in);
     //Arraylist stores all menu options - index 0=exit, index 1=add subscription, etc.
     public static final ArrayList<String> options = new ArrayList<>();
@@ -431,36 +432,25 @@ public class Menu {
     private static LocalDate getStartDate() {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-        System.out.println("Enter the start date (MM/DD/YYYY): ");
+        System.out.println("Enter the start date (MM/DD/YYYY):");
         LocalDate startDate = null;
 
         do {
-            String dateInput = input.nextLine().trim();
-            try {
-                startDate = LocalDate.parse(dateInput, formatter);
-            } catch (Exception e) {
-                System.out.println("Invalid date. Please use MM/DD/YYYY format (e.g. 03/15/2025):");
-        while (true) {
-            startDate = input.nextLine().trim();
+            String startDateInput = input.nextLine().trim();
 
-            // Checks if it is the valid date format
-            if (!Data.isValidDate(startDate)) {
-                System.out.println("Invalid format or calendar date! Please use MM/DD/YYYY (e.g., 01/25/2024):");
-                continue; // ask again
-            }
-
-            // Checks if start is in the future
-            if (Data.isFutureDate(startDate)) {
+            if (!Data.isValidDate(startDateInput)) {
+                System.out.println("Invalid format or calendar date! Please use MM/DD/YYYY (e.g. 01/25/2024):");
+            } else if (Data.isFutureDate(startDateInput)) {
                 System.out.println("Start date cannot be in the future! Please enter today's date or a past date:");
-                continue; // Ask again
+            } else {
+                startDate = LocalDate.parse(startDateInput, formatter);
             }
+
         } while (startDate == null);
 
-            // break loop, valid inputs verified
-            break;
-        }
         return startDate;
     }
+
 
     /**
      * Validates/gets endDate from user

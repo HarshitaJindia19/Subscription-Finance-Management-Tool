@@ -199,7 +199,8 @@ public class Data {
 
         for (Subscription sub : subscriptions) {
 
-            LocalDate dateStr = sub.getStartDate(); //start date at index 4
+            LocalDate startDateStr = sub.getStartDate(); //start date at index 4
+            String renewal = sub.getRenewal();
 
             try {
                 //parse MM/DD/YYYY format
