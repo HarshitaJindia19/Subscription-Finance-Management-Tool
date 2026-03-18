@@ -37,10 +37,16 @@ public class Data {
         String cleanRenewal = formatTitleCase(renewal);
 
         if (!subscriptionExists(cleanName)) {
-            Subscription subscription = new Subscription(cleanName, cost, cleanCategory, cleanRenewal, startDate, endDate, status);
+            //create MonthlySubscription or YearlySubscription based on renewal type
+            Subscription subscription;
+            if (cleanRenewal.equalsIgnoreCase("Monthly")){
+                subscription = new MonthlySubscription(cleanName, cost, cleanCategory, startDate, endDate, status);
+            } else {
+                subscription = new YearlySubscription(cleanName, cost, cleanCategory, startDate, endDate, status);
+            }
             subscriptions.add(subscription);
             names.add(cleanName);
-            categories.add(cleanCategory); //no duplicates
+            categories.add(cleanCategory);
             return true;
         } else {
             return false;
@@ -198,42 +204,32 @@ public class Data {
         LocalDate sevenDaysLater = today.plusDays(7);
 
         for (Subscription sub : subscriptions) {
-
-            LocalDate startDateStr = sub.getStartDate(); //start date at index 4
-            String renewal = sub.getRenewal();
-
-            try {
-                //parse MM/DD/YYYY format
-                LocalDate startDate = LocalDate.parse(startDateStr, formatter);
-                LocalDate nextRenewal;
-
-                //check if date is within next 7 days
-                if (renewal.equalsIgnoreCase("YEARLY")) {
-                    nextRenewal = startDate.withYear(today.getYear());
-                    if (nextRenewal.isBefore(today)) {
-                        nextRenewal = nextRenewal.plusYears(1);
-
-                    }
-                } else if (renewal.equalsIgnoreCase("MONTHLY")) {
-                    nextRenewal = startDate.withMonth(today.getMonthValue()).withYear(today.getYear());
-                    if (nextRenewal.isBefore(today)) {
-                        nextRenewal = nextRenewal.plusMonths(1);
-                    }
-                } else {
-                    continue;
-                }
-
-                // Check if this calculated renewal date is within the next 7 days
-                if (!nextRenewal.isBefore(today) && !nextRenewal.isAfter(sevenDaysLater)) {
+            //use instanceof to check subclass type
+            if (sub instanceof MonthlySubscription) {
+                //use isUpcoming() from MonthlySubscription
+                MonthlySubscription monthlySub = (MonthlySubscription) sub;
+                if (monthlySub.isUpcoming()) {
                     results.add(sub);
                 }
-            } catch (Exception e) {
-                //skip if date format is invalid
+            } else if (sub instanceof YearlySubscription) {
+                //for yearly, check if annual renewal is within next 7 days
+                try {
+                    //parse MM/DD/YYYY format
+                    LocalDate startDate = sub.getStartDate();
+                    LocalDate nextRenewal = startDate.withYear(today.getYear());
+                    if (nextRenewal.isBefore(today)) {
+                        nextRenewal = nextRenewal.plusYears(1);
+                    }
+                    if (!nextRenewal.isBefore(today) && !nextRenewal.isAfter(sevenDaysLater)) {
+                        results.add(sub);
+                    }
+                } catch (Exception e) {//skip if date is invalid
+                }
             }
         }
+
         return results;
     }
-
     /**
      * Search Engine to find all the subscriptions under the given name
      * @param name the name of subscription to search for
