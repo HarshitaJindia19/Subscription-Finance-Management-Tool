@@ -48,6 +48,10 @@ public class Subscription {
         return endDate;
     }
 
+    public double getMonthlyCost() { return getCost(); }
+
+    public double getYearlyCost() { return getCost() * 12; }
+
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
