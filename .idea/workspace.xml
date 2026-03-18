@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs.">
-      <change afterPath="$PROJECT_DIR$/src/MonthlySubscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Subscription.java" afterDir="false" />
+    <list default="true" id="786ee16f-be3d-438b-9a0b-9b7d79709e5a" name="Changes" comment="added MonthlySubsciption to extend the subscription class.">
+      <change afterPath="$PROJECT_DIR$/src/YearlySubscription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MonthlySubscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonthlySubscription.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772519272806</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added MonthlySubsciption to extend the subscription class.">
+      <option name="closed" value="true" />
+      <created>1773856230820</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1773856230820</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +261,7 @@
     <MESSAGE value="-added validity cases on showSearchResults()" />
     <MESSAGE value="-fixed getCategoryBudgetUsage so menu runs" />
     <MESSAGE value="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: isValidDate now validates date according to a Date Formatter, and prevents future dates for start date inputs. Chore: Cleaned magic numbers, and case sensitive inputs." />
+    <MESSAGE value="added MonthlySubsciption to extend the subscription class." />
+    <option name="LAST_COMMIT_MESSAGE" value="added MonthlySubsciption to extend the subscription class." />
   </component>
 </project>

@@ -3,7 +3,7 @@ import java.time.LocalDate;
 /**
  * MonthlySubscription.java - subscriptions that is billed monthly
  * @author Ramsha
- * @date March 8 2026
+ * @date March 18 2026
  * @tutorial T01
  */
 public class MonthlySubscription extends Subscription {
