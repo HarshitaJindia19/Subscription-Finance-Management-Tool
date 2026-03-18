@@ -8,6 +8,9 @@ import java.time.LocalDate;
  * @date March 18 2026
  * @tutorial T01
  */
+
+//--------------------------MonthlySubscription Tests----------------------------------
+
 public class SubscriptionTest {
     @Test
     void monthlySubscription_getMonthlyCost() {
@@ -49,5 +52,52 @@ public class SubscriptionTest {
         assertFalse(sub.isUpcoming(), "Should not be upcoming - more than 7 days away");
     }
 
+    //--------------------------YearlySubscription Tests----------------------
+    @Test
+    void yearlySubscription_getMonthlyCost() {
+        //monthly cost should be yearly/12
+        YearlySubscription sub = new YearlySubscription("Adobe", 120.00, "Work",LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertEquals(10.00, sub.getMonthlyCost(), "Monthly cost should be yearly / 12");
+    }
+    @Test
+    void yearlySubscription_getMonthlyCost_notDivisible() {
+        //edge case - cost not evenly divisible by 12
+        YearlySubscription sub = new YearlySubscription("Adobe",100.00, "Work",LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertEquals(100.00 / 12, sub.getMonthlyCost(), "Monthly cost should be 100/12");
+    }
 
+    @Test
+    void yearlySubscription_getYearlyCost() {
+        //yearly cost should equal cost directly
+        YearlySubscription sub = new YearlySubscription("Adobe",120.00, "Work",LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertEquals(120.00, sub.getYearlyCost(), "Yearly cost should equal cost directly");
+    }
+    @Test
+    void yearlySubscription_getRenewal() {
+        //renewal should always be yearly for YearlySubscription
+        YearlySubscription sub = new YearlySubscription("Adobe",120.00,"Work",LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertEquals("Yearly", sub.getRenewal(), "Renewal should be Yearly");
+    }
+    @Test
+    void yearlySubscription_toString() {
+        //toString should contain Yearly
+        YearlySubscription sub = new YearlySubscription("Adobe",120.00,"Work",LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertTrue(sub.toString().contains("Yearly"), "toString should contain Yearly");
+    }
+
+    //--------------------------Extra Inheritance Tests----------------------
+
+    @Test
+    void monthlySubscription_isInstanceOfSubscription() {
+        //monthlySubscription should be instance of Subscription
+        MonthlySubscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertTrue(sub instanceof Subscription, "MonthlySubscription should be instance of Subscription");
+    }
+
+    @Test
+    void yearlySubscription_isInstanceOfSubscription() {
+        //yearlySubscription should be instance of Subscription
+        YearlySubscription sub = new YearlySubscription("Adobe", 120.00, "Work", LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        assertTrue(sub instanceof Subscription, "YearlySubscription should be instance of Subscription");
+    }
 }
