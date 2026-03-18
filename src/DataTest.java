@@ -80,7 +80,7 @@ public class DataTest {
         //update status field (INDEX_STATUS=9) to "PAUSED"
         Data.changeSubscriptionChoice(0,6, "PAUSED");
         //verify that status was updated correctly
-        assertEquals("PAUSED",Data.subscriptions.get(0).get(6), "Should update status to PAUSED");
+        assertEquals("PAUSED",Data.subscriptions.get(Data.INDEX_NAME).get(Data.INDEX_STATUS), "Should update status to PAUSED");
 
     }
     @Test
@@ -100,7 +100,7 @@ public class DataTest {
         //update cost field (INDEX_COST =1) tp "19.99"
         Data.changeSubscriptionChoice(0, Data.INDEX_COST, "19.99");
         //verify cost was updated correctly
-        assertEquals("19.99", Data.subscriptions.get(0).get(Data.INDEX_COST), "Should update cost to 19.99");
+        assertEquals("19.99", Data.subscriptions.get(Data.INDEX_NAME).get(Data.INDEX_COST), "Should update cost to 19.99");
     }
 
     @Test
@@ -135,7 +135,7 @@ public class DataTest {
         // verify the data is stored at the right indexes
         Data.storeNewSubscription("Netflix", "15.99", "Entertainment", "Monthly", "01/01/2025", "N/A", "ACTIVE");
         ArrayList<String> sub = Data.subscriptions.getFirst();
-        assertEquals("netflix", sub.get(Data.INDEX_NAME), "netflix should be stored. Something else was stored!");
+        assertEquals("Netflix", sub.get(Data.INDEX_NAME), "netflix should be stored. Something else was stored!");
         assertEquals("15.99", sub.get(Data.INDEX_COST), "15.99 should be stored. Something else was stored!");
         assertEquals("Entertainment", sub.get(Data.INDEX_CATEGORY), "Entertainment should be stored. Something else was stored!");
         assertEquals("Monthly", sub.get(Data.INDEX_RENEWAL), "Monthly should be stored. Something else was stored!");
@@ -144,7 +144,7 @@ public class DataTest {
         assertEquals("ACTIVE", sub.get(Data.INDEX_STATUS), "ACTIVE should be stored. Something else was stored!");
 
         // Check if it was also stored in categories and names
-        assertTrue(Data.names.contains("netflix"));
+        assertTrue(Data.names.contains("Netflix"));
         assertTrue(Data.categories.contains("Entertainment"));
 
     }
@@ -169,7 +169,7 @@ public class DataTest {
 
         clean();
         Data.storeNewSubscription("Spotify", "34.99", "Entertainment", "Yearly", "01/01/2025", null, "ACTIVE");
-        assertEquals(2.9158, Data.calculateMonthlySpend(), "Monthly cost was not calculated properly! Yearly costs must be divided by 12!");
+        assertEquals(2.9158333333333335, Data.calculateMonthlySpend(), "Monthly cost was not calculated properly! Yearly costs must be divided by 12!");
 
     }
 
@@ -319,17 +319,18 @@ public class DataTest {
         sub.add("March 2");
         sub.add(null);
         sub.add("ACTIVE");
-        Data.subscriptions.add(sub);
+        Data.subscriptions.add(sub); //Now program has 1 sub: Spotify
 
-        //Do a search
+        //Do a search calls function
         ArrayList<ArrayList<String>> results = Data.searchByName("Spotify");
         //Give the result size
         assertEquals(1, results.size(), "Should find 1 subscription named Spotify");
         //Give the name of the first result
-        ArrayList<String> numOneResult = results.get(0);
-        String name = numOneResult.get(0);
+        //expects 1 and compares result.size if match pass, if not test failed
+        ArrayList<String> numOneResult = results.get(Data.INDEX_NAME);//get the first list index and the name from it
+        String name = numOneResult.get(Data.INDEX_NAME);
 
-        assertEquals("Spotify", name);
+        assertEquals("Spotify", name);//Confirms it found Spotify, not something else
     }
 
     @Test

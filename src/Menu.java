@@ -206,6 +206,7 @@ public class Menu {
      */
 
     public static void updateProcess() {
+        System.out.println("\n====UPDATE SUBSCRIPTION====");
         //loop until valid subscription name is found
         int index = -1;
         while (index == -1) {
@@ -273,6 +274,7 @@ public class Menu {
      */
     public static void upcomingBills() {
         ArrayList<Subscription> upcoming = Data.getUpcomingBills();
+        System.out.println("\n==== UPCOMING BILLS ====");
         if (upcoming.isEmpty()) {
             System.out.println("No upcoming bills in the next 7 days.");
         } else {
@@ -340,13 +342,15 @@ public class Menu {
      */
     private static String getName() {
         String name;
+
+        // Check for input validity
         do {
             System.out.println("\nEnter the name:");
             name = input.nextLine().trim();
             if(!Data.isOnlyText(name)) {
                 System.out.println("ERROR: Name must contain only letters. Please try again.");
             }
-        } while (name.isEmpty());
+        } while (!Data.isOnlyText(name));
         return name;
     }
 
@@ -360,6 +364,7 @@ public class Menu {
         double cost = 0;
         boolean valid = false;
 
+        // Check for input validity
         do {
             String costInput = input.nextLine().trim().replace("$", "");
             if (!Data.isValidCost(costInput)) {
@@ -391,7 +396,7 @@ public class Menu {
         String category;
         do {
             category = input.nextLine().trim();
-            if (!Data.isOnlyText(category)) {
+            if (!Data.isOnlyText(category)) { // check input validity
                 System.out.println("ERROR: Category must only contain letters. Please enter the category: ");
             }
         } while (!Data.isOnlyText(category));
@@ -407,6 +412,7 @@ public class Menu {
         String renewal;
         System.out.println("Enter the billing cycle (Monthly or Yearly):");
 
+        // check for input validity
         do {
             renewal = input.nextLine().trim();
             if (!renewal.equalsIgnoreCase("monthly") && !renewal.equalsIgnoreCase("yearly")) {
@@ -434,9 +440,25 @@ public class Menu {
                 startDate = LocalDate.parse(dateInput, formatter);
             } catch (Exception e) {
                 System.out.println("Invalid date. Please use MM/DD/YYYY format (e.g. 03/15/2025):");
+        while (true) {
+            startDate = input.nextLine().trim();
+
+            // Checks if it is the valid date format
+            if (!Data.isValidDate(startDate)) {
+                System.out.println("Invalid format or calendar date! Please use MM/DD/YYYY (e.g., 01/25/2024):");
+                continue; // ask again
+            }
+
+            // Checks if start is in the future
+            if (Data.isFutureDate(startDate)) {
+                System.out.println("Start date cannot be in the future! Please enter today's date or a past date:");
+                continue; // Ask again
             }
         } while (startDate == null);
 
+            // break loop, valid inputs verified
+            break;
+        }
         return startDate;
     }
 
@@ -472,9 +494,10 @@ public class Menu {
      */
     private static String getStatus() {
         String status;
-        System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS));
+        System.out.println("Choose from " + Arrays.toString(Data.STATUS_OPTIONS)); // display options for user clarity
         System.out.println("Enter current status: ");
 
+        // loop until valid input
         do {
             status = input.nextLine().trim().toUpperCase();
             if (!Data.isValidStatus(status)) {
@@ -482,7 +505,7 @@ public class Menu {
                 System.out.println("Please enter one of the options provided:");
             }
         } while (!Data.isValidStatus(status));
-        return status.toUpperCase();
+        return status.toUpperCase(); // consistent casing
     }
 
     /**
@@ -560,14 +583,15 @@ public class Menu {
      *
      */
     public static void showBudgetAlerts() {
-        ArrayList<String> categories = new ArrayList<>(Data.categoryBudgets.keySet());
+        ArrayList<String> categories = new ArrayList<>(Data.categoryBudgets.keySet());//Gets all categories that have budgets
+        //convert into a list
         System.out.println("=== Budget Alert ===");
 
         //Loop through each category
-        for (String category : categories) {
+        for (String category : categories) {// loops through each category
             // Sum of ACTIVE subs costs in this category
-            double limit = Data.categoryBudgets.get(category);
-            double total = 0;
+            double limit = Data.categoryBudgets.get(category);//Gets the budget limit for that category
+            double total = 0; //Initializes total spending for that category
 
             for (int j = 0; j < Data.subscriptions.size(); j++) {
                 Subscription sub = Data.subscriptions.get(j);
@@ -696,6 +720,10 @@ public class Menu {
         double percentageUsed = (totalSpent / budgetLimit) * 100;
         percentageUsed = Math.round(percentageUsed * 100.0) / 100.0;
 
+        if (percentageUsed > 100) {
+            System.out.println("🚨Budget exceeds limit! Currently exceeding by " + String.format("%.2f", (percentageUsed - 100)) + "%");
+        }
+
         return percentageUsed;
     }
 
@@ -736,7 +764,7 @@ public class Menu {
      *
      */
     public static void showPausedSubscriptions() {
-        System.out.println("=== Paused Subscriptions ===");
+        System.out.println("==== PAUSED SUBSCRIPTIONS ====");
 
         ArrayList<Subscription> pausedSubs = new ArrayList<>();
 
@@ -826,14 +854,17 @@ public class Menu {
      *If no matching subs are found, a message is displayed
      */
     public static void showSearchResults() {
-        System.out.print("Search by (1) Name or (2) Category: ");
-        String searchNumber = input.nextLine().trim();
 
-        //validate menu input
-        if (!searchNumber.equals("1") && !searchNumber.equals("2")) {
-            System.out.println("Invalid search type selected. Please enter 1 or 2.");
-            return;
-        }
+        String searchNumber;
+        System.out.print("Search by (1) Name or (2) Category: ");
+
+        do {
+            searchNumber = input.nextLine().trim();
+            if (!searchNumber.equals("1") && !searchNumber.equals("2")) {
+                System.out.println("Invalid entry! Please enter (1) or (2): ");
+            }
+        } while (!searchNumber.equals("1") && !searchNumber.equals("2"));
+
 
         System.out.print("Enter search keyword: ");
         String keyword = input.nextLine().trim();

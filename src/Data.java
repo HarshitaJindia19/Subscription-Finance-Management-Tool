@@ -75,6 +75,12 @@ public class Data {
                 input.substring(1).toLowerCase();
     }
 
+    /**
+     * Validates if a String contains only characters and spaces (no special characters and numbers)
+     *
+     * @param input collected from Menu.java
+     * @return True if input String contains only letters or spaces
+     */
     public static boolean isOnlyText(String input) {
         if (input == null || input.isEmpty()) {
             return false;
@@ -94,12 +100,13 @@ public class Data {
 
     /**
      * Lists all categories and budgets in a clean format
-     * @author Harshita
+     *
      * @return all the budgets currently stored by category
+     * @author Harshita
      */
     public static ArrayList<String> getAllBudgets() {
         ArrayList<String> budgetList = new ArrayList<>();
-        for (String category: categoryBudgets.keySet()) {
+        for (String category : categoryBudgets.keySet()) {
             double limit = categoryBudgets.get(category);
             budgetList.add(category + ": $" + String.format("%.2f", limit));
         }
@@ -135,8 +142,9 @@ public class Data {
 
     /**
      * Takes in all active subscriptions and totals their cost for yearly spend
-     * @author Harshita
+     *
      * @return total monthly spend of user as double
+     * @author Harshita
      */
     public static double calculateYearlySpend() {
 
@@ -195,15 +203,31 @@ public class Data {
 
             try {
                 //parse MM/DD/YYYY format
-                java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy");
-                java.time.LocalDate subDate = java.time.LocalDate.parse(dateStr, formatter);
+                LocalDate startDate = LocalDate.parse(startDateStr, formatter);
+                LocalDate nextRenewal;
 
                 //check if date is within next 7 days
-                if (!subDate.isBefore(today) && !subDate.isAfter(sevenDaysLater)) {
+                if (renewal.equalsIgnoreCase("YEARLY")) {
+                    nextRenewal = startDate.withYear(today.getYear());
+                    if (nextRenewal.isBefore(today)) {
+                        nextRenewal = nextRenewal.plusYears(1);
+
+                    }
+                } else if (renewal.equalsIgnoreCase("MONTHLY")) {
+                    nextRenewal = startDate.withMonth(today.getMonthValue()).withYear(today.getYear());
+                    if (nextRenewal.isBefore(today)) {
+                        nextRenewal = nextRenewal.plusMonths(1);
+                    }
+                } else {
+                    continue;
+                }
+
+                // Check if this calculated renewal date is within the next 7 days
+                if (!nextRenewal.isBefore(today) && !nextRenewal.isAfter(sevenDaysLater)) {
                     results.add(sub);
                 }
             } catch (Exception e) {
-                //skip if date cant be parsed
+                //skip if date format is invalid
             }
         }
         return results;
@@ -232,8 +256,10 @@ public class Data {
         }
         return results; // Return list of matching subs
     }
+
     /**
      * Search Engine to find all the subscriptions under the given category
+     *
      * @param category is the category of subscription to search for
      * @return ArrayList of ArrayLists, where each inner list shows a
      *subscription that matches the category
@@ -258,13 +284,14 @@ public class Data {
         return results; // Return list of matching subs
     }
 
-   /**
-   * Updates a specific field of a subscription using .set(index,newValue).
-   * @author Ramsha
-   * @param subIndex index of subscription in outer ArrayList
-   * @param choiceIndex index of field to update in inner ArrayList
-   * @param newChoice   new value to set
-    */
+    /**
+     * Updates a specific field of a subscription using .set(index,newValue).
+     *
+     * @param subIndex    index of subscription in outer ArrayList
+     * @param choiceIndex index of field to update in inner ArrayList
+     * @param newChoice   new value to set
+     * @author Ramsha
+     */
 
     public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
         //get(subIndex) - finds correct subscription row
@@ -309,10 +336,21 @@ public class Data {
             // Check against today's date
             LocalDate today = LocalDate.now();
             return true;
-
         } catch (DateTimeParseException e) {
             return false;
         }
+    }
+
+    /**
+     * Checks if date is in the future
+     *
+     * @param date (end/start) of the subscription ( user input )
+     * @return boolean true if Date is in the future, false otherwise
+     */
+    public static boolean isFutureDate(String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu");
+        LocalDate parsedDate = LocalDate.parse(date, formatter);
+        return parsedDate.isAfter(LocalDate.now());
     }
 
     /**
