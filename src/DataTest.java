@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DataTest {
@@ -19,18 +20,8 @@ public class DataTest {
         //clear any existing data so tests dont interfere
         Data.subscriptions.clear();
         Data.names.clear();
-        //create test subscription and add to subscriptions ArrayList
-        ArrayList<String> subscription = new ArrayList<>();
-        subscription.add("Netflix");
-        subscription.add("18.99");
-        subscription.add("Entertainment");
-        subscription.add("Monthly");
-        subscription.add("March 9");
-        subscription.add("April 9");
-        subscription.add("ACTIVE");
-        Data.subscriptions.add(subscription);
-
-        //searching for Netflix which should be at index 0
+        Data.storeNewSubscription("Netflix", 18.99, "Entertainment", "Monthly", LocalDate.of(2025, 3, 9), null, "ACTIVE");
+        //search for Netflix which should be at index 0
         int index = Data.findingSubscriptionIndex("Netflix");
         assertEquals(0, index, "Netflix should be in index 0");
     }
@@ -41,24 +32,14 @@ public class DataTest {
         Data.names.clear();
         //searching for a subscription that was never added (should return -1)
         int index = Data.findingSubscriptionIndex("Hulu");
-        assertEquals(-1, index, "should return -1 when subscription not found");
-    }
+        assertEquals(-1, index, "Should return -1 when subscription not found");}
 
     @Test
     void findSubscriptionIndex_caseInsensitive() {
         Data.subscriptions.clear();
         Data.names.clear();
         //add subscription with uppercase Netflix
-        ArrayList<String> subscription = new ArrayList<>();
-        subscription.add("Netflix");
-        subscription.add("17.99");
-        subscription.add("Entertainment");
-        subscription.add("Monthly");
-        subscription.add("03/01/2025");
-        subscription.add("03/01/2026");
-        subscription.add("ACTIVE");
-        Data.subscriptions.add(subscription);
-
+        Data.storeNewSubscription("Netflix", 17.99, "Entertainment", "Monthly",LocalDate.of(2025, 3, 1), null, "ACTIVE");
         //search using lowercase Netflix
         int index = Data.findingSubscriptionIndex("netflix");
         assertEquals(0, index, "should find subscription even if lowercase.");
@@ -66,41 +47,24 @@ public class DataTest {
 
     @Test
     void updateSubscriptionChoice(){
+        Data.subscriptions.clear();
+        Data.names.clear();
         //add test subscription with ACTIVE status
-        ArrayList<String> subscription= new ArrayList<>();
-        subscription.add("Netflix");
-        subscription.add("18.99");
-        subscription.add("Entertainment");
-        subscription.add("Monthly");
-        subscription.add("March 9");
-        subscription.add("April 9");
-        subscription.add("ACTIVE");
-        Data.subscriptions.add(subscription);
-
-        //update status field (INDEX_STATUS=9) to "PAUSED"
-        Data.changeSubscriptionChoice(0,6, "PAUSED");
-        //verify that status was updated correctly
-        assertEquals("PAUSED",Data.subscriptions.get(Data.INDEX_NAME).get(Data.INDEX_STATUS), "Should update status to PAUSED");
-
+        Data.storeNewSubscription("Netflix", 18.99,"Entertainment", "Monthly",LocalDate.of(2025, 3, 9), null, "ACTIVE");
+        //update status field to PAUSED
+        Data.changeSubscriptionChoice(0, 6, "PAUSED");
+        //check status was updated properly
+        assertEquals("PAUSED", Data.subscriptions.get(0).getStatus(), "Should update status to PAUSED");
     }
+
     @Test
     void changeSubscriptionChoice_updateCost() {
         Data.subscriptions.clear();
         Data.names.clear();
-        //add test subscription with cost 15.99
-        ArrayList<String> subscription = new ArrayList<>();
-        subscription.add("Netflix");
-        subscription.add("15.99");
-        subscription.add("Entertainment");
-        subscription.add("Monthly");
-        subscription.add("03/01/2025");
-        subscription.add("03/01/2026");
-        subscription.add("ACTIVE");
-        Data.subscriptions.add(subscription);
-        //update cost field (INDEX_COST =1) tp "19.99"
-        Data.changeSubscriptionChoice(0, Data.INDEX_COST, "19.99");
-        //verify cost was updated correctly
-        assertEquals("19.99", Data.subscriptions.get(Data.INDEX_NAME).get(Data.INDEX_COST), "Should update cost to 19.99");
+        // add test subscription with cost 15.99
+        Data.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",LocalDate.of(2025, 3, 1), null, "ACTIVE");
+        Data.changeSubscriptionChoice(0, 1, "19.99");
+        assertEquals(19.99, Data.subscriptions.get(0).getCost(), "Should update cost to 19.99");
     }
 
     @Test
