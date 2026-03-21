@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.time.LocalDate;
@@ -7,15 +6,18 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
-public class Data {
+public class SubscriptionManager {
 
-    public static final ArrayList<Subscription> subscriptions = new ArrayList<>();
-    public static final HashMap<String, Double> categoryBudgets = new HashMap<>();
-    public static final HashSet<String> categories = new HashSet<>();
-    public static final HashSet<String> names = new HashSet<>();
-    public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
+    private ArrayList<Subscription> subscriptions = new ArrayList<>();
+    private ArrayList<Budget> budgets;
+//    public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
+    public SubscriptionManager() {
+        subscriptions = new ArrayList<>();
+        budgets = new ArrayList<>();
+    }
 
+    //============================= Subscription Managements ==============================//
 
     /**
      * Checks if subscription is new, and adds it to the subscription ArrayList
@@ -31,27 +33,74 @@ public class Data {
      * @param status of subscription - e.g. PAUSED
      * @return boolean - true if subscription was new and was stored into list, false otherwise
      */
-    public static boolean storeNewSubscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, String status) {
+    public boolean storeNewSubscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, String status) {
         String cleanName = formatTitleCase(name);
         String cleanCategory = formatTitleCase(category);
         String cleanRenewal = formatTitleCase(renewal);
 
-        if (!subscriptionExists(cleanName)) {
-            //create MonthlySubscription or YearlySubscription based on renewal type
-            Subscription subscription;
-            if (cleanRenewal.equalsIgnoreCase("Monthly")){
-                subscription = new MonthlySubscription(cleanName, cost, cleanCategory, startDate, endDate, status);
-            } else {
-                subscription = new YearlySubscription(cleanName, cost, cleanCategory, startDate, endDate, status);
-            }
-            subscriptions.add(subscription);
-            names.add(cleanName);
-            categories.add(cleanCategory);
-            return true;
-        } else {
+        if (subscriptionExists(cleanName)) {
             return false;
         }
+
+        Subscription subscription;
+        // create MonthlySubscription or YearlySubscription based on renewal type
+        if (cleanRenewal.equalsIgnoreCase("Monthly")) {
+            subscription = new MonthlySubscription(cleanName, cost, cleanCategory, startDate, endDate, status);
+        } else {
+            subscription = new YearlySubscription(cleanName, cost, cleanCategory, startDate, endDate, status);
+        }
+
+        subscriptions.add(subscription);
+        return true;
     }
+
+    /**
+     * Finds the index of subscription in outer ArrayList by ensuring the name matches.
+     * @author Ramsha
+     * @param name the name of subscription to search for
+     * @return index of subscription in outer ArrayList or -1 if not found
+     */
+    public int findingSubscriptionIndex(String name) {
+        //loop through every subscription in list
+        for (int i = 0; i < subscriptions.size(); i++) {
+            //get(i) - subscription row
+            //get(0) - name at index 0
+            if (subscriptions.get(i).getName().equalsIgnoreCase(name)) {
+                return i;//found - return its position
+            }
+        }
+        return -1;//not found
+    }
+
+    public boolean subscriptionExists(String name) {
+        return findingSubscriptionIndex(name) != -1;
+    }
+
+    public ArrayList<Subscription> getAllSubscriptions() {
+        return subscriptions;
+    }
+
+    public ArrayList<Subscription> getActiveSubscription() {
+        ArrayList<Subscription> results = new ArrayList<>();
+        for (Subscription sub : subscriptions) {
+            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+                results.add(sub);
+            }
+        }
+        return results;
+    }
+
+    public ArrayList<Subscription> getPausedSubscription() {
+        ArrayList<Subscription> results = new ArrayList<>();
+        for (Subscription sub : subscriptions) {
+            if (sub.getStatus().equalsIgnoreCase("PAUSED")) {
+                results.add(sub);
+            }
+        }
+        return results;
+    }
+
+    //=============================== Budget Management ============================//
 
     /**
      * Formats category string to title case
@@ -61,12 +110,42 @@ public class Data {
      * @param category of subscription chosen by user
      * @param limit of the budget set by the user
      */
-    public static void setCategoryBudget(String category, double limit) {
-        // format to title case "netflix" -> "Netflix"
+    // Set new budget or overwrite budget with new limit
+    public void setBudget(String category, double limit) {
         String cleanCategory = formatTitleCase(category);
+        for (Budget budget : budgets) {
+            if (budget.getCategory().equalsIgnoreCase(cleanCategory)) {
+                budget.setLimit(limit);
+                return;
+            }
+        }
+        budgets.add(new Budget(cleanCategory, limit));
+    }
 
-        categoryBudgets.put(cleanCategory, limit);
-        categories.add(cleanCategory);
+    /**
+     * Gets the budget for the specified category if it already exists
+     * @author Harshita
+     * @param category selected by the user for their subscription
+     * @return budget for the category, -1 if not found
+     */
+    public double getCategoryBudget(String category) {
+
+        for (Budget budget: budgets) {
+            if (budget.getCategory().equalsIgnoreCase(category)) {
+                return budget.getLimit();
+            }
+        }
+        return -1.0;
+    }
+
+    /**
+     * Lists all categories and budgets in a clean format
+     *
+     * @return all the budgets currently stored by category
+     * @author Harshita
+     */
+    public ArrayList<Budget> getAllBudgets() {
+        return budgets;
     }
 
     /**
@@ -93,32 +172,6 @@ public class Data {
         }
         return input.matches("^[a-zA-Z\\s]+$"); // https://stackoverflow.com/questions/24191040/checking-to-see-if-a-string-is-letters-spaces-only
     }
-
-    /**
-     * Gets the budget for the specified category if it already exists
-     * @author Harshita
-     * @param category selected by the user for their subscription
-     * @return budget for the category, -1 if not found
-     */
-    public static double getCategoryBudget(String category) {
-        return categoryBudgets.getOrDefault(formatTitleCase(category), -1.0);
-    }
-
-    /**
-     * Lists all categories and budgets in a clean format
-     *
-     * @return all the budgets currently stored by category
-     * @author Harshita
-     */
-    public static ArrayList<String> getAllBudgets() {
-        ArrayList<String> budgetList = new ArrayList<>();
-        for (String category : categoryBudgets.keySet()) {
-            double limit = categoryBudgets.get(category);
-            budgetList.add(category + ": $" + String.format("%.2f", limit));
-        }
-        return budgetList;
-    }
-
 
     /**
      * Takes in all active subscriptions and totals their cost for monthly spend
@@ -174,23 +227,7 @@ public class Data {
         return total;
     }
 
-    /**
-     * Finds the index of subscription in outer ArrayList by ensuring the name matches.
-     * @author Ramsha
-     * @param name the name of subscription to search for
-     * @return index of subscription in outer ArrayList or -1 if not found
-     */
-    public static int findingSubscriptionIndex(String name) {
-        //loop through every subscription in list
-        for (int i = 0; i < subscriptions.size(); i++) {
-            //get(i) - subscription row
-            //get(0) - name at index 0
-            if (subscriptions.get(i).getName().equalsIgnoreCase(name)) {
-                return i;//found - return its position
-            }
-        }
-        return -1;//not found
-    }
+
     /**
      * Finds subscriptions with a start date within the next 7 days.
      * @author Ramsha
@@ -297,11 +334,11 @@ public class Data {
     }
 
 
+
+
     //--------------------------------Valid Checks----------------------------------------//
 
-    public static boolean subscriptionExists(String name) {
-        return names.contains(formatTitleCase(name));
-    }
+
 
     /**
      * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
