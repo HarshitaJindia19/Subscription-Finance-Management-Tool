@@ -59,6 +59,22 @@ public class Subscription {
 
     public double getYearlyCost() { return getCost() * 12; }
 
+    // Subscription with the same name cannot exist, check if equals
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || !(object instanceof Subscription)) return false;
+
+        Subscription other = (Subscription) object;
+        return this.name.equalsIgnoreCase(other.name);
+    }
+
+    // Hashcode to set name to lowerCase, for equals to match
+    @Override
+    public int hashCode() {
+        return name.toLowerCase().hashCode();
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
