@@ -1,6 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -8,7 +6,7 @@ import java.time.format.ResolverStyle;
 
 public class SubscriptionManager {
 
-    private ArrayList<Subscription> subscriptions = new ArrayList<>();
+    private ArrayList<Subscription> subscriptions;
     private ArrayList<Budget> budgets;
     public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
@@ -100,6 +98,22 @@ public class SubscriptionManager {
         return results;
     }
 
+
+    /**
+     * Updates a specific field of a subscription using .set(index,newValue).
+     *
+     * @param subIndex    index of subscription in outer ArrayList
+     * @param choiceIndex index of field to update in inner ArrayList
+     * @param newChoice   new value to set
+     * @author Ramsha
+     */
+
+    public void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
+        //get(subIndex) - finds correct subscription row
+        //.set(choiceIndex, newChoice) - replaces value at field
+        subscriptions.get(subIndex).set(choiceIndex, newChoice);
+    }
+
     //=============================== Budget Management ============================//
 
     /**
@@ -146,6 +160,16 @@ public class SubscriptionManager {
      */
     public ArrayList<Budget> getAllBudgets() {
         return budgets;
+    }
+
+    public ArrayList<String> getCategories() {
+        ArrayList<String> categories = new ArrayList<>();
+        for (Subscription sub : subscriptions) {
+            if (!categories.contains(sub.getCategory())) {
+                categories.add(sub.getCategory());
+            }
+        }
+        return categories;
     }
 
     //================================= Calculations ==================================//
@@ -202,6 +226,16 @@ public class SubscriptionManager {
 
         if (limit == -1.0) return -1.0; // Budget for category doesn't exist
         return (spent/limit) * 100;
+    }
+
+    public ArrayList<Subscription> getHighExpenseBills(double threshold) {
+        ArrayList<Subscription> highExpenseSubs = new ArrayList<>();
+        for (Subscription sub : subscriptions) {
+            if (sub.getStatus().equalsIgnoreCase("ACTIVE") && sub.getMonthlyCost() >= threshold) {
+                highExpenseSubs.add(sub);
+            }
+        }
+        return highExpenseSubs;
     }
 
     /**
@@ -294,7 +328,7 @@ public class SubscriptionManager {
         return results; // Return list of matching subs
     }
 
-    //===================================== Other Code =====================================//
+    //===================================== Valid Checks =====================================//
 
     /**
      * Formats user input into title case for clean data storage
@@ -315,70 +349,8 @@ public class SubscriptionManager {
      * @return True if input String contains only letters or spaces
      */
     public static boolean isOnlyText(String input) {
-        if (input == null || input.isEmpty()) {
-            return false;
-        }
+        if (input == null || input.isEmpty()) return false;
         return input.matches("^[a-zA-Z\\s]+$"); // https://stackoverflow.com/questions/24191040/checking-to-see-if-a-string-is-letters-spaces-only
-    }
-
-
-
-
-    /**
-     * Updates a specific field of a subscription using .set(index,newValue).
-     *
-     * @param subIndex    index of subscription in outer ArrayList
-     * @param choiceIndex index of field to update in inner ArrayList
-     * @param newChoice   new value to set
-     * @author Ramsha
-     */
-
-    public static void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
-        //get(subIndex) - finds correct subscription row
-        //.set(choiceIndex, newChoice) - replaces value at field
-        subscriptions.get(subIndex).set(choiceIndex, newChoice);
-    }
-
-
-
-
-    //--------------------------------Valid Checks----------------------------------------//
-
-
-
-    /**
-     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
-     * @author Ramsha
-     * @param status status string to ensure is right
-     * @return true if valid, false if invalid
-     */
-
-    public static boolean isValidStatus(String status) {
-        for (String validString : STATUS_OPTIONS) {
-            if (validString.equals(status)) {
-                return true;//matched
-            }
-        }
-        return false;//nothing to match
-    }
-
-    /**
-     * Checks if date (start/end) are valid
-     * @author Harshita
-     * @param date (end/start) of the subscription ( user input )
-     * @return boolean true if valid, false otherwise
-     */
-    public static boolean isValidDate(String date) {
-        try {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu").withResolverStyle(ResolverStyle.STRICT);
-            LocalDate parsedDate = LocalDate.parse(date, formatter);
-
-            // Check against today's date
-            LocalDate today = LocalDate.now();
-            return true;
-        } catch (DateTimeParseException e) {
-            return false;
-        }
     }
 
     /**
@@ -394,6 +366,38 @@ public class SubscriptionManager {
     }
 
     /**
+     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
+     * @author Ramsha
+     * @param status status string to ensure is right
+     * @return true if valid, false if invalid
+     */
+
+    public static boolean isValidStatus(String status) {
+        for (String validString : STATUS_OPTIONS) {
+            if (validString.equals(status)) {
+                return true; //matched
+            }
+        }
+        return false;//nothing to match
+    }
+
+    /**
+     * Checks if date (start/end) are valid
+     * @author Harshita
+     * @param date (end/start) of the subscription ( user input )
+     * @return boolean true if valid, false otherwise
+     */
+    public static boolean isValidDate(String date) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu").withResolverStyle(ResolverStyle.STRICT);
+            LocalDate.parse(date, formatter); // parse the date string
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    /**
      * Checks if cost is valid
      * @author Harshita
      * @param cost for new subscription
@@ -402,7 +406,7 @@ public class SubscriptionManager {
     public static boolean isValidCost(String cost) {
         try {
             double value = Double.parseDouble(cost);
-            return value > 0;
+            return value > 0 && value < 100000; // reasonable range for subscription
         } catch (NumberFormatException e) {
             return false;
         }
