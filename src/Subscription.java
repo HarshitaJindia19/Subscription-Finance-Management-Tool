@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Subscription {
+public class Subscription implements Comparable<Subscription> {
 
     private String name, category, renewal, status;
 
@@ -76,18 +76,17 @@ public class Subscription {
     }
 
     @Override
+    public int compareTo(Subscription other) {
+        return this.name.compareToIgnoreCase(other.name);
+    }
+
+    @Override
     public String toString() {
+
+        // format startDate and endDate
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         String endDateDisplay = (endDate != null) ? endDate.format(formatter) : "N/A";
 
-        return "Subscription{" +
-                "name='" + name + '\'' +
-                ", category='" + category + '\'' +
-                ", renewal='" + renewal + '\'' +
-                ", status='" + status + '\'' +
-                ", cost=" + cost +
-                ", startDate=" + startDate.format(formatter) +
-                ", endDate=" + endDateDisplay +
-                '}';
+        return String.format("%-15s $%-8.2f %-15s %-10s %-12s %-12s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status);
     }
 }
