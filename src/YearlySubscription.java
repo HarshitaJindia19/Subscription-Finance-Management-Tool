@@ -31,7 +31,7 @@ public class YearlySubscription extends Subscription {
      */
     @Override
     public double getYearlyCost() {
-        return getCost() / 12;
+        return getCost();
     }
 
     @Override
