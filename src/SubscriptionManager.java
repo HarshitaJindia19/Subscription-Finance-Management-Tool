@@ -10,7 +10,7 @@ public class SubscriptionManager {
 
     private ArrayList<Subscription> subscriptions = new ArrayList<>();
     private ArrayList<Budget> budgets;
-//    public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
+    public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
     public SubscriptionManager() {
         subscriptions = new ArrayList<>();
@@ -148,6 +148,154 @@ public class SubscriptionManager {
         return budgets;
     }
 
+    //================================= Calculations ==================================//
+
+    /**
+     * Takes in all active subscriptions and totals their cost for monthly spend
+     * @author Harshita
+     * @return total monthly spend of user as double
+     */
+    public double calculateMonthlySpend() {
+        double total = 0.0;
+
+        for (Subscription sub : subscriptions) {
+            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+                total += sub.getMonthlyCost();
+            }
+        }
+        return total;
+    }
+
+    /**
+     * Takes in all active subscriptions and totals their cost for yearly spend
+     *
+     * @return total monthly spend of user as double
+     * @author Harshita
+     */
+    public double calculateYearlySpend() {
+        double total = 0.0;
+        for (Subscription sub : subscriptions) {
+            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+                total += sub.getYearlyCost();
+            }
+        }
+        return total;
+    }
+
+    // Get the total spend of the category for all active subs
+    public double getSpendByCategory(String category) {
+        double total = 0.0;
+
+        // Find all subscriptions with the target category and are ACTIVE
+        for (Subscription sub: subscriptions) {
+            if (sub.getCategory().equalsIgnoreCase(category) && sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+                total += sub.getMonthlyCost();
+            }
+        }
+        return total;
+    }
+
+    // Get the total spent of the budget as percentage
+    public double getBudgetPercentage(String category) {
+        double limit = getCategoryBudget(category);
+        double spent = getSpendByCategory(category);
+
+        if (limit == -1.0) return -1.0; // Budget for category doesn't exist
+        return (spent/limit) * 100;
+    }
+
+    /**
+     * Finds subscriptions with a start date within the next 7 days.
+     * @author Ramsha
+     * @return ArrayList of subscriptions renewing within 7 days
+     */
+    public ArrayList<Subscription> getUpcomingBills() {
+        ArrayList<Subscription> results = new ArrayList<>();
+
+        //get today's date
+        LocalDate today = LocalDate.now();
+        LocalDate sevenDaysLater = today.plusDays(7);
+
+        for (Subscription sub : subscriptions) {
+            //use instanceof to check subclass type
+            if (sub instanceof MonthlySubscription monthlySub) {
+                //use isUpcoming() from MonthlySubscription
+                if (monthlySub.isUpcoming()) {
+                    results.add(sub);
+                }
+            } else if (sub instanceof YearlySubscription) {
+                //for yearly, check if annual renewal is within next 7 days
+                try {
+                    //parse MM/DD/YYYY format
+                    LocalDate startDate = sub.getStartDate();
+                    LocalDate nextRenewal = startDate.withYear(today.getYear());
+                    if (nextRenewal.isBefore(today)) {
+                        nextRenewal = nextRenewal.plusYears(1);
+                    }
+                    if (!nextRenewal.isBefore(today) && !nextRenewal.isAfter(sevenDaysLater)) {
+                        results.add(sub);
+                    }
+                } catch (Exception e) {//skip if date is invalid
+                }
+            }
+        }
+
+        return results;
+    }
+
+    //================================== Search =======================================//
+
+    /**
+     * Search Engine to find all the subscriptions under the given name
+     * @param name the name of subscription to search for
+     * @return ArrayList of ArrayLists, where inner list shows a
+     * subscription that matches the name
+     */
+    public ArrayList<Subscription> searchByName(String name) {
+        ArrayList<Subscription> results = new ArrayList<>(); // Initialize results list
+
+        if (name == null || name.trim().isEmpty()) {// If input is null or isEmpty, return empty list
+            return results;
+        }
+
+        String keyword = name.trim().toLowerCase(); // Convert search to lowercase
+
+        for (Subscription sub : subscriptions) { // Loop through all subs
+            if (sub.getName().toLowerCase().contains(keyword)) {// Check if name contains keyword
+                results.add(sub);// Add matching subs to results
+            }
+        }
+        return results; // Return list of matching subs
+    }
+
+    /**
+     * Search Engine to find all the subscriptions under the given category
+     *
+     * @param category is the category of subscription to search for
+     * @return ArrayList of ArrayLists, where each inner list shows a
+     *subscription that matches the category
+     */
+
+    public ArrayList<Subscription> searchByCategory(String category) {
+        ArrayList<Subscription> results = new ArrayList<>();
+
+        if (category == null || category.trim().isEmpty()) { // Return empty list if input is null
+            return results;
+        }
+
+        String keyword = category.trim().toLowerCase(); // Convert search to lowercase
+        for (Subscription sub : subscriptions) { // Loop through all subs
+
+            if (sub.getCategory().toLowerCase().contains(keyword)) {// Check if category contains keyword
+                results.add(sub); // Add matching subs to results
+            }
+
+        }
+        return results; // Return list of matching subs
+    }
+
+    //===================================== Other Code =====================================//
+
     /**
      * Formats user input into title case for clean data storage
      * @author Harshita
@@ -173,150 +321,8 @@ public class SubscriptionManager {
         return input.matches("^[a-zA-Z\\s]+$"); // https://stackoverflow.com/questions/24191040/checking-to-see-if-a-string-is-letters-spaces-only
     }
 
-    /**
-     * Takes in all active subscriptions and totals their cost for monthly spend
-     * @author Harshita
-     * @return total monthly spend of user as double
-     */
-    public static double calculateMonthlySpend() {
-        double total = 0.0;
-        double numOfMonths = 12;
-
-        for (Subscription sub : subscriptions) {
-
-            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
-                double cost = sub.getCost();
-                String renewal = sub.getRenewal();
-
-                if (renewal.equalsIgnoreCase("MONTHLY")) {
-                    total += cost;
-                } else if (renewal.equalsIgnoreCase("YEARLY")) {
-                    total += cost / numOfMonths; // convert yearly to monthly by dividing costs amongst months
-                }
-            }
-        }
-
-        return total;
-    }
-
-    /**
-     * Takes in all active subscriptions and totals their cost for yearly spend
-     *
-     * @return total monthly spend of user as double
-     * @author Harshita
-     */
-    public static double calculateYearlySpend() {
-
-        double total = 0.0;
-        double numOfMonths = 12;
-
-        for (Subscription sub : subscriptions) {
-
-            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
-                double cost = sub.getCost();
-                String renewal = sub.getRenewal();
-
-                if (renewal.equalsIgnoreCase("MONTHLY")) {
-                    total += cost * numOfMonths; // convert monthly to yearly
-                } else if (renewal.equalsIgnoreCase("YEARLY")) {
-                    total += cost; // convert yearly to monthly by dividing costs amongst months
-                }
-            }
-        }
-
-        return total;
-    }
 
 
-    /**
-     * Finds subscriptions with a start date within the next 7 days.
-     * @author Ramsha
-     * @return ArrayList of subscriptions renewing within 7 days
-     */
-    public static ArrayList<Subscription> getUpcomingBills() {
-        ArrayList<Subscription> results = new ArrayList<>();
-
-        //get today's date
-        LocalDate today = LocalDate.now();
-        LocalDate sevenDaysLater = today.plusDays(7);
-
-        for (Subscription sub : subscriptions) {
-            //use instanceof to check subclass type
-            if (sub instanceof MonthlySubscription) {
-                //use isUpcoming() from MonthlySubscription
-                MonthlySubscription monthlySub = (MonthlySubscription) sub;
-                if (monthlySub.isUpcoming()) {
-                    results.add(sub);
-                }
-            } else if (sub instanceof YearlySubscription) {
-                //for yearly, check if annual renewal is within next 7 days
-                try {
-                    //parse MM/DD/YYYY format
-                    LocalDate startDate = sub.getStartDate();
-                    LocalDate nextRenewal = startDate.withYear(today.getYear());
-                    if (nextRenewal.isBefore(today)) {
-                        nextRenewal = nextRenewal.plusYears(1);
-                    }
-                    if (!nextRenewal.isBefore(today) && !nextRenewal.isAfter(sevenDaysLater)) {
-                        results.add(sub);
-                    }
-                } catch (Exception e) {//skip if date is invalid
-                }
-            }
-        }
-
-        return results;
-    }
-    /**
-     * Search Engine to find all the subscriptions under the given name
-     * @param name the name of subscription to search for
-     * @return ArrayList of ArrayLists, where inner list shows a
-     * subscription that matches the name
-     */
-    public static ArrayList<Subscription> searchByName(String name) {
-        ArrayList<Subscription> results = new ArrayList<>(); // Initialize results list
-
-        if (name == null || name.trim().isEmpty()) {// If input is null or isEmpty, return empty list
-            return results;
-        }
-
-        String keyword = name.trim().toLowerCase(); // Convert search to lowercase
-
-        for (Subscription sub : subscriptions) { // Loop through all subs
-            String subName = sub.getName(); //Get the subs name using constant index
-            if (subName != null && subName.toLowerCase().contains(keyword)) {// Check if name contains keyword
-                results.add(sub);// Add matching subs to results
-            }
-        }
-        return results; // Return list of matching subs
-    }
-
-    /**
-     * Search Engine to find all the subscriptions under the given category
-     *
-     * @param category is the category of subscription to search for
-     * @return ArrayList of ArrayLists, where each inner list shows a
-     *subscription that matches the category
-     */
-
-    public static ArrayList<Subscription> searchByCategory(String category) {
-        ArrayList<Subscription> results = new ArrayList<>();
-
-        if (category == null || category.trim().isEmpty()) { // Return empty list if input is null
-            return results;
-        }
-
-        String keyword = category.trim().toLowerCase(); // Convert search to lowercase
-
-        for (Subscription sub : subscriptions) { // Loop through all subs
-
-            if (sub.getCategory().toLowerCase().contains(keyword)) {// Check if category contains keyword
-                results.add(sub); // Add matching subs to results
-            }
-
-        }
-        return results; // Return list of matching subs
-    }
 
     /**
      * Updates a specific field of a subscription using .set(index,newValue).
