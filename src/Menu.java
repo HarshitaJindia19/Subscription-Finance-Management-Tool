@@ -322,6 +322,22 @@ public class Menu {
         System.out.println("-------------------------");
     }
 
+    private static void saveData() {
+        System.out.println("\n==== SAVE SUBSCRIPTIONS ====");
+
+        if (manager.getAllSubscriptions().isEmpty()) {
+            System.out.println("No Subscriptions to save yet.");
+        }
+
+        System.out.println("Enter a filename to save to: ");
+        String filename = input.nextLine().trim();
+
+        // Check for if Empty, ends with .csv, and if file name already exists.
+
+        FileHandler.saveToCSV(manager, filename);
+
+    }
+
     //====================================GETTERS==================================//
 
     /**
