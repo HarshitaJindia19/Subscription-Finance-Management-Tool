@@ -109,9 +109,24 @@ public class SubscriptionManager {
      */
 
     public void changeSubscriptionChoice(int subIndex, int choiceIndex, String newChoice) {
-        //get(subIndex) - finds correct subscription row
-        //.set(choiceIndex, newChoice) - replaces value at field
-        subscriptions.get(subIndex).set(choiceIndex, newChoice);
+        Subscription sub=subscriptions.get(subIndex);
+        //use setters for users choice
+        switch (choiceIndex) {
+            case 0: sub.setName(newChoice);
+                break;
+            case 1: sub.setCost(Double.parseDouble(newChoice));
+                break;
+            case 2: sub.setCategory(newChoice);
+                break;
+            case 3: sub.setRenewal(newChoice);
+                break;
+            case 4: sub.setStartDate(LocalDate.parse(newChoice, DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+                break;
+            case 5: sub.setEndDate(LocalDate.parse(newChoice, DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+                break;
+            case 6: sub.setStatus(newChoice);
+                break;
+        }
     }
 
     //=============================== Budget Management ============================//
