@@ -125,7 +125,7 @@ public class SubscriptionManager {
      * @param limit of the budget set by the user
      */
     // Set new budget or overwrite budget with new limit
-    public void setBudget(String category, double limit) {
+    public void setCategoryBudget(String category, double limit) {
         String cleanCategory = formatTitleCase(category);
         for (Budget budget : budgets) {
             if (budget.getCategory().equalsIgnoreCase(cleanCategory)) {
