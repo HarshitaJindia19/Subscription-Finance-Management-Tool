@@ -1,3 +1,4 @@
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -33,7 +34,7 @@ public class Menu {
         options.add("Budget % By Category"); // 9 -> 11
         options.add("Check High-Expense Bills"); // 10 -> 12
         options.add("Check Budget Alerts"); // 11 -> 13
-        options.add("Save Subscriptions to File"); // 14
+        options.add("Save Subscription Data to File"); // 14
     }
 
     /**
@@ -301,7 +302,47 @@ public class Menu {
         System.out.println("Total: $" + String.format("%.2f", total));
     }
 
+    private static void saveData() {
+        System.out.println("\n==== SAVE SUBSCRIPTION INFO ===="); // title
 
+        // If no subscriptions saved, does not save to file
+        if (manager.getAllSubscriptions().isEmpty() && manager.getAllBudgets().isEmpty()) {
+            System.out.println("Nothing to save: No Subscriptions or Budgets added yet.");
+            return; // terminate
+        }
+
+        // Ask user for file name
+        System.out.println("Enter a filename to save to (press Enter to save to subscriptions.csv): ");
+        String filename = input.nextLine().trim();
+
+        // If empty automatically save to subscriptions.csv
+        if (filename.isEmpty()) {
+            filename = "subscription.csv";
+        }
+
+        // Add .csv to the end of filename if user did not add it
+        if (!filename.endsWith(".csv")) {
+            filename += ".csv";
+        }
+
+        // Check if file already exists to overwrite it
+        File file = new File(filename);
+
+        if (file.exists()) {
+            System.out.println("File " + filename + " already exists. It will be overwritten."); // prompt user to confirm if they want file overwritten
+            System.out.println("Continue? (Y/N)");
+            String confirm = input.nextLine().trim();
+
+            if (!confirm.equalsIgnoreCase("y")) { // Anything other than Y, will cancel save
+                System.out.println("Save Cancelled.");
+                return; // terminate
+            }
+        }
+
+        // Save to file
+        FileHandler.saveToCSV(manager, filename);
+
+    }
 
     //=====================================DISPLAY MESSAGES===============================//
 
@@ -320,22 +361,6 @@ public class Menu {
             System.out.println(" " + budget);
         }
         System.out.println("-------------------------");
-    }
-
-    private static void saveData() {
-        System.out.println("\n==== SAVE SUBSCRIPTIONS ====");
-
-        if (manager.getAllSubscriptions().isEmpty()) {
-            System.out.println("No Subscriptions to save yet.");
-        }
-
-        System.out.println("Enter a filename to save to: ");
-        String filename = input.nextLine().trim();
-
-        // Check for if Empty, ends with .csv, and if file name already exists.
-
-        FileHandler.saveToCSV(manager, filename);
-
     }
 
     //====================================GETTERS==================================//
