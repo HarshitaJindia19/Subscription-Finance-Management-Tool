@@ -13,11 +13,11 @@ Subscription Manager is a Java-based command-line application that helps users t
 
 ## Features
 
-### Add Data
+### Add SubscriptionManager
 - Add a new subscription (name, cost, category, billing cycle, start date, end date, status)
 - Add a monthly budget limit by category
 
-### Update Data
+### Update SubscriptionManager
 - Change subscription status (ACTIVE, PAUSED, CANCELLED)
 - Update any subscription field (name, cost, category, billing cycle, dates, status)
 
@@ -37,7 +37,7 @@ Subscription Manager is a Java-based command-line application that helps users t
 
 ---
 
-## Data Structures Used
+## SubscriptionManager Structures Used
 
 | Structure | Purpose |
 |---|---|
@@ -46,7 +46,7 @@ Subscription Manager is a Java-based command-line application that helps users t
 | `HashSet<String>` | Stores unique category names and subscription names |
 | `String[]` | Stores fixed status options: ACTIVE, PAUSED, CANCELLED |
 
-### Subscription Data Format (Inner ArrayList)
+### Subscription SubscriptionManager Format (Inner ArrayList)
 | Index | Field |
 |---|---|
 | 0 | Name |
@@ -64,8 +64,8 @@ Subscription Manager is a Java-based command-line application that helps users t
 src/
 ├── Main.java        # Entry point - calls Menu.runMenu()
 ├── Menu.java        # Front-end: all Scanner input and System.out output
-├── Data.java        # Back-end: all data storage and logic
-└── DataTest.java    # JUnit 5 unit tests for Data.java methods
+├── SubscriptionManager.java        # Back-end: all data storage and logic
+└── SubscriptionManagerTest.java    # JUnit 5 unit tests for SubscriptionManager.java methods
 ```
 
 ---
@@ -84,7 +84,7 @@ git clone https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git
 
 ## How to Run Tests
 
-Open `DataTest.java` in IntelliJ and click the green run button next to the class or individual test methods. Requires JUnit 5.
+Open `SubscriptionManagerTest.java` in IntelliJ and click the green run button next to the class or individual test methods. Requires JUnit 5.
 
 
 ---
