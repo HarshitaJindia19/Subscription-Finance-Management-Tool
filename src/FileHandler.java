@@ -2,8 +2,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
 
 public class FileHandler {
+
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     public static void saveToCSV(SubscriptionManager manager, String filename) {
         File file = new File(filename);
@@ -11,13 +14,28 @@ public class FileHandler {
         // Write lines to file
         try (PrintWriter writer = new PrintWriter(new FileWriter(file))) { // create/open file for writing
 
-            //Subscriptions
+            // Write SUBSCRIPTIONS
             writer.println("SUBSCRIPTIONS");
             writer.println("name,cost,category,renewal,startDate,endDate,status");
 
-            // Loop through all subscriptions in manager to add to a line
-            // endDate should be either N/A or endDate if provided - add ternary operator perhaps
-            // Write a CSV line, with name + , + cost + .... writer.println ( add the line to the file)
+            // Loop through current logged subscriptions
+            for (Subscription sub : manager.getAllSubscriptions()) {
+
+                // Handle null endDate - N/A if skipped
+                String endDate = (sub.getEndDate() != null) ? sub.getEndDate().format(formatter) : "N/A";
+
+                // Add subscription information into a CSV line
+                // name,cost,category,renewal,startDate,endDate,status
+                writer.println(
+                        sub.getName() + "," +                        //Netflix
+                        sub.getCost() + "," +                        //13.99
+                        sub.getCategory() + "," +                    //Entertainment
+                        sub.getRenewal() + "," +                     //Monthly
+                        sub.getStartDate().format(formatter) + "," + //05/06/2025
+                        endDate + "," +                              //N/A
+                        sub.getStatus().toString()                   //ACTIVE
+                );
+            }
 
             //Budgets
             writer.println("BUDGETS");
@@ -34,3 +52,5 @@ public class FileHandler {
         }
     }
 }
+
+// Point to remember -> if the user save to file twice, does previous info repeat in the file?
