@@ -8,7 +8,6 @@ public class SubscriptionManager {
 
     private ArrayList<Subscription> subscriptions;
     private ArrayList<Budget> budgets;
-    public static final String[] STATUS_OPTIONS = {"ACTIVE", "PAUSED", "CANCELLED"};
 
     public SubscriptionManager() {
         subscriptions = new ArrayList<>();
@@ -31,7 +30,7 @@ public class SubscriptionManager {
      * @param status of subscription - e.g. PAUSED
      * @return boolean - true if subscription was new and was stored into list, false otherwise
      */
-    public boolean storeNewSubscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, String status) {
+    public boolean storeNewSubscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, Status status) {
         String cleanName = formatTitleCase(name);
         String cleanCategory = formatTitleCase(category);
         String cleanRenewal = formatTitleCase(renewal);
@@ -81,7 +80,7 @@ public class SubscriptionManager {
     public ArrayList<Subscription> getActiveSubscription() {
         ArrayList<Subscription> results = new ArrayList<>();
         for (Subscription sub : subscriptions) {
-            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+            if (sub.getStatus() == Status.ACTIVE) {
                 results.add(sub);
             }
         }
@@ -91,7 +90,7 @@ public class SubscriptionManager {
     public ArrayList<Subscription> getPausedSubscription() {
         ArrayList<Subscription> results = new ArrayList<>();
         for (Subscription sub : subscriptions) {
-            if (sub.getStatus().equalsIgnoreCase("PAUSED")) {
+            if (sub.getStatus() == Status.PAUSED) {
                 results.add(sub);
             }
         }
@@ -124,7 +123,7 @@ public class SubscriptionManager {
                 break;
             case 5: sub.setEndDate(LocalDate.parse(newChoice, DateTimeFormatter.ofPattern("MM/dd/yyyy")));
                 break;
-            case 6: sub.setStatus(newChoice);
+            case 6: sub.setStatus(Status.getStatus(newChoice));
                 break;
         }
     }
@@ -198,7 +197,7 @@ public class SubscriptionManager {
         double total = 0.0;
 
         for (Subscription sub : subscriptions) {
-            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+            if (sub.getStatus() == Status.ACTIVE) {
                 total += sub.getMonthlyCost();
             }
         }
@@ -214,7 +213,7 @@ public class SubscriptionManager {
     public double calculateYearlySpend() {
         double total = 0.0;
         for (Subscription sub : subscriptions) {
-            if (sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+            if (sub.getStatus() == Status.ACTIVE) {
                 total += sub.getYearlyCost();
             }
         }
@@ -227,7 +226,7 @@ public class SubscriptionManager {
 
         // Find all subscriptions with the target category and are ACTIVE
         for (Subscription sub: subscriptions) {
-            if (sub.getCategory().equalsIgnoreCase(category) && sub.getStatus().equalsIgnoreCase("ACTIVE")) {
+            if (sub.getCategory().equalsIgnoreCase(category) && sub.getStatus() == Status.ACTIVE) {
                 total += sub.getMonthlyCost();
             }
         }
@@ -246,7 +245,7 @@ public class SubscriptionManager {
     public ArrayList<Subscription> getHighExpenseBills(double threshold) {
         ArrayList<Subscription> highExpenseSubs = new ArrayList<>();
         for (Subscription sub : subscriptions) {
-            if (sub.getStatus().equalsIgnoreCase("ACTIVE") && sub.getMonthlyCost() >= threshold) {
+            if (sub.getStatus() == Status.ACTIVE && sub.getMonthlyCost() >= threshold) {
                 highExpenseSubs.add(sub);
             }
         }
@@ -378,22 +377,6 @@ public class SubscriptionManager {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/uuuu");
         LocalDate parsedDate = LocalDate.parse(date, formatter);
         return parsedDate.isAfter(LocalDate.now());
-    }
-
-    /**
-     * Checks if status string is one of the valid options(ACTIVE, PAUSED, CANCELLED stored in STATUS_OPTIONS)
-     * @author Ramsha
-     * @param status status string to ensure is right
-     * @return true if valid, false if invalid
-     */
-
-    public static boolean isValidStatus(String status) {
-        for (String validString : STATUS_OPTIONS) {
-            if (validString.equals(status)) {
-                return true; //matched
-            }
-        }
-        return false;//nothing to match
     }
 
     /**

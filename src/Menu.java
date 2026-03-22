@@ -146,7 +146,7 @@ public class Menu {
         String renewal = getRenewal();
         LocalDate startDate = getStartDate();
         LocalDate endDate = getEndDate();
-        String status = getStatus();
+        Status status = getStatus();
 
         boolean success = manager.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
 
@@ -249,11 +249,12 @@ public class Menu {
             newChoice = input.nextLine().trim();
 
             if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
-                if (!SubscriptionManager.isValidStatus(newChoice.toUpperCase())) {
-                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
-                } else {
+                try {
+                    Status.getStatus(newChoice); //validates
                     newChoice = newChoice.toUpperCase();
                     validChoice = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
                 }
             } else {
                 if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
@@ -486,20 +487,24 @@ public class Menu {
      *
      * @return status of subscription (user input)
      */
-    private static String getStatus() {
-        String status;
-        System.out.println("Choose from " + Arrays.toString(SubscriptionManager.STATUS_OPTIONS)); // display options for user clarity
+    private static Status getStatus() {
+
+        System.out.println("Choose from: ACTIVE / PAUSED / CANCELLED"); // display options for user clarity
         System.out.println("Enter current status: ");
+        Status status = null;
 
         // loop until valid input
         do {
-            status = input.nextLine().trim().toUpperCase();
-            if (!SubscriptionManager.isValidStatus(status)) {
-                System.out.println("Choose from " + Arrays.toString(SubscriptionManager.STATUS_OPTIONS));
-                System.out.println("Please enter one of the options provided:");
+            String statusInput = input.nextLine().trim();
+
+            try {
+                status = Status.getStatus(statusInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid status. Please enter ACTIVE, PAUSED, or CANCELLED:");
             }
-        } while (!SubscriptionManager.isValidStatus(status));
-        return status.toUpperCase(); // consistent casing
+        } while (status == null);
+
+        return status; // consistent casing
     }
 
     /**
@@ -558,10 +563,10 @@ public class Menu {
             String billing = sub.getRenewal();
             String start = sub.getStartDate().format(formatter);
             String end = (sub.getEndDate() != null) ? sub.getEndDate().format(formatter) : "-";
-            String status = sub.getStatus();
+            String status = sub.getStatus().toString();
 
             //Description Row printed
-            System.out.printf("%-15s $%-7.2fs %-15s %-10s %-15s %-15s %-10s%n",
+            System.out.printf("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s%n",
                     subName, sub.getCost(), subCategory, billing, start, end, status);
         }
     }
@@ -576,12 +581,12 @@ public class Menu {
      *
      */
     public static void showBudgetAlerts() {
-        ArrayList<String> categories = new ArrayList<>(manager.categoryBudgets.keySet());//Gets all categories that have budgets
         //convert into a list
         System.out.println("=== Budget Alert ===");
+        boolean anyAlerts = false;
 
-        //Loop through each category
-        for (String category : categories) {// loops through each category
+        //Loop through each budget
+        for (Budget budget : manager.getAllBudgets()) {// loops through each category
             // Sum of ACTIVE subs costs in this category
             double limit = SubscriptionManager.categoryBudgets.get(category);//Gets the budget limit for that category
             double total = 0; //Initializes total spending for that category
@@ -727,7 +732,7 @@ public class Menu {
         System.out.print("Enter threshold amount: $");
         double threshold = Double.parseDouble(input.nextLine().trim()); // Read and convert input to double
 
-        ArrayList<Subscription> highExpense = getHighExpenseBills(threshold);// Get subscriptions above threshold
+        ArrayList<Subscription> highExpense = manager.getHighExpenseBills(threshold);// Get subscriptions above threshold
         // Check if any subscriptions meet the threshold
         if (highExpense.isEmpty()) {
             System.out.println("No high-expense bills were found.");// Print message if none found

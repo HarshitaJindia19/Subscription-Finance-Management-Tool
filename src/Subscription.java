@@ -3,13 +3,15 @@ import java.time.format.DateTimeFormatter;
 
 public class Subscription implements Comparable<Subscription> {
 
-    private String name, category, renewal, status;
+    private String name, category, renewal;
+
+    private Status status;
 
     private double cost;
 
     private LocalDate startDate, endDate;
 
-    public Subscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, String status) {
+    public Subscription(String name, double cost, String category, String renewal, LocalDate startDate, LocalDate endDate, Status status) {
         this.name = name;
         this.cost = cost;
         this.category = category;
@@ -32,7 +34,7 @@ public class Subscription implements Comparable<Subscription> {
         return renewal;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
@@ -52,7 +54,7 @@ public class Subscription implements Comparable<Subscription> {
     public void setRenewal(String renewal) { this.renewal = renewal; }
     public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
     public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
-    public void setStatus(String status) { this.status = status; }
+    public void setStatus(Status status) { this.status = status; }
 
 
     public double getMonthlyCost() { return getCost(); }
@@ -63,9 +65,8 @@ public class Subscription implements Comparable<Subscription> {
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
-        if (object == null || !(object instanceof Subscription)) return false;
+        if (!(object instanceof Subscription other)) return false;
 
-        Subscription other = (Subscription) object;
         return this.name.equalsIgnoreCase(other.name);
     }
 
@@ -87,6 +88,6 @@ public class Subscription implements Comparable<Subscription> {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         String endDateDisplay = (endDate != null) ? endDate.format(formatter) : "N/A";
 
-        return String.format("%-15s $%-8.2f %-15s %-10s %-12s %-12s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status);
+        return String.format("%-15s $%-8.2f %-15s %-10s %-12s %-12s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status.toString());
     }
 }
