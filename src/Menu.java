@@ -264,7 +264,7 @@ public class Menu {
 
             }
         }
-        //call Data to update field using .set(index,newValue)
+        //call manager to update field using .set(index,newValue)
         manager.changeSubscriptionChoice(index, choiceIndex, newChoice);
         System.out.println("Update complete.");
     }
