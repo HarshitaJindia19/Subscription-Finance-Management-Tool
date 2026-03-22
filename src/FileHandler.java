@@ -27,30 +27,40 @@ public class FileHandler {
                 // Add subscription information into a CSV line
                 // name,cost,category,renewal,startDate,endDate,status
                 writer.println(
-                        sub.getName() + "," +                        //Netflix
-                        sub.getCost() + "," +                        //13.99
-                        sub.getCategory() + "," +                    //Entertainment
-                        sub.getRenewal() + "," +                     //Monthly
-                        sub.getStartDate().format(formatter) + "," + //05/06/2025
-                        endDate + "," +                              //N/A
-                        sub.getStatus().toString()                   //ACTIVE
+                        sub.getName() + "," +
+                        sub.getCost() + "," +
+                        sub.getCategory() + "," +
+                        sub.getRenewal() + "," +
+                        sub.getStartDate().format(formatter) + "," +
+                        endDate + "," +
+                        sub.getStatus().toString()
                 );
             }
 
-            //Budgets
+            // Write BUDGETS
             writer.println("BUDGETS");
             writer.println("category,limit");
 
-            //Loop through all budgets and write a line for each
+            // Loop through current logged budgets
+            for (Budget budget : manager.getAllBudgets()) {
 
+                // Add budget information to a CSV line
+                // category,limit
+                writer.println(
+                        budget.getCategory() + "," +
+                        budget.getLimit() + ","
+                );
+            }
 
-            // Output successful message that data has been saved -> or should that be inside menu method
-            // Don't forget -> add a menu option to save to file
+            // Output message for user for successful save to file
+            System.out.println("Data saved successfully to: " + filename);
+            System.out.println("Subscriptions Saved: " + manager.getAllSubscriptions().size());
+            System.out.println("Budgets Saved: " + manager.getAllBudgets().size());
 
-        } catch (IOException e) { // NOTE -> add more specific err messages (multiple for better clarity)
-            System.out.println("Error saving to file: " + e);
+        } catch (IOException e) {
+            System.out.println("ERROR saving to file: " + filename);
+            System.out.println("Details: " + e);
         }
     }
 }
 
-// Point to remember -> if the user save to file twice, does previous info repeat in the file?
