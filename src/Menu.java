@@ -290,18 +290,28 @@ public class Menu {
         }
     }
 
+    /**
+     * Calculates total monthly spend
+     */
     private static void showMonthlySpend() {
         double total = manager.calculateMonthlySpend();
         System.out.println("\n--- Total Monthly Spend ---");
         System.out.println("Total: $" + String.format("%.2f", total));
     }
 
+    /**
+     * Calculates total yearly spend
+     */
     private static void showYearlySpend() {
         double total = manager.calculateYearlySpend();
         System.out.println("\n--- Total Annual Spend ---");
         System.out.println("Total: $" + String.format("%.2f", total));
     }
 
+    /**
+     * Saves subscription data to user provided filename
+     * Overwrites information if file already exists
+     */
     private static void saveData() {
         System.out.println("\n==== SAVE SUBSCRIPTION INFO ===="); // title
 

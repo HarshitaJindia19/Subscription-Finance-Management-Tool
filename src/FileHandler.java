@@ -6,8 +6,17 @@ import java.time.format.DateTimeFormatter;
 
 public class FileHandler {
 
+    /**
+     * Standard formatter for startDate and endDate
+     */
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
+    /**
+     * Saves Subscription and Budget Information into a file
+     *
+     * @param manager to access all methods with subscription data
+     * @param filename to save to
+     */
     public static void saveToCSV(SubscriptionManager manager, String filename) {
         File file = new File(filename);
 
