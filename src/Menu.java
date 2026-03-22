@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -586,39 +585,18 @@ public class Menu {
         boolean anyAlerts = false;
 
         //Loop through each budget
-        for (Budget budget : manager.getAllBudgets()) {// loops through each category
-            // Sum of ACTIVE subs costs in this category
-            double limit = SubscriptionManager.categoryBudgets.get(category);//Gets the budget limit for that category
-            double total = 0; //Initializes total spending for that category
-
-            for (int j = 0; j < manager.getAllSubscriptions().size(); j++) {
-                Subscription sub = manager.getAllSubscriptions().get(j);
-
-
-                String subName = sub.getName();
-                double costStr = sub.getCost();;
-                String subCategory = SubscriptionManager.formatTitleCase(sub.getCategory());
-                String status = sub.getStatus();
-
-                // only count ACTIVE subscriptions in the correct category
-                if (subCategory.equalsIgnoreCase(category) && status.equalsIgnoreCase("ACTIVE")) {
-
-                    if (!costStr.isEmpty()) {
-                        try {
-                            double cost = Double.parseDouble(costStr);
-                            total += cost;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Could not read the cost for: " + subName);
-                        }
-                    }
-                }
+        for (Budget budget : manager.getAllBudgets()) {// loops through each budget
+            double spent = manager.getSpendByCategory(budget.getCategory()); // gets the spend by category
+            if (spent > budget.getLimit()) {
+                anyAlerts = true;
+                System.out.println("🚨 Budget exceeded for " + budget.getCategory());
+                System.out.println("Spent: $" + String.format("%.2f", spent) + " / Budget: $" + String.format("%.2f", budget.getLimit()));
             }
+        }
 
-            // Alert if budget exceeded
-            if (total > limit) {
-                System.out.println("🚨 Budget exceeded for " + category);
-                System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
-            }
+        // Output no budget alerts found to user
+        if (!anyAlerts) {
+            System.out.println("No Budget Alerts.");
         }
     }
 
@@ -628,21 +606,9 @@ public class Menu {
      * Prints a formatted table showing all details for each subscription
      */
     public static void showActiveSubscriptions() {
-        System.out.println("=== Active Subscriptions ===");
+        System.out.println("=== ACTIVE SUBSCRIPTIONS ===");
 
-        ArrayList<Subscription> activeSubs = new ArrayList<>();
-
-        // Filter for ACTIVE subs
-        for (int i = 0; i < manager.getAllSubscriptions().size(); i++) {
-            Subscription sub = manager.getAllSubscriptions().get(i);
-
-
-            String status = sub.getStatus();
-            if (status.equalsIgnoreCase(SubscriptionManager.STATUS_OPTIONS[0])) {
-                activeSubs.add(sub);
-            }
-
-        }
+        ArrayList<Subscription> activeSubs = manager.getActiveSubscription(); // add all active subs into array list
 
         // Print table or message if none found
             if (activeSubs.isEmpty()) {
@@ -662,28 +628,17 @@ public class Menu {
     public static void showPausedSubscriptions() {
         System.out.println("==== PAUSED SUBSCRIPTIONS ====");
 
-        ArrayList<Subscription> pausedSubs = new ArrayList<>();
+        ArrayList<Subscription> pausedSubs = manager.getPausedSubscription(); // add all paused subs into array list
 
-        // Filter for PAUSED subs
-        for (int i = 0; i < manager.getAllSubscriptions().size(); i++) {
-            Subscription sub = manager.getAllSubscriptions().get(i);
-
-            String status = sub.getStatus();
-
-            if (status.equalsIgnoreCase(SubscriptionManager.STATUS_OPTIONS[1])) {
-                pausedSubs.add(sub);
-            }
-
-        }
         // Print table or message if none found
         if (pausedSubs.isEmpty()) {
-            System.out.println("No paused subscriptions.");
+            System.out.println("No paused subscriptions found.");
         } else {
             printTable(pausedSubs);
         }
     }
     public static void showAllSubscriptions() {
-        System.out.println("=== All Subscriptions ===");
+        System.out.println("=== ALL SUBSCRIPTIONS ===");
         if (manager.getAllSubscriptions().isEmpty()) {
             System.out.println("No subscriptions found.");
         } else {
@@ -699,8 +654,8 @@ public class Menu {
      * otherwise % is rounded to two decimal places
      */
     public static void showCategoryBudgetUsage() {
-        System.out.println("=== Budget % used by Category ===");
-        System.out.print("Enter category to check budget usage: ");
+        System.out.println("=== BUDGET % USED BY CATEGORY ===");
+        System.out.print("\nEnter category to check budget usage: ");
 
         String category = input.nextLine().trim(); // Read user input and remove extra spaces
         double percentageUsed = manager.getBudgetPercentage(category); // Calculate budget usage for the category
