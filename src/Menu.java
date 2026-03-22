@@ -1,3 +1,4 @@
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -20,19 +21,20 @@ public class Menu {
     //static runs once when class is first loaded - used here because options is a static variable
     static {
         options.add("Exit");
-        options.add("Add subscription");
-        options.add("Update subscription");
-        options.add("View all subscriptions");
-        options.add("View active subscriptions");
-        options.add("Total monthly spend");
-        options.add("Total annual spend");
-        options.add("Upcoming bills");
-        options.add("Paused subscriptions");
-        options.add("Budget % by category");
-        options.add("High-expense bills");
-        options.add("Budget alert");
-        options.add("Search subscriptions");
-        options.add("Add category budget");
+        options.add("Add Subscription"); //1
+        options.add("Add Category Budget"); //13 -> 2
+        options.add("Update Subscription");  // 2 -> 3
+        options.add("Search Subscriptions"); // 12 -> 4
+        options.add("View All Subscriptions"); // 3 -> 5
+        options.add("View Active Subscriptions"); // 4-> 6
+        options.add("View Paused Subscriptions"); //8 -> 7
+        options.add("Total Monthly Spend"); // 5 -> 8
+        options.add("Total Annual Spend"); // 6 -> 9
+        options.add("Upcoming Bills"); // 7 -> 10
+        options.add("Budget % By Category"); // 9 -> 11
+        options.add("Check High-Expense Bills"); // 10 -> 12
+        options.add("Check Budget Alerts"); // 11 -> 13
+        options.add("Save Subscription Data to File"); // 14
     }
 
     /**
@@ -62,49 +64,52 @@ public class Menu {
                     addNewSubscription();
                     break;
                 case "2":
-                    updateProcess();//update subscription
+                    addCategoryBudget();
                     break;
                 case "3":
-                    //View all subscriptions
-                    showAllSubscriptions();
+                    updateProcess();//update subscription
                     break;
                 case "4":
-                    // View only ACTIVE status subscriptions
-                    showActiveSubscriptions();
-                    break;
-                case "5":
-                    // Harshita
-                    showMonthlySpend();
-                    break;
-                case "6":
-                    // Harshita
-                    showYearlySpend();
-                    break;
-                case "7":
-                    upcomingBills();
-                    break;
-                case "8":
-                    // Paused subscriptions
-                    showPausedSubscriptions();
-                    break;
-                case "9":
-                    // Budget % used by category
-                    showCategoryBudgetUsage();
-                    break;
-                case "10":
-                    // High-expense bills
-                    showHighExpenseSubscriptions();
-                    break;
-                case "11":
-                    // Budget alert
-                    showBudgetAlerts();
-                    break;
-                case "12":
                     //Search subscriptions by name or category
                     showSearchResults();
                     break;
+                case "5":
+                    //View all subscriptions
+                    showAllSubscriptions();
+                    break;
+                case "6":
+                    // View only ACTIVE status subscriptions
+                    showActiveSubscriptions();
+                    break;
+                case "7":
+                    // Paused subscriptions
+                    showPausedSubscriptions();
+                    break;
+                case "8":
+                    // Harshita
+                    showMonthlySpend();
+                    break;
+                case "9":
+                    // Harshita
+                    showYearlySpend();
+                    break;
+                case "10":
+                    upcomingBills();
+                    break;
+                case "11":
+                    // Budget % used by category
+                    showCategoryBudgetUsage();
+                    break;
+                case "12":
+                    // High-expense bills
+                    showHighExpenseSubscriptions();
+                    break;
                 case "13":
-                    addCategoryBudget();
+                    // Budget alert
+                    showBudgetAlerts();
+                    break;
+                case "14":
+                    saveData();
                     break;
                 case "0":
                     active = false;//now active is false to exit while loop
@@ -264,7 +269,7 @@ public class Menu {
 
             }
         }
-        //call Data to update field using .set(index,newValue)
+        //call manager to update field using .set(index,newValue)
         manager.changeSubscriptionChoice(index, choiceIndex, newChoice);
         System.out.println("Update complete.");
     }
@@ -285,16 +290,68 @@ public class Menu {
         }
     }
 
+    /**
+     * Calculates total monthly spend
+     */
     private static void showMonthlySpend() {
         double total = manager.calculateMonthlySpend();
         System.out.println("\n--- Total Monthly Spend ---");
         System.out.println("Total: $" + String.format("%.2f", total));
     }
 
+    /**
+     * Calculates total yearly spend
+     */
     private static void showYearlySpend() {
         double total = manager.calculateYearlySpend();
         System.out.println("\n--- Total Annual Spend ---");
         System.out.println("Total: $" + String.format("%.2f", total));
+    }
+
+    /**
+     * Saves subscription data to user provided filename
+     * Overwrites information if file already exists
+     */
+    private static void saveData() {
+        System.out.println("\n==== SAVE SUBSCRIPTION INFO ===="); // title
+
+        // If no subscriptions saved, does not save to file
+        if (manager.getAllSubscriptions().isEmpty() && manager.getAllBudgets().isEmpty()) {
+            System.out.println("Nothing to save: No Subscriptions or Budgets added yet.");
+            return; // terminate
+        }
+
+        // Ask user for file name
+        System.out.println("Enter a filename to save to (press Enter to save to subscriptions.csv): ");
+        String filename = input.nextLine().trim();
+
+        // If empty automatically save to subscriptions.csv
+        if (filename.isEmpty()) {
+            filename = "subscription.csv";
+        }
+
+        // Add .csv to the end of filename if user did not add it
+        if (!filename.endsWith(".csv")) {
+            filename += ".csv";
+        }
+
+        // Check if file already exists to overwrite it
+        File file = new File(filename);
+
+        if (file.exists()) {
+            System.out.println("File " + filename + " already exists. It will be overwritten."); // prompt user to confirm if they want file overwritten
+            System.out.println("Continue? (Y/N)");
+            String confirm = input.nextLine().trim();
+
+            if (!confirm.equalsIgnoreCase("y")) { // Anything other than Y, will cancel save
+                System.out.println("Save Cancelled.");
+                return; // terminate
+            }
+        }
+
+        // Save to file
+        FileHandler.saveToCSV(manager, filename);
+
     }
 
     //=====================================DISPLAY MESSAGES===============================//
