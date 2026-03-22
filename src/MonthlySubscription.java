@@ -9,7 +9,7 @@ import java.time.LocalDate;
 public class MonthlySubscription extends Subscription {
 
     //constructor calls parent Subscription constructor
-    public MonthlySubscription(String name, double cost, String category,LocalDate startDate, LocalDate endDate, String status){
+    public MonthlySubscription(String name, double cost, String category,LocalDate startDate, LocalDate endDate, Status status){
         super(name, cost, category, "Monthly", startDate, endDate, status);
     }
     /**

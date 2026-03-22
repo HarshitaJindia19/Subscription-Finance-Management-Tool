@@ -11,7 +11,7 @@ public class YearlySubscription extends Subscription {
     /**
      * constructor calls parent Subscription constructor
      */
-    public YearlySubscription(String name, double cost, String category, LocalDate startDate, LocalDate endDate, String status) {
+    public YearlySubscription(String name, double cost, String category, LocalDate startDate, LocalDate endDate, Status status) {
         super(name, cost, category, "Yearly", startDate, endDate, status);
     }
 

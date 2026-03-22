@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -146,7 +145,7 @@ public class Menu {
         String renewal = getRenewal();
         LocalDate startDate = getStartDate();
         LocalDate endDate = getEndDate();
-        String status = getStatus();
+        Status status = getStatus();
 
         boolean success = manager.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
 
@@ -249,11 +248,12 @@ public class Menu {
             newChoice = input.nextLine().trim();
 
             if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
-                if (!SubscriptionManager.isValidStatus(newChoice.toUpperCase())) {
-                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
-                } else {
+                try {
+                    Status.getStatus(newChoice); //validates
                     newChoice = newChoice.toUpperCase();
                     validChoice = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
                 }
             } else {
                 if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
@@ -486,20 +486,24 @@ public class Menu {
      *
      * @return status of subscription (user input)
      */
-    private static String getStatus() {
-        String status;
-        System.out.println("Choose from " + Arrays.toString(SubscriptionManager.STATUS_OPTIONS)); // display options for user clarity
+    private static Status getStatus() {
+
+        System.out.println("Choose from: ACTIVE / PAUSED / CANCELLED"); // display options for user clarity
         System.out.println("Enter current status: ");
+        Status status = null;
 
         // loop until valid input
         do {
-            status = input.nextLine().trim().toUpperCase();
-            if (!SubscriptionManager.isValidStatus(status)) {
-                System.out.println("Choose from " + Arrays.toString(SubscriptionManager.STATUS_OPTIONS));
-                System.out.println("Please enter one of the options provided:");
+            String statusInput = input.nextLine().trim();
+
+            try {
+                status = Status.getStatus(statusInput);
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid status. Please enter ACTIVE, PAUSED, or CANCELLED:");
             }
-        } while (!SubscriptionManager.isValidStatus(status));
-        return status.toUpperCase(); // consistent casing
+        } while (status == null);
+
+        return status; // consistent casing
     }
 
     /**
@@ -558,10 +562,10 @@ public class Menu {
             String billing = sub.getRenewal();
             String start = sub.getStartDate().format(formatter);
             String end = (sub.getEndDate() != null) ? sub.getEndDate().format(formatter) : "-";
-            String status = sub.getStatus();
+            String status = sub.getStatus().toString();
 
             //Description Row printed
-            System.out.printf("%-15s $%-7.2fs %-15s %-10s %-15s %-15s %-10s%n",
+            System.out.printf("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s%n",
                     subName, sub.getCost(), subCategory, billing, start, end, status);
         }
     }
@@ -576,44 +580,23 @@ public class Menu {
      *
      */
     public static void showBudgetAlerts() {
-        ArrayList<String> categories = new ArrayList<>(manager.categoryBudgets.keySet());//Gets all categories that have budgets
         //convert into a list
         System.out.println("=== Budget Alert ===");
+        boolean anyAlerts = false;
 
-        //Loop through each category
-        for (String category : categories) {// loops through each category
-            // Sum of ACTIVE subs costs in this category
-            double limit = SubscriptionManager.categoryBudgets.get(category);//Gets the budget limit for that category
-            double total = 0; //Initializes total spending for that category
-
-            for (int j = 0; j < manager.getAllSubscriptions().size(); j++) {
-                Subscription sub = manager.getAllSubscriptions().get(j);
-
-
-                String subName = sub.getName();
-                double costStr = sub.getCost();;
-                String subCategory = SubscriptionManager.formatTitleCase(sub.getCategory());
-                String status = sub.getStatus();
-
-                // only count ACTIVE subscriptions in the correct category
-                if (subCategory.equalsIgnoreCase(category) && status.equalsIgnoreCase("ACTIVE")) {
-
-                    if (!costStr.isEmpty()) {
-                        try {
-                            double cost = Double.parseDouble(costStr);
-                            total += cost;
-                        } catch (NumberFormatException e) {
-                            System.out.println("Could not read the cost for: " + subName);
-                        }
-                    }
-                }
+        //Loop through each budget
+        for (Budget budget : manager.getAllBudgets()) {// loops through each budget
+            double spent = manager.getSpendByCategory(budget.getCategory()); // gets the spend by category
+            if (spent > budget.getLimit()) {
+                anyAlerts = true;
+                System.out.println("🚨 Budget exceeded for " + budget.getCategory());
+                System.out.println("Spent: $" + String.format("%.2f", spent) + " / Budget: $" + String.format("%.2f", budget.getLimit()));
             }
+        }
 
-            // Alert if budget exceeded
-            if (total > limit) {
-                System.out.println("🚨 Budget exceeded for " + category);
-                System.out.println("Spent: $" + String.format("%.2f", total) + " / Budget: $" + String.format("%.2f", limit));
-            }
+        // Output no budget alerts found to user
+        if (!anyAlerts) {
+            System.out.println("No Budget Alerts.");
         }
     }
 
@@ -623,21 +606,9 @@ public class Menu {
      * Prints a formatted table showing all details for each subscription
      */
     public static void showActiveSubscriptions() {
-        System.out.println("=== Active Subscriptions ===");
+        System.out.println("=== ACTIVE SUBSCRIPTIONS ===");
 
-        ArrayList<Subscription> activeSubs = new ArrayList<>();
-
-        // Filter for ACTIVE subs
-        for (int i = 0; i < manager.getAllSubscriptions().size(); i++) {
-            Subscription sub = manager.getAllSubscriptions().get(i);
-
-
-            String status = sub.getStatus();
-            if (status.equalsIgnoreCase(SubscriptionManager.STATUS_OPTIONS[0])) {
-                activeSubs.add(sub);
-            }
-
-        }
+        ArrayList<Subscription> activeSubs = manager.getActiveSubscription(); // add all active subs into array list
 
         // Print table or message if none found
             if (activeSubs.isEmpty()) {
@@ -657,28 +628,17 @@ public class Menu {
     public static void showPausedSubscriptions() {
         System.out.println("==== PAUSED SUBSCRIPTIONS ====");
 
-        ArrayList<Subscription> pausedSubs = new ArrayList<>();
+        ArrayList<Subscription> pausedSubs = manager.getPausedSubscription(); // add all paused subs into array list
 
-        // Filter for PAUSED subs
-        for (int i = 0; i < manager.getAllSubscriptions().size(); i++) {
-            Subscription sub = manager.getAllSubscriptions().get(i);
-
-            String status = sub.getStatus();
-
-            if (status.equalsIgnoreCase(SubscriptionManager.STATUS_OPTIONS[1])) {
-                pausedSubs.add(sub);
-            }
-
-        }
         // Print table or message if none found
         if (pausedSubs.isEmpty()) {
-            System.out.println("No paused subscriptions.");
+            System.out.println("No paused subscriptions found.");
         } else {
             printTable(pausedSubs);
         }
     }
     public static void showAllSubscriptions() {
-        System.out.println("=== All Subscriptions ===");
+        System.out.println("=== ALL SUBSCRIPTIONS ===");
         if (manager.getAllSubscriptions().isEmpty()) {
             System.out.println("No subscriptions found.");
         } else {
@@ -694,8 +654,8 @@ public class Menu {
      * otherwise % is rounded to two decimal places
      */
     public static void showCategoryBudgetUsage() {
-        System.out.println("=== Budget % used by Category ===");
-        System.out.print("Enter category to check budget usage: ");
+        System.out.println("=== BUDGET % USED BY CATEGORY ===");
+        System.out.print("\nEnter category to check budget usage: ");
 
         String category = input.nextLine().trim(); // Read user input and remove extra spaces
         double percentageUsed = manager.getBudgetPercentage(category); // Calculate budget usage for the category
@@ -727,7 +687,7 @@ public class Menu {
         System.out.print("Enter threshold amount: $");
         double threshold = Double.parseDouble(input.nextLine().trim()); // Read and convert input to double
 
-        ArrayList<Subscription> highExpense = getHighExpenseBills(threshold);// Get subscriptions above threshold
+        ArrayList<Subscription> highExpense = manager.getHighExpenseBills(threshold);// Get subscriptions above threshold
         // Check if any subscriptions meet the threshold
         if (highExpense.isEmpty()) {
             System.out.println("No high-expense bills were found.");// Print message if none found
