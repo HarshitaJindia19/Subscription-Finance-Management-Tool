@@ -214,4 +214,24 @@ public class SubscriptionTest {
         ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
         assertEquals(2, result.size(), "Should return multiple results");
     }
+    @Test
+    void searchByCategory_mixedResults() {
+        //Mixed categories should filter correctly
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        manager.storeNewSubscription("Gym", 50, "Fitness", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
+        assertEquals(1, result.size(), "Should only return the matching category");
+        assertEquals("Netflix", result.get(0).getName(), "Correct item should be returned");
+    }
+
+    @Test
+    void searchByCategory_emptyList() {
+        //Empty list should return empty result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
+        assertTrue(result.isEmpty(), "Empty list should return empty result");
+    }
 }
