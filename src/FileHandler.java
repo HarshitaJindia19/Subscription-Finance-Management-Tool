@@ -75,7 +75,6 @@ public class FileHandler {
     }
 
     public static void loadFromCSV(SubscriptionManager manager, String filename) {
-
         File file = new File(filename);
 
         try (Scanner scanner = new Scanner(file)) {
@@ -103,55 +102,68 @@ public class FileHandler {
                         scanner.nextLine();
                     }
                     continue;
+                }
 
-                    if (line.equals("BUDGETS")) {
-                        readingSubscriptions = false;
-                        readingBudgets = true;
+                if (line.equals("BUDGETS")) {
+                    readingSubscriptions = false;
+                    readingBudgets = true;
 
-                        if (scanner.hasNextLine()) {
-                            scanner.nextLine();
-                        }
-                        continue;
-                        String[] parts = line.split(",");
-
-                        if (readingSubscriptions) {
-                            if (parts.length < 7) {
-                                continue;
-                            }
-
-                            String name = parts[0];
-                            double cost = Double.parseDouble(parts[1]);
-                            String category = parts[2];
-                            String renewal = parts[3];
-
-                            LocalDate startDate = LocalDate.parse(parts[4], formatter);
-
-                            LocalDate endDate;
-                            if (parts[5].equals("N/A")) {
-                                endDate = null;
-                            } else {
-                                endDate = LocalDate.parse(parts[5], formatter);
-                            }
-
-                            String statusText = parts[6];
-                            Status status = Status.valueOf(statusText.toUpperCase());
-
-                            Subscription subscription = new Subscription
-                                    (name, cost, category, renewal, startDate, endDate, status);
-
-                            manager.storeNewSubscription(
-                                    name,
-                                    cost,
-                                    category,
-                                    renewal,
-                                    startDate,
-                                    endDate,
-                                    status
-                            );
-                        }
+                    if (scanner.hasNextLine()) {
+                        scanner.nextLine();
                     }
+                    continue;
+                }
+
+                String[] parts = line.split(",");
+
+                if (readingSubscriptions) {
+                    if (parts.length < 7) {
+                        continue;
+                    }
+
+                    String name = parts[0];
+                    double cost = Double.parseDouble(parts[1]);
+                    String category = parts[2];
+                    String renewal = parts[3];
+
+                    LocalDate startDate = LocalDate.parse(parts[4], formatter);
+
+                    LocalDate endDate;
+                    if (parts[5].equals("N/A")) {
+                        endDate = null;
+                    } else {
+                        endDate = LocalDate.parse(parts[5], formatter);
+                    }
+
+                    String statusText = parts[6];
+                    Status status = Status.valueOf(statusText.toUpperCase());
+
+                    manager.storeNewSubscription(
+                            name,
+                            cost,
+                            category,
+                            renewal,
+                            startDate,
+                            endDate,
+                            status
+                    );
+                }
+
+                if (readingBudgets) {
+                    if (parts.length < 2) {
+                        continue;
+                    }
+
+                    String category = parts[0];
+                    double limit = Double.parseDouble(parts[1]);
+                    manager.getAllBudgets().add(new Budget(category, limit));
                 }
             }
+            System.out.println("Data loaded successfully from: " + filename);
+
+        } catch (IOException e) {
+            System.out.println("ERROR loading file: " + filename);
+            System.out.println(e.getMessage());
         }
     }
 }
