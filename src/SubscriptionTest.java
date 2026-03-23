@@ -100,4 +100,26 @@ public class SubscriptionTest {
         YearlySubscription sub = new YearlySubscription("Adobe", 120.00, "Work", LocalDate.of(2025, 3, 1), null, "ACTIVE");
         assertTrue(sub instanceof Subscription, "YearlySubscription should be instance of Subscription");
     }
+    //--------------------------SearchByName Tests----------------------
+
+    @Test
+    void searchByName_exactMatch() {
+        //Exact name should return 1 result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("Netflix")
+        assertEquals(1, result.size(), "Should return exactly 1 match");
+        assertEquals("Netflix", result.get(0).getName(), "Name should match Netflix");
+    }
+
+    @Test
+    void searchByName_partialMatch() {
+        //Partial match should still find result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null,  Status.ACTIVE);
+        ArrayList<Subscription> result =manager.searchByName("Net");
+        assertEquals(1, result.size(), "Should return 1 partial match");
+    }
 }
