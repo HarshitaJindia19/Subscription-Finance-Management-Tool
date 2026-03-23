@@ -49,6 +49,6 @@ public class MonthlySubscription extends Subscription {
     }
     @Override
     public String toString() {
-        return "Monthly -> "+super.toString();
+        return "Monthly -> " + super.toString();
     }
 }
