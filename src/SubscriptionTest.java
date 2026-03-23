@@ -51,6 +51,20 @@ public class SubscriptionTest {
         MonthlySubscription sub = new MonthlySubscription("Spotify", 9.99, "Music", LocalDate.of(2025, notUpcoming.getMonthValue(), notUpcoming.getDayOfMonth()),null, Status.ACTIVE);
         assertFalse(sub.isUpcoming(), "Should not be upcoming - more than 7 days away");
     }
+    @Test
+    void monthlySubscription_isUpcoming_today() {
+        // renewal is today - should still be upcoming
+        LocalDate today = LocalDate.now();
+        MonthlySubscription sub = new MonthlySubscription("Spotify", 9.99, "Music", LocalDate.of(2025, today.getMonthValue(), today.getDayOfMonth()), null, Status.ACTIVE);
+        assertTrue(sub.isUpcoming(), "Renewal today should count as upcoming");
+    }
+    @Test
+    void monthlySubscription_toString() {
+        // toString should contain Monthly
+        MonthlySubscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment",LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
+        assertTrue(sub.toString().contains("Monthly"), "toString should contain Monthly");
+    }
+
 
     //--------------------------YearlySubscription Tests----------------------
     @Test
