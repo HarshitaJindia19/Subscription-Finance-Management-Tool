@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="19841ff6-dcd2-43b1-ace3-761f3b507971" name="Changes" comment="Worked on csv File 6:&#10;-Create Main class&#10;-Work on initializing SubscriptionManager and running the menu&#10;&#10;Next Steps:&#10;-Also look into magic numbers&#10;-Work on Junit testing&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="search-filter-tests" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;mehrin.chowdhury&quot;,
+      &quot;fullname&quot;: &quot;Mehrin Chowdhury&quot;
+    }
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git&quot;,
+    &quot;second&quot;: &quot;5bebe6fe-677a-47f8-a476-b2c68450b87f&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="3BGNU5SZMay9JnXrYkVqs8xoAwq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="cpsc233w26project1_" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="cpsc233w26project1_" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19841ff6-dcd2-43b1-ace3-761f3b507971" name="Changes" comment="fixed some bugs in files" />
+      <created>1774111460194</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1774111460194</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Worked on:&#10;-Interface implemented&#10;-Commented out previous junit tests&#10;&#10;Next Steps:&#10;-Work on csv file (load file)&#10;-Work on main common line argument">
+      <option name="closed" value="true" />
+      <created>1774285530609</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1774285530609</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Woked on csv File 1:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774289660724</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1774289660724</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Worked on csv File 2:&#10;-Improve and worked on SUBSCRIPTIONS section handling in CSV File loader&#10;&#10;Next Steps:&#10;-Do the same as SUBSCRIPTIONS section but for BUDGETS&#10;&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774290137709</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1774290137709</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Worked on csv File 3:&#10;-Improve and worked on BUDGETS section handling in the CSV File loader&#10;&#10;Next Steps:&#10;-Actually load subscription and budgets&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774290519118</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1774290519118</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Worked on csv File 4:&#10;-Implement parsing logic for the subscriptions in CSV loader&#10;&#10;Next Steps:&#10;-Now load the budgets&#10;-Also look into magic numbers&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774291141671</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1774291141671</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Worked on csv File 5:&#10;-Added code to read status from the CSV and converting it back to enum in the method&#10;&#10;Next Steps:&#10;-Now load the budgets&#10;-Also look into magic numbers&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774292638530</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1774292638530</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Worked on csv File 5:&#10;-Added code to read status from the CSV and converting it back to enum in the method&#10;&#10;Next Steps:&#10;-Now load the budgets&#10;-Also look into magic numbers&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774299149429</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1774299149429</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Worked on csv File 6:&#10;-Create Main class&#10;-Work on initializing SubscriptionManager and running the menu&#10;&#10;Next Steps:&#10;-Also look into magic numbers&#10;-Work on Junit testing&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except">
+      <option name="closed" value="true" />
+      <created>1774300621187</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1774300621187</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Worked on:&#10;-Interface implemented&#10;-Commented out previous junit tests&#10;&#10;Next Steps:&#10;-Work on csv file (load file)&#10;-Work on main common line argument" />
+    <MESSAGE value="Woked on csv File 1:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <MESSAGE value="Worked on csv File 2:&#10;-Improve and worked on SUBSCRIPTIONS section handling in CSV File loader&#10;&#10;Next Steps:&#10;-Do the same as SUBSCRIPTIONS section but for BUDGETS&#10;&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <MESSAGE value="Worked on csv File 3:&#10;-Improve and worked on BUDGETS section handling in the CSV File loader&#10;&#10;Next Steps:&#10;-Actually load subscription and budgets&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <MESSAGE value="Worked on csv File 4:&#10;-Implement parsing logic for the subscriptions in CSV loader&#10;&#10;Next Steps:&#10;-Now load the budgets&#10;-Also look into magic numbers&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <MESSAGE value="Worked on csv File 5:&#10;-Added code to read status from the CSV and converting it back to enum in the method&#10;&#10;Next Steps:&#10;-Now load the budgets&#10;-Also look into magic numbers&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <MESSAGE value="Worked on csv File 6:&#10;-Create Main class&#10;-Work on initializing SubscriptionManager and running the menu&#10;&#10;Next Steps:&#10;-Also look into magic numbers&#10;-Work on Junit testing&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+    <option name="LAST_COMMIT_MESSAGE" value="Worked on csv File 6:&#10;-Create Main class&#10;-Work on initializing SubscriptionManager and running the menu&#10;&#10;Next Steps:&#10;-Also look into magic numbers&#10;-Work on Junit testing&#10;&#10;Done:&#10;-Implement the CSV loading with subscription and budget reset&#10;-Imported scanner&#10;-Use try and except" />
+  </component>
+</project>
