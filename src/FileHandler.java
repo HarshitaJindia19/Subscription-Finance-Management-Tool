@@ -102,6 +102,17 @@ public class FileHandler {
                         scanner.nextLine();
                     }
                     continue;
+
+                    if (line.equals("BUDGETS")) {
+                        readingSubscriptions = false;
+                        readingBudgets = true;
+
+                        if (scanner.hasNextLine()) {
+                            scanner.nextLine();
+                        }
+                        continue;
+
+                    }
                 }
             }
         }
