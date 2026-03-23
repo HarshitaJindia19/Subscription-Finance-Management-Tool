@@ -132,8 +132,22 @@ public class FileHandler {
                             } else {
                                 endDate = LocalDate.parse(parts[5], formatter);
                             }
-                            String status = parts[6];
 
+                            String statusText = parts[6];
+                            Status status = Status.valueOf(statusText.toUpperCase());
+
+                            Subscription subscription = new Subscription
+                                    (name, cost, category, renewal, startDate, endDate, status);
+
+                            manager.storeNewSubscription(
+                                    name,
+                                    cost,
+                                    category,
+                                    renewal,
+                                    startDate,
+                                    endDate,
+                                    status
+                            );
                         }
                     }
                 }
