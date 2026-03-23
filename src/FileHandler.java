@@ -3,6 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class FileHandler {
 
@@ -14,7 +15,7 @@ public class FileHandler {
     /**
      * Saves Subscription and Budget Information into a file
      *
-     * @param manager to access all methods with subscription data
+     * @param manager  to access all methods with subscription data
      * @param filename to save to
      */
     public static void saveToCSV(SubscriptionManager manager, String filename) {
@@ -37,12 +38,12 @@ public class FileHandler {
                 // name,cost,category,renewal,startDate,endDate,status
                 writer.println(
                         sub.getName() + "," +
-                        sub.getCost() + "," +
-                        sub.getCategory() + "," +
-                        sub.getRenewal() + "," +
-                        sub.getStartDate().format(formatter) + "," +
-                        endDate + "," +
-                        sub.getStatus().toString()
+                                sub.getCost() + "," +
+                                sub.getCategory() + "," +
+                                sub.getRenewal() + "," +
+                                sub.getStartDate().format(formatter) + "," +
+                                endDate + "," +
+                                sub.getStatus().toString()
                 );
             }
 
@@ -57,7 +58,7 @@ public class FileHandler {
                 // category,limit
                 writer.println(
                         budget.getCategory() + "," +
-                        budget.getLimit() + ","
+                                budget.getLimit() + ","
                 );
             }
 
@@ -69,6 +70,21 @@ public class FileHandler {
         } catch (IOException e) {
             System.out.println("ERROR saving to file: " + filename);
             System.out.println("Details: " + e);
+        }
+    }
+
+    public static void loadFromCSV(SubscriptionManager manager, String filename) {
+
+        File file = new File(filename);
+
+        try (Scanner scanner = new Scanner(file)) {
+
+            manager.getAllSubscriptions().clear();
+            manager.getAllBudgets().clear();
+
+            boolean readingSubscriptions = false;
+            boolean readingBudgets = false;
+
         }
     }
 }
