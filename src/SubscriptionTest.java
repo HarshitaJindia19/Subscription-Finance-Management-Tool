@@ -119,7 +119,27 @@ public class SubscriptionTest {
         SubscriptionManager manager = new SubscriptionManager();
 
         manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null,  Status.ACTIVE);
-        ArrayList<Subscription> result =manager.searchByName("Net");
+        ArrayList<Subscription> result = manager.searchByName("Net");
         assertEquals(1, result.size(), "Should return 1 partial match");
+    }
+    @Test
+    void searchByName_notFound() {
+        //Non existing name should return empty
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("Hulu");
+        assertTrue(result.isEmpty(), "Result should be empty when not found");
+    }
+
+    @Test
+    void searchByName_emptyString_returnsAll() {
+        //Empty string should return all subscriptions
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        manager.storeNewSubscription("Spotify", 10, "Music", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result =manager.searchByName("");
+        assertEquals(manager.subscriptions.size(), result.size(), "Empty string should return all results");
     }
 }
