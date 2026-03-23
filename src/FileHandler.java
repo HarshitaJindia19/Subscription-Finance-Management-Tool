@@ -85,7 +85,25 @@ public class FileHandler {
             boolean readingSubscriptions = false;
             boolean readingBudgets = false;
 
+            while (scanner.hasNextLine()) {
+
+                String line = scanner.nextLine();
+                line = line.trim();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                if (line.equals("SUBSCRIPTIONS")) {
+                    readingSubscriptions = true;
+                    readingBudgets = false;
+
+                    if (scanner.hasNextLine()) {
+                        scanner.nextLine();
+                    }
+                    continue;
+                }
+            }
         }
     }
 }
-
