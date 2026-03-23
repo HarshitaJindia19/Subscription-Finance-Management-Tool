@@ -142,4 +142,25 @@ public class SubscriptionTest {
         ArrayList<Subscription> result =manager.searchByName("");
         assertEquals(manager.subscriptions.size(), result.size(), "Empty string should return all results");
     }
+
+    @Test
+    void searchByName_caseInsensitive() {
+        //Search should be case insensitive
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result =manager.searchByName("netflix");
+        assertEquals(1, result.size(), "Search should ignore case");
+        assertEquals("Netflix", result.get(0).getName(), "Name should match original casing");
+    }
+    @Test
+    void searchByName_specialCharacters() {
+        // should handle special characters
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Net@flix!", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result =manager.searchByName("Net@");
+        assertEquals(1, result.size(), "Should match special characters");
+    }
+
 }
