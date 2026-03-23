@@ -181,6 +181,16 @@ public class SubscriptionTest {
         assertTrue(result.isEmpty(), "Empty list should return empty result");
     }
 
+    @Test
+    void searchByName_nullInput() {
+        //Null input should return empty
+        SubscriptionManager manager = new SubscriptionManager();
+
+        Data.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName(null);
+        assertTrue(result.isEmpty(), "Null input should return empty result");
+    }
+
     //--------------------------searchByCategory Tests----------------------
 
     @Test
