@@ -56,8 +56,6 @@ public class Menu {
             if (choice.isEmpty()) {
                 continue;
             }
-
-
             switch (choice) { //switch to guide user to correct action based on choice
                 case "1":
                     // Harshita
@@ -252,21 +250,40 @@ public class Menu {
             System.out.println("Please enter new choice: ");
             newChoice = input.nextLine().trim();
 
-            if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
+            if (newChoice.isEmpty()) {
+                System.out.println("ERROR: value cannot be empty, try again.");
+                continue;
+            }
+            if (choiceIndex == 1) {
+                if (!SubscriptionManager.isValidCost(newChoice)) {
+                    System.out.println("ERROR: cost must be a valid positive number, try again.");
+
+                } else {
+                    validChoice = true;
+                }
+            } else if (choiceIndex == 3) { //renewal
+                if (!newChoice.equalsIgnoreCase("monthly") && !newChoice.equalsIgnoreCase("yearly")) {
+                    System.out.println("ERROR: billing cycle must be Monthly or Yearly, try again.");
+                } else {
+                    newChoice = SubscriptionManager.formatTitleCase(newChoice);
+                    validChoice = true;
+                }
+            } else if (choiceIndex == 4 || choiceIndex == 5) { //start or end date
+                if (!SubscriptionManager.isValidDate(newChoice)) {
+                    System.out.println("ERROR: date must be in MM/DD/YYYY format. Try again.");
+                } else {
+                    validChoice = true;
+                }
+            } else if (choiceIndex == 6) {
                 try {
-                    Status.getStatus(newChoice); //validates
+                    Status.getStatus(newChoice);
                     newChoice = newChoice.toUpperCase();
                     validChoice = true;
                 } catch (IllegalArgumentException e) {
                     System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
                 }
             } else {
-                if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
-                    System.out.println("ERROR: value cannot be empty. Try again.");
-                } else {
-                    validChoice = true;
-                }
-
+                validChoice = true;
             }
         }
         //call manager to update field using .set(index,newValue)
@@ -276,7 +293,6 @@ public class Menu {
 
     /**
      * displays subscriptions renewing in the next 7 days.
-     *
      * @author Ramsha
      */
     public static void upcomingBills() {
