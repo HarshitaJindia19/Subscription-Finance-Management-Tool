@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -111,7 +112,29 @@ public class FileHandler {
                             scanner.nextLine();
                         }
                         continue;
+                        String[] parts = line.split(",");
 
+                        if (readingSubscriptions) {
+                            if (parts.length < 7) {
+                                continue;
+                            }
+
+                            String name = parts[0];
+                            double cost = Double.parseDouble(parts[1]);
+                            String category = parts[2];
+                            String renewal = parts[3];
+
+                            LocalDate startDate = LocalDate.parse(parts[4], formatter);
+
+                            LocalDate endDate;
+                            if (parts[5].equals("N/A")) {
+                                endDate = null;
+                            } else {
+                                endDate = LocalDate.parse(parts[5], formatter);
+                            }
+                            String status = parts[6];
+
+                        }
                     }
                 }
             }
