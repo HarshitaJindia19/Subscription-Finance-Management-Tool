@@ -239,4 +239,36 @@ public class SubscriptionTest {
         assertEquals("Software: $9.99", b2.toString(), "toString should format 9.99 correctly");
     }
 
+    //--------------------------------- Budget equals() Tests ----------------------------------------------
+
+    @Test
+    void budget_equals_sameCategoryIsEqual() {
+        Budget b1 = new Budget("Entertainment", 50.00);
+        Budget b2 = new Budget("Entertainment", 100.00);
+        assertEquals(b1, b2, "Budgets with same category should be equal regardless of limit");
+    }
+
+    @Test
+    void budget_equals_differentCategoryNotEqual() {
+        Budget b1 = new Budget("Entertainment", 50.00);
+        Budget b2 = new Budget("Fitness", 50.00);
+        assertNotEquals(b1, b2, "Budgets with different categories should not be equal");
+    }
+
+    @Test
+    void budget_equals_caseInsensitive() {
+        Budget b1 = new Budget("entertainment", 50.00);
+        Budget b2 = new Budget("Entertainment", 50.00);
+        assertEquals(b1, b2, "Budget equals() should be case insensitive");
+    }
+
+    @Test
+    void budget_equals_usedInSetCategoryBudget() {
+        SubscriptionManager manager = new SubscriptionManager();
+        manager.setCategoryBudget("Entertainment", 50.00);
+        manager.setCategoryBudget("Entertainment", 100.00);
+        assertEquals(100.00, manager.getCategoryBudget("Entertainment"), 0.01, "Budget should be overwritten not duplicated - uses equals()");
+        assertEquals(1, manager.getAllBudgets().size(), "Should only have one budget for Entertainment");
+    }
+
 }
