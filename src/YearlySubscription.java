@@ -34,8 +34,8 @@ public class YearlySubscription extends Subscription {
         return getCost();
     }
 
-    @Override
-    public String toString() {
-        return "Yearly -> " + super.toString();
-    }
+//    @Override
+//    public String toString() {
+//        return "Yearly -> " + super.toString();
+//    }
 }

@@ -1,6 +1,7 @@
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -21,20 +22,20 @@ public class Menu {
     //static runs once when class is first loaded - used here because options is a static variable
     static {
         options.add("Exit");
-        options.add("Add Subscription"); //1
-        options.add("Add Category Budget"); //13 -> 2
-        options.add("Update Subscription");  // 2 -> 3
-        options.add("Search Subscriptions"); // 12 -> 4
-        options.add("View All Subscriptions"); // 3 -> 5
-        options.add("View Active Subscriptions"); // 4-> 6
-        options.add("View Paused Subscriptions"); //8 -> 7
-        options.add("Total Monthly Spend"); // 5 -> 8
-        options.add("Total Annual Spend"); // 6 -> 9
-        options.add("Upcoming Bills"); // 7 -> 10
-        options.add("Budget % By Category"); // 9 -> 11
-        options.add("Check High-Expense Bills"); // 10 -> 12
-        options.add("Check Budget Alerts"); // 11 -> 13
-        options.add("Save Subscription Data to File"); // 14
+        options.add("Add Subscription");
+        options.add("Add Category Budget");
+        options.add("Update Subscription");
+        options.add("Search Subscriptions");
+        options.add("View All Subscriptions");
+        options.add("View Active Subscriptions");
+        options.add("View Paused Subscriptions");
+        options.add("Total Monthly Spend");
+        options.add("Total Annual Spend");
+        options.add("Upcoming Bills");
+        options.add("Budget % By Category");
+        options.add("Check High-Expense Bills");
+        options.add("Check Budget Alerts");
+        options.add("Save Subscription Data to File");
     }
 
     /**
@@ -637,17 +638,7 @@ public class Menu {
 
         // Loop through all subs
         for (Subscription sub : subs) {
-            // Get subscription details using constants
-            String subName = sub.getName();
-            String subCategory = sub.getCategory();
-            String billing = sub.getRenewal();
-            String start = sub.getStartDate().format(formatter);
-            String end = (sub.getEndDate() != null) ? sub.getEndDate().format(formatter) : "-";
-            String status = sub.getStatus().toString();
-
-            //Description Row printed
-            System.out.printf("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s%n",
-                    subName, sub.getCost(), subCategory, billing, start, end, status);
+            System.out.println(sub);
         }
     }
 
@@ -718,12 +709,20 @@ public class Menu {
             printTable(pausedSubs);
         }
     }
+
+    /**
+     * Show all subscriptions to users
+     * Sort them by priority of status, and alphabetically
+     */
     public static void showAllSubscriptions() {
         System.out.println("=== ALL SUBSCRIPTIONS ===");
-        if (manager.getAllSubscriptions().isEmpty()) {
+        ArrayList<Subscription> allSubs = manager.getAllSubscriptions();
+
+        if (allSubs.isEmpty()) {
             System.out.println("No subscriptions found.");
         } else {
-            printTable(manager.getAllSubscriptions());
+            Collections.sort(allSubs);
+            printTable(allSubs);
         }
     }
     /**

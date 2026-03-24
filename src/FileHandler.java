@@ -57,7 +57,7 @@ public class FileHandler {
                 // category,limit
                 writer.println(
                         budget.getCategory() + "," +
-                        budget.getLimit() + ","
+                        budget.getLimit()
                 );
             }
 

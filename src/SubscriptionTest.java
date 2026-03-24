@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Unit tests for MonthlySubscription and YearlySubscription
@@ -9,9 +11,12 @@ import java.time.LocalDate;
  * @tutorial T01
  */
 
+
+
 //--------------------------MonthlySubscription Tests----------------------------------
 
 public class SubscriptionTest {
+
     @Test
     void monthlySubscription_getMonthlyCost() {
         // monthly cost should equal cost directly
@@ -58,12 +63,12 @@ public class SubscriptionTest {
         MonthlySubscription sub = new MonthlySubscription("Spotify", 9.99, "Music", LocalDate.of(2025, today.getMonthValue(), today.getDayOfMonth()), null, Status.ACTIVE);
         assertTrue(sub.isUpcoming(), "Renewal today should count as upcoming");
     }
-    @Test
-    void monthlySubscription_toString() {
-        // toString should contain Monthly
-        MonthlySubscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment",LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
-        assertTrue(sub.toString().contains("Monthly"), "toString should contain Monthly");
-    }
+//    @Test
+//    void monthlySubscription_toString() {
+//        // toString should contain Monthly
+//        MonthlySubscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment",LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
+//        assertTrue(sub.toString().contains("Monthly"), "toString should contain Monthly");
+//    }
 
 
     //--------------------------YearlySubscription Tests----------------------
@@ -92,12 +97,12 @@ public class SubscriptionTest {
         YearlySubscription sub = new YearlySubscription("Adobe",120.00,"Work",LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
         assertEquals("Yearly", sub.getRenewal(), "Renewal should be Yearly");
     }
-    @Test
-    void yearlySubscription_toString() {
-        //toString should contain Yearly
-        YearlySubscription sub = new YearlySubscription("Adobe",120.00,"Work",LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
-        assertTrue(sub.toString().contains("Yearly"), "toString should contain Yearly");
-    }
+//    @Test
+//    void yearlySubscription_toString() {
+//        //toString should contain Yearly
+//        YearlySubscription sub = new YearlySubscription("Adobe",120.00,"Work",LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
+//        assertTrue(sub.toString().contains("Yearly"), "toString should contain Yearly");
+//    }
 
     //--------------------------Extra Inheritance Tests----------------------
 
@@ -114,4 +119,124 @@ public class SubscriptionTest {
         YearlySubscription sub = new YearlySubscription("Adobe", 120.00, "Work", LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
         assertTrue(sub instanceof Subscription, "YearlySubscription should be instance of Subscription");
     }
+
+    //------------------------------------------- Status Enum Tests ---------------------------------------------------------------//
+
+    @Test
+    void status_getStatus_returnsCorrectEnum() {
+        assertEquals(Status.ACTIVE, Status.getStatus("ACTIVE"), "getStatus(ACTIVE) should return Status.ACTIVE");
+        assertEquals(Status.PAUSED, Status.getStatus("PAUSED"), "getStatus(PAUSED) should return Status.PAUSED");
+        assertEquals(Status.CANCELLED, Status.getStatus("CANCELLED"), "getStatus(CANCELLED) should return Status.CANCELLED");
+    }
+
+    @Test
+    void status_getStatus_caseInsensitive() {
+        assertEquals(Status.ACTIVE, Status.getStatus("active"), "Should accept lowercase");
+        assertEquals(Status.PAUSED, Status.getStatus("Paused"), "Should accept mixed case");
+    }
+
+    @Test
+    void status_getStatus_invalidThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> Status.getStatus("EXPIRED"), "Invalid status should throw IllegalArgumentException");
+        assertThrows(IllegalArgumentException.class, () -> Status.getStatus(""), "Empty string should throw IllegalArgumentException");
+    }
+
+    @Test
+    void status_toString_returnsCorrectString() {
+        assertEquals("ACTIVE", Status.ACTIVE.toString(), "ACTIVE toString should return 'ACTIVE'");
+        assertEquals("PAUSED", Status.PAUSED.toString(), "PAUSED toString should return 'PAUSED'");
+        assertEquals("CANCELLED", Status.CANCELLED.toString(), "CANCELLED toString should return 'CANCELLED'");
+    }
+
+    //------------------------------------------------ Subscription equals() Test ----------------------------------------------------//
+
+    @Test
+    void subscription_equals_sameNameIsEqual() {
+        Subscription s1 = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("Netflix", 9.99, "Fitness", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
+        assertEquals(s1, s2, "Same name subscriptions should be equal regardless of other fields");
+    }
+
+    @Test
+    void subscription_equals_differentNameNotEqual() {
+        Subscription s1 = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("Spotify", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertNotEquals(s1, s2, "Different name subscriptions should not be equal");
+    }
+
+    @Test
+    void subscription_equals_caseInsensitive() {
+        //Tests equals() is case insensitive
+        Subscription s1 = new MonthlySubscription("netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("NETFLIX", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertEquals(s1, s2, "equals() should be case insensitive");
+    }
+
+    // --------------------------------------------- Subscription compareTo() Test ----------------------------------------------------------------------------
+
+    @Test
+    void subscription_compareTo_activeSortBeforePaused() {
+        //Tests active subscriptions go before paused
+        Subscription active = new MonthlySubscription("Spotify", 9.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription paused = new MonthlySubscription("Adobe", 50.00, "Software", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
+        assertTrue(active.compareTo(paused) < 0, "ACTIVE should sort before PAUSED");
+    }
+
+    @Test
+    void subscription_compareTo_pausedSortBeforeCancelled() {
+        //Tests paused subscriptions go before cancelled
+        Subscription paused = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
+        Subscription cancelled = new MonthlySubscription("Spotify", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.CANCELLED);
+        assertTrue(paused.compareTo(cancelled) < 0, "PAUSED should sort before CANCELLED");
+    }
+
+    @Test
+    void subscription_compareTo_sameStatusSortAlphabetically() {
+        //Tests same status is stored in alphabetical order
+        Subscription s1 = new MonthlySubscription("Adobe", 50.00, "Software", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertTrue(s1.compareTo(s2) < 0, "Adobe should sort before Netflix alphabetically within same status");
+    }
+
+    //--------------------------------- Subscription toString() Tests ----------------------------------//
+
+    @Test
+    void subscription_toString_containsAllFields() {
+        Subscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        String result = sub.toString();
+        assertTrue(result.contains("Netflix"), "toString should contain name");
+        assertTrue(result.contains("15.99"), "toString should contain cost");
+        assertTrue(result.contains("Entertainment"), "toString should contain category");
+        assertTrue(result.contains("Monthly"), "toString should contain renewal");
+        assertTrue(result.contains("01/01/2025"), "toString should contain startDate");
+        assertTrue(result.contains("ACTIVE"), "toString should contain status");
+    }
+
+    @Test
+    void subscription_toString_nullEndDateShowsNA() {
+        Subscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertTrue(sub.toString().contains("N/A"), "toString should show N/A when end date is null");
+    }
+
+    @Test
+    void subscription_toString_showsFormattedEndDate() {
+        Subscription s = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), LocalDate.of(2026, 6, 15), Status.ACTIVE);
+        assertTrue(s.toString().contains("06/15/2026"), "toString should show formatted end date MM/dd/yyyy");
+    }
+
+    // --------------------------- Budget toString() Tests ------------------------------------------
+    @Test
+    void budget_toString_correctFormat() {
+        Budget b = new Budget("Entertainment", 50.00);
+        assertEquals("Entertainment: $50.00", b.toString(), "toString should be 'Category: $XX.XX'");
+    }
+
+    @Test
+    void budget_toString_differentAmounts() {
+        Budget b1 = new Budget("Fitness", 100.00);
+        Budget b2 = new Budget("Software", 9.99);
+        assertEquals("Fitness: $100.00", b1.toString(), "toString should format 100.00 correctly");
+        assertEquals("Software: $9.99", b2.toString(), "toString should format 9.99 correctly");
+    }
+
 }

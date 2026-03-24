@@ -69,14 +69,28 @@ public class SubscriptionManager {
         return -1;//not found
     }
 
+    /**
+     * Checks if subscription already exists by name
+     *
+     * @param name of the Subscription
+     * @return true if subscription name not found, false otherwise
+     */
     public boolean subscriptionExists(String name) {
         return findingSubscriptionIndex(name) != -1;
     }
 
+    /**
+     * All the current subscriptions
+     * @return all current subscriptions
+     */
     public ArrayList<Subscription> getAllSubscriptions() {
         return subscriptions;
     }
 
+    /**
+     * Filters for all Active subscriptions
+     * @return all ACTIVE subscriptions
+     */
     public ArrayList<Subscription> getActiveSubscription() {
         ArrayList<Subscription> results = new ArrayList<>();
         for (Subscription sub : subscriptions) {
@@ -87,6 +101,10 @@ public class SubscriptionManager {
         return results;
     }
 
+    /**
+     * Filters for all Paused subscriptions
+     * @return all PAUSED subscriptions
+     */
     public ArrayList<Subscription> getPausedSubscription() {
         ArrayList<Subscription> results = new ArrayList<>();
         for (Subscription sub : subscriptions) {
