@@ -61,7 +61,12 @@ public class Subscription implements Comparable<Subscription> {
 
     public double getYearlyCost() { return getCost() * 12; }
 
-    // Subscription with the same name cannot exist, check if equals
+
+    /**
+     * Compares two subscription objects to check if they have the same name
+     * @param object of subscription to compare name of
+     * @return true if name are the same, otherwise false
+     */
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -70,17 +75,43 @@ public class Subscription implements Comparable<Subscription> {
         return this.name.equalsIgnoreCase(other.name);
     }
 
-    // Hashcode to set name to lowerCase, for equals to match
-    @Override
-    public int hashCode() {
-        return name.toLowerCase().hashCode();
-    }
-
+    /**
+     *
+     * @param other the subscription object to be compared.
+     * @return int priority order
+     */
     @Override
     public int compareTo(Subscription other) {
+
+        //Sort by status priority first
+        int priorityThis = getStatusPriority(this.status);
+        int priorityOther = getStatusPriority(other.status);
+
+        //
+        if (priorityThis != priorityOther) {
+            return priorityThis - priorityOther;
+        }
+
+        // If same status, sort alphabetically by name
         return this.name.compareToIgnoreCase(other.name);
     }
 
+    /**
+     * Helper to assign sort priority to each status (Lower number, higher priority)
+     * @param status the Status enum to get priority
+     * @return int priority value
+     */
+    private int getStatusPriority(Status status) {
+        return switch (status) {
+            case ACTIVE -> 0;
+            case PAUSED -> 1;
+            case CANCELLED -> 2;
+        };
+    }
+
+    /**
+     * @return Display string for subscription
+     */
     @Override
     public String toString() {
 
@@ -88,6 +119,6 @@ public class Subscription implements Comparable<Subscription> {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         String endDateDisplay = (endDate != null) ? endDate.format(formatter) : "N/A";
 
-        return String.format("%-15s $%-8.2f %-15s %-10s %-12s %-12s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status.toString());
+        return String.format("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status.toString());
     }
 }

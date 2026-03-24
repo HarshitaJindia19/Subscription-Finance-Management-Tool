@@ -47,8 +47,8 @@ public class MonthlySubscription extends Subscription {
         return !nextRenewal.isBefore(today)&& !nextRenewal.isAfter(sevenDaysLater);
 
     }
-    @Override
-    public String toString() {
-        return "Monthly -> "+super.toString();
-    }
+//    @Override
+//    public String toString() {
+//        return "Monthly -> " + super.toString();
+//    }
 }

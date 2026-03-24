@@ -1,4 +1,4 @@
-public class Budget implements Comparable<Budget> {
+public class Budget {
 
     private String category;
     private double limit;
@@ -17,8 +17,8 @@ public class Budget implements Comparable<Budget> {
         return limit;
     }
 
-    public double setLimit(double limit) {
-        return this.limit = limit;
+    public void setLimit(double limit) {
+        this.limit = limit;
     }
 
     /**
@@ -35,23 +35,6 @@ public class Budget implements Comparable<Budget> {
         return this.category.equalsIgnoreCase(other.category);
     }
 
-    /**
-     * hashCode based on lowercase category
-     * @return int
-     */
-    @Override
-    public int hashCode() { return category.toLowerCase().hashCode(); }
-
-
-    /**
-     * Sort budgets alphabetically by category
-     * @param other the object to be compared
-     * @return int
-     */
-    @Override
-    public int compareTo(Budget other) {
-        return this.category.compareToIgnoreCase(other.category);
-    }
 
     /**
      * Displays Budget/Category information

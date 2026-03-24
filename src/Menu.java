@@ -1,6 +1,7 @@
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -21,20 +22,20 @@ public class Menu {
     //static runs once when class is first loaded - used here because options is a static variable
     static {
         options.add("Exit");
-        options.add("Add Subscription"); //1
-        options.add("Add Category Budget"); //13 -> 2
-        options.add("Update Subscription");  // 2 -> 3
-        options.add("Search Subscriptions"); // 12 -> 4
-        options.add("View All Subscriptions"); // 3 -> 5
-        options.add("View Active Subscriptions"); // 4-> 6
-        options.add("View Paused Subscriptions"); //8 -> 7
-        options.add("Total Monthly Spend"); // 5 -> 8
-        options.add("Total Annual Spend"); // 6 -> 9
-        options.add("Upcoming Bills"); // 7 -> 10
-        options.add("Budget % By Category"); // 9 -> 11
-        options.add("Check High-Expense Bills"); // 10 -> 12
-        options.add("Check Budget Alerts"); // 11 -> 13
-        options.add("Save Subscription Data to File"); // 14
+        options.add("Add Subscription");
+        options.add("Add Category Budget");
+        options.add("Update Subscription");
+        options.add("Search Subscriptions");
+        options.add("View All Subscriptions");
+        options.add("View Active Subscriptions");
+        options.add("View Paused Subscriptions");
+        options.add("Total Monthly Spend");
+        options.add("Total Annual Spend");
+        options.add("Upcoming Bills");
+        options.add("Budget % By Category");
+        options.add("Check High-Expense Bills");
+        options.add("Check Budget Alerts");
+        options.add("Save Subscription Data to File");
     }
 
     /**
@@ -58,8 +59,6 @@ public class Menu {
             if (choice.isEmpty()) {
                 continue;
             }
-
-
             switch (choice) { //switch to guide user to correct action based on choice
                 case "1":
                     // Harshita
@@ -215,7 +214,15 @@ public class Menu {
 
     public static void updateProcess() {
         System.out.println("\n====UPDATE SUBSCRIPTION====");
-        //loop until valid subscription name is found
+        //check if theres any subscriptions to update
+        if (manager.getAllSubscriptions().isEmpty()) {
+            System.out.println("No subscriptions to update.");
+            return;
+        }
+        //show current subscriptions
+        System.out.println("\nCurrent subscriptions: ");
+        printTable(manager.getAllSubscriptions());
+
         int index = -1;
         while (index == -1) {
             System.out.println("\nEnter name of subscription to update: ");
@@ -254,21 +261,40 @@ public class Menu {
             System.out.println("Please enter new choice: ");
             newChoice = input.nextLine().trim();
 
-            if (choiceIndex == 6) {//if (6) updating status, ensure it is one of allowed values(ACTIVE,PAUSED,CANCELLED)
+            if (newChoice.isEmpty()) {
+                System.out.println("ERROR: value cannot be empty, try again.");
+                continue;
+            }
+            if (choiceIndex == 1) {
+                if (!SubscriptionManager.isValidCost(newChoice)) {
+                    System.out.println("ERROR: cost must be a valid positive number, try again.");
+
+                } else {
+                    validChoice = true;
+                }
+            } else if (choiceIndex == 3) { //renewal
+                if (!newChoice.equalsIgnoreCase("monthly") && !newChoice.equalsIgnoreCase("yearly")) {
+                    System.out.println("ERROR: billing cycle must be Monthly or Yearly, try again.");
+                } else {
+                    newChoice = SubscriptionManager.formatTitleCase(newChoice);
+                    validChoice = true;
+                }
+            } else if (choiceIndex == 4 || choiceIndex == 5) { //start or end date
+                if (!SubscriptionManager.isValidDate(newChoice)) {
+                    System.out.println("ERROR: date must be in MM/DD/YYYY format. Try again.");
+                } else {
+                    validChoice = true;
+                }
+            } else if (choiceIndex == 6) {
                 try {
-                    Status.getStatus(newChoice); //validates
+                    Status.getStatus(newChoice);
                     newChoice = newChoice.toUpperCase();
                     validChoice = true;
                 } catch (IllegalArgumentException e) {
                     System.out.println("ERROR: status must be ACTIVE/PAUSED/CANCELLED. Try again.");
                 }
             } else {
-                if (newChoice.isEmpty()) {//all other fields(not emtpy), the valid is valid
-                    System.out.println("ERROR: value cannot be empty. Try again.");
-                } else {
-                    validChoice = true;
-                }
-
+                validChoice = true;
             }
         }
         //call manager to update field using .set(index,newValue)
@@ -278,7 +304,6 @@ public class Menu {
 
     /**
      * displays subscriptions renewing in the next 7 days.
-     *
      * @author Ramsha
      */
     public static void upcomingBills() {
@@ -615,17 +640,7 @@ public class Menu {
 
         // Loop through all subs
         for (Subscription sub : subs) {
-            // Get subscription details using constants
-            String subName = sub.getName();
-            String subCategory = sub.getCategory();
-            String billing = sub.getRenewal();
-            String start = sub.getStartDate().format(formatter);
-            String end = (sub.getEndDate() != null) ? sub.getEndDate().format(formatter) : "-";
-            String status = sub.getStatus().toString();
-
-            //Description Row printed
-            System.out.printf("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s%n",
-                    subName, sub.getCost(), subCategory, billing, start, end, status);
+            System.out.println(sub);
         }
     }
 
@@ -696,12 +711,20 @@ public class Menu {
             printTable(pausedSubs);
         }
     }
+
+    /**
+     * Show all subscriptions to users
+     * Sort them by priority of status, and alphabetically
+     */
     public static void showAllSubscriptions() {
         System.out.println("=== ALL SUBSCRIPTIONS ===");
-        if (manager.getAllSubscriptions().isEmpty()) {
+        ArrayList<Subscription> allSubs = manager.getAllSubscriptions();
+
+        if (allSubs.isEmpty()) {
             System.out.println("No subscriptions found.");
         } else {
-            printTable(manager.getAllSubscriptions());
+            Collections.sort(allSubs);
+            printTable(allSubs);
         }
     }
     /**

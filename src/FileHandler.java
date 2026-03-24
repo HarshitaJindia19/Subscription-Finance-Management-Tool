@@ -39,12 +39,12 @@ public class FileHandler {
                 // name,cost,category,renewal,startDate,endDate,status
                 writer.println(
                         sub.getName() + "," +
-                                sub.getCost() + "," +
-                                sub.getCategory() + "," +
-                                sub.getRenewal() + "," +
-                                sub.getStartDate().format(formatter) + "," +
-                                endDate + "," +
-                                sub.getStatus().toString()
+                        sub.getCost() + "," +
+                        sub.getCategory() + "," +
+                        sub.getRenewal() + "," +
+                        sub.getStartDate().format(formatter) + "," +
+                        endDate + "," +
+                        sub.getStatus().toString()
                 );
             }
 
@@ -59,7 +59,7 @@ public class FileHandler {
                 // category,limit
                 writer.println(
                         budget.getCategory() + "," +
-                                budget.getLimit() + ","
+                        budget.getLimit()
                 );
             }
 
