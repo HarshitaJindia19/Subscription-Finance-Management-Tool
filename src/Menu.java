@@ -112,6 +112,9 @@ public class Menu {
                 case "14":
                     saveData();
                     break;
+                case "15";
+                    loadData();
+                    break;
                 case "0":
                     active = false;//now active is false to exit while loop
                     System.out.println("Exited.");
@@ -379,6 +382,38 @@ public class Menu {
         // Save to file
         FileHandler.saveToCSV(manager, filename);
 
+    }
+
+    /**
+     * Loads subscription data from a file chosen by the user
+     */
+    private static void loadData() {
+        System.out.println("\n==== LOAD SUBSCRIPTION INFO ===="); // title
+
+        //Ask user to enter file name
+        System.out.println("Enter a filename to load from (press Enter for subscription.csv): ");
+        String filename = input.nextLine().trim();
+
+        //If user presses Enter it uses a default file
+        if (filename.isEmpty()) {
+            filename = "subscription.csv";
+        }
+        //Make sure that the file ends with .csv
+        if (!filename.endsWith(".csv")) {
+            filename += ".csv";
+        }
+        //Check if file exists before loading
+        File file = new File(filename);
+
+        if (!file.exists()) {
+            System.out.println("File not found: " + filename);
+            return; //stop if the file doesn't exist
+        }
+        //Load data into program
+        FileHandler.loadFromCSV(manager, filename);
+
+        //Tells user loading is finished
+        System.out.println("Data loaded successfully!");
     }
 
     //=====================================DISPLAY MESSAGES===============================//
