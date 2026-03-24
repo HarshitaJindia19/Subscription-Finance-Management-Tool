@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="19841ff6-dcd2-43b1-ace3-761f3b507971" name="Changes" comment="Created JUnit tests for equals() in budgets">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-21,_10_41 a_m__[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-21,_10_41 a_m__[Changes]1/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2026-03-21__10_41a_m___Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea_backup/workspace.xml" afterDir="false" />
+    <list default="true" id="19841ff6-dcd2-43b1-ace3-761f3b507971" name="Changes" comment="Merged main into branch">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea_backup/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea_backup/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea_backup/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea_backup/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cpsc233w26project1_.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Searchable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cpsc233w26project1_.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SubscriptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SubscriptionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,30 +57,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.SubscriptionTest (1).executor": "Run",
-    "JUnit.SubscriptionTest.executor": "Run",
-    "JUnit.SubscriptionTest.status_getStatus_returnsCorrectEnum.executor": "Run",
-    "JUnit.SubscriptionTest.subscription_toString_containsAllFields.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "feature-OOP-refactor",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.SubscriptionTest (1).executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubscriptionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubscriptionTest.status_getStatus_returnsCorrectEnum.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SubscriptionTest.subscription_toString_containsAllFields.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature-OOP-refactor&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="JUnit.SubscriptionTest (1)">
     <configuration name="SubscriptionTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CPSC233W26Project1" />
@@ -154,6 +157,7 @@
       <updated>1774111460194</updated>
       <workItem from="1774327674252" duration="1839000" />
       <workItem from="1774365114313" duration="903000" />
+      <workItem from="1774374753530" duration="68000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on:&#10;-Interface implemented&#10;-Commented out previous junit tests&#10;&#10;Next Steps:&#10;-Work on csv file (load file)&#10;-Work on main common line argument">
       <option name="closed" value="true" />
@@ -267,7 +271,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774365153656</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Merged main into branch">
+      <option name="closed" value="true" />
+      <created>1774374597963</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1774374597963</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +299,7 @@
     <MESSAGE value="Created JUnit tests for compareTo() Subscription" />
     <MESSAGE value="Created JUnit tests for toString() in subscriptions and budgets" />
     <MESSAGE value="Created JUnit tests for equals() in budgets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created JUnit tests for equals() in budgets" />
+    <MESSAGE value="Merged main into branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged main into branch" />
   </component>
 </project>
