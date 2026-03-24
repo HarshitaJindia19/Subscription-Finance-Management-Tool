@@ -36,6 +36,7 @@ public class Menu {
         options.add("Check High-Expense Bills");
         options.add("Check Budget Alerts");
         options.add("Save Subscription Data to File");
+        options.add("Load Subscription Data to File");
     }
 
     /**
@@ -112,7 +113,7 @@ public class Menu {
                 case "14":
                     saveData();
                     break;
-                case "15";
+                case "15":
                     loadData();
                     break;
                 case "0":

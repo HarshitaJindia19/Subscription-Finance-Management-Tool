@@ -4,7 +4,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 
-public class SubscriptionManager {
+public class SubscriptionManager implements Searchable{
 
     private ArrayList<Subscription> subscriptions;
     private ArrayList<Budget> budgets;
