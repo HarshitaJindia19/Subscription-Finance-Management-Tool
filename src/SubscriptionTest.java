@@ -23,18 +23,21 @@ public class SubscriptionTest {
         MonthlySubscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
         assertEquals(15.99, sub.getMonthlyCost(), "Monthly cost should equal cost directly");
     }
+
     @Test
     void monthlySubscription_getYearlyCost() {
         // yearly cost should be monthly * 12
         MonthlySubscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
         assertEquals(15.99 * 12, sub.getYearlyCost(), "Yearly cost should be monthly * 12");
     }
+
     @Test
     void monthlySubscription_getMonthlyCost_zero() {
         //edge case(cost of 0)
         MonthlySubscription sub = new MonthlySubscription("FreeService", 0.0, "Entertainment", LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
         assertEquals(0.0, sub.getMonthlyCost(), "Monthly cost of 0 should return 0");
     }
+
     @Test
     void monthlySubscription_getRenewal() {
         //renewal should always be Monthly for MonthlySubscription
@@ -239,4 +242,141 @@ public class SubscriptionTest {
         assertEquals("Software: $9.99", b2.toString(), "toString should format 9.99 correctly");
     }
 
+    //--------------------------searchByName Tests----------------------
+
+    @Test
+    void searchByName_exactMatch() {
+        //Exact name should return 1 result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("Netflix")
+        assertEquals(1, result.size(), "Should return exactly 1 match");
+        assertEquals("Netflix", result.get(0).getName(), "Name should match Netflix");
+    }
+
+    @Test
+    void searchByName_partialMatch() {
+        //Partial match should still find result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("Net");
+        assertEquals(1, result.size(), "Should return 1 partial match");
+    }
+
+    @Test
+    void searchByName_notFound() {
+        //Non existing name should return empty
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("Hulu");
+        assertTrue(result.isEmpty(), "Result should be empty when not found");
+    }
+
+    @Test
+    void searchByName_emptyString_returnsAll() {
+        //Empty string should return all subscriptions
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        manager.storeNewSubscription("Spotify", 10, "Music", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("");
+        assertEquals(manager.subscriptions.size(), result.size(), "Empty string should return all results");
+    }
+
+    @Test
+    void searchByName_caseInsensitive() {
+        //Search should be case insensitive
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("netflix");
+        assertEquals(1, result.size(), "Search should ignore case");
+        assertEquals("Netflix", result.get(0).getName(), "Name should match original casing");
+    }
+
+    @Test
+    void searchByName_specialCharacters() {
+        // should handle special characters
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Net@flix!", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName("Net@");
+        assertEquals(1, result.size(), "Should match special characters");
+    }
+
+    @Test
+    void searchByName_emptyList() {
+        //Empty list should return empty result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        ArrayList<Subscription> result = manager.searchByName("Netflix");
+        assertTrue(result.isEmpty(), "Empty list should return empty result");
+    }
+
+    @Test
+    void searchByName_nullInput() {
+        //Null input should return empty
+        SubscriptionManager manager = new SubscriptionManager();
+
+        Data.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByName(null);
+        assertTrue(result.isEmpty(), "Null input should return empty result");
+    }
+
+    //--------------------------searchByCategory Tests----------------------
+
+    @Test
+    void searchByCategory_found() {
+        //Should find matching category
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
+        assertEquals(1, result.size(), "Should find 1 category match");
+        assertEquals("Netflix", result.get(0).getName(), "Name should match Netflix");
+
+    }
+    @Test
+    void searchByCategory_notFound() {
+        //No matching category should return empty
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByCategory("Fitness");
+        assertTrue(result.isEmpty(), "No matching category should return empty");
+    }
+
+    @Test
+    void searchByCategory_multipleResults() {
+        //Multiple matches should be returned
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        manager.storeNewSubscription("Spotify", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
+        assertEquals(2, result.size(), "Should return multiple results");
+    }
+    @Test
+    void searchByCategory_mixedResults() {
+        //Mixed categories should filter correctly
+        SubscriptionManager manager = new SubscriptionManager();
+
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        manager.storeNewSubscription("Gym", 50, "Fitness", "Monthly", null, null, Status.ACTIVE);
+        ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
+        assertEquals(1, result.size(), "Should only return the matching category");
+        assertEquals("Netflix", result.get(0).getName(), "Correct item should be returned");
+    }
+
+    @Test
+    void searchByCategory_emptyList() {
+        //Empty list should return empty result
+        SubscriptionManager manager = new SubscriptionManager();
+
+        ArrayList<Subscription> result = manager.searchByCategory("Entertainment");
+        assertTrue(result.isEmpty(), "Empty list should return empty result");
+    }
 }
