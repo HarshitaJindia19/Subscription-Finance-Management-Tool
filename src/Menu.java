@@ -17,7 +17,7 @@ public class Menu {
     private static final Scanner input = new Scanner(System.in);
     //Arraylist stores all menu options - index 0=exit, index 1=add subscription, etc.
     public static final ArrayList<String> options = new ArrayList<>();
-    private static final SubscriptionManager manager = new SubscriptionManager();
+    private static SubscriptionManager manager;
 
     //static runs once when class is first loaded - used here because options is a static variable
     static {
@@ -42,7 +42,9 @@ public class Menu {
      * main loop for program, keeps running until user exits
      * shows menu, reads user input, calls the corresponding method
      */
-    public static void runMenu() {
+    public static void runMenu(SubscriptionManager manager) {
+        Menu.manager = manager;
+
         boolean active = true; //loop keeps going
         while (active) {
             System.out.println("\n====SUBSCRIPTION MANAGER MENU OPTIONS====");
