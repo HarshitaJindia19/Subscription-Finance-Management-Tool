@@ -70,15 +70,38 @@ public class Subscription implements Comparable<Subscription> {
         return this.name.equalsIgnoreCase(other.name);
     }
 
-    // Hashcode to set name to lowerCase, for equals to match
-    @Override
-    public int hashCode() {
-        return name.toLowerCase().hashCode();
-    }
-
+    /**
+     *
+     * @param other the subscription object to be compared.
+     * @return
+     */
     @Override
     public int compareTo(Subscription other) {
+
+        //Sort by status priority first
+        int priorityThis = getStatusPriority(this.status);
+        int priorityOther = getStatusPriority(other.status);
+
+        //
+        if (priorityThis != priorityOther) {
+            return priorityThis - priorityOther;
+        }
+
+        // If same status, sort alphabetically by name
         return this.name.compareToIgnoreCase(other.name);
+    }
+
+    /**
+     * Helper to assign sort priority to each status (Lower number, higher priority)
+     * @param status the Status enum to get priority
+     * @return int priority value
+     */
+    private int getStatusPriority(Status status) {
+        return switch (status) {
+            case ACTIVE -> 0;
+            case PAUSED -> 1;
+            case CANCELLED -> 2;
+        };
     }
 
     @Override

@@ -1,6 +1,7 @@
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -710,12 +711,20 @@ public class Menu {
             printTable(pausedSubs);
         }
     }
+
+    /**
+     * Show all subscriptions to users
+     * Sort them by priority of status, and alphabetically
+     */
     public static void showAllSubscriptions() {
         System.out.println("=== ALL SUBSCRIPTIONS ===");
-        if (manager.getAllSubscriptions().isEmpty()) {
+        ArrayList<Subscription> allSubs = manager.getAllSubscriptions();
+
+        if (allSubs.isEmpty()) {
             System.out.println("No subscriptions found.");
         } else {
-            printTable(manager.getAllSubscriptions());
+            Collections.sort(allSubs);
+            printTable(allSubs);
         }
     }
     /**
