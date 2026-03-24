@@ -198,7 +198,45 @@ public class SubscriptionTest {
         assertTrue(s1.compareTo(s2) < 0, "Adobe should sort before Netflix alphabetically within same status");
     }
 
+    //--------------------------------- Subscription toString() Tests ----------------------------------//
 
+    @Test
+    void subscription_toString_containsAllFields() {
+        Subscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        String result = sub.toString();
+        assertTrue(result.contains("Netflix"), "toString should contain name");
+        assertTrue(result.contains("15.99"), "toString should contain cost");
+        assertTrue(result.contains("Entertainment"), "toString should contain category");
+        assertTrue(result.contains("Monthly"), "toString should contain renewal");
+        assertTrue(result.contains("01/01/2025"), "toString should contain startDate");
+        assertTrue(result.contains("ACTIVE"), "toString should contain status");
+    }
 
+    @Test
+    void subscription_toString_nullEndDateShowsNA() {
+        Subscription sub = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertTrue(sub.toString().contains("N/A"), "toString should show N/A when end date is null");
+    }
+
+    @Test
+    void subscription_toString_showsFormattedEndDate() {
+        Subscription s = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), LocalDate.of(2026, 6, 15), Status.ACTIVE);
+        assertTrue(s.toString().contains("06/15/2026"), "toString should show formatted end date MM/dd/yyyy");
+    }
+
+    // --------------------------- Budget toString() Tests ------------------------------------------
+    @Test
+    void budget_toString_correctFormat() {
+        Budget b = new Budget("Entertainment", 50.00);
+        assertEquals("Entertainment: $50.00", b.toString(), "toString should be 'Category: $XX.XX'");
+    }
+
+    @Test
+    void budget_toString_differentAmounts() {
+        Budget b1 = new Budget("Fitness", 100.00);
+        Budget b2 = new Budget("Software", 9.99);
+        assertEquals("Fitness: $100.00", b1.toString(), "toString should format 100.00 correctly");
+        assertEquals("Software: $9.99", b2.toString(), "toString should format 9.99 correctly");
+    }
 
 }
