@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
@@ -9,9 +10,12 @@ import java.time.LocalDate;
  * @tutorial T01
  */
 
+
+
 //--------------------------MonthlySubscription Tests----------------------------------
 
 public class SubscriptionTest {
+
     @Test
     void monthlySubscription_getMonthlyCost() {
         // monthly cost should equal cost directly
@@ -114,4 +118,34 @@ public class SubscriptionTest {
         YearlySubscription sub = new YearlySubscription("Adobe", 120.00, "Work", LocalDate.of(2025, 3, 1), null, Status.ACTIVE);
         assertTrue(sub instanceof Subscription, "YearlySubscription should be instance of Subscription");
     }
+
+    //------------------------------------------- Status Enum Tests ---------------------------------------------------------------//
+
+    @Test
+    void status_getStatus_returnsCorrectEnum() {
+        assertEquals(Status.ACTIVE, Status.getStatus("ACTIVE"), "getStatus(ACTIVE) should return Status.ACTIVE");
+        assertEquals(Status.PAUSED, Status.getStatus("PAUSED"), "getStatus(PAUSED) should return Status.PAUSED");
+        assertEquals(Status.CANCELLED, Status.getStatus("CANCELLED"), "getStatus(CANCELLED) should return Status.CANCELLED");
+    }
+
+    @Test
+    void status_getStatus_caseInsensitive() {
+        assertEquals(Status.ACTIVE, Status.getStatus("active"), "Should accept lowercase");
+        assertEquals(Status.PAUSED, Status.getStatus("Paused"), "Should accept mixed case");
+    }
+
+    @Test
+    void status_getStatus_invalidThrowsException() {
+        assertThrows(IllegalArgumentException.class, () -> Status.getStatus("EXPIRED"), "Invalid status should throw IllegalArgumentException");
+        assertThrows(IllegalArgumentException.class, () -> Status.getStatus(""), "Empty string should throw IllegalArgumentException");
+    }
+
+    @Test
+    void status_toString_returnsCorrectString() {
+        assertEquals("ACTIVE", Status.ACTIVE.toString(), "ACTIVE toString should return 'ACTIVE'");
+        assertEquals("PAUSED", Status.PAUSED.toString(), "PAUSED toString should return 'PAUSED'");
+        assertEquals("CANCELLED", Status.CANCELLED.toString(), "CANCELLED toString should return 'CANCELLED'");
+    }
+
+
 }
