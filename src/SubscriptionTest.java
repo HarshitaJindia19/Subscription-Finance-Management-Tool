@@ -282,7 +282,7 @@ public class SubscriptionTest {
         SubscriptionManager manager = new SubscriptionManager();
 
         manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
-        ArrayList<Subscription> result = manager.searchByName("Netflix")
+        ArrayList<Subscription> result = manager.searchByName("Netflix");
         assertEquals(1, result.size(), "Should return exactly 1 match");
         assertEquals("Netflix", result.get(0).getName(), "Name should match Netflix");
     }
@@ -315,12 +315,12 @@ public class SubscriptionTest {
         manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
         manager.storeNewSubscription("Spotify", 10, "Music", "Monthly", null, null, Status.ACTIVE);
         ArrayList<Subscription> result = manager.searchByName("");
-        assertEquals(manager.subscriptions.size(), result.size(), "Empty string should return all results");
+        assertEquals(manager.getAllSubscriptions().size(), result.size(), "Empty string should return all results");
     }
 
     @Test
     void searchByName_caseInsensitive() {
-        //Search should be case insensitive
+        //Search should be case-insensitive
         SubscriptionManager manager = new SubscriptionManager();
 
         manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
@@ -353,7 +353,7 @@ public class SubscriptionTest {
         //Null input should return empty
         SubscriptionManager manager = new SubscriptionManager();
 
-        Data.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
         ArrayList<Subscription> result = manager.searchByName(null);
         assertTrue(result.isEmpty(), "Null input should return empty result");
     }
