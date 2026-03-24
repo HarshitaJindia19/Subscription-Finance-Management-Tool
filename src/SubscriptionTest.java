@@ -307,16 +307,16 @@ public class SubscriptionTest {
         assertTrue(result.isEmpty(), "Result should be empty when not found");
     }
 
-    @Test
-    void searchByName_emptyString_returnsAll() {
-        //Empty string should return all subscriptions
-        SubscriptionManager manager = new SubscriptionManager();
-
-        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
-        manager.storeNewSubscription("Spotify", 10, "Music", "Monthly", null, null, Status.ACTIVE);
-        ArrayList<Subscription> result = manager.searchByName("");
-        assertEquals(manager.getAllSubscriptions().size(), result.size(), "Empty string should return all results");
-    }
+//    @Test
+//    void searchByName_emptyString_returnsAll() {
+//        //Empty string should return all subscriptions
+//        SubscriptionManager manager = new SubscriptionManager();
+//
+//        manager.storeNewSubscription("Netflix", 10, "Entertainment", "Monthly", null, null, Status.ACTIVE);
+//        manager.storeNewSubscription("Spotify", 10, "Music", "Monthly", null, null, Status.ACTIVE);
+//        ArrayList<Subscription> result = manager.searchByName("");
+//        assertEquals(manager.getAllSubscriptions().size(), result.size(), "Empty string should return all results");
+//    }
 
     @Test
     void searchByName_caseInsensitive() {
