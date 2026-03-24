@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
@@ -146,6 +145,40 @@ public class SubscriptionTest {
         assertEquals("PAUSED", Status.PAUSED.toString(), "PAUSED toString should return 'PAUSED'");
         assertEquals("CANCELLED", Status.CANCELLED.toString(), "CANCELLED toString should return 'CANCELLED'");
     }
+
+    //------------------------------------------------ Subscription equals() Test ----------------------------------------------------//
+
+    @Test
+    void subscription_equals_sameNameIsEqual() {
+        Subscription s1 = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("Netflix", 9.99, "Fitness", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
+        assertEquals(s1, s2, "Same name subscriptions should be equal regardless of other fields");
+    }
+
+    @Test
+    void subscription_equals_differentNameNotEqual() {
+        Subscription s1 = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("Spotify", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertNotEquals(s1, s2, "Different name subscriptions should not be equal");
+    }
+
+    @Test
+    void subscription_equals_caseInsensitive() {
+        Subscription s1 = new MonthlySubscription("netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("NETFLIX", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertEquals(s1, s2, "equals() should be case insensitive");
+    }
+
+    // --------------------------------------------- Subscription compareTo() Test ----------------------------------------------------------------------------
+
+    @Test
+    void subscription_compareTo_activeSortBeforePaused() {
+        Subscription active = new MonthlySubscription("Spotify", 9.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription paused = new MonthlySubscription("Adobe", 50.00, "Software", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
+        assertTrue(active.compareTo(paused) < 0, "ACTIVE should sort before PAUSED");
+    }
+
+
 
 
 }
