@@ -212,7 +212,15 @@ public class Menu {
 
     public static void updateProcess() {
         System.out.println("\n====UPDATE SUBSCRIPTION====");
-        //loop until valid subscription name is found
+        //check if theres any subscriptions to update
+        if (manager.getAllSubscriptions().isEmpty()) {
+            System.out.println("No subscriptions to update.");
+            return;
+        }
+        //show current subscriptions
+        System.out.println("\nCurrent subscriptions: ");
+        printTable(manager.getAllSubscriptions());
+
         int index = -1;
         while (index == -1) {
             System.out.println("\nEnter name of subscription to update: ");
