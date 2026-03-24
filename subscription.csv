@@ -1,0 +1,7 @@
+SUBSCRIPTIONS
+name,cost,category,renewal,startDate,endDate,status
+Netflix,20.0,Tain,Monthly,02/05/2026,N/A,ACTIVE
+Hulu,14.99,Entertainment,Monthly,02/27/2026,N/A,ACTIVE
+BUDGETS
+category,limit
+Entertainment,50.0
