@@ -630,17 +630,7 @@ public class Menu {
 
         // Loop through all subs
         for (Subscription sub : subs) {
-            // Get subscription details using constants
-            String subName = sub.getName();
-            String subCategory = sub.getCategory();
-            String billing = sub.getRenewal();
-            String start = sub.getStartDate().format(formatter);
-            String end = (sub.getEndDate() != null) ? sub.getEndDate().format(formatter) : "-";
-            String status = sub.getStatus().toString();
-
-            //Description Row printed
-            System.out.printf("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s%n",
-                    subName, sub.getCost(), subCategory, billing, start, end, status);
+            System.out.println(sub);
         }
     }
 

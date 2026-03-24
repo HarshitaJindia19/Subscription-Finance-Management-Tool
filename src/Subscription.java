@@ -61,7 +61,12 @@ public class Subscription implements Comparable<Subscription> {
 
     public double getYearlyCost() { return getCost() * 12; }
 
-    // Subscription with the same name cannot exist, check if equals
+
+    /**
+     * Compares two subscription objects to check if they have the same name
+     * @param object of subscription to compare name of
+     * @return true if name are the same, otherwise false
+     */
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
@@ -73,7 +78,7 @@ public class Subscription implements Comparable<Subscription> {
     /**
      *
      * @param other the subscription object to be compared.
-     * @return
+     * @return int priority order
      */
     @Override
     public int compareTo(Subscription other) {
@@ -104,6 +109,9 @@ public class Subscription implements Comparable<Subscription> {
         };
     }
 
+    /**
+     * @return Display string for subscription
+     */
     @Override
     public String toString() {
 
@@ -111,6 +119,6 @@ public class Subscription implements Comparable<Subscription> {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         String endDateDisplay = (endDate != null) ? endDate.format(formatter) : "N/A";
 
-        return String.format("%-15s $%-8.2f %-15s %-10s %-12s %-12s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status.toString());
+        return String.format("%-15s $%-7.2f %-15s %-10s %-15s %-15s %-10s", name, cost, category, renewal, startDate.format(formatter), endDateDisplay, status.toString());
     }
 }
