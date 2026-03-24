@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Unit tests for MonthlySubscription and YearlySubscription
@@ -164,6 +166,7 @@ public class SubscriptionTest {
 
     @Test
     void subscription_equals_caseInsensitive() {
+        //Tests equals() is case insensitive
         Subscription s1 = new MonthlySubscription("netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
         Subscription s2 = new MonthlySubscription("NETFLIX", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
         assertEquals(s1, s2, "equals() should be case insensitive");
@@ -173,9 +176,26 @@ public class SubscriptionTest {
 
     @Test
     void subscription_compareTo_activeSortBeforePaused() {
+        //Tests active subscriptions go before paused
         Subscription active = new MonthlySubscription("Spotify", 9.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
         Subscription paused = new MonthlySubscription("Adobe", 50.00, "Software", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
         assertTrue(active.compareTo(paused) < 0, "ACTIVE should sort before PAUSED");
+    }
+
+    @Test
+    void subscription_compareTo_pausedSortBeforeCancelled() {
+        //Tests paused subscriptions go before cancelled
+        Subscription paused = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.PAUSED);
+        Subscription cancelled = new MonthlySubscription("Spotify", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.CANCELLED);
+        assertTrue(paused.compareTo(cancelled) < 0, "PAUSED should sort before CANCELLED");
+    }
+
+    @Test
+    void subscription_compareTo_sameStatusSortAlphabetically() {
+        //Tests same status is stored in alphabetical order
+        Subscription s1 = new MonthlySubscription("Adobe", 50.00, "Software", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        Subscription s2 = new MonthlySubscription("Netflix", 15.99, "Entertainment", LocalDate.of(2025, 1, 1), null, Status.ACTIVE);
+        assertTrue(s1.compareTo(s2) < 0, "Adobe should sort before Netflix alphabetically within same status");
     }
 
 
