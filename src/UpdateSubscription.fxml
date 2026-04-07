@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" style="-fx-padding: 20;"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="UpdateSubscriptionController">
+
+    <Label text="UPDATE SUBSCRIPTION" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+    <Label text="Enter subscription name to update:"/>
+    <TextField fx:id="nameField" promptText="e.g. Netflix"/>
+    <Button text="Find Subscription" onAction="#findSubscription"/>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: red;"/>
+
+</VBox>
