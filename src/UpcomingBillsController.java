@@ -33,6 +33,41 @@ public class UpcomingBillsController {
      */
 
     public void setManager(SubscriptionManager manager) {
-        this.manager = manager;
+        this.manager=manager;
     }
+
+    /**
+     * Called by main controller after setManager to load and display upcoming bills
+     * Gets upcoming bills from manager and puts them in the table
+     */
+    public void loadUpcomingBills(){
+
+        //set up each column to pull the right data from Subscription object
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
+        renewalCol.setCellValueFactory(new PropertyValueFactory<>("renewal"));
+        statusCol.setCellValueFactory (new PropertyValueFactory<>("status"));
+
+        //cost needs special formatting with $ sign
+        costCol.setCellValueFactory (data ->new javafx.beans.property.SimpleStringProperty("$" + String.format("%.2f", data.getValue().getCost())));
+
+        //start date needs formatting to MM/DD/YYYT
+        startDateCol.setCellValueFactory(data-> new javafx.beans.property.SimpleStringProperty(data.getValue().getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY"))) );
+
+        //get upcoming bills from manager
+        java.util.ArrayList<Subscription>upcoming =manager.getUpcomingBills();
+
+        //if no upcoming bills, show the empty message and hide table
+        if (upcoming.isEmpty()) {
+            emptyLabel.setVisible(true);
+            billsTable.setVisible(false );
+
+        }
+        else {
+            //add all upcoming bills into the table
+            billsTable.getItems().addAll(upcoming);
+            emptyLabel.setVisible(false);
+            billsTable.setVisible(true);
+        }
+}
 }
