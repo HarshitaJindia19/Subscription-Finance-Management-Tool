@@ -169,7 +169,7 @@ public class UpdateSubscriptionController {
             manager.changeSubscriptionChoice(foundIndex, 5,newEndDate);
         }
 
-        manager.changeSubscriptionChoice(foundIndex, 6 newStatus);
+        manager.changeSubscriptionChoice(foundIndex, 6, newStatus);
 
         //show success msg and close window
         statusLabel.setText("Updated successfully!");
