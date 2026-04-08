@@ -96,6 +96,88 @@ public class UpdateSubscriptionController {
     }
 
     /**
+     * Called when user clicks save changes button
+     * Validates each field and updates the subscription
+     */
+    @FXML
+    private void saveChanges() {
+        //check if a subscription was found first
+        if (foundIndex == -1) {
+            showAlert("Please find a subscription first.");
+            return;
+        }
+        //get all the values from fields
+        String newName =newNameField.getText().trim();
+        String newCost=newCostField.getText().trim();
+        String newCategory=newCategoryField.getText().trim();
+        String newRenewal=newRenewalField.getValue();
+        String newStartDate=newStartDateField.getText().trim();
+        String newEndDate =newEndDateField.getText().trim();
+        String newStatus=newStatusField.getValue();
+
+        //check name (can only contain letters)
+        if (!SubscriptionManager. isOnlyText(newName) ) {
+            showAlert("Name must contain only letters.");
+            return;
+        }
+
+        //check cost (can only be a positive number)
+        if (!SubscriptionManager.isValidCost(newCost)) {
+            showAlert("Cost must be a valid positive number (e.g. 15.99).");
+            return;
+        }
+
+        //check category (can only contain letters)
+        if (!SubscriptionManager.isOnlyText(newCategory)) {
+            showAlert("Category must contain only letters.");
+            return;
+        }
+
+        //check renewal (must be selected)
+        if (newRenewal ==null) {
+            showAlert("Please select a billing cycle.");
+            return;
+        }
+
+        //check start date
+        if (!SubscriptionManager.isValidDate(newStartDate)) {
+            showAlert("Start date must be in MM/DD/YYYY format.");
+            return;
+        }
+        //check end date only if user typed something
+        if (!newEndDate.isEmpty() && !SubscriptionManager.isValidDate(newEndDate)) {
+            showAlert("End date must be in MM/DD/YYYY format or leave blank.");
+            return;
+
+        }
+
+        //check status is chosen
+        if (newStatus ==null) {
+            showAlert("Please select a status.");
+            return;
+        }
+
+        //updating each field
+        manager.changeSubscriptionChoice(foundIndex, 0,newName);
+        manager.changeSubscriptionChoice(foundIndex, 1, newCost);
+        manager.changeSubscriptionChoice(foundIndex,2,newCategory);
+        manager.changeSubscriptionChoice(foundIndex, 3,newRenewal);
+        manager.changeSubscriptionChoice(foundIndex,4, newStartDate);
+
+        //only update end date if user typed something
+        if (!newEndDate.isEmpty() ){
+            manager.changeSubscriptionChoice(foundIndex, 5,newEndDate);
+        }
+
+        manager.changeSubscriptionChoice(foundIndex, 6 newStatus);
+
+        //show success msg and close window
+        statusLabel.setText("Updated successfully!");
+        statusLabel.setStyle("-fx-text-fill: green;");
+        nameField.getScene().getWindow().hide();
+    }
+
+    /**
      * Shows a alerting popup with error message
      * @param message error message
      */
