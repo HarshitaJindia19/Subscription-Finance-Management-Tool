@@ -49,4 +49,49 @@ public class UpdateSubscriptionController {
     public void setManager(SubscriptionManager manager) {
         this.manager = manager;
 }
+    /**
+     * Called when user clicks "Find Subscription" button
+     * Searches for subscription by name and shows edit fields if found
+     */
+    @FXML
+    private void findSubscription() {
+        //get what user put in the name field
+        String name = nameField.getText().trim();
+
+        //check if name field is empty
+        if (name.isEmpty()) {
+            statusLabel.setText("Enter a subscription name:");
+            statusLabel.setStyle("-fx-text-fill: rgba(255,0,0,0.64);");
+            editFields.setVisible(false);
+            return;
+        }
+
+        //search for subscription in manager
+        foundIndex = manager.findingSubscriptionIndex(name);
+
+        //show an error if nothing found
+        if (foundIndex == -1) {
+            statusLabel.setText("Subscription '" + name + "' not found.");
+            statusLabel.setStyle("-fx-text-fill: rgba(255,0,0,0.64);");
+            editFields.setVisible(false);
+            return;
+        }
+
+        //get the subscription object if found
+        Subscription sub = manager.getAllSubscriptions().get(foundIndex);
+
+        //pre-fill all the fields with current values
+        newNameField.setText(sub.getName());
+        newCostField.setText(String.valueOf(sub.getCost()));
+        newCategoryField.setText(sub.getCategory());
+        newRenewalField.setValue(sub.getRenewal());
+        newStartDateField.setText(sub.getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")));
+        newEndDateField.setText(sub.getEndDate()!= null? sub.getEndDate().format(java.time.format.DateTimeFormatter. ofPattern("MM/DD/YYYY")) : "");
+        newStatusField.setValue(sub.getStatus().toString());
+
+        //show the edit fields
+        statusLabel.setText("Subscription found! Edit fields below:");
+        statusLabel.setStyle("-fx-text-fill: green;");
+        editFields.setVisible(true);
+    }
 }
