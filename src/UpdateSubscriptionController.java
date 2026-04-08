@@ -94,4 +94,17 @@ public class UpdateSubscriptionController {
         statusLabel.setStyle("-fx-text-fill: green;");
         editFields.setVisible(true);
     }
+
+    /**
+     * Shows a alerting popup with error message
+     * @param message error message
+     */
+
+    private void showAlert(String message){
+        Alert alert= new Alert(Alert. AlertType.ERROR);
+        alert.setTitle("Invalid input.");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
