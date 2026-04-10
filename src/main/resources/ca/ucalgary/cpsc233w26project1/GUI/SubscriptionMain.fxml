@@ -34,13 +34,14 @@
         <VBox style="-fx-padding: 15;">
             <TableView fx:id="mainTable" prefHeight="600" prefWidth="770">
                 <columns>
-                    <TableColumn fx:id="nameCol" text="Name" prefWidth="120"/>
+                    <TableColumn fx:id="nameCol" text="Name" prefWidth="95"/>
                     <TableColumn fx:id="costCol" text="Cost" prefWidth="80"/>
-                    <TableColumn fx:id="categoryCol" text="Category" prefWidth="120"/>
-                    <TableColumn fx:id="renewalCol" text="Billing" prefWidth="80"/>
+                    <TableColumn fx:id="categoryCol" text="Category" prefWidth="100"/>
+                    <TableColumn fx:id="renewalCol" text="Billing" prefWidth="95"/>
                     <TableColumn fx:id="startDateCol" text="Start Date" prefWidth="100"/>
                     <TableColumn fx:id="endDateCol" text="End Date" prefWidth="100"/>
                     <TableColumn fx:id="statusCol" text="Status" prefWidth="90"/>
+                    <TableColumn fx:id="actionsCol" text="Actions" prefWidth="80"/>
                 </columns>
             </TableView>
         </VBox>

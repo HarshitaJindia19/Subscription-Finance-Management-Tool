@@ -14,6 +14,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ca.ucalgary.cpsc233w26project1.Subscription;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableCell;
+import javafx.util.Callback;
 
 public class SubscriptionMainController {
     public Button btnAllSubscriptions;
@@ -39,6 +42,7 @@ public class SubscriptionMainController {
     @FXML private TableColumn<Subscription, String> startDateCol;
     @FXML private TableColumn<Subscription, String> endDateCol;
     @FXML private TableColumn<Subscription, String> statusCol;
+    @FXML private TableColumn<Subscription, Void> actionsCol;
 
     private SubscriptionManager manager = new SubscriptionManager();
 
@@ -76,7 +80,53 @@ public class SubscriptionMainController {
 
         mainTable.getItems().clear();
         mainTable.getItems().addAll(subs);
+
+        setupEditColumn();
     }
+
+
+    /**
+     * Sets up the EDIT button in each row of the main table
+     * Clicking EDIT opens the UpdateSubscription popup for that row
+     */
+    private void setupEditColumn() {Callback<TableColumn<Subscription, Void>, TableCell<Subscription, Void>> cellFactory = new Callback<>() {
+        @Override
+        public TableCell<Subscription,Void> call(TableColumn<Subscription, Void> param){
+            return new TableCell<>() {
+                //make the EDIT button
+                private final Button editButton = new Button("Edit");{
+                //when EDIT is clicked, open UpdateSubscription window
+                editButton.setOnAction(event ->{Subscription sub = getTableView().getItems().get(getIndex());
+                    try{
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateSubscription.fxml"));
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(loader.load()));
+                        stage.setTitle("Update Subscription");
+                        UpdateSubscriptionController controller = loader.getController();
+                        controller.setManager(manager);
+                        controller.prefillFields(sub);
+                        stage.show();
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();}});
+             }
+
+                @Override
+                    protected void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        }
+                        else {
+                            setGraphic(editButton);
+                        }
+                    }
+                };
+            }
+        };
+        actionsCol.setCellFactory(cellFactory);
+    }
+
 
     //-------------------------------------VIEW METHODS----------------------------------------------------
 
