@@ -1,3 +1,5 @@
+package ca.ucalgary.cpsc233w26project1;
+
 import java.util.ArrayList;
 
 public interface Searchable {

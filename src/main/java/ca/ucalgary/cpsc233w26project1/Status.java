@@ -1,3 +1,5 @@
+package ca.ucalgary.cpsc233w26project1;
+
 /**
  * Status.java - enum for valid subscription status options
  * @author Harshita

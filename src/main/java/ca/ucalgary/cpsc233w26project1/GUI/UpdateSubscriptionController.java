@@ -1,3 +1,7 @@
+package ca.ucalgary.cpsc233w26project1.GUI;
+
+import ca.ucalgary.cpsc233w26project1.Subscription;
+import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;

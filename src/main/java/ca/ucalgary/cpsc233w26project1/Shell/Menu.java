@@ -1,3 +1,7 @@
+package ca.ucalgary.cpsc233w26project1.Shell;
+
+import ca.ucalgary.cpsc233w26project1.*;
+
 import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

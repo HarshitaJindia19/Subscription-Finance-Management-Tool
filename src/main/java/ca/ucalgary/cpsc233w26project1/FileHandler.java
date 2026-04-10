@@ -1,3 +1,5 @@
+package ca.ucalgary.cpsc233w26project1;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
