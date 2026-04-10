@@ -30,5 +30,20 @@
             <Button id="btnLoadFromFile" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFromFile" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Load from File" />
         </VBox>
     </left>
+    <center>
+        <VBox style="-fx-padding: 15;">
+            <TableView fx:id="mainTable" prefHeight="600" prefWidth="770">
+                <columns>
+                    <TableColumn fx:id="nameCol" text="Name" prefWidth="120"/>
+                    <TableColumn fx:id="costCol" text="Cost" prefWidth="80"/>
+                    <TableColumn fx:id="categoryCol" text="Category" prefWidth="120"/>
+                    <TableColumn fx:id="renewalCol" text="Billing" prefWidth="80"/>
+                    <TableColumn fx:id="startDateCol" text="Start Date" prefWidth="100"/>
+                    <TableColumn fx:id="endDateCol" text="End Date" prefWidth="100"/>
+                    <TableColumn fx:id="statusCol" text="Status" prefWidth="90"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
 
 </BorderPane>

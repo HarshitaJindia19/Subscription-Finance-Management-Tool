@@ -9,6 +9,11 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import java.util.List;
 import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import ca.ucalgary.cpsc233w26project1.Subscription;
 
 public class SubscriptionMainController {
     public Button btnAllSubscriptions;
@@ -24,6 +29,16 @@ public class SubscriptionMainController {
     public Button btnSearch;
     public Button btnSaveToFile;
     public Button btnLoadFromFile;
+
+    //main table and columns
+    @FXML private TableView<Subscription> mainTable;
+    @FXML private TableColumn<Subscription, String> nameCol;
+    @FXML private TableColumn<Subscription, String> costCol;
+    @FXML private TableColumn<Subscription, String> categoryCol;
+    @FXML private TableColumn<Subscription, String> renewalCol;
+    @FXML private TableColumn<Subscription, String> startDateCol;
+    @FXML private TableColumn<Subscription, String> endDateCol;
+    @FXML private TableColumn<Subscription, String> statusCol;
 
     private SubscriptionManager manager = new SubscriptionManager();
 
@@ -42,22 +57,43 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * loadTable - Helper method to load a list of subscriptions into the main table
+     * @param subs list of subscriptions to display
+     */
+    private void loadTable(java.util.ArrayList<Subscription> subs) {
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
+        renewalCol.setCellValueFactory(new PropertyValueFactory<>("renewal"));
+
+        costCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty("$" + String.format("%.2f", data.getValue().getCost())));
+
+        startDateCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty(data.getValue().getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY"))));
+
+        endDateCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getEndDate() != null ? data.getValue().getEndDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")) : "N/A"));
+
+        statusCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty(data.getValue().getStatus().toString()));
+
+        mainTable.getItems().clear();
+        mainTable.getItems().addAll(subs);
+    }
+
+    //-------------------------------------VIEW METHODS----------------------------------------------------
+
     public void showAllSubscriptions(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SubscriptionMain.fxml"));
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        loadTable(manager.getAllSubscriptions());
     }
 
     public void showActiveSubscriptions(ActionEvent actionEvent) {
+        loadTable(manager.getActiveSubscription());
     }
 
     public void showPausedSubscriptions(ActionEvent actionEvent) {
+        loadTable(manager.getPausedSubscription());
     }
 
     public void showCancelledSubscriptions(ActionEvent actionEvent) {
+        loadTable(manager.getCancelledSubscription());
     }
 
     public void showUpcomingBills(ActionEvent actionEvent) {
@@ -75,6 +111,8 @@ public class SubscriptionMainController {
             e.printStackTrace();
         }
     }
+
+    //--------------------------------FINANCE METHODS---------------------------------------------
 
     public void showMonthlySpend(ActionEvent actionEvent) {
     }
@@ -102,6 +140,8 @@ public class SubscriptionMainController {
             e.printStackTrace();
         }
     }
+
+    //---------------------------------TOOL METHODS------------------------------------
 
     public void saveToFile(ActionEvent actionEvent) {
     }

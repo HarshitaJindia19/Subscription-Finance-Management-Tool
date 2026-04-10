@@ -117,6 +117,20 @@ public class SubscriptionManager implements Searchable{
         return results;
     }
 
+    /**
+     * filters for all cancelled subscriptions
+     * @return all cancelled subscriptions
+     */
+    public ArrayList<Subscription>getCancelledSubscription(){
+        ArrayList<Subscription> results=new ArrayList<>();
+        for (Subscription sub : subscriptions) {
+            if (sub.getStatus() ==Status.CANCELLED) {
+                results.add(sub);
+        }
+        }
+        return results;
+    }
+
 
     /**
      * Updates a specific field of a subscription using .set(index,newValue).
