@@ -11,6 +11,24 @@
     </top>
     <left>
         <VBox spacing="5" style="-fx-background-color: #3a3a3a; -fx-padding: 15; -fx-min-width: 180;">
-         <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="VIEW" />
+            <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="VIEW" />
+            <Button id="btnAllSubscriptions" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showAllSubscriptions" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="All Subscriptions" />
+            <Button id="btnActive" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showActiveSubscriptions" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Active" />
+            <Button id="btnPaused" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showPausedSubscriptions" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Paused" />
+            <Button id="btnCancelled" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showCancelledSubscriptions" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Cancelled" />
+            <Button id="btnUpcomingBills" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showUpcomingBills" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Upcoming Bills" />
+
+            <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="FINANCE" />
+            <Button id="btnMonthlySpend" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showMonthlySpend" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Monthly Spend" />
+            <Button id="btnAnnualSpend" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showAnnualSpend" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Annual Spend" />
+            <Button id="btnBudgetAlerts" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showBudgetAlerts" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Budget Alerts" />
+            <Button id="btnBudgetByCategory" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showBudgetByCategory" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Budget % by Category" />
+            <Button id="btnHighExpense" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showHighExpenseBills" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="High-Expense Bills" />
+
+            <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="TOOLS" />
+            <Button id="btnSaveToFile" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveToFile" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Save to File" />
+            <Button id="btnLoadFromFile" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFromFile" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Load from File" />
+        </VBox>
+    </left>
 
 </BorderPane>
