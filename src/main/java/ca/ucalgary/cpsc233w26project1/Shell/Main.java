@@ -1,3 +1,8 @@
+package ca.ucalgary.cpsc233w26project1.Shell;
+
+import ca.ucalgary.cpsc233w26project1.FileHandler;
+import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
+
 import java.io.File;
 
 /**
