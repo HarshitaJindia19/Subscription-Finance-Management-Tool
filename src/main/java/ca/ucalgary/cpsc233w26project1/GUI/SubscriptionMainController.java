@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.util.List;
 import java.io.IOException;
@@ -32,6 +34,11 @@ public class SubscriptionMainController {
     public Button btnSearch;
     public Button btnSaveToFile;
     public Button btnLoadFromFile;
+    public TextField searchField;
+    public Label lblTotalSubscriptions;
+    public Label lblMonthlySpend;
+    public Label lblAnnualSpend;
+    public Label lblUpcomingBills;
 
     //main table and columns
     @FXML private TableView<Subscription> mainTable;
@@ -197,5 +204,11 @@ public class SubscriptionMainController {
     }
 
     public void loadFromFile(ActionEvent actionEvent) {
+    }
+
+    public void openAddBudgetDialog(ActionEvent actionEvent) {
+    }
+
+    public void openAddSubscriptionDialog(ActionEvent actionEvent) {
     }
 }
