@@ -20,7 +20,7 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SubscriptionMain.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         SubscriptionMainController controller = fxmlLoader.getController();
-//            controller.initData(args);
+        controller.initData(args);
         stage.setScene(scene);
         stage.show();
     }
