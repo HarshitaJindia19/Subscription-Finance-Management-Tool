@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" style="-fx-padding: 20;"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ca.ucalgary.cpsc233w26project1.GUI.UpdateSubscriptionController">
+
+    <Label text="UPDATE SUBSCRIPTION" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+
+    <Label text="Enter subscription name to update:"/>
+    <TextField fx:id="nameField" promptText="e.g. Netflix"/>
+    <Button text="Find Subscription" onAction="#findSubscription"/>
+
+    <Label fx:id="statusLabel" style="-fx-text-fill: red;"/>
+
+    <VBox fx:id="editFields" visible="false" spacing="8">
+
+        <Label text="New Name:"/>
+        <TextField fx:id="newNameField"/>
+
+        <Label text="New Cost:"/>
+        <TextField fx:id="newCostField" promptText="e.g. 15.99"/>
+
+        <Label text="New Category:"/>
+        <TextField fx:id="newCategoryField"/>
+
+        <Label text="New Billing Cycle:"/>
+        <ComboBox fx:id="newRenewalField"/>
+
+        <Label text="New Start Date (MM/DD/YYYY):"/>
+        <TextField fx:id="newStartDateField" promptText="MM/DD/YYYY"/>
+
+        <Label text="New End Date (MM/DD/YYYY):"/>
+        <TextField fx:id="newEndDateField" promptText="MM/DD/YYYY or leave blank"/>
+
+        <Label text="New Status:"/>
+        <ComboBox fx:id="newStatusField"/>
+
+        <Button text="Save Changes" onAction="#saveChanges"/>
+    </VBox>
+
+</VBox>
