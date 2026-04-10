@@ -31,9 +31,10 @@
             <Button id="btnBudgetByCategory" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showBudgetByCategory" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Budget % by Category" />
             <Button id="btnHighExpense" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showHighExpenseBills" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="High-Expense Bills" />
 
-            <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="TOOLS" />
+            <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="OTHER" />
             <Button id="btnSaveToFile" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#saveToFile" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Save to File" />
             <Button id="btnLoadFromFile" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#loadFromFile" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Load from File" />
+            <Button id="btnAbout" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#about" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="About " />
         </VBox>
     </left>
     <center>

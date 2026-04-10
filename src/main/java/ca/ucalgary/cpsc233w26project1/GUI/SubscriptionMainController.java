@@ -211,4 +211,7 @@ public class SubscriptionMainController {
 
     public void openAddBudgetStage(ActionEvent actionEvent) {
     }
+
+    public void about(ActionEvent actionEvent) {
+    }
 }
