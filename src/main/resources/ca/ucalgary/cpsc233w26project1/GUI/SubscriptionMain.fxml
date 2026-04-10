@@ -8,10 +8,8 @@
     <top>
         <HBox style="-fx-background-color: #2c2c2c; -fx-padding: 12 20 12 20;">
             <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Subscription Manager" />
-         <Button alignment="CENTER_RIGHT" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: black; -fx-padding: 6 6; -fx-font-weight: bold; -fx-text-fill: whit #2c2c2ce;" text="User" HBox.hgrow="ALWAYS">
-            <HBox.margin>
-               <Insets left="725.0" />
-            </HBox.margin>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button alignment="CENTER_RIGHT" mnemonicParsing="false" style="-fx-background-color: white; -fx-background-radius: 100; -fx-border-radius: 100; -fx-border-color: black; -fx-padding: 6 6; -fx-font-weight: bold; -fx-text-fill: whit #2c2c2ce;" text="User" HBox.hgrow="ALWAYS">
          </Button>
         </HBox>
     </top>
@@ -63,7 +61,7 @@
                 </VBox>
             </HBox>
             <ScrollPane>
-                <TableView fx:id="mainTable" prefHeight="600" prefWidth="770">
+                <TableView fx:id="mainTable" prefHeight="600" prefWidth="770.0">
                     <columns>
                         <TableColumn fx:id="nameCol" prefWidth="95" text="Name" />
                         <TableColumn fx:id="costCol" prefWidth="80" text="Cost" />
@@ -76,6 +74,9 @@
                     </columns>
                 </TableView>
             </ScrollPane>
+                <HBox style="-fx-padding: 4 0 0 0;">
+                    <Label fx:id="lblStatusBar" style="-fx-text-fill: #888888; -fx-font-size: 11px;" text="Status Loading..." />
+                </HBox>
         </VBox>
     </center>
 </BorderPane>

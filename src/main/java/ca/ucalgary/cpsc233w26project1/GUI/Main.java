@@ -18,7 +18,8 @@ public class Main extends Application {
         //Arguments to program
         List<String> args = getParameters().getRaw();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SubscriptionMain.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.sizeToScene();
         SubscriptionMainController controller = fxmlLoader.getController();
         controller.initData(args);
         stage.setScene(scene);

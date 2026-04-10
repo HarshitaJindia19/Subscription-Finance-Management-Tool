@@ -39,6 +39,7 @@ public class SubscriptionMainController {
     public Label lblMonthlySpend;
     public Label lblAnnualSpend;
     public Label lblUpcomingBills;
+    public Label lblStatusBar;
 
     //main table and columns
     @FXML private TableView<Subscription> mainTable;
@@ -111,7 +112,7 @@ public class SubscriptionMainController {
                         stage.setTitle("Update Subscription");
                         UpdateSubscriptionController controller = loader.getController();
                         controller.setManager(manager);
-                        controller.prefillFields(sub);
+//                        controller.prefillFields(sub);
                         stage.show();
                         }
                         catch (IOException e) {
