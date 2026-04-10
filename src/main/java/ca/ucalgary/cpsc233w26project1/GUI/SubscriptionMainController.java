@@ -206,9 +206,9 @@ public class SubscriptionMainController {
     public void loadFromFile(ActionEvent actionEvent) {
     }
 
-    public void openAddBudgetDialog(ActionEvent actionEvent) {
+    public void openAddSubscriptionStage(ActionEvent actionEvent) {
     }
 
-    public void openAddSubscriptionDialog(ActionEvent actionEvent) {
+    public void openAddBudgetStage(ActionEvent actionEvent) {
     }
 }
