@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" style="-fx-padding: 20;"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ca.ucalgary.cpsc233w26project1.GUI.UpcomingBillsController">
+
+    <Label text="UPCOMING BILLS" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+    <Label text="Subscriptions renewing in the next 7 days:"/>
+
+    <Label fx:id="emptyLabel" text="No upcoming bills in the next 7 days."
+           style="-fx-text-fill: grey;" visible="false"/>
+
+    <TableView fx:id="billsTable">
+        <columns>
+            <TableColumn fx:id="nameCol" text="Name"/>
+            <TableColumn fx:id="costCol" text="Cost"/>
+            <TableColumn fx:id="categoryCol" text="Category"/>
+            <TableColumn fx:id="renewalCol" text="Billing"/>
+            <TableColumn fx:id="startDateCol" text="Next Renewal"/>
+            <TableColumn fx:id="statusCol" text="Status"/>
+        </columns>
+    </TableView>
+
+</VBox>
