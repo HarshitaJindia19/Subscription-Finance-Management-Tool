@@ -137,8 +137,6 @@ public class AddSubscriptionController {
         } else {
             showError("Failed to add. Name may already exist");
         }
-
-
     }
 
     private void clearFields() {

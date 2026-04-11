@@ -75,7 +75,7 @@
                 </TableView>
             </ScrollPane>
                 <HBox style="-fx-padding: 4 0 0 0;">
-                    <Label fx:id="lblStatusBar" style="-fx-text-fill: #888888; -fx-font-size: 11px;" text="Status Loading..." />
+                    <Label fx:id="lblMessage" style="-fx-text-fill: #888888; -fx-font-size: 11px;" text="Status Loading..." />
                 </HBox>
         </VBox>
     </center>
