@@ -19,6 +19,8 @@ import ca.ucalgary.cpsc233w26project1.Subscription;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableCell;
 import javafx.util.Callback;
+import javafx.scene.control.Alert;
+import javafx.scene.layout.HBox;
 
 public class SubscriptionMainController {
     public Button btnAllSubscriptions;
@@ -60,7 +62,7 @@ public class SubscriptionMainController {
      * @param args command line arguments
      */
     public void initData(List<String> args) {
-        // Test data so we can see the table working
+        //test data so we can see the table working
         /**manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
                 java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
         manager.storeNewSubscription("Spotify", 9.99, "Music", "Monthly",
@@ -104,39 +106,66 @@ public class SubscriptionMainController {
 
 
     /**
-     * Sets up the EDIT button in each row of the main table
+     * Sets up the EDIT and DELETE buttons in each row of the main table
      * Clicking EDIT opens the UpdateSubscription popup for that row
+     * Clicking DELETE removes the subscription after confirmation
      */
-    private void setupEditColumn() {Callback<TableColumn<Subscription, Void>, TableCell<Subscription, Void>> cellFactory = new Callback<>() {
-        @Override
-        public TableCell<Subscription,Void> call(TableColumn<Subscription, Void> param){
-            return new TableCell<>() {
-                //make the EDIT button
-                private final Button editButton = new Button("Edit");{
-                //when EDIT is clicked, open UpdateSubscription window
-                editButton.setOnAction(event ->{Subscription sub = getTableView().getItems().get(getIndex());
-                    try{
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateSubscription.fxml"));
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(loader.load()));
-                        stage.setTitle("Update Subscription");
-                        UpdateSubscriptionController controller = loader.getController();
-                        controller.setManager(manager);
-                        controller.prefillFields(sub);
-                        stage.show();
-                        }
-                        catch (IOException e) {
-                            e.printStackTrace();}});
-             }
+    private void setupEditColumn() {
+        Callback<TableColumn<Subscription, Void>, TableCell<Subscription, Void>> cellFactory = new Callback<>() {
+            @Override
+            public TableCell<Subscription, Void> call(TableColumn<Subscription, Void> param) {
+                return new TableCell<>() {
+                    // make the EDIT button
+                    private final Button editButton = new Button("Edit");
+                    // make the DELETE button
+                    private final Button deleteButton = new Button("X");
+                    private final HBox buttons = new HBox(5, editButton, deleteButton);
 
-                @Override
+                    {
+                        // style delete button red
+                        deleteButton.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white;");
+
+                        // when EDIT is clicked, open UpdateSubscription window
+                        editButton.setOnAction(event -> {
+                            Subscription sub = getTableView().getItems().get(getIndex());
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateSubscription.fxml"));
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(loader.load()));
+                                stage.setTitle("Update Subscription");
+                                UpdateSubscriptionController controller = loader.getController();
+                                controller.setManager(manager);
+                                controller.prefillFields(sub);
+                                stage.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+                        // when DELETE is clicked, show confirmation then remove
+                        deleteButton.setOnAction(event -> {
+                            Subscription sub = getTableView().getItems().get(getIndex());
+                            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                            confirm.setTitle("Delete Subscription");
+                            confirm.setHeaderText(null);
+                            confirm.setContentText("Are you sure you want to delete '" + sub.getName() + "'?");
+                            confirm.showAndWait().ifPresent(response ->{
+                                if (response == javafx.scene.control.ButtonType.OK) {
+                                    int index = manager.findingSubscriptionIndex(sub.getName());
+                                    manager.removeSubscription(index);
+                                    mainTable.getItems().remove(sub);
+                                }
+                            });
+                        });
+                    }
+
+                    @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
-                        }
-                        else {
-                            setGraphic(editButton);
+                        } else {
+                            setGraphic(buttons);
                         }
                     }
                 };

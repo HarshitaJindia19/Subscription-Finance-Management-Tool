@@ -131,6 +131,15 @@ public class SubscriptionManager implements Searchable{
         return results;
     }
 
+    /**
+     * Removes a subscription by index - for the remove button on GUI
+     * @param index index of the subscription to remove
+     */
+    public void removeSubscription(int index){
+        subscriptions.remove(index);
+    }
+
+
 
     /**
      * Updates a specific field of a subscription using .set(index,newValue).
