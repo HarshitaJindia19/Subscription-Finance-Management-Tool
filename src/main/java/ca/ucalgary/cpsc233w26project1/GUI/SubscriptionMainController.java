@@ -23,25 +23,25 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 
 public class SubscriptionMainController {
-    public Button btnAllSubscriptions;
-    public Button btnActive;
-    public Button btnPaused;
-    public Button btnCancelled;
-    public Button btnUpcomingBills;
-    public Button btnMonthlySpend;
-    public Button btnAnnualSpend;
-    public Button btnBudgetAlerts;
-    public Button btnBudgetByCategory;
-    public Button btnHighExpense;
-    public Button btnSearch;
-    public Button btnSaveToFile;
-    public Button btnLoadFromFile;
-    public TextField searchField;
-    public Label lblTotalSubscriptions;
-    public Label lblMonthlySpend;
-    public Label lblAnnualSpend;
-    public Label lblUpcomingBills;
-    public Label lblStatusBar;
+    @FXML private Button btnAllSubscriptions;
+    @FXML private Button btnActive;
+    @FXML private Button btnPaused;
+    @FXML private Button btnCancelled;
+    @FXML private Button btnUpcomingBills;
+    @FXML private Button btnMonthlySpend;
+    @FXML private Button btnAnnualSpend;
+    @FXML private Button btnBudgetAlerts;
+    @FXML private Button btnBudgetByCategory;
+    @FXML private Button btnHighExpense;
+    @FXML private Button btnSearch;
+    @FXML private Button btnSaveToFile;
+    @FXML private Button btnLoadFromFile;
+    @FXML private TextField searchField;
+    @FXML private Label lblTotalSubscriptions;
+    @FXML private Label lblMonthlySpend;
+    @FXML private Label lblAnnualSpend;
+    @FXML private Label lblUpcomingBills;
+    @FXML private Label lblStatusBar;
 
     //main table and columns
     @FXML private TableView<Subscription> mainTable;
@@ -81,6 +81,10 @@ public class SubscriptionMainController {
                 FileHandler.loadFromCSV(manager, filename);
             }
         }
+
+        // updates monthly and yearly spends at the start
+        refreshTotals();
+
     }
 
     /**
@@ -141,6 +145,12 @@ public class SubscriptionMainController {
                                 controller.setManager(manager);
                                 controller.prefillFields(sub);
                                 stage.show();
+
+                                // When pop-up closes
+                                stage.setOnHidden(e -> {
+                                    loadTable(manager.getAllSubscriptions()); // load the table with new information immediately
+                                    refreshTotals(); // refreshes M/Y totals
+                                });
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -158,6 +168,8 @@ public class SubscriptionMainController {
                                     int index = manager.findingSubscriptionIndex(sub.getName());
                                     manager.removeSubscription(index);
                                     mainTable.getItems().remove(sub);
+
+                                    refreshTotals(); // updates M/Y totals when sub deleted
                                 }
                             });
                         });
@@ -216,9 +228,11 @@ public class SubscriptionMainController {
     //--------------------------------FINANCE METHODS---------------------------------------------
 
     public void showMonthlySpend(ActionEvent actionEvent) {
+        manager.calculateMonthlySpend();
     }
 
     public void showAnnualSpend(ActionEvent actionEvent) {
+        manager.calculateYearlySpend();
     }
 
     public void showBudgetAlerts(ActionEvent actionEvent) {
@@ -259,6 +273,12 @@ public class SubscriptionMainController {
             AddSubscriptionController controller =loader.getController();
             controller.setManager(manager);
             stage.show();
+
+            // When pop-up closes
+            stage.setOnHidden(e -> {
+                loadTable(manager.getAllSubscriptions()); // adds sub to table immediately
+                refreshTotals(); // refreshed M/Y totals
+            });
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -269,5 +289,15 @@ public class SubscriptionMainController {
     }
 
     public void about(ActionEvent actionEvent) {
+    }
+
+    public void refreshTotals() {
+        // Calculate the values
+        double monthlyTotal = manager.calculateMonthlySpend();
+        double yearlyTotal = manager.calculateYearlySpend();
+
+        // Format as currency to 2 decimal places and display
+        lblMonthlySpend.setText(String.format("$%.2f", monthlyTotal));
+        lblAnnualSpend.setText(String.format("$%.2f", yearlyTotal));
     }
 }
