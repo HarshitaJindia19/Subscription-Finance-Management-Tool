@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefWidth="500.0" spacing="14" style="-fx-background-color: #f4f4f4; -fx-padding: 24;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.cpsc233w26project1.GUI.AddSubscriptionController">
+<VBox prefWidth="500.0" spacing="10.0" style="-fx-background-color: #f4f4f4; -fx-padding: 24;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.cpsc233w26project1.GUI.AddSubscriptionController">
     <Label alignment="CENTER" style="-fx-alignment: center; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2c2c2c;" text="Add New Subscription" />
     <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Name:" />
     <TextField fx:id="nameField" promptText="e.g. Netflix" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />
@@ -11,6 +11,7 @@
     <TextField fx:id="costField" promptText="e.g. 15.99" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />
     <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Category:" />
     <TextField fx:id="categoryField" promptText="e.g. Entertainment" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />
+    <Label fx:id="existingCategoriesLabel" style="-fx-font-size: 10; -fx-text-fill: #555555;" text=" " wrapText="true" />
     <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Billing Cycle:" />
     <ComboBox fx:id="renewalComboBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Select billing cycle" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 3;" />
     <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Start Date:" />
