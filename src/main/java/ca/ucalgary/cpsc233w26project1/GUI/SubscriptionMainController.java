@@ -63,15 +63,15 @@ public class SubscriptionMainController {
      */
     public void initData(List<String> args) {
         //test data so we can see the table working
-        /**manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
+        manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
                 java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
         manager.storeNewSubscription("Spotify", 9.99, "Music", "Monthly",
                 java.time.LocalDate.of(2025, 3, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
         manager.storeNewSubscription("Adobe", 120.00, "Work", "Yearly",
                 java.time.LocalDate.of(2025, 6, 1), null, ca.ucalgary.cpsc233w26project1.Status.PAUSED);
-*/
+
         if (!args.isEmpty()) {
-            String filename = args.get(0);
+            String filename = args.getFirst();
             java.io.File file = new java.io.File(filename);
             if (file.exists()) {
                 FileHandler.loadFromCSV(manager, filename);
@@ -238,7 +238,7 @@ public class SubscriptionMainController {
         }
     }
 
-    //---------------------------------TOOL METHODS------------------------------------
+    //---------------------------------OTHER METHODS------------------------------------
 
     public void saveToFile(ActionEvent actionEvent) {
     }
