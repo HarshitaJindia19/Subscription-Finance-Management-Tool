@@ -62,6 +62,7 @@ public class SubscriptionMainController {
      * @param args command line arguments
      */
     public void initData(List<String> args) {
+
         //test data so we can see the table working
         manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
                 java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
@@ -69,6 +70,9 @@ public class SubscriptionMainController {
                 java.time.LocalDate.of(2025, 3, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
         manager.storeNewSubscription("Adobe", 120.00, "Work", "Yearly",
                 java.time.LocalDate.of(2025, 6, 1), null, ca.ucalgary.cpsc233w26project1.Status.PAUSED);
+
+        //load all subscriptions on initial run
+        loadTable(manager.getAllSubscriptions());
 
         if (!args.isEmpty()) {
             String filename = args.getFirst();
@@ -247,6 +251,18 @@ public class SubscriptionMainController {
     }
 
     public void openAddSubscriptionStage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
+            Stage stage=new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Add Subscription");
+            AddSubscriptionController controller =loader.getController();
+            controller.setManager(manager);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openAddBudgetStage(ActionEvent actionEvent) {

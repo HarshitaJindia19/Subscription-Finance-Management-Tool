@@ -1,24 +1,36 @@
 package ca.ucalgary.cpsc233w26project1.GUI;
 
+import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
 import javafx.event.ActionEvent;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class AddSubscriptionController {
-    public TextField nameField;
-    public TextField costField;
-    public TextField categoryField;
-    public ComboBox renewalComboBox;
-    public DatePicker startDatePicker;
-    public DatePicker endDatePicker;
-    public ComboBox statusComboBox;
-    public Label messageLabel;
+    @FXML private TextField nameField;
+    @FXML private TextField costField;
+    @FXML private TextField categoryField;
+    @FXML private ComboBox<String> renewalComboBox;
+    @FXML private DatePicker startDatePicker;
+    @FXML private DatePicker endDatePicker;
+    @FXML private ComboBox<String> statusComboBox;
+    @FXML private Label messageLabel;
+    @FXML private Button cancelButton;
 
-    public void cancel(ActionEvent actionEvent) {
+    private SubscriptionManager manager;
+
+    @FXML
+    public void setManager(SubscriptionManager manager) {
+        this.manager = manager;
     }
 
-    public void addSubscription(ActionEvent actionEvent) {
+    @FXML
+    void cancel(ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void addSubscription(ActionEvent actionEvent) {
     }
 }
