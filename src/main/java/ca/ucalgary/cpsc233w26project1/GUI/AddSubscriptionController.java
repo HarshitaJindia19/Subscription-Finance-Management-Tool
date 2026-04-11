@@ -57,12 +57,12 @@ public class AddSubscriptionController {
 
         // Get the user inputs and store in variables
         String name = nameField.getText().trim();
-        String cost = costField.getText().trim().replace("$", "");
+        String costInput = costField.getText().trim().replace("$", "");
         String category = categoryField.getText().trim();
         String renewal = renewalComboBox.getValue();
         LocalDate startDate = startDatePicker.getValue();
         LocalDate endDate = endDatePicker.getValue(); // null if not selected
-        String status = statusComboBox.getValue();
+        String statusInput = statusComboBox.getValue();
 
         // Validate user inputs and display status message
 
@@ -82,7 +82,7 @@ public class AddSubscriptionController {
         }
 
         // Validate Cost:
-        if(!SubscriptionManager.isValidCost(cost)) {
+        if(!SubscriptionManager.isValidCost(costInput)) {
             showError("Cost must be a valid positive number (e.g. 15.99");
             return;
         }
@@ -112,7 +112,7 @@ public class AddSubscriptionController {
         }
 
         // Validate Status:
-        if (status == null) {
+        if (statusInput == null) {
             showError("Please select a status.");
             return;
         }
@@ -120,6 +120,16 @@ public class AddSubscriptionController {
 
         // Store the inputs into the storeNewSubscriptions
 
+        double cost = Double.parseDouble(costInput);
+        Status status = Status.getStatus(statusInput);
+
+        boolean successfulAdd = manager.storeNewSubscription(name, cost, category, renewal, startDate, endDate, status);
+
+        if (successfulAdd) {
+            showSuccess("subscription added successfully!");
+        } else {
+            showError("Failed to add. Name may already exist");
+        }
 
 
     }
@@ -128,5 +138,11 @@ public class AddSubscriptionController {
     private void showError(String message) {
         messageLabel.setText("⛔ " + message);
         messageLabel.setStyle("-fx-text-fill: #c62828; -fx-font-size: 12px;");
+    }
+
+    // Success message styling
+    private void showSuccess(String message) {
+        messageLabel.setText("✅" + message);
+        messageLabel.setStyle("-fx-text-fill: #2e7d32; -fx-font-size: 12px;");
     }
 }
