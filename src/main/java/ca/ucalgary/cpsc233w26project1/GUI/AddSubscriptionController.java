@@ -19,7 +19,7 @@ public class AddSubscriptionController {
     @FXML private DatePicker endDatePicker;
     @FXML private ComboBox<String> statusComboBox;
     @FXML private Label messageLabel;
-    @FXML private Button cancelButton;
+    @FXML private Button closeButton;
 
     private SubscriptionManager manager;
 
@@ -47,8 +47,8 @@ public class AddSubscriptionController {
     }
 
     @FXML
-    void cancel(ActionEvent actionEvent) {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
+    void close(ActionEvent actionEvent) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
@@ -127,11 +127,28 @@ public class AddSubscriptionController {
 
         if (successfulAdd) {
             showSuccess("subscription added successfully!");
+            clearFields();
         } else {
             showError("Failed to add. Name may already exist");
         }
 
 
+    }
+
+    private void clearFields() {
+        nameField.clear();
+        costField.clear();
+        categoryField.clear();
+        renewalComboBox.setValue(null);
+        startDatePicker.setValue(null);
+        endDatePicker.setValue(null);
+        statusComboBox.setValue("ACTIVE");
+
+        // refresh category hint
+        if (manager != null && !manager.getCategories().isEmpty()) {
+            existingCategoriesLabel.setText(
+                    "Existing: " + String.join(", ", manager.getCategories()));
+        }
     }
 
     // Error message styling

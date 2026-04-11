@@ -23,7 +23,7 @@
     <Label fx:id="messageLabel" style="-fx-font-size: 12; -fx-text-fill: #555555;" text=" " wrapText="true" />
 
     <HBox alignment="CENTER_LEFT" spacing="10.0">
-        <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Cancel" />
+        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Close" />
         <Region HBox.hgrow="ALWAYS" />
         <Button mnemonicParsing="false" onAction="#addSubscription" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Add" />
     </HBox>
