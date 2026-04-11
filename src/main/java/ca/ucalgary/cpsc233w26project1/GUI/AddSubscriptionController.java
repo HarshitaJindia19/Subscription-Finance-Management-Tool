@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
+
 public class AddSubscriptionController {
     public Label existingCategoriesLabel;
     @FXML private TextField nameField;
@@ -52,5 +54,30 @@ public class AddSubscriptionController {
 
     @FXML
     private void addSubscription(ActionEvent actionEvent) {
+
+        // Get the user inputs and store in variables
+        String name = nameField.getText().trim();
+        String cost = costField.getText().trim().replace("$", "");
+        String category = categoryField.getText().trim();
+        String renewal = renewalComboBox.getValue();
+        LocalDate startDate = startDatePicker.getValue();
+        LocalDate endDate = endDatePicker.getValue(); // null if not selected
+        String status = statusComboBox.getValue();
+
+        // Validate user inputs and display status message
+
+        // Validate name:
+        if (!SubscriptionManager.isOnlyText(name)) {
+            showError("Name nust contain only letters and spaces.");
+            return; // keep pop-up window open
+        }
+
+
+    }
+
+    // Error message styling
+    private void showError(String message) {
+        messageLabel.setText("⛔ " + message);
+        messageLabel.setStyle("-fx-text-fill: #c62828; -fx-font-size: 12px;");
     }
 }
