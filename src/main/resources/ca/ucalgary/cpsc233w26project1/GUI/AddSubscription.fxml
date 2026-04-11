@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="500.0" spacing="10.0" style="-fx-background-color: #f4f4f4; -fx-padding: 24;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.cpsc233w26project1.GUI.AddSubscriptionController">
+    <Label alignment="CENTER" style="-fx-alignment: center; -fx-font-size: 14; -fx-font-weight: bold; -fx-text-fill: #2c2c2c;" text="Add New Subscription" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Name:" />
+    <TextField fx:id="nameField" promptText="e.g. Netflix" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Cost:" />
+    <TextField fx:id="costField" promptText="e.g. 15.99" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Category:" />
+    <TextField fx:id="categoryField" promptText="e.g. Entertainment" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />
+    <Label fx:id="existingCategoriesLabel" style="-fx-font-size: 10; -fx-text-fill: #555555;" text=" " wrapText="true" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Billing Cycle:" />
+    <ComboBox fx:id="renewalComboBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Select billing cycle" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 3;" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Start Date:" />
+    <DatePicker fx:id="startDatePicker" maxWidth="1.7976931348623157E308" promptText="Select start date" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="End Date (optional):" />
+    <DatePicker fx:id="endDatePicker" maxWidth="1.7976931348623157E308" promptText="Select end date - leave blank if no date" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" />
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Status:" />
+    <ComboBox fx:id="statusComboBox" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Select current status" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 3;" />
+    <Label fx:id="messageLabel" style="-fx-font-size: 12; -fx-text-fill: #555555;" text=" " wrapText="true" />
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Close" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button mnemonicParsing="false" onAction="#addSubscription" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Add" />
+    </HBox>
+
+</VBox>

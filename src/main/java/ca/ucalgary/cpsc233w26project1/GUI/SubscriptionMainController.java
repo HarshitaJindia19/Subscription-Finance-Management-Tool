@@ -62,16 +62,20 @@ public class SubscriptionMainController {
      * @param args command line arguments
      */
     public void initData(List<String> args) {
+
         //test data so we can see the table working
-        /**manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
+        manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
                 java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
         manager.storeNewSubscription("Spotify", 9.99, "Music", "Monthly",
                 java.time.LocalDate.of(2025, 3, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
         manager.storeNewSubscription("Adobe", 120.00, "Work", "Yearly",
                 java.time.LocalDate.of(2025, 6, 1), null, ca.ucalgary.cpsc233w26project1.Status.PAUSED);
-*/
+
+        //load all subscriptions on initial run
+        loadTable(manager.getAllSubscriptions());
+
         if (!args.isEmpty()) {
-            String filename = args.get(0);
+            String filename = args.getFirst();
             java.io.File file = new java.io.File(filename);
             if (file.exists()) {
                 FileHandler.loadFromCSV(manager, filename);
@@ -238,7 +242,7 @@ public class SubscriptionMainController {
         }
     }
 
-    //---------------------------------TOOL METHODS------------------------------------
+    //---------------------------------OTHER METHODS------------------------------------
 
     public void saveToFile(ActionEvent actionEvent) {
     }
@@ -247,6 +251,18 @@ public class SubscriptionMainController {
     }
 
     public void openAddSubscriptionStage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
+            Stage stage=new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Add Subscription");
+            AddSubscriptionController controller =loader.getController();
+            controller.setManager(manager);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void openAddBudgetStage(ActionEvent actionEvent) {
