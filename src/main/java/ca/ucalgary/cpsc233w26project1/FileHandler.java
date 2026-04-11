@@ -22,6 +22,7 @@ public class FileHandler {
      * @param filename to save to
      */
     public static void saveToCSV(SubscriptionManager manager, String filename) {
+
         File file = new File(filename);
 
         // Write lines to file

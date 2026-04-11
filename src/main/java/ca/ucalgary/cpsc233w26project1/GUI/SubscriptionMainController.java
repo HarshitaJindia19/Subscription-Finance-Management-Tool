@@ -2,13 +2,17 @@ package ca.ucalgary.cpsc233w26project1.GUI;
 
 import ca.ucalgary.cpsc233w26project1.FileHandler;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
+import ca.ucalgary.cpsc233w26project1.util.SubWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.util.List;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -41,7 +45,7 @@ public class SubscriptionMainController {
     @FXML private Label lblMonthlySpend;
     @FXML private Label lblAnnualSpend;
     @FXML private Label lblUpcomingBills;
-    @FXML private Label lblStatusBar;
+    @FXML private Label lblMessage;
 
     //main table and columns
     @FXML private TableView<Subscription> mainTable;
@@ -193,23 +197,28 @@ public class SubscriptionMainController {
 
     //-------------------------------------VIEW METHODS----------------------------------------------------
 
-    public void showAllSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showAllSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getAllSubscriptions());
     }
 
-    public void showActiveSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showActiveSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getActiveSubscription());
     }
 
-    public void showPausedSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showPausedSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getPausedSubscription());
     }
 
-    public void showCancelledSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showCancelledSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getCancelledSubscription());
     }
 
-    public void showUpcomingBills(ActionEvent actionEvent) {
+    @FXML
+    private void showUpcomingBills(ActionEvent actionEvent) {
         try{
             FXMLLoader loader=new FXMLLoader(getClass().getResource("UpcomingBills.fxml"));
             Stage stage =new Stage();
@@ -227,21 +236,26 @@ public class SubscriptionMainController {
 
     //--------------------------------FINANCE METHODS---------------------------------------------
 
-    public void showMonthlySpend(ActionEvent actionEvent) {
+    @FXML
+    private void showMonthlySpend(ActionEvent actionEvent) {
         manager.calculateMonthlySpend();
     }
 
-    public void showAnnualSpend(ActionEvent actionEvent) {
+    @FXML
+    private void showAnnualSpend(ActionEvent actionEvent) {
         manager.calculateYearlySpend();
     }
 
-    public void showBudgetAlerts(ActionEvent actionEvent) {
+    @FXML
+    private void showBudgetAlerts(ActionEvent actionEvent) {
     }
 
-    public void showBudgetByCategory(ActionEvent actionEvent) {
+    @FXML
+    private void showBudgetByCategory(ActionEvent actionEvent) {
     }
 
-    public void showHighExpenseBills(ActionEvent actionEvent) {
+    @FXML
+    private void showHighExpenseBills(ActionEvent actionEvent) {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("HighExpenseBills.fxml"));
             Stage stage=new Stage();
@@ -258,13 +272,36 @@ public class SubscriptionMainController {
 
     //---------------------------------OTHER METHODS------------------------------------
 
-    public void saveToFile(ActionEvent actionEvent) {
+    @FXML
+    private void saveToFile(ActionEvent actionEvent) {
+
+        if (manager.getAllSubscriptions().isEmpty()) {
+            lblMessage.setText("Error: No subscriptions to save! Please add subscription data to save.");
+            return;
+        }
+
+        // Let user choose location and file to save to
+        FileChooser fileChooser = new FileChooser();
+
+        // Set filter to specifically ask for Text Files (.txt) *Code was taken from https://gemini.google.com/app
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showSaveDialog(null);
+
+        // Only save if user selected a file
+        if (file != null) {
+            SubWriter.writeToFile(manager, file);
+            lblMessage.setText("Saved to : " + file.getName());
+        }
     }
 
-    public void loadFromFile(ActionEvent actionEvent) {
+    @FXML
+    private void loadFromFile(ActionEvent actionEvent) {
     }
 
-    public void openAddSubscriptionStage(ActionEvent actionEvent) {
+    @FXML
+    private void openAddSubscriptionStage(ActionEvent actionEvent) {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
             Stage stage=new Stage();
@@ -285,13 +322,15 @@ public class SubscriptionMainController {
         }
     }
 
-    public void openAddBudgetStage(ActionEvent actionEvent) {
+    @FXML
+    private void openAddBudgetStage(ActionEvent actionEvent) {
     }
 
-    public void about(ActionEvent actionEvent) {
+    @FXML
+    private void about(ActionEvent actionEvent) {
     }
 
-    public void refreshTotals() {
+    private void refreshTotals() {
         // Calculate the values
         double monthlyTotal = manager.calculateMonthlySpend();
         double yearlyTotal = manager.calculateYearlySpend();
