@@ -67,10 +67,59 @@ public class AddSubscriptionController {
         // Validate user inputs and display status message
 
         // Validate name:
+        if (name.isEmpty()) {
+            showError("Please enter a name.");
+            return;
+        }
         if (!SubscriptionManager.isOnlyText(name)) {
             showError("Name nust contain only letters and spaces.");
             return; // keep pop-up window open
         }
+
+        if (manager.subscriptionExists(name)) {
+            showError("A subscription named " + SubscriptionManager.formatTitleCase(name) + " already exists.");
+            return;
+        }
+
+        // Validate Cost:
+        if(!SubscriptionManager.isValidCost(cost)) {
+            showError("Cost must be a valid positive number (e.g. 15.99");
+            return;
+        }
+
+        // Validate Category:
+        if (!SubscriptionManager.isOnlyText(category)) {
+            showError("Category nust contain only letters and spaces.");
+            return;
+        }
+
+        // Validate Renewal:
+        if (renewal == null) {
+            showError("Please select a billing cycle.");
+            return;
+        }
+
+        // Validate startDate:
+        if (startDate == null) {
+            showError("Please select a start date.");
+            return;
+        }
+
+        // Validate endDate:
+        if (endDate != null && !endDate.isAfter(startDate)) { // Validate only if endDate is after startDate
+            showError("End date must be after start date.");
+            return;
+        }
+
+        // Validate Status:
+        if (status == null) {
+            showError("Please select a status.");
+            return;
+        }
+
+
+        // Store the inputs into the storeNewSubscriptions
+
 
 
     }
