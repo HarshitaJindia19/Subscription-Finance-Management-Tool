@@ -18,7 +18,6 @@ public class HighExpenseBillsController {
     @FXML private TextField thresholdField;
     @FXML private Label statusLabel;
     @FXML private TableView<Subscription> resultsTable;
-
     //connects to each column
     @FXML private TableColumn<Subscription, String> nameCol;
     @FXML private TableColumn<Subscription, String> costCol;

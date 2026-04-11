@@ -60,6 +60,14 @@ public class SubscriptionMainController {
      * @param args command line arguments
      */
     public void initData(List<String> args) {
+        // Test data so we can see the table working
+        /**manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
+                java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
+        manager.storeNewSubscription("Spotify", 9.99, "Music", "Monthly",
+                java.time.LocalDate.of(2025, 3, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
+        manager.storeNewSubscription("Adobe", 120.00, "Work", "Yearly",
+                java.time.LocalDate.of(2025, 6, 1), null, ca.ucalgary.cpsc233w26project1.Status.PAUSED);
+*/
         if (!args.isEmpty()) {
             String filename = args.get(0);
             java.io.File file = new java.io.File(filename);
@@ -74,9 +82,11 @@ public class SubscriptionMainController {
      * @param subs list of subscriptions to display
      */
     private void loadTable(java.util.ArrayList<Subscription> subs) {
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
-        renewalCol.setCellValueFactory(new PropertyValueFactory<>("renewal"));
+        nameCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getName()));
+
+        categoryCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getCategory()));
+
+        renewalCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getRenewal()));
 
         costCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty("$" + String.format("%.2f", data.getValue().getCost())));
 
@@ -112,7 +122,7 @@ public class SubscriptionMainController {
                         stage.setTitle("Update Subscription");
                         UpdateSubscriptionController controller = loader.getController();
                         controller.setManager(manager);
-//                        controller.prefillFields(sub);
+                        controller.prefillFields(sub);
                         stage.show();
                         }
                         catch (IOException e) {

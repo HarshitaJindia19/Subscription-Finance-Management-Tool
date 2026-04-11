@@ -24,6 +24,7 @@ public class UpdateSubscriptionController {
     @FXML private TextField newStartDateField;
     @FXML private TextField newEndDateField;
     @FXML private ComboBox<String> newStatusField;
+    @FXML private Button findBtn;
 
     //the shared data manager which is set from main controller
     private SubscriptionManager manager;
@@ -193,4 +194,39 @@ public class UpdateSubscriptionController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+    /**
+     * Pre-fills all fields with the subscription's current values
+     * Called when EDIT button is clicked from main table
+     * @param sub the subscription to pre-fill fields with
+     */
+    public void prefillFields(Subscription sub) {
+        findBtn.setVisible(false);
+        findBtn.setManaged(false);
+
+        // Hide the search section since we came from EDIT button
+        nameField.setVisible(false);
+        nameField.setManaged(false);
+        statusLabel.setVisible(false);
+        statusLabel.setManaged(false);
+
+        //set the name field and find the subscription index
+        nameField.setText(sub.getName());
+        foundIndex=manager.findingSubscriptionIndex(sub.getName());
+
+        //prefill edit fields
+        newNameField.setText(sub.getName());
+        newCostField.setText(String.valueOf(sub.getCost()));
+        newCategoryField.setText(sub.getCategory());
+        newRenewalField.setValue(sub.getRenewal());
+        newStartDateField.setText(sub.getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")));
+        newEndDateField.setText(sub.getEndDate() !=null ? sub.getEndDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")) : "");
+        newStatusField.setValue(sub.getStatus().toString());
+
+        //show the edit fields and success message
+        statusLabel.setText("Subscription found. Edit the fields below.");
+        statusLabel.setStyle("-fx-text-fill:green;");
+        editFields.setVisible(true );
+    }
+
 }

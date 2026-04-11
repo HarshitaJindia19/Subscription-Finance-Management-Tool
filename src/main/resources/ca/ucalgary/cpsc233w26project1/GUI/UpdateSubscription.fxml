@@ -11,7 +11,7 @@
 
     <Label text="Enter subscription name to update:"/>
     <TextField fx:id="nameField" promptText="e.g. Netflix"/>
-    <Button text="Find Subscription" onAction="#findSubscription"/>
+    <Button fx:id="findBtn" text="Find Subscription" onAction="#findSubscription"/>
 
     <Label fx:id="statusLabel" style="-fx-text-fill: red;"/>
 
