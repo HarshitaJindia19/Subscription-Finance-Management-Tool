@@ -374,6 +374,10 @@ public class SubscriptionMainController {
     }
 
     private void refreshTotals() {
+
+        int numOfSubs = manager.getAllSubscriptions().size();
+        int numOfUpcoming = manager.getUpcomingBills().size();
+
         // Calculate the values
         double monthlyTotal = manager.calculateMonthlySpend();
         double yearlyTotal = manager.calculateYearlySpend();
@@ -381,5 +385,13 @@ public class SubscriptionMainController {
         // Format as currency to 2 decimal places and display
         lblMonthlySpend.setText(String.format("$%.2f", monthlyTotal));
         lblAnnualSpend.setText(String.format("$%.2f", yearlyTotal));
+
+        // Add total subscription value to status card
+        lblTotalSubscriptions.setText(String.valueOf(numOfSubs));
+
+        // Add total upcoming bills value to status card
+        lblUpcomingBills.setText(String.valueOf(numOfUpcoming));
+
+
     }
 }
