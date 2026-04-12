@@ -360,6 +360,14 @@ public class SubscriptionMainController {
 
     @FXML
     private void about(ActionEvent actionEvent) {
+        Alert about = new Alert(Alert.AlertType.INFORMATION); //Set alert to show INFORMATION pop-up
+
+        // Add context in About section
+        about.setTitle("About User");
+        about.setHeaderText("Welcome to your Profile:");
+        about.setContentText("About: Track Subscriptions like a pro 😎!\nAuthor: Harshita Jindia, Ramsha Oad, Mehrin Chowdhury\nTutorial: T01");
+
+        about.showAndWait();
     }
 
     private void refreshTotals() {
