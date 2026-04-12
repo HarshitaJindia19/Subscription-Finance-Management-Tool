@@ -40,5 +40,37 @@ public class BudgetAlertsController {
             return;
         }
 
+        budgetTable.getItems().clear();
+        int overBudgetCount = 0;
+
+        categoryCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        data.getValue().getCategory()
+                )
+        );
+
+        budgetCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        data.getValue().getBudget()
+                )
+        );
+
+        spentCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        data.getValue().getSpent()
+                )
+        );
+
+        percentCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        data.getValue().getPercent()
+                )
+        );
+
+        statusCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        data.getValue().getStatus()
+                )
+        );
     }
 }
