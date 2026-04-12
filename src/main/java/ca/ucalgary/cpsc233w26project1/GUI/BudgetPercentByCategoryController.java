@@ -1,5 +1,6 @@
 package ca.ucalgary.cpsc233w26project1.GUI;
 
+import ca.ucalgary.cpsc233w26project1.Budget;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
@@ -47,6 +48,23 @@ public class BudgetPercentByCategoryController {
 
         percentCol.setCellValueFactory(d ->
                 new SimpleStringProperty(d.getValue().getPercent()));
+
+        for (int i = 0; i < manager.getAllBudgets().size(); i++) {
+            Budget budg = manager.getAllBudgets().get(i);
+            String category = budg.getCategory();
+
+            double budget = budg.getLimit();
+            double spent = manager.getSpendByCategory(category);
+            double percent = manager.getBudgetPercentage(category);
+
+            if (percent >= 100) {
+                overBudgetCount++;
+            }
+            table.getItems().add(
+                    new Row(category, budget, spent, percent)
+            );
+        }
+        summaryLabel.setText("Over budget categories: " + overBudgetCount);
     }
 }
 
