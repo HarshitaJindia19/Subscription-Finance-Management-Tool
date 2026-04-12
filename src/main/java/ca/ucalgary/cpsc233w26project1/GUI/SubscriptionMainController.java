@@ -1,6 +1,5 @@
 package ca.ucalgary.cpsc233w26project1.GUI;
 
-import ca.ucalgary.cpsc233w26project1.FileHandler;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
 import ca.ucalgary.cpsc233w26project1.util.SubReader;
 import ca.ucalgary.cpsc233w26project1.util.SubWriter;
@@ -79,15 +78,19 @@ public class SubscriptionMainController {
         //load all subscriptions on initial run
         loadTable(manager.getAllSubscriptions());
 
+        // Run file from command line input
         if (!args.isEmpty()) {
             String filename = args.getFirst();
-            java.io.File file = new java.io.File(filename);
+            File file = new File(filename);
             if (file.exists()) {
-                FileHandler.loadFromCSV(manager, filename);
+                SubReader.loadFromFile(manager, file);
+                lblMessage.setText("✅ Successfully loaded input file " + filename);
+            } else {
+                lblMessage.setText("Error: Input File not found: " + filename);
             }
         }
 
-        // updates monthly and yearly spends at the start
+        // updates all the totals in the status cards
         refreshTotals();
 
     }
@@ -303,6 +306,7 @@ public class SubscriptionMainController {
     @FXML
     private void loadFromFile(ActionEvent actionEvent) {
 
+        // Open file chooser
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Subscription Data");
 
@@ -313,7 +317,29 @@ public class SubscriptionMainController {
         File file = fileChooser.showOpenDialog(null);
 
         if (file != null) {
-            SubReader.loadFromFile(manager, file);
+            // confirm before overwriting existing data
+            if (!manager.getAllSubscriptions().isEmpty()) {
+                //Open Alert CONFIRMATION panel
+                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                confirm.setTitle("Load File");
+                confirm.setHeaderText("Loading will replace your current data.");
+                confirm.setContentText("Are you sure you want to load from '" + file.getName() + "'?");
+
+                // If user agrees, add the new data and update
+                confirm.showAndWait().ifPresent(response -> {
+                   if (response == javafx.scene.control.ButtonType.OK) {
+                       SubReader.loadFromFile(manager, file);
+                       loadTable(manager.getAllSubscriptions());
+                       refreshTotals();
+                       lblMessage.setText("✅ Loaded from: " + file.getName());
+                   }
+                });
+            } else { // If no subs added so far, load from file without Alert
+                SubReader.loadFromFile(manager, file);
+                loadTable(manager.getAllSubscriptions());
+                refreshTotals();
+                lblMessage.setText("✅ Loaded from " + file.getName());
+            }
         }
     }
 

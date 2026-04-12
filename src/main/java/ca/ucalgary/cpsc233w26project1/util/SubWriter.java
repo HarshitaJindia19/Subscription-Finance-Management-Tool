@@ -59,6 +59,8 @@ public class SubWriter {
                 writer.println(budget.getCategory() + "," + budget.getLimit());
             }
 
+            System.out.println("✅ Saved to: " + file.getName());
+
         } catch (IOException e) {
             System.out.println("Error saving to file: " + file.getName());
         }
