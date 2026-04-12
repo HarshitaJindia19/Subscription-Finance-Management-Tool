@@ -259,6 +259,22 @@ public class SubscriptionMainController {
 
     @FXML
     private void showBudgetByCategory(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("BudgetPercentByCategory.fxml")
+            );
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Budget % by Category");
+
+            BudgetPercentByCategoryController controller = loader.getController();
+            controller.setManager(manager);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
