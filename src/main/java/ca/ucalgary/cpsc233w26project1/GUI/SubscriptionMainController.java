@@ -445,10 +445,7 @@ public class SubscriptionMainController {
             stage.setTitle("Search Subscriptions");
 
             SearchController controller = loader.getController();
-
-            // keep this
             controller.setManager(manager);
-
             stage.show();
 
         } catch (IOException e) {
