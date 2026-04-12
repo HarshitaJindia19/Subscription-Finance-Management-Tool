@@ -58,7 +58,11 @@ public class SubscriptionMainController {
     @FXML private TableColumn<Subscription, String> statusCol;
     @FXML private TableColumn<Subscription, Void> actionsCol;
 
-    private SubscriptionManager manager = new SubscriptionManager();
+    private SubscriptionManager manager;
+
+    public void setManager(SubscriptionManager manager) {
+        this.manager = manager;
+    }
 
     /**
      * Initializes program with command line arguments
@@ -66,6 +70,10 @@ public class SubscriptionMainController {
      * @param args command line arguments
      */
     public void initData(List<String> args) {
+
+        if (manager == null) {
+            manager = new SubscriptionManager();
+        }
 
             String filename = args.getFirst();
             File file = new File(filename);
@@ -231,12 +239,14 @@ public class SubscriptionMainController {
 
     @FXML
     private void showMonthlySpend(ActionEvent actionEvent) {
-        manager.calculateMonthlySpend();
+        double monthly = manager.calculateMonthlySpend();
+        lblMonthlySpend.setText(String.format("$%.2f", monthly));
     }
 
     @FXML
     private void showAnnualSpend(ActionEvent actionEvent) {
-        manager.calculateYearlySpend();
+        double yearly = manager.calculateYearlySpend();
+        lblAnnualSpend.setText(String.format("$%.2f", yearly));
     }
 
     @FXML
