@@ -2,6 +2,7 @@ package ca.ucalgary.cpsc233w26project1.GUI;
 
 import ca.ucalgary.cpsc233w26project1.FileHandler;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
+import ca.ucalgary.cpsc233w26project1.util.SubReader;
 import ca.ucalgary.cpsc233w26project1.util.SubWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -282,22 +283,38 @@ public class SubscriptionMainController {
 
         // Let user choose location and file to save to
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Subscription Data");
+        fileChooser.setInitialFileName("subscriptions.csv");
 
-        // Set filter to specifically ask for Text Files (.txt) *Code was taken from https://gemini.google.com/app
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Text files (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
+
+        // CSV file filter (.txt) *Code was taken from https://gemini.google.com/app
+        FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(csvFilter);
 
         File file = fileChooser.showSaveDialog(null);
 
         // Only save if user selected a file
         if (file != null) {
             SubWriter.writeToFile(manager, file);
-            lblMessage.setText("Saved to : " + file.getName());
+            lblMessage.setText("✅Saved to : " + file.getName());
         }
     }
 
     @FXML
     private void loadFromFile(ActionEvent actionEvent) {
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Subscription Data");
+
+        // CSV filter
+        FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(csvFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            SubReader.loadFromFile(manager, file);
+        }
     }
 
     @FXML
