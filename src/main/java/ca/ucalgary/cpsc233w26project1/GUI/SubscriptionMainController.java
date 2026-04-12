@@ -435,4 +435,24 @@ public class SubscriptionMainController {
 
 
     }
+
+    @FXML
+    private void openSearchStage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Search.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Search Subscriptions");
+
+            SearchController controller = loader.getController();
+
+            // keep this
+            controller.setManager(manager);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
