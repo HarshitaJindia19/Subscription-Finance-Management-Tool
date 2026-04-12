@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+
 public class SearchController {
 
     @FXML
@@ -55,6 +57,36 @@ public class SearchController {
             String status = data.getValue().getStatus().toString();
             return new SimpleStringProperty(status);
         });
+    }
+
+    @FXML
+    private void search() {
+
+        String query = searchField.getText().trim();
+        if (query.isEmpty()) {
+            showError("Please enter a search term.");
+            return;
+        }
+        ArrayList<Subscription> results;
+        if (searchTypeBox.getValue().equals("Name")) {
+            results = manager.searchByName(query);
+        } else {
+            results = manager.searchByCategory(query);
+        }
+        resultsTable.getItems().clear();
+
+        if (results.isEmpty()) {
+            messageLabel.setText("No results found.");
+            messageLabel.setStyle("-fx-text-fill: grey;");
+            resultsTable.setVisible(false);
+            return;
+        }
+
+        resultsTable.getItems().addAll(results);
+        resultsTable.setVisible(true);
+
+        messageLabel.setText("Found " + results.size() + " result(s).");
+        messageLabel.setStyle("-fx-text-fill: green;");
     }
 }
 
