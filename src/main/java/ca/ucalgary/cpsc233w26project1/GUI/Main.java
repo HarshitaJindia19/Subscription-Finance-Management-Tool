@@ -13,21 +13,24 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         System.out.println("started");
 
-
         stage.setTitle("[Subscription Manager]");
-        //Arguments to program
         List<String> args = getParameters().getRaw();
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SubscriptionMain.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.sizeToScene();
+        Scene scene = new Scene(fxmlLoader.load()); // open up the scene (main controller)
+
+
         SubscriptionMainController controller = fxmlLoader.getController();
-        controller.initData(args);
+        System.out.println("Controller: " + controller);
+        controller.initData(args); // pass args
+        System.out.println("initData called");
+
         stage.setScene(scene);
+        stage.sizeToScene();
         stage.show();
     }
 
-
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

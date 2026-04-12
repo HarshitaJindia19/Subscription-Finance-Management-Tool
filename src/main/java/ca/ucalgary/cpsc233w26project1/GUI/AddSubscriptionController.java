@@ -46,12 +46,14 @@ public class AddSubscriptionController {
         statusComboBox.setValue("ACTIVE"); // set default value
     }
 
+    // close pop-up button action
     @FXML
     void close(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
+    // add subscription button action
     @FXML
     private void addSubscription(ActionEvent actionEvent) {
 
@@ -88,6 +90,10 @@ public class AddSubscriptionController {
         }
 
         // Validate Category:
+        if (category.isEmpty()) {
+            showError("Please enter a category.");
+            return;
+        }
         if (!SubscriptionManager.isOnlyText(category)) {
             showError("Category nust contain only letters and spaces.");
             return;
@@ -131,8 +137,6 @@ public class AddSubscriptionController {
         } else {
             showError("Failed to add. Name may already exist");
         }
-
-
     }
 
     private void clearFields() {

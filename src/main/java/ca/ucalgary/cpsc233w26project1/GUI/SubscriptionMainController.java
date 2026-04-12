@@ -1,14 +1,18 @@
 package ca.ucalgary.cpsc233w26project1.GUI;
 
-import ca.ucalgary.cpsc233w26project1.FileHandler;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
+import ca.ucalgary.cpsc233w26project1.util.SubReader;
+import ca.ucalgary.cpsc233w26project1.util.SubWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.File;
 import java.util.List;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -23,25 +27,25 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 
 public class SubscriptionMainController {
-    public Button btnAllSubscriptions;
-    public Button btnActive;
-    public Button btnPaused;
-    public Button btnCancelled;
-    public Button btnUpcomingBills;
-    public Button btnMonthlySpend;
-    public Button btnAnnualSpend;
-    public Button btnBudgetAlerts;
-    public Button btnBudgetByCategory;
-    public Button btnHighExpense;
-    public Button btnSearch;
-    public Button btnSaveToFile;
-    public Button btnLoadFromFile;
-    public TextField searchField;
-    public Label lblTotalSubscriptions;
-    public Label lblMonthlySpend;
-    public Label lblAnnualSpend;
-    public Label lblUpcomingBills;
-    public Label lblStatusBar;
+    @FXML private Button btnAllSubscriptions;
+    @FXML private Button btnActive;
+    @FXML private Button btnPaused;
+    @FXML private Button btnCancelled;
+    @FXML private Button btnUpcomingBills;
+    @FXML private Button btnMonthlySpend;
+    @FXML private Button btnAnnualSpend;
+    @FXML private Button btnBudgetAlerts;
+    @FXML private Button btnBudgetByCategory;
+    @FXML private Button btnHighExpense;
+    @FXML private Button btnSearch;
+    @FXML private Button btnSaveToFile;
+    @FXML private Button btnLoadFromFile;
+    @FXML private TextField searchField;
+    @FXML private Label lblTotalSubscriptions;
+    @FXML private Label lblMonthlySpend;
+    @FXML private Label lblAnnualSpend;
+    @FXML private Label lblUpcomingBills;
+    @FXML private Label lblMessage;
 
     //main table and columns
     @FXML private TableView<Subscription> mainTable;
@@ -63,24 +67,21 @@ public class SubscriptionMainController {
      */
     public void initData(List<String> args) {
 
-        //test data so we can see the table working
-        manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
-                java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
-        manager.storeNewSubscription("Spotify", 9.99, "Music", "Monthly",
-                java.time.LocalDate.of(2025, 3, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
-        manager.storeNewSubscription("Adobe", 120.00, "Work", "Yearly",
-                java.time.LocalDate.of(2025, 6, 1), null, ca.ucalgary.cpsc233w26project1.Status.PAUSED);
+            String filename = args.getFirst();
+            File file = new File(filename);
 
-        //load all subscriptions on initial run
+            if (file.exists()) {
+                SubReader.loadFromFile(manager, file);
+                lblMessage.setText("✅ Successfully loaded: " + filename);
+            } else {
+                lblMessage.setText("Error: File not found: " + filename);
+            }
+
+        // Load table with data from command line csv
         loadTable(manager.getAllSubscriptions());
 
-        if (!args.isEmpty()) {
-            String filename = args.getFirst();
-            java.io.File file = new java.io.File(filename);
-            if (file.exists()) {
-                FileHandler.loadFromCSV(manager, filename);
-            }
-        }
+        // Update info to add to status cards
+        refreshTotals();
     }
 
     /**
@@ -141,6 +142,12 @@ public class SubscriptionMainController {
                                 controller.setManager(manager);
                                 controller.prefillFields(sub);
                                 stage.show();
+
+                                // When pop-up closes
+                                stage.setOnHidden(e -> {
+                                    loadTable(manager.getAllSubscriptions()); // load the table with new information immediately
+                                    refreshTotals(); // refreshes M/Y totals
+                                });
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -158,6 +165,8 @@ public class SubscriptionMainController {
                                     int index = manager.findingSubscriptionIndex(sub.getName());
                                     manager.removeSubscription(index);
                                     mainTable.getItems().remove(sub);
+
+                                    refreshTotals(); // updates M/Y totals when sub deleted
                                 }
                             });
                         });
@@ -181,23 +190,28 @@ public class SubscriptionMainController {
 
     //-------------------------------------VIEW METHODS----------------------------------------------------
 
-    public void showAllSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showAllSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getAllSubscriptions());
     }
 
-    public void showActiveSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showActiveSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getActiveSubscription());
     }
 
-    public void showPausedSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showPausedSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getPausedSubscription());
     }
 
-    public void showCancelledSubscriptions(ActionEvent actionEvent) {
+    @FXML
+    private void showCancelledSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getCancelledSubscription());
     }
 
-    public void showUpcomingBills(ActionEvent actionEvent) {
+    @FXML
+    private void showUpcomingBills(ActionEvent actionEvent) {
         try{
             FXMLLoader loader=new FXMLLoader(getClass().getResource("UpcomingBills.fxml"));
             Stage stage =new Stage();
@@ -215,19 +229,26 @@ public class SubscriptionMainController {
 
     //--------------------------------FINANCE METHODS---------------------------------------------
 
-    public void showMonthlySpend(ActionEvent actionEvent) {
+    @FXML
+    private void showMonthlySpend(ActionEvent actionEvent) {
+        manager.calculateMonthlySpend();
     }
 
-    public void showAnnualSpend(ActionEvent actionEvent) {
+    @FXML
+    private void showAnnualSpend(ActionEvent actionEvent) {
+        manager.calculateYearlySpend();
     }
 
-    public void showBudgetAlerts(ActionEvent actionEvent) {
+    @FXML
+    private void showBudgetAlerts(ActionEvent actionEvent) {
     }
 
-    public void showBudgetByCategory(ActionEvent actionEvent) {
+    @FXML
+    private void showBudgetByCategory(ActionEvent actionEvent) {
     }
 
-    public void showHighExpenseBills(ActionEvent actionEvent) {
+    @FXML
+    private void showHighExpenseBills(ActionEvent actionEvent) {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("HighExpenseBills.fxml"));
             Stage stage=new Stage();
@@ -244,13 +265,75 @@ public class SubscriptionMainController {
 
     //---------------------------------OTHER METHODS------------------------------------
 
-    public void saveToFile(ActionEvent actionEvent) {
+    @FXML
+    private void saveToFile(ActionEvent actionEvent) {
+
+        if (manager.getAllSubscriptions().isEmpty()) {
+            lblMessage.setText("Error: No subscriptions to save! Please add subscription data to save.");
+            return;
+        }
+
+        // Let user choose location and file to save to
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save Subscription Data");
+        fileChooser.setInitialFileName("subscriptions.csv");
+
+
+        // CSV file filter (.txt) *Code was taken from https://gemini.google.com/app
+        FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(csvFilter);
+
+        File file = fileChooser.showSaveDialog(null);
+
+        // Only save if user selected a file
+        if (file != null) {
+            SubWriter.writeToFile(manager, file);
+            lblMessage.setText("✅Saved to : " + file.getName());
+        }
     }
 
-    public void loadFromFile(ActionEvent actionEvent) {
+    @FXML
+    private void loadFromFile(ActionEvent actionEvent) {
+
+        // Open file chooser
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Subscription Data");
+
+        // CSV filter
+        FileChooser.ExtensionFilter csvFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(csvFilter);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        if (file != null) {
+            // confirm before overwriting existing data
+            if (!manager.getAllSubscriptions().isEmpty()) {
+                //Open Alert CONFIRMATION panel
+                Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+                confirm.setTitle("Load File");
+                confirm.setHeaderText("Loading will replace your current data.");
+                confirm.setContentText("Are you sure you want to load from '" + file.getName() + "'?");
+
+                // If user agrees, add the new data and update
+                confirm.showAndWait().ifPresent(response -> {
+                   if (response == javafx.scene.control.ButtonType.OK) {
+                       SubReader.loadFromFile(manager, file);
+                       loadTable(manager.getAllSubscriptions());
+                       refreshTotals();
+                       lblMessage.setText("✅ Loaded from: " + file.getName());
+                   }
+                });
+            } else { // If no subs added so far, load from file without Alert
+                SubReader.loadFromFile(manager, file);
+                loadTable(manager.getAllSubscriptions());
+                refreshTotals();
+                lblMessage.setText("✅ Loaded from " + file.getName());
+            }
+        }
     }
 
-    public void openAddSubscriptionStage(ActionEvent actionEvent) {
+    @FXML
+    private void openAddSubscriptionStage(ActionEvent actionEvent) {
         try {
             FXMLLoader loader=new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
             Stage stage=new Stage();
@@ -259,15 +342,45 @@ public class SubscriptionMainController {
             AddSubscriptionController controller =loader.getController();
             controller.setManager(manager);
             stage.show();
+
+            // When pop-up closes
+            stage.setOnHidden(e -> {
+                loadTable(manager.getAllSubscriptions()); // adds sub to table immediately
+                refreshTotals(); // refreshed M/Y totals
+            });
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void openAddBudgetStage(ActionEvent actionEvent) {
+    @FXML
+    private void openAddBudgetStage(ActionEvent actionEvent) {
     }
 
-    public void about(ActionEvent actionEvent) {
+    @FXML
+    private void about(ActionEvent actionEvent) {
+    }
+
+    private void refreshTotals() {
+
+        int numOfSubs = manager.getAllSubscriptions().size();
+        int numOfUpcoming = manager.getUpcomingBills().size();
+
+        // Calculate the values
+        double monthlyTotal = manager.calculateMonthlySpend();
+        double yearlyTotal = manager.calculateYearlySpend();
+
+        // Format as currency to 2 decimal places and display
+        lblMonthlySpend.setText(String.format("$%.2f", monthlyTotal));
+        lblAnnualSpend.setText(String.format("$%.2f", yearlyTotal));
+
+        // Add total subscription value to status card
+        lblTotalSubscriptions.setText(String.valueOf(numOfSubs));
+
+        // Add total upcoming bills value to status card
+        lblUpcomingBills.setText(String.valueOf(numOfUpcoming));
+
+
     }
 }
