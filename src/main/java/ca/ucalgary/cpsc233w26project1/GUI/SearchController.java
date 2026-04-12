@@ -2,6 +2,7 @@ package ca.ucalgary.cpsc233w26project1.GUI;
 
 import ca.ucalgary.cpsc233w26project1.Subscription;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -39,7 +40,21 @@ public class SearchController {
     }
 
     private void setupTable() {
-
+        nameCol.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getName())
+        );
+        categoryCol.setCellValueFactory(data ->
+                new SimpleStringProperty(data.getValue().getCategory())
+        );
+        costCol.setCellValueFactory(data -> {
+            double cost = data.getValue().getCost();
+            String formattedCost = "$" + String.format("%.2f", cost);
+            return new SimpleStringProperty(formattedCost);
+        });
+        statusCol.setCellValueFactory(data -> {
+            String status = data.getValue().getStatus().toString();
+            return new SimpleStringProperty(status);
+        });
     }
 }
 
