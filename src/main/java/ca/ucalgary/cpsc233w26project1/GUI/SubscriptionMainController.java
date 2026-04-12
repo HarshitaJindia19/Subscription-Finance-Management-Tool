@@ -241,6 +241,20 @@ public class SubscriptionMainController {
 
     @FXML
     private void showBudgetAlerts(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BudgetAlerts.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Budget Alerts");
+
+            BudgetAlertsController controller = loader.getController();
+            controller.setManager(manager);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
