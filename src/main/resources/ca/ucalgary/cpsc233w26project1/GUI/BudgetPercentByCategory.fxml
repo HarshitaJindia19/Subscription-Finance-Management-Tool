@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ca.ucalgary.cpsc233w26project1.GUI.BudgetPercentByCategoryController"
+      style="-fx-padding: 20; -fx-background-color: #f4f4f4;">
+
+    <!-- Title -->
+    <Label text="BUDGET % BY CATEGORY"
+           style="-fx-font-size: 18; -fx-font-weight: bold;" />
+
+    <Label fx:id="summaryLabel"
+           text="Loading..."
+           style="-fx-text-fill: #555555; -fx-font-size: 12;" />
+
+    <TableView fx:id="table" prefHeight="400" prefWidth="600">
+
+        <columns>
+            <TableColumn fx:id="categoryCol" text="Category" prefWidth="120" />
+            <TableColumn fx:id="budgetCol" text="Budget" prefWidth="100" />
+            <TableColumn fx:id="spentCol" text="Spent" prefWidth="100" />
+            <TableColumn fx:id="percentCol" text="Used %" prefWidth="100" />
+        </columns>
+    </TableView>
+</VBox>
