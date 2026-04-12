@@ -6,14 +6,11 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class AddBudgetController {
-    @FXML
-    private TextField categoryField;
-    @FXML
-    private TextField limitField;
-    @FXML
-    private Label messageLabel;
-    @FXML
-    private Button closeButton;
+
+    @FXML private TextField categoryField;
+    @FXML private TextField limitField;
+    @FXML private Label messageLabel;
+    @FXML private Button closeButton;
 
     private SubscriptionManager manager;
 
@@ -27,21 +24,20 @@ public class AddBudgetController {
         String limitText = limitField.getText().trim();
 
         if (category.isEmpty()) {
-            messageLabel.setText("Category cannot be empty.");
+            showError("Category cannot be empty.");
             return;
         }
         if (!SubscriptionManager.isOnlyText(category)) {
-            messageLabel.setText("Category must contain only letters.");
+            showError("Category must contain only letters.");
             return;
         }
         if (!SubscriptionManager.isValidCost(limitText)) {
-            messageLabel.setText("Limit must be a valid positive number.");
+            showError("Limit must be a valid positive number.");
             return;
         }
-
         double limit = Double.parseDouble(limitText);
         manager.setCategoryBudget(category, limit);
-        messageLabel.setText("Budget saved for " + category + "!");
+        showSuccess("Budget saved for " + category + "!");
 
         categoryField.clear();
         limitField.clear();
@@ -52,12 +48,10 @@ public class AddBudgetController {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
     private void showError(String msg) {
         messageLabel.setText("⛔ " + msg);
         messageLabel.setStyle("-fx-text-fill: red;");
     }
-
     private void showSuccess(String msg) {
         messageLabel.setText("✅ " + msg);
         messageLabel.setStyle("-fx-text-fill: green;");
