@@ -67,32 +67,21 @@ public class SubscriptionMainController {
      */
     public void initData(List<String> args) {
 
-        //test data so we can see the table working
-        manager.storeNewSubscription("Netflix", 15.99, "Entertainment", "Monthly",
-                java.time.LocalDate.of(2025, 1, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
-        manager.storeNewSubscription("Spotify", 9.99, "Music", "Monthly",
-                java.time.LocalDate.of(2025, 3, 1), null, ca.ucalgary.cpsc233w26project1.Status.ACTIVE);
-        manager.storeNewSubscription("Adobe", 120.00, "Work", "Yearly",
-                java.time.LocalDate.of(2025, 6, 1), null, ca.ucalgary.cpsc233w26project1.Status.PAUSED);
-
-        //load all subscriptions on initial run
-        loadTable(manager.getAllSubscriptions());
-
-        // Run file from command line input
-        if (!args.isEmpty()) {
             String filename = args.getFirst();
             File file = new File(filename);
+
             if (file.exists()) {
                 SubReader.loadFromFile(manager, file);
-                lblMessage.setText("✅ Successfully loaded input file " + filename);
+                lblMessage.setText("✅ Successfully loaded: " + filename);
             } else {
-                lblMessage.setText("Error: Input File not found: " + filename);
+                lblMessage.setText("Error: File not found: " + filename);
             }
-        }
 
-        // updates all the totals in the status cards
+        // Load table with data from command line csv
+        loadTable(manager.getAllSubscriptions());
+
+        // Update info to add to status cards
         refreshTotals();
-
     }
 
     /**
