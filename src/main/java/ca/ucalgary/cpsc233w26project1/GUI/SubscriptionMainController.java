@@ -386,6 +386,20 @@ public class SubscriptionMainController {
 
     @FXML
     private void openAddBudgetStage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBudget.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Add Budget");
+
+            AddBudgetController controller = loader.getController();
+            controller.setManager(manager);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
