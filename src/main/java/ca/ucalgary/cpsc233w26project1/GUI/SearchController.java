@@ -88,5 +88,18 @@ public class SearchController {
         messageLabel.setText("Found " + results.size() + " result(s).");
         messageLabel.setStyle("-fx-text-fill: green;");
     }
+
+    @FXML
+    private void clear() {
+        searchField.clear();
+        resultsTable.getItems().clear();
+        resultsTable.setVisible(false);
+        messageLabel.setText("");
+    }
+
+    private void showError(String msg) {
+        messageLabel.setText("⛔ " + msg);
+        messageLabel.setStyle("-fx-text-fill: red;");
+    }
 }
 
