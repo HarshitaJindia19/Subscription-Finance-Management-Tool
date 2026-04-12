@@ -42,7 +42,7 @@ public class SearchController {
         searchField
                 .textProperty()
                 .addListener((obs, oldVal, newVal) -> search());
-
+        searchTypeBox.setOnAction(e -> search());
     }
 
     private void setupTable() {
@@ -84,6 +84,10 @@ public class SearchController {
 
     @FXML
     private void search() {
+        if (manager == null) {
+            showError("Manager not initialized.");
+            return;
+        }
         String lookup = searchField.getText().trim().toLowerCase();
 
         if (lookup.isEmpty()) {
