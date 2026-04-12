@@ -72,5 +72,30 @@ public class BudgetAlertsController {
                         data.getValue().getStatus()
                 )
         );
+
+        for (int i = 0; i < manager.getAllBudgets().size(); i++) {
+            Budget bgt = manager.getAllBudgets().get(i);
+            String category = bgt.getCategory();
+            double budget = bgt.getLimit();
+            double spent = manager.getSpendByCategory(category);
+            double percent = manager.getBudgetPercentage(category);
+
+            String status;
+            if (percent == -1) {
+                status = "No Budget";
+            } else if (percent >= 100) {
+                status = "🔴 OVER BUDGET";
+                overBudgetCount++;
+            } else if (percent >= 80) {
+                status = "🟡 WARNING";
+            } else {
+                status = "🟢 OK";
+            }
+
+            budgetTable.getItems().add(
+                    new Row(category, budget, spent, percent, status)
+            );
+        }
+        summaryLabel.setText("Over budget categories: " + overBudgetCount);
     }
 }
