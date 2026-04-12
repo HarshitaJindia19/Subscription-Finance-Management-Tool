@@ -3,6 +3,7 @@ package ca.ucalgary.cpsc233w26project1.GUI;
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class AddBudgetController {
     @FXML
@@ -44,5 +45,21 @@ public class AddBudgetController {
 
         categoryField.clear();
         limitField.clear();
+    }
+
+    @FXML
+    private void close() {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
+    private void showError(String msg) {
+        messageLabel.setText("⛔ " + msg);
+        messageLabel.setStyle("-fx-text-fill: red;");
+    }
+
+    private void showSuccess(String msg) {
+        messageLabel.setText("✅ " + msg);
+        messageLabel.setStyle("-fx-text-fill: green;");
     }
 }
