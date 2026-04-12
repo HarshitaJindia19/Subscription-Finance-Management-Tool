@@ -39,7 +39,6 @@ public class SearchController {
         searchTypeBox.setValue("Name");
 
         setupTable();
-
         searchField
                 .textProperty()
                 .addListener((obs, oldVal, newVal) -> search());
@@ -74,7 +73,7 @@ public class SearchController {
                 if (keyword != null && !keyword.isBlank()
                         && item.toLowerCase().contains(keyword.toLowerCase())) {
                     setText(item);
-                    setStyle("-fx-background-color: blue;");
+                    setStyle("-fx-background-color: pink;");
                 } else {
                     setText(item);
                     setStyle("");
@@ -85,17 +84,27 @@ public class SearchController {
 
     @FXML
     private void search() {
+        String lookup = searchField.getText().trim().toLowerCase();
 
-        String query = searchField.getText().trim();
-        if (query.isEmpty()) {
-            showError("Please enter a search term.");
+        if (lookup.isEmpty()) {
+            resultsTable.getItems().clear();
+            resultsTable.setVisible(false);
+            messageLabel.setText("Type to search...");
             return;
         }
-        ArrayList<Subscription> results;
-        if (searchTypeBox.getValue().equals("Name")) {
-            results = manager.searchByName(query);
-        } else {
-            results = manager.searchByCategory(query);
+        ArrayList<Subscription> results = new ArrayList<>();
+        for (Subscription sub : manager.getAllSubscriptions()) {
+            if (searchTypeBox.getValue().equals("Name")) {
+                String name = sub.getName();
+                if (name != null && name.toLowerCase().contains(lookup)) {
+                    results.add(sub);
+                }
+            } else {
+                String category = sub.getCategory();
+                if (category != null && category.toLowerCase().contains(lookup)) {
+                    results.add(sub);
+                }
+            }
         }
         resultsTable.getItems().clear();
 
