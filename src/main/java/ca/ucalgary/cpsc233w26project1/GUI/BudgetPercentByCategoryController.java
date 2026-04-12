@@ -66,5 +66,35 @@ public class BudgetPercentByCategoryController {
         }
         summaryLabel.setText("Over budget categories: " + overBudgetCount);
     }
+
+    public static class Row {
+
+        private String category;
+        private double budget;
+        private double spent;
+        private double percent;
+
+        public Row(String category, double budget,
+                   double spent, double percent) {
+            this.category = category;
+            this.budget = budget;
+            this.spent = spent;
+            this.percent = percent;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+        public String getBudget() {
+            return "$" + String.format("%.2f", budget);
+        }
+        public String getSpent() {
+            return "$" + String.format("%.2f", spent);
+        }
+        public String getPercent() {
+            if (percent < 0) return "N/A";
+            return String.format("%.1f%%", percent);
+        }
+    }
 }
 
