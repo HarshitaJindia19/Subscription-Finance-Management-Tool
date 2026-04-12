@@ -1,6 +1,7 @@
 package ca.ucalgary.cpsc233w26project1.GUI;
 
 import ca.ucalgary.cpsc233w26project1.SubscriptionManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -34,6 +35,18 @@ public class BudgetPercentByCategoryController {
         }
         table.getItems().clear();
         int overBudgetCount = 0;
+
+        categoryCol.setCellValueFactory(d ->
+                new SimpleStringProperty(d.getValue().getCategory()));
+
+        budgetCol.setCellValueFactory(d ->
+                new SimpleStringProperty(d.getValue().getBudget()));
+
+        spentCol.setCellValueFactory(d ->
+                new SimpleStringProperty(d.getValue().getSpent()));
+
+        percentCol.setCellValueFactory(d ->
+                new SimpleStringProperty(d.getValue().getPercent()));
     }
 }
 
