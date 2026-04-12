@@ -39,6 +39,11 @@ public class SearchController {
         searchTypeBox.setValue("Name");
 
         setupTable();
+
+        searchField
+                .textProperty()
+                .addListener((obs, oldVal, newVal) -> search());
+
     }
 
     private void setupTable() {
@@ -56,6 +61,25 @@ public class SearchController {
         statusCol.setCellValueFactory(data -> {
             String status = data.getValue().getStatus().toString();
             return new SimpleStringProperty(status);
+        });
+        nameCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                    return;
+                }
+                String keyword = searchField.getText();
+                if (keyword != null && !keyword.isBlank()
+                        && item.toLowerCase().contains(keyword.toLowerCase())) {
+                    setText(item);
+                    setStyle("-fx-background-color: blue;");
+                } else {
+                    setText(item);
+                    setStyle("");
+                }
+            }
         });
     }
 
