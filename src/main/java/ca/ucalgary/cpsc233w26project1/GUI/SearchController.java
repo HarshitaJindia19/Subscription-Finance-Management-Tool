@@ -80,6 +80,26 @@ public class SearchController {
                 }
             }
         });
+
+        categoryCol.setCellFactory(col -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle("");
+                    return;
+                }
+                String keyword = searchField.getText();
+                if (keyword != null && !keyword.isBlank()
+                        && item.toLowerCase().contains(keyword.toLowerCase())) {
+                    setText(item);
+                    setStyle("-fx-background-color: pink;");
+                } else {
+                    setText(item);
+                    setStyle("");
+                }
+            }
+        });
     }
 
     @FXML
