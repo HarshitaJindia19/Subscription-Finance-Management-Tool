@@ -58,7 +58,11 @@ public class SubscriptionMainController {
     @FXML private TableColumn<Subscription, String> statusCol;
     @FXML private TableColumn<Subscription, Void> actionsCol;
 
-    private SubscriptionManager manager = new SubscriptionManager();
+    private SubscriptionManager manager;
+
+    public void setManager(SubscriptionManager manager) {
+        this.manager = manager;
+    }
 
     /**
      * Initializes program with command line arguments
@@ -66,6 +70,10 @@ public class SubscriptionMainController {
      * @param args command line arguments
      */
     public void initData(List<String> args) {
+
+        if (manager == null) {
+            manager = new SubscriptionManager();
+        }
 
             String filename = args.getFirst();
             File file = new File(filename);
@@ -231,20 +239,52 @@ public class SubscriptionMainController {
 
     @FXML
     private void showMonthlySpend(ActionEvent actionEvent) {
-        manager.calculateMonthlySpend();
+        double monthly = manager.calculateMonthlySpend();
+        lblMonthlySpend.setText(String.format("$%.2f", monthly));
     }
 
     @FXML
     private void showAnnualSpend(ActionEvent actionEvent) {
-        manager.calculateYearlySpend();
+        double yearly = manager.calculateYearlySpend();
+        lblAnnualSpend.setText(String.format("$%.2f", yearly));
     }
 
     @FXML
     private void showBudgetAlerts(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BudgetAlerts.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Budget Alerts");
+
+            BudgetAlertsController controller = loader.getController();
+            controller.setManager(manager);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void showBudgetByCategory(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("BudgetPercentByCategory.fxml")
+            );
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Budget % by Category");
+
+            BudgetPercentByCategoryController controller = loader.getController();
+            controller.setManager(manager);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -356,6 +396,20 @@ public class SubscriptionMainController {
 
     @FXML
     private void openAddBudgetStage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBudget.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Add Budget");
+
+            AddBudgetController controller = loader.getController();
+            controller.setManager(manager);
+
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -390,5 +444,22 @@ public class SubscriptionMainController {
         lblUpcomingBills.setText(String.valueOf(numOfUpcoming));
 
 
+    }
+
+    @FXML
+    private void openSearchStage(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Search.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Search Subscriptions");
+
+            SearchController controller = loader.getController();
+            controller.setManager(manager);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
