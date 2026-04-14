@@ -25,7 +25,7 @@ public class AddBudgetController {
     private SubscriptionManager manager;
 
     /**
-     * Called by main controller to pass in shared manager
+     * Called by main controller to pass in the shared manager
      * @param manager shared SubscriptionManager
      */
     public void setManager(SubscriptionManager manager) {
