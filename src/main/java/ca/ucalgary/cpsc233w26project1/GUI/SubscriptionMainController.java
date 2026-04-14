@@ -394,8 +394,8 @@ public class SubscriptionMainController {
     @FXML
     private void openAddSubscriptionStage(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
-            Stage stage=new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
+            Stage stage = new Stage();
             stage.setScene(new Scene(loader.load()));
             stage.setTitle("Add Subscription");
             AddSubscriptionController controller =loader.getController();
