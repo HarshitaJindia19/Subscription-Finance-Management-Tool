@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="650" prefWidth="1000" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.cpsc233w26project1.GUI.SubscriptionMainController">
+<BorderPane prefHeight="580" prefWidth="1000" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ca.ucalgary.cpsc233w26project1.GUI.SubscriptionMainController">
     <top>
         <HBox style="-fx-background-color: #2c2c2c; -fx-padding: 12 20 12 20;">
             <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold;" text="Subscription Manager" />
@@ -22,8 +22,6 @@
             <Button fx:id="btnUpcomingBills" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showUpcomingBills" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Upcoming Bills" />
 
             <Label style="-fx-text-fill: #aaaaaa; -fx-font-size: 11px; -fx-font-weight: bold; -fx-padding: 8 0 4 0;" text="FINANCE" />
-            <Button fx:id="btnMonthlySpend" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showMonthlySpend" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Monthly Spend" />
-            <Button fx:id="btnAnnualSpend" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showAnnualSpend" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Annual Spend" />
             <Button fx:id="btnBudgetAlerts" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showBudgetAlerts" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Budget Alerts" />
             <Button fx:id="btnBudgetByCategory" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showBudgetByCategory" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="Budget % by Category" />
             <Button fx:id="btnHighExpense" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#showHighExpenseBills" style="-fx-background-color: #555; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 8 12; -fx-cursor: hand; -fx-font-weight: bold;" text="High-Expense Bills" />
@@ -36,7 +34,7 @@
     <center>
         <VBox spacing="12" style="-fx-padding: 16; -fx-background-color: #f4f4f4;">
             <HBox alignment="CENTER_LEFT" spacing="10">
-            <TextField fx:id="searchField" prefWidth="250.0" promptText="Search by name or category..." style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 50; -fx-padding: 6 10; -fx-background-radius: 50;" />
+            <TextField fx:id="searchField" onAction="#openSearchStage" prefWidth="250.0" promptText="Search by name or category..." style="-fx-background-color: white; -fx-border-color: #cccccc; -fx-border-radius: 50; -fx-padding: 6 10; -fx-background-radius: 50;" />
             <Button mnemonicParsing="false" onAction="#openAddSubscriptionStage" style="-fx-background-color: #2c2c2c; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 14;" text="+Add Subscription" />
             <Button mnemonicParsing="false" onAction="#openAddBudgetStage" style="-fx-background-color: #555555; -fx-text-fill: white; -fx-padding: 7 14; -fx-cursor: hand; -fx-font-weight: bold; -fx-background-radius: 50; -fx-border-radius: 50;" text="+Add Budget" />
             </HBox>

@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Takes current logged subscription/budget information and writes it to a file
+ */
 public class SubWriter {
 
     /**
@@ -21,7 +24,7 @@ public class SubWriter {
      * Saves Subscription and Budget Information into a file
      *
      * @param manager to access all methods with subscription data
-     * @param file    to save to
+     * @param file to save to
      */
     public static void writeToFile(SubscriptionManager manager, File file) {
 
