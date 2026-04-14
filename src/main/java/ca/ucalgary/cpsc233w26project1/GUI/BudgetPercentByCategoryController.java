@@ -57,6 +57,10 @@ public class BudgetPercentByCategoryController {
             double spent = manager.getSpendByCategory(category);
             double percent = manager.getBudgetPercentage(category);
 
+            if (percent > 100) {
+                percent = 100;
+            }
+
             if (percent >= 100) {
                 overBudgetCount++;
             }

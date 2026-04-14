@@ -79,6 +79,7 @@ public class BudgetAlertsController {
             double budget = bgt.getLimit();
             double spent = manager.getSpendByCategory(category);
             double percent = manager.getBudgetPercentage(category);
+            percent = Math.min(percent, 100.0);
 
             String status;
             if (percent == -1) {
