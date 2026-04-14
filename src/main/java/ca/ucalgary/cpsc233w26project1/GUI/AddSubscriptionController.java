@@ -61,7 +61,7 @@ public class AddSubscriptionController {
     public void initialize() {
         renewalComboBox.getItems().addAll("Monthly", "Yearly");
 
-        // populate status comboBox from enum
+        // populate status comboBox from the enum
         for (Status status : Status.values()) {
             statusComboBox.getItems().add(status.toString());
         }
