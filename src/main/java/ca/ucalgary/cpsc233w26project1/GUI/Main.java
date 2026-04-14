@@ -21,9 +21,7 @@ public class Main extends Application {
 
 
         SubscriptionMainController controller = fxmlLoader.getController();
-        System.out.println("Controller: " + controller);
         controller.initData(args); // pass args
-        System.out.println("initData called");
 
         stage.setScene(scene);
         stage.sizeToScene();

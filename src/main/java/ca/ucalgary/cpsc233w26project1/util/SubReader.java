@@ -11,6 +11,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
+/**
+ * Reads a file, and loads the information for usage
+ */
 public class SubReader {
 
     /**
@@ -18,6 +21,12 @@ public class SubReader {
      */
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
+    /**
+     * Loads Subscription and Budget Information from a file
+     *
+     * @param manager to access all methods with subscription data
+     * @param file to save to
+     */
     public static void loadFromFile(SubscriptionManager manager, File file) {
 
         try (Scanner scanner = new Scanner(file)) {

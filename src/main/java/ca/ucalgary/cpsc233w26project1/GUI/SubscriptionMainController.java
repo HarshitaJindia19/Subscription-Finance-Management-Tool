@@ -18,22 +18,21 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import ca.ucalgary.cpsc233w26project1.Subscription;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableCell;
 import javafx.util.Callback;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 
+/**
+ * Controls the main controller of the subscription manager's main window
+ */
 public class SubscriptionMainController {
     @FXML private Button btnAllSubscriptions;
     @FXML private Button btnActive;
     @FXML private Button btnPaused;
     @FXML private Button btnCancelled;
     @FXML private Button btnUpcomingBills;
-    @FXML private Button btnMonthlySpend;
-    @FXML private Button btnAnnualSpend;
     @FXML private Button btnBudgetAlerts;
     @FXML private Button btnBudgetByCategory;
     @FXML private Button btnHighExpense;
@@ -198,25 +197,42 @@ public class SubscriptionMainController {
 
     //-------------------------------------VIEW METHODS----------------------------------------------------
 
+    /**
+     * Loads all current subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showAllSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getAllSubscriptions());
     }
 
+    /**
+     * Loads all Active subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showActiveSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getActiveSubscription());
     }
 
+    /**
+     * Loads all Paused subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showPausedSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getPausedSubscription());
     }
 
+    /**
+     * Loads all Canceled subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showCancelledSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getCancelledSubscription());
     }
+
 
     @FXML
     private void showUpcomingBills(ActionEvent actionEvent) {
@@ -236,18 +252,6 @@ public class SubscriptionMainController {
     }
 
     //--------------------------------FINANCE METHODS---------------------------------------------
-
-    @FXML
-    private void showMonthlySpend(ActionEvent actionEvent) {
-        double monthly = manager.calculateMonthlySpend();
-        lblMonthlySpend.setText(String.format("$%.2f", monthly));
-    }
-
-    @FXML
-    private void showAnnualSpend(ActionEvent actionEvent) {
-        double yearly = manager.calculateYearlySpend();
-        lblAnnualSpend.setText(String.format("$%.2f", yearly));
-    }
 
     @FXML
     private void showBudgetAlerts(ActionEvent actionEvent) {
@@ -305,6 +309,11 @@ public class SubscriptionMainController {
 
     //---------------------------------OTHER METHODS------------------------------------
 
+    /**
+     * Opens file chooser, for user to select a file to save current data
+     * Saves subscriptions and budgets to preferred file and location
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void saveToFile(ActionEvent actionEvent) {
 
@@ -332,6 +341,11 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Opens file chooser, for the user to select a file to load data from
+     * Reads the file and calls loads subscription and budget data onto controller
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void loadFromFile(ActionEvent actionEvent) {
 
@@ -372,6 +386,11 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Opens a new stage to add a subscription
+     * Displays error messages, and only adds subscription when all inputs are validated
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void openAddSubscriptionStage(ActionEvent actionEvent) {
         try {
@@ -412,6 +431,10 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Access program details and authors
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void about(ActionEvent actionEvent) {
         Alert about = new Alert(Alert.AlertType.INFORMATION); //Set alert to show INFORMATION pop-up
@@ -424,6 +447,10 @@ public class SubscriptionMainController {
         about.showAndWait();
     }
 
+    /**
+     * Helper function to immediately refresh the main table view with updated status cards
+     * Called when subscription data is changed
+     */
     private void refreshTotals() {
 
         int numOfSubs = manager.getAllSubscriptions().size();
@@ -442,7 +469,6 @@ public class SubscriptionMainController {
 
         // Add total upcoming bills value to status card
         lblUpcomingBills.setText(String.valueOf(numOfUpcoming));
-
 
     }
 
