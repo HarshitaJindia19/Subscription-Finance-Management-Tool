@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Import JavaFX UI components -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<!--
+    AddBudget.fxml - UI for adding a new budget category and limit
+    Date: April 14 2026
+    Tutorial: T01
+-->
+
 <VBox spacing="10"
-      style="-fx-background-color: #f4f4f4; -fx-padding: 20;"
-      prefWidth="300"
+      style="-fx-padding: 20;"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="ca.ucalgary.cpsc233w26project1.GUI.AddBudgetController">
 
+    <!-- Title label -->
     <Label text="ADD BUDGET"
            style="-fx-font-size: 16; -fx-font-weight: bold;" />
 
@@ -19,12 +26,11 @@
     <TextField fx:id="limitField" promptText="e.g. 100.00" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;"/>
     <Label fx:id="messageLabel" text=""/>
 
+    <!-- Buttons container -->
     <HBox spacing="10">
         <Button fx:id="closeButton" text="Close" onAction="#close" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;"/>
         <Region HBox.hgrow="ALWAYS"/>
         <Button style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Add Budget" onAction="#addBudget"/>
     </HBox>
-<!--    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Category:" />-->
-<!--    <TextField fx:id="categoryField" promptText="e.g. Entertainment" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;" />-->
 
 </VBox>
