@@ -133,6 +133,10 @@ public class AddSubscriptionController {
             showError("Category nust contain only letters and spaces.");
             return;
         }
+        if (category.equals(name)) {
+            showError("Category cannot be the name of the subscription!");
+            return;
+        }
 
         // Validate Renewal:
         if (renewal == null) {
