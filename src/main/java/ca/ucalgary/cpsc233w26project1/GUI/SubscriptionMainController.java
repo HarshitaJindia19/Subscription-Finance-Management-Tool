@@ -92,7 +92,7 @@ public class SubscriptionMainController {
     }
 
     /**
-     * loadTable - Helper method to load a list of subscriptions into the main table
+     * loadTable - helper method to load a list of subscriptions into the main table
      * @param subs list of subscriptions to display
      */
     private void loadTable(java.util.ArrayList<Subscription> subs) {
@@ -182,10 +182,10 @@ public class SubscriptionMainController {
                     @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
-                        if (empty) {
+                        if (empty) {//if cell is empty set graphic to null
                             setGraphic(null);
                         } else {
-                            setGraphic(buttons);
+                            setGraphic(buttons);//if cell has a sub, set graphic to buttons (Hbox that has edit and X button)
                         }
                     }
                 };
@@ -233,6 +233,12 @@ public class SubscriptionMainController {
         loadTable(manager.getCancelledSubscription());
     }
 
+    /**
+     * Displays upcoming bills window
+     * Initializes the UpcomingBillsController with the current manager and triggeres
+     * the loading of bill data.
+     * @param actionEvent action event when button is clicked
+     */
 
     @FXML
     private void showUpcomingBills(ActionEvent actionEvent) {
@@ -290,6 +296,13 @@ public class SubscriptionMainController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Opens a high expense window.
+     * Initializes the HighExpenseBillsController with current manager instance to
+     * filter and show subs that exceed a certain threshold.
+     * @param actionEvent action event when button is clicked
+     */
 
     @FXML
     private void showHighExpenseBills(ActionEvent actionEvent) {
