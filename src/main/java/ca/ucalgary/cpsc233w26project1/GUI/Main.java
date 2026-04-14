@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Main class to launch GUI controller and application
+ */
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
@@ -23,6 +26,7 @@ public class Main extends Application {
         SubscriptionMainController controller = fxmlLoader.getController();
         controller.initData(args); // pass args
 
+        // Show the screen in preferred size
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();

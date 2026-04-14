@@ -9,6 +9,14 @@ import javafx.stage.Stage;
 
 import java.time.LocalDate;
 
+/**
+ * Controls the Add Subscription popup window.
+ * Handles user input, validates all fields, and stores new subscriptions into the shared SubscriptionManager.
+ *
+ * @author Harshita
+ * @date April 2026
+ * @tutorial T01
+ */
 public class AddSubscriptionController {
     public Label existingCategoriesLabel;
     @FXML private TextField nameField;
@@ -24,10 +32,18 @@ public class AddSubscriptionController {
     private SubscriptionManager manager;
 
     //--------------------- Set Manager ----------------------------//
+
+    /**
+     * Called by the main controller to inject the shared SubscriptionManager.
+     * Also displays existing categories as a hint to the user.
+     *
+     * @param manager the shared SubscriptionManager instance
+     */
     @FXML
     public void setManager(SubscriptionManager manager) {
         this.manager = manager;
 
+        // Display existing categories immediately at open
         if (!manager.getCategories().isEmpty()) {
             existingCategoriesLabel.setText(
                     "Existing: " + String.join(", ", manager.getCategories()));
@@ -35,6 +51,12 @@ public class AddSubscriptionController {
     }
 
     //---------------- Initialize ------------------//
+
+    /**
+     * Called automatically when the FXML window loads.
+     * Loads the billing cycle and status dropdowns with valid options.
+     * Status defaults to ACTIVE.
+     */
     @FXML
     public void initialize() {
         renewalComboBox.getItems().addAll("Monthly", "Yearly");
@@ -46,14 +68,27 @@ public class AddSubscriptionController {
         statusComboBox.setValue("ACTIVE"); // set default value
     }
 
-    // close pop-up button action
+    //------------------------ Button Events -----------------------//
+    /**
+     * Closes the Add Subscription popup window without saving.
+     * Triggered by the close button.
+     *
+     * @param actionEvent the even when button is clicked
+     */
     @FXML
     void close(ActionEvent actionEvent) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
-    // add subscription button action
+    /**
+     * Validates all input fields and stores the new subscription.
+     * Displays an error message if any field is invalid.
+     * Displays a success message and clears fields if the subscription is added.
+     * Triggered by the Add Subscription button.
+     *
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void addSubscription(ActionEvent actionEvent) {
 
@@ -123,7 +158,6 @@ public class AddSubscriptionController {
             return;
         }
 
-
         // Store the inputs into the storeNewSubscriptions
 
         double cost = Double.parseDouble(costInput);
@@ -139,6 +173,12 @@ public class AddSubscriptionController {
         }
     }
 
+
+    //----------------- Helper Functions --------------------//
+    /**
+     * Clears all input fields after a successful subscription add.
+     * Resets status to default ACTIVE and refreshes the category hint.
+     */
     private void clearFields() {
         nameField.clear();
         costField.clear();
@@ -155,13 +195,21 @@ public class AddSubscriptionController {
         }
     }
 
-    // Error message styling
+    /**
+     * Displays a red error message in the message label, for errors
+     *
+     * @param message the error message to display
+     */
     private void showError(String message) {
         messageLabel.setText("⛔ " + message);
         messageLabel.setStyle("-fx-text-fill: #c62828; -fx-font-size: 12px;");
     }
 
-    // Success message styling
+    /**
+     * Displays a green error message in the message label, for successes
+     *
+     * @param message the error message to display
+     */
     private void showSuccess(String message) {
         messageLabel.setText("✅" + message);
         messageLabel.setStyle("-fx-text-fill: #2e7d32; -fx-font-size: 12px;");
