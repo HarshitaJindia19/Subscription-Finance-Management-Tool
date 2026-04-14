@@ -259,40 +259,61 @@ public class SubscriptionMainController {
 
     //--------------------------------FINANCE METHODS---------------------------------------------
 
+    /**
+     * Opens the Budget Alerts window in a new stage
+     * Loads the FXML layout, initializes the controller with the current
+     * SubscriptionManager instance, and displays the window to the user
+     * @param actionEvent the event triggered by the user (ex. button click)
+     */
     @FXML
     private void showBudgetAlerts(ActionEvent actionEvent) {
         try {
+            //Load the FXML file that defines the Budget Alerts UI
             FXMLLoader loader = new FXMLLoader(getClass().getResource("BudgetAlerts.fxml"));
+            //Create a new window (Stage) for the budget alerts screen
             Stage stage = new Stage();
+            //Set the scene using the loaded FXML layout
             stage.setScene(new Scene(loader.load()));
+            //Set the window title
             stage.setTitle("Budget Alerts");
-
+            //Retrieve the controller associated with the FXML file
             BudgetAlertsController controller = loader.getController();
+            //Pass the current manager instance so the alerts screen can access data
             controller.setManager(manager);
-
+            //Display the new window
             stage.show();
-
         } catch (IOException e) {
+            //Print error details if FXML loading fails
             e.printStackTrace();
         }
     }
-
+    /**
+     * Opens the Budget Percentage by Category window in a new stage
+     * Loads the BudgetPercentByCategory.fxml layout, initializes its controller
+     * with the current SubscriptionManager instance, and displays the window
+     * @param actionEvent the event triggered by the user (ex. button click)
+     */
     @FXML
     private void showBudgetByCategory(ActionEvent actionEvent) {
         try {
+            //Load the FXML file that defines the Budget By Category UI
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("BudgetPercentByCategory.fxml")
             );
-
+            //Create a new window (Stage)
             Stage stage = new Stage();
+            //Set the scene using the loaded FXML layout
             stage.setScene(new Scene(loader.load()));
+            //Set the window title
             stage.setTitle("Budget % by Category");
-
+            //Retrieve the controller associated with the FXML file
             BudgetPercentByCategoryController controller = loader.getController();
+            //Pass the current manager instance so the screen can access data
             controller.setManager(manager);
+            //Display the new window
             stage.show();
-
         } catch (IOException e) {
+            //Print error details if FXML loading fails
             e.printStackTrace();
         }
     }
@@ -425,21 +446,30 @@ public class SubscriptionMainController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Opens the Add Budget window in a new stage
+     * Loads the AddBudget.fxml layout, initializes its controller with the
+     * current SubscriptionManager instance, and displays the window
+     * @param actionEvent the event triggered by the user (ex. button click)
+     */
     @FXML
     private void openAddBudgetStage(ActionEvent actionEvent) {
         try {
+            //Load the FXML file that defines the Add Budget UI
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBudget.fxml"));
+            //create a new stage
             Stage stage = new Stage();
+            //create a new scene
             stage.setScene(new Scene(loader.load()));
+            //set title
             stage.setTitle("Add Budget");
-
+            //Retrieve the controller associated with the FXML file
             AddBudgetController controller = loader.getController();
+            //Pass the current manager instance so the the screen can access data
             controller.setManager(manager);
-
+            //Display new window
             stage.show();
-
-        } catch (IOException e) {
+        } catch (IOException e) {//Show error message
             e.printStackTrace();
         }
     }
@@ -485,20 +515,31 @@ public class SubscriptionMainController {
 
     }
 
+    /**
+     * Opens the Search Subscriptions window in a new stage
+     * Loads the Search.fxml layout, initializes its controller with the
+     * current SubscriptionManager instance, and displays the window
+     * @param actionEvent the event triggered by the user (ex. button click)
+     */
     @FXML
     private void openSearchStage(ActionEvent actionEvent) {
         try {
+            //Load the FXML file that defines the search UI
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Search.fxml"));
+            //Create new stage
             Stage stage = new Stage();
+            //Create new scene
             stage.setScene(new Scene(loader.load()));
+            //Title window
             stage.setTitle("Search Subscriptions");
-
+            //Retrieve the controller associated with the FXML file
             SearchController controller = loader.getController();
+            //Pass the current manager instance so the alerts screen can access data
             controller.setManager(manager);
+            //Display new window
             stage.show();
-
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // Print error message
         }
     }
 }
