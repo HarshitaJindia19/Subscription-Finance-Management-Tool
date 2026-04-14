@@ -47,16 +47,19 @@ public class UpcomingBillsController {
     public void loadUpcomingBills(){
 
         //set up each column to pull the right data from Subscription object
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
-        renewalCol.setCellValueFactory(new PropertyValueFactory<>("renewal"));
-        statusCol.setCellValueFactory (new PropertyValueFactory<>("status"));
+        nameCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getName()));
+
+        categoryCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getCategory()));
+
+        renewalCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getRenewal()));
+
+        statusCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getStatus().toString()));
 
         //cost needs special formatting with $ sign
         costCol.setCellValueFactory (data ->new javafx.beans.property.SimpleStringProperty("$" + String.format("%.2f", data.getValue().getCost())));
 
-        //start date needs formatting to MM/DD/YYYT
-        startDateCol.setCellValueFactory(data-> new javafx.beans.property.SimpleStringProperty(data.getValue().getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY"))) );
+        //start date needs formatting to MM/dd/yyyy
+        startDateCol.setCellValueFactory(data-> new javafx.beans.property.SimpleStringProperty(data.getValue().getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy"))) );
 
         //get upcoming bills from manager
         java.util.ArrayList<Subscription>upcoming =manager.getUpcomingBills();

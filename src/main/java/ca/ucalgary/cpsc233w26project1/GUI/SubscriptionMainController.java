@@ -18,22 +18,21 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import ca.ucalgary.cpsc233w26project1.Subscription;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableCell;
 import javafx.util.Callback;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.HBox;
 
+/**
+ * Controls the main controller of the subscription manager's main window
+ */
 public class SubscriptionMainController {
     @FXML private Button btnAllSubscriptions;
     @FXML private Button btnActive;
     @FXML private Button btnPaused;
     @FXML private Button btnCancelled;
     @FXML private Button btnUpcomingBills;
-    @FXML private Button btnMonthlySpend;
-    @FXML private Button btnAnnualSpend;
     @FXML private Button btnBudgetAlerts;
     @FXML private Button btnBudgetByCategory;
     @FXML private Button btnHighExpense;
@@ -93,7 +92,7 @@ public class SubscriptionMainController {
     }
 
     /**
-     * loadTable - Helper method to load a list of subscriptions into the main table
+     * loadTable - helper method to load a list of subscriptions into the main table
      * @param subs list of subscriptions to display
      */
     private void loadTable(java.util.ArrayList<Subscription> subs) {
@@ -105,9 +104,9 @@ public class SubscriptionMainController {
 
         costCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty("$" + String.format("%.2f", data.getValue().getCost())));
 
-        startDateCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty(data.getValue().getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY"))));
+        startDateCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty(data.getValue().getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy"))));
 
-        endDateCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getEndDate() != null ? data.getValue().getEndDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")) : "N/A"));
+        endDateCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getEndDate() != null ? data.getValue().getEndDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy")) : "N/A"));
 
         statusCol.setCellValueFactory(data ->new javafx.beans.property.SimpleStringProperty(data.getValue().getStatus().toString()));
 
@@ -183,10 +182,10 @@ public class SubscriptionMainController {
                     @Override
                     protected void updateItem(Void item, boolean empty) {
                         super.updateItem(item, empty);
-                        if (empty) {
+                        if (empty) {//if cell is empty set graphic to null
                             setGraphic(null);
                         } else {
-                            setGraphic(buttons);
+                            setGraphic(buttons);//if cell has a sub, set graphic to buttons (Hbox that has edit and X button)
                         }
                     }
                 };
@@ -198,25 +197,48 @@ public class SubscriptionMainController {
 
     //-------------------------------------VIEW METHODS----------------------------------------------------
 
+    /**
+     * Loads all current subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showAllSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getAllSubscriptions());
     }
 
+    /**
+     * Loads all Active subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showActiveSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getActiveSubscription());
     }
 
+    /**
+     * Loads all Paused subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showPausedSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getPausedSubscription());
     }
 
+    /**
+     * Loads all Canceled subscriptions into the main table view
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void showCancelledSubscriptions(ActionEvent actionEvent) {
         loadTable(manager.getCancelledSubscription());
     }
+
+    /**
+     * Displays upcoming bills window
+     * Initializes the UpcomingBillsController with the current manager and triggeres
+     * the loading of bill data.
+     * @param actionEvent action event when button is clicked
+     */
 
     @FXML
     private void showUpcomingBills(ActionEvent actionEvent) {
@@ -236,18 +258,6 @@ public class SubscriptionMainController {
     }
 
     //--------------------------------FINANCE METHODS---------------------------------------------
-
-    @FXML
-    private void showMonthlySpend(ActionEvent actionEvent) {
-        double monthly = manager.calculateMonthlySpend();
-        lblMonthlySpend.setText(String.format("$%.2f", monthly));
-    }
-
-    @FXML
-    private void showAnnualSpend(ActionEvent actionEvent) {
-        double yearly = manager.calculateYearlySpend();
-        lblAnnualSpend.setText(String.format("$%.2f", yearly));
-    }
 
     @FXML
     private void showBudgetAlerts(ActionEvent actionEvent) {
@@ -287,6 +297,13 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Opens a high expense window.
+     * Initializes the HighExpenseBillsController with current manager instance to
+     * filter and show subs that exceed a certain threshold.
+     * @param actionEvent action event when button is clicked
+     */
+
     @FXML
     private void showHighExpenseBills(ActionEvent actionEvent) {
         try {
@@ -305,6 +322,11 @@ public class SubscriptionMainController {
 
     //---------------------------------OTHER METHODS------------------------------------
 
+    /**
+     * Opens file chooser, for user to select a file to save current data
+     * Saves subscriptions and budgets to preferred file and location
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void saveToFile(ActionEvent actionEvent) {
 
@@ -332,6 +354,11 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Opens file chooser, for the user to select a file to load data from
+     * Reads the file and calls loads subscription and budget data onto controller
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void loadFromFile(ActionEvent actionEvent) {
 
@@ -372,11 +399,16 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Opens a new stage to add a subscription
+     * Displays error messages, and only adds subscription when all inputs are validated
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void openAddSubscriptionStage(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
-            Stage stage=new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AddSubscription.fxml"));
+            Stage stage = new Stage();
             stage.setScene(new Scene(loader.load()));
             stage.setTitle("Add Subscription");
             AddSubscriptionController controller =loader.getController();
@@ -412,6 +444,10 @@ public class SubscriptionMainController {
         }
     }
 
+    /**
+     * Access program details and authors
+     * @param actionEvent the event when button is clicked
+     */
     @FXML
     private void about(ActionEvent actionEvent) {
         Alert about = new Alert(Alert.AlertType.INFORMATION); //Set alert to show INFORMATION pop-up
@@ -424,6 +460,10 @@ public class SubscriptionMainController {
         about.showAndWait();
     }
 
+    /**
+     * Helper function to immediately refresh the main table view with updated status cards
+     * Called when subscription data is changed
+     */
     private void refreshTotals() {
 
         int numOfSubs = manager.getAllSubscriptions().size();
@@ -442,7 +482,6 @@ public class SubscriptionMainController {
 
         // Add total upcoming bills value to status card
         lblUpcomingBills.setText(String.valueOf(numOfUpcoming));
-
 
     }
 

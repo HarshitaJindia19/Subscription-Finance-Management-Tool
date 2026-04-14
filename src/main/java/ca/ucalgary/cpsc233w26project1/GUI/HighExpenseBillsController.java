@@ -59,10 +59,11 @@ public class HighExpenseBillsController {
         double threshold = Double.parseDouble(input);
 
         //set up columns to pull data from Subscription object
-        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        nameCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getName()));
 
-        categoryCol.setCellValueFactory(new PropertyValueFactory<>("category"));
-        renewalCol.setCellValueFactory(new PropertyValueFactory<>("renewal"));
+        categoryCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getCategory()));
+
+        renewalCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getRenewal()));
 
         //cost needs $ formatting
         costCol.setCellValueFactory( data->new javafx.beans.property.SimpleStringProperty("$" + String.format("%.2f",data.getValue().getCost())));
@@ -85,7 +86,7 @@ public class HighExpenseBillsController {
         else{
             //add results to table and show it
             resultsTable.getItems().addAll(results);
-            statusLabel.setText("Found " +results.size()+" subscription(s) above $" +String.format("%.2f",threshold));
+            statusLabel.setText("Found " +results.size()+" subscription(s) above or equal to $" +String.format("%.2f",threshold));
             statusLabel.setStyle("-fx-text-fill: green;");
             resultsTable.setVisible(true);
         }

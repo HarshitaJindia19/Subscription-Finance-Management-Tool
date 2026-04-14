@@ -90,8 +90,8 @@ public class UpdateSubscriptionController {
         newCostField.setText(String.valueOf(sub.getCost()));
         newCategoryField.setText(sub.getCategory());
         newRenewalField.setValue(sub.getRenewal());
-        newStartDateField.setText(sub.getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")));
-        newEndDateField.setText(sub.getEndDate()!= null? sub.getEndDate().format(java.time.format.DateTimeFormatter. ofPattern("MM/DD/YYYY")) : "");
+        newStartDateField.setText(sub.getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        newEndDateField.setText(sub.getEndDate()!= null? sub.getEndDate().format(java.time.format.DateTimeFormatter. ofPattern("MM/dd/yyyy")) : "");
         newStatusField.setValue(sub.getStatus().toString());
 
         //show the edit fields
@@ -219,8 +219,8 @@ public class UpdateSubscriptionController {
         newCostField.setText(String.valueOf(sub.getCost()));
         newCategoryField.setText(sub.getCategory());
         newRenewalField.setValue(sub.getRenewal());
-        newStartDateField.setText(sub.getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")));
-        newEndDateField.setText(sub.getEndDate() !=null ? sub.getEndDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/DD/YYYY")) : "");
+        newStartDateField.setText(sub.getStartDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        newEndDateField.setText(sub.getEndDate() !=null ? sub.getEndDate().format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy")) : "");
         newStatusField.setValue(sub.getStatus().toString());
 
         //show the edit fields and success message

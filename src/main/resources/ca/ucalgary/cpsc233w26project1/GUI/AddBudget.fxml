@@ -20,28 +20,17 @@
     <Label text="ADD BUDGET"
            style="-fx-font-size: 16; -fx-font-weight: bold;" />
 
-    <!-- Category input -->
-    <Label text="Category:" />
-    <TextField fx:id="categoryField" promptText="e.g. Entertainment"/>
-
-    <!-- Budget limit input -->
-    <Label text="Budget Limit:" />
-    <TextField fx:id="limitField" promptText="e.g. 100.00"/>
-
-    <!-- Displays success/error messages -->
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Category:" />
+    <TextField fx:id="categoryField" promptText="e.g. Entertainment" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;"/>
+    <Label style="-fx-font-size: 12; -fx-text-fill: #555555;" text="Budget Limit:" />
+    <TextField fx:id="limitField" promptText="e.g. 100.00" style="-fx-background-color: white; -fx-border-color: black; -fx-background-radius: 50; -fx-border-radius: 50; -fx-padding: 7 10;"/>
     <Label fx:id="messageLabel" text=""/>
 
     <!-- Buttons container -->
     <HBox spacing="10">
-
-        <!-- Closes the window -->
-        <Button fx:id="closeButton" text="Close" onAction="#close"/>
-
-        <!-- Spacer to push buttons apart -->
+        <Button fx:id="closeButton" text="Close" onAction="#close" style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;"/>
         <Region HBox.hgrow="ALWAYS"/>
-
-        <!-- Adds the budget -->
-        <Button text="Add Budget" onAction="#addBudget"/>
-
+        <Button style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-padding: 8 20; -fx-cursor: hand; -fx-background-radius: 50; -fx-border-radius: 50; -fx-font-weight: bold;" text="Add Budget" onAction="#addBudget"/>
     </HBox>
+
 </VBox>
