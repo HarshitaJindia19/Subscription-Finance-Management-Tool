@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Import JavaFX controls and layouts -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
+<!--
+    BudgetPercentByCategory.fxml - Displays percentage of budget used per category
+    Date: April 14 2026
+    Tutorial: T01
+-->
 
 <VBox spacing="12"
       xmlns="http://javafx.com/javafx/17.0.12"
@@ -13,16 +20,26 @@
     <Label text="BUDGET % BY CATEGORY"
            style="-fx-font-size: 18; -fx-font-weight: bold;" />
 
+    <!-- Summary label showing number of over-budget categories -->
     <Label fx:id="summaryLabel"
            text="Loading..."
            style="-fx-text-fill: #555555; -fx-font-size: 12;" />
 
+    <!-- Table displaying budget percentage per category -->
     <TableView fx:id="table" prefHeight="400" prefWidth="600">
 
         <columns>
+
+            <!-- Category name -->
             <TableColumn fx:id="categoryCol" text="Category" prefWidth="120" />
+
+            <!-- Budget limit -->
             <TableColumn fx:id="budgetCol" text="Budget" prefWidth="100" />
+
+            <!-- Amount spent -->
             <TableColumn fx:id="spentCol" text="Spent" prefWidth="100" />
+
+            <!-- Percentage of budget used -->
             <TableColumn fx:id="percentCol" text="Used %" prefWidth="100" />
         </columns>
     </TableView>

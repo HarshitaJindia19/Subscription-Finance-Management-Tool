@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Import JavaFX UI components -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
+<!--
+    AddBudget.fxml - UI for adding a new budget category and limit
+    Date: April 14 2026
+    Tutorial: T01
+-->
 
 <VBox spacing="10"
       style="-fx-padding: 20;"
@@ -9,19 +16,32 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="ca.ucalgary.cpsc233w26project1.GUI.AddBudgetController">
 
+    <!-- Title label -->
     <Label text="ADD BUDGET"
            style="-fx-font-size: 16; -fx-font-weight: bold;" />
 
+    <!-- Category input -->
     <Label text="Category:" />
     <TextField fx:id="categoryField" promptText="e.g. Entertainment"/>
+
+    <!-- Budget limit input -->
     <Label text="Budget Limit:" />
     <TextField fx:id="limitField" promptText="e.g. 100.00"/>
+
+    <!-- Displays success/error messages -->
     <Label fx:id="messageLabel" text=""/>
 
+    <!-- Buttons container -->
     <HBox spacing="10">
-        <Button fx:id="closeButton" text="Close" onAction="#close"/>
-        <Region HBox.hgrow="ALWAYS"/>
-        <Button text="Add Budget" onAction="#addBudget"/>
-    </HBox>
 
+        <!-- Closes the window -->
+        <Button fx:id="closeButton" text="Close" onAction="#close"/>
+
+        <!-- Spacer to push buttons apart -->
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <!-- Adds the budget -->
+        <Button text="Add Budget" onAction="#addBudget"/>
+
+    </HBox>
 </VBox>

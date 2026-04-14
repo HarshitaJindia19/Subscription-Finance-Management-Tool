@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Import JavaFX controls and layouts -->
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
+<!--
+    Search.fxml - UI for searching subscriptions by name or category
+    Date: April 14 2026
+    Tutorial: T01
+-->
 
 <VBox spacing="10"
       style="-fx-padding: 20;"
@@ -13,19 +20,36 @@
     <Label text="Search Subscriptions"
            style="-fx-font-size: 18; -fx-font-weight: bold;" />
 
+    <!-- Search input and controls -->
     <HBox spacing="10">
+
+        <!-- Text input for search keyword -->
         <TextField fx:id="searchField" promptText="Search..." prefWidth="250"/>
+
+        <!-- Dropdown to choose search type (Name or Category) -->
         <ComboBox fx:id="searchTypeBox" prefWidth="120"/>
+
+        <!-- Clears search results and input -->
         <Button text="Clear" onAction="#clear"/>
     </HBox>
 
+    <!-- Displays search messages (e.g., no results, results found) -->
     <Label fx:id="messageLabel" text="" style="-fx-text-fill: grey;" />
+
+    <!-- Table showing search results -->
     <TableView fx:id="resultsTable" visible="false">
         <columns>
 
+            <!-- Subscription name -->
             <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+
+            <!-- Subscription category -->
             <TableColumn fx:id="categoryCol" text="Category" prefWidth="120"/>
+
+            <!-- Subscription cost -->
             <TableColumn fx:id="costCol" text="Cost" prefWidth="100"/>
+
+            <!-- Subscription status -->
             <TableColumn fx:id="statusCol" text="Status" prefWidth="120"/>
 
         </columns>
