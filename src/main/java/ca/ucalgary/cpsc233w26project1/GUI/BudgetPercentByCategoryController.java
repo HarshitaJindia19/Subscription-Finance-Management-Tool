@@ -80,7 +80,7 @@ public class BudgetPercentByCategoryController {
             Budget budg = manager.getAllBudgets().get(i);
             String category = budg.getCategory();
 
-            //keep track if we find an active subscription
+            //keep track of if we find an active subscription
             boolean hasActive = false;
             //go through each subscription using index
             var subs = manager.getAllSubscriptions();
@@ -89,12 +89,12 @@ public class BudgetPercentByCategoryController {
                 //check if category matches and status is ACTIVE
                 if (sub.getCategory().equalsIgnoreCase(category)
                         && sub.getStatus().toString().equals("ACTIVE")) {
-                    //we found one set to true
+                    //we found one so set to true
                     hasActive = true;
                     break;
                 }
             }
-            //if no active subscriptions found, skip this loop
+            //if no active subscriptions found skip this loop
             if (!hasActive) {
                 continue;
             }
