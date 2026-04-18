@@ -80,6 +80,25 @@ public class BudgetPercentByCategoryController {
             Budget budg = manager.getAllBudgets().get(i);
             String category = budg.getCategory();
 
+            //keep track if we find an active subscription
+            boolean hasActive = false;
+            //go through each subscription using index
+            var subs = manager.getAllSubscriptions();
+            for (int j = 0; j < subs.size(); j++) {
+                var sub = subs.get(j);
+                //check if category matches and status is ACTIVE
+                if (sub.getCategory().equalsIgnoreCase(category)
+                        && sub.getStatus().toString().equals("ACTIVE")) {
+                    //we found one set to true
+                    hasActive = true;
+                    break;
+                }
+            }
+            //if no active subscriptions found, skip this loop
+            if (!hasActive) {
+                continue;
+            }
+
             //get budget limit and spending
             double budget = budg.getLimit();
             double spent = manager.getSpendByCategory(category);
