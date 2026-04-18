@@ -100,9 +100,29 @@ public class BudgetAlertsController {
         for (int i = 0; i < manager.getAllBudgets().size(); i++) {
 
             Budget bgt = manager.getAllBudgets().get(i);
-
             String category = bgt.getCategory();
             double budget = bgt.getLimit();
+
+            //keep track if we find an active subscription
+            boolean hasActive = false;
+            //get all subscriptions
+            var subs = manager.getAllSubscriptions();
+            //go through each subscription
+            for (int j = 0; j < subs.size(); j++) {
+                var sub = subs.get(j);
+                //check if category matches and status is ACTIVE
+                if (sub.getCategory().equalsIgnoreCase(category)
+                        && sub.getStatus().toString().equals("ACTIVE")) {
+                    //we found one set to true
+                    hasActive = true;
+                    //stop checking more
+                    break;
+                }
+            }
+            //if none were active skip this loop
+            if (!hasActive) {
+                continue;
+            }
 
             //calculate how much is spent in this category
             double spent = manager.getSpendByCategory(category);

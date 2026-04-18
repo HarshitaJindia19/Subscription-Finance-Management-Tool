@@ -64,6 +64,32 @@ public class AddBudgetController {
         //convert limit to double
         double limit = Double.parseDouble(limitText);
 
+        //Make sure that if setting budget the category is active
+        //this will track if we find an active subscription
+        boolean hasActive = false;
+        //get the list of all subscriptions
+        var subs = manager.getAllSubscriptions();
+        //loop through the list using an index
+        for (int i = 0; i < subs.size(); i++) {
+            //get one subscription from the list
+            var sub = subs.get(i);
+
+            //check if category matches AND status is ACTIVE
+            if (sub.getCategory().equalsIgnoreCase(category)
+                    && sub.getStatus().toString().equals("ACTIVE")) {
+                //we found one so set to true
+                hasActive = true;
+                //stop loop since we don't need to keep checking
+                break;
+            }
+        }
+        //if we did NOT find any active subscriptions
+        if (!hasActive) {
+            showError("Cannot set budget. No ACTIVE subscriptions in this category.");
+            return;
+        }
+
+
         //save budget into manager
         manager.setCategoryBudget(category, limit);
 
