@@ -471,9 +471,9 @@ public class SubscriptionMainController {
         Alert about = new Alert(Alert.AlertType.INFORMATION); //Set alert to show INFORMATION pop-up
 
         // Add context in About section
-        about.setTitle("About User");
-        about.setHeaderText("Welcome to your Profile:");
-        about.setContentText("About: Track Subscriptions like a pro 😎!\nAuthor: Harshita Jindia, Ramsha Oad, Mehrin Chowdhury\nTutorial: T01");
+        about.setTitle("About");
+        about.setHeaderText("Learn more about our Program:");
+        about.setContentText("About: Track, manage, monitor Subscriptions like a pro 😎!\nAuthor: Harshita Jindia, Ramsha Oad, Mehrin Chowdhury\nContact: harshita.jindia1@ucalgary.ca, ramsha.oad@ucalgary.ca, mehrin.chowdhury@ucalgary.ca\nProgram: CPSC233W26 T01 V.1");
 
         about.showAndWait();
     }
