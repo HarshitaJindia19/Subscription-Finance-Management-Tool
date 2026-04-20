@@ -1,96 +1,100 @@
 # CPSC 233 - Subscription Manager
-### Team Members: Harshita, Ramsha, Mehrin
+### Team Members: Harshita Jindia, Ramsha Oad, Mehrin Chowdhury
 ### Tutorial: T01
-### Date: February 2026
+### Course: CPSC 233 - Introduction to Computer Science for CS Majors II
+### Date: April 2026
 
 ---
 
 ## Project Description
 
-Subscription Manager is a Java-based command-line application that helps users track and manage their subscription services (e.g. Netflix, Spotify, YouTube Premium). Users can add, update, and view subscriptions, set category budgets, and receive alerts when spending exceeds limits.
+Subscription Manager is a JavaFX-based desktop application that helps users track 
+and manage their subscription services (e.g. Netflix, Spotify, Adobe). Users can 
+add, update, and view subscriptions, set category budgets, receive spending alerts, 
+and save/load data to CSV files through a graphical interface.
+
+---
+
+## Authors
+
+| Name | GitHub |
+|---|---|
+| Harshita Jindia | @harshitajindia |
+| Ramsha Oad | @r.oad |
+| Mehrin Chowdhury | @mehrin.chowdhury |
 
 ---
 
 ## Features
 
-### Add SubscriptionManager
+### Data Management
 - Add a new subscription (name, cost, category, billing cycle, start date, end date, status)
+- Update any subscription field with input validation
 - Add a monthly budget limit by category
-
-### Update SubscriptionManager
-- Change subscription status (ACTIVE, PAUSED, CANCELLED)
-- Update any subscription field (name, cost, category, billing cycle, dates, status)
 
 ### General Output
 - View all tracked subscriptions in a formatted table
-- View all active subscriptions
+- View active subscriptions
+- View paused subscriptions
 
 ### Special Output
-- Calculate total monthly spend across all active subscriptions
-- Calculate total annual spend across all active subscriptions
-- List subscriptions renewing in the next 7 days (upcoming bills)
-- List paused subscriptions
-- Show percentage of budget used for a specific category
-- List high-expense bills (subscriptions over a set amount)
-- Budget alert (alert when total spending exceeds category budget limit)
+- Total monthly spend across all active subscriptions
+- Total annual spend across all active subscriptions
+- Upcoming bills (subscriptions renewing within the next 7 days)
+- Budget % used by category
+- High-expense bills (subscriptions over a set threshold)
+- Budget alerts (when spending exceeds category budget limit)
 - Search subscriptions by name or category
 
+### File I/O
+- Save subscription and budget data to a `.csv` file
+- Load subscription and budget data from a `.csv` file
+- Run with a command line argument to load a saved CSV on startup
+
 ---
 
-## SubscriptionManager Structures Used
+## OO Design
 
-| Structure | Purpose |
+| Class | Purpose |
 |---|---|
-| `ArrayList<ArrayList<String>>` | Stores all subscriptions, each as an inner list of 7 fields |
-| `HashMap<String, Double>` | Maps category names to their budget limits |
-| `HashSet<String>` | Stores unique category names and subscription names |
-| `String[]` | Stores fixed status options: ACTIVE, PAUSED, CANCELLED |
-
-### Subscription SubscriptionManager Format (Inner ArrayList)
-| Index | Field |
-|---|---|
-| 0 | Name |
-| 1 | Cost |
-| 2 | Category |
-| 3 | Billing Cycle (Monthly/Yearly) |
-| 4 | Start Date (MM/DD/YYYY) |
-| 5 | End Date (MM/DD/YYYY or N/A) |
-| 6 | Status (ACTIVE/PAUSED/CANCELLED) |
+| `Subscription` | Base class with all shared subscription fields and behaviour |
+| `MonthlySubscription` | Extends Subscription — handles monthly billing logic |
+| `YearlySubscription` | Extends Subscription — handles yearly billing logic |
+| `SubscriptionManager` | Manages all subscriptions and budgets, implements Searchable |
+| `Budget` | Stores category budget information |
+| `Status` | Enum for subscription status (ACTIVE, PAUSED, CANCELLED) |
+| `FileHandler` | Handles CSV save and load |
 
 ---
 
-## Project Structure
-```
-src/
-├── Main.java        # Entry point - calls Menu.runMenu()
-├── Menu.java        # Front-end: all Scanner input and System.out output
-├── SubscriptionManager.java        # Back-end: all data storage and logic
-└── SubscriptionManagerTest.java    # JUnit 5 unit tests for SubscriptionManager.java methods
-```
+## How to Run (.jar file)
+
+1. Download `SubscriptionManager.jar` from the repository
+2. Run from command line:
+3. To load a previously saved CSV file on startup:
 
 ---
 
-## How to Run
+## How to Run from Source
 
 1. Clone the repository:
-```
-git clone https://csgit.ucalgary.ca/mehrin.chowdhury/cpsc233w26project1.git
-```
 2. Open the project in IntelliJ IDEA
-3. Run `Main.java`
-4. Use the menu to interact with the application
+3. Add JavaFX SDK to project libraries
+4. Run `Main.java`
 
 ---
 
 ## How to Run Tests
 
-Open `SubscriptionManagerTest.java` in IntelliJ and click the green run button next to the class or individual test methods. Requires JUnit 5.
-
+Open `SubscriptionManagerTest.java` or `SubscriptionTest.java` in IntelliJ and 
+click the green run button. Requires JUnit 5.
 
 ---
 
 ## Git Workflow
 
 - Each member worked in feature branches before merging into `main`
-- Branches: `feature-main-menu`, `feature-update-logic`, `feature-special-outputs`, `feature-search`, `add_data_logic`, `data_storage`, `math_logic`, `SearchEngine`
+- Branches: `feature-main-menu`, `feature-update-logic`, `feature-subscription-classes`,
+  `feature-special-outputs`, `feature-search`, `add_data_logic`, `data_storage`, 
+  `math_logic`, `SearchEngine`
 - All merges performed via `git merge` into `main`
