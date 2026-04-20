@@ -28,18 +28,6 @@ import javafx.scene.layout.HBox;
  * Controls the main controller of the subscription manager's main window
  */
 public class SubscriptionMainController {
-    @FXML private Button btnAllSubscriptions;
-    @FXML private Button btnActive;
-    @FXML private Button btnPaused;
-    @FXML private Button btnCancelled;
-    @FXML private Button btnUpcomingBills;
-    @FXML private Button btnBudgetAlerts;
-    @FXML private Button btnBudgetByCategory;
-    @FXML private Button btnHighExpense;
-    @FXML private Button btnSearch;
-    @FXML private Button btnSaveToFile;
-    @FXML private Button btnLoadFromFile;
-    @FXML private TextField searchField;
     @FXML private Label lblTotalSubscriptions;
     @FXML private Label lblMonthlySpend;
     @FXML private Label lblAnnualSpend;
@@ -483,9 +471,9 @@ public class SubscriptionMainController {
         Alert about = new Alert(Alert.AlertType.INFORMATION); //Set alert to show INFORMATION pop-up
 
         // Add context in About section
-        about.setTitle("About User");
-        about.setHeaderText("Welcome to your Profile:");
-        about.setContentText("About: Track Subscriptions like a pro 😎!\nAuthor: Harshita Jindia, Ramsha Oad, Mehrin Chowdhury\nTutorial: T01");
+        about.setTitle("About");
+        about.setHeaderText("Learn more about our Program:");
+        about.setContentText("About: Track, manage, monitor Subscriptions like a pro 😎!\nAuthor: Harshita Jindia, Ramsha Oad, Mehrin Chowdhury\nContact: harshita.jindia1@ucalgary.ca, ramsha.oad@ucalgary.ca, mehrin.chowdhury@ucalgary.ca\nProgram: CPSC233W26 T01 V.1");
 
         about.showAndWait();
     }

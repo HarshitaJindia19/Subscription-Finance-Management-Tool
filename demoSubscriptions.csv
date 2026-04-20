@@ -1,0 +1,27 @@
+SUBSCRIPTIONS
+name,cost,category,renewal,startDate,endDate,status
+Netflix,15.99,Entertainment,Monthly,01/01/2025,N/A,ACTIVE
+Spotify,9.99,Music,Monthly,03/01/2025,N/A,ACTIVE
+Adobe,120.0,Work,Yearly,06/01/2025,N/A,PAUSED
+ChatGPT Plus,20.0,Work,Monthly,01/15/2025,N/A,ACTIVE
+Peloton,44.0,Fitness,Monthly,02/10/2025,N/A,ACTIVE
+Disney+,13.99,Entertainment,Monthly,11/12/2024,05/12/2025,CANCELLED
+Skillshare,168.0,Education,Yearly,04/20/2025,N/A,ACTIVE
+HelloFresh,65.0,Food,Weekly,03/05/2025,04/01/2025,CANCELLED
+Xbox Game Pass,16.99,Gaming,Monthly,01/01/2025,N/A,PAUSED
+iCloud+,2.99,Storage,Monthly,01/10/2024,N/A,ACTIVE
+Midjourney,30.0,Art,Monthly,05/15/2025,N/A,ACTIVE
+Audible,14.95,Entertainment,Monthly,02/20/2025,N/A,PAUSED
+PlayStation Plus,79.99,Gaming,Yearly,01/15/2025,01/15/2026,CANCELLED
+Crunchyroll,7.99,Entertainment,Monthly,03/10/2025,N/A,ACTIVE
+BUDGETS
+category,limit
+Entertainment,10.0
+Fitness,300.0
+Art,70.0
+Work,150.0
+Music,15.0
+Food,300.0
+Education,200.0
+Gaming,100.0
+Storage,5.0
