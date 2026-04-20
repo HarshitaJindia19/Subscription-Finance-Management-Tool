@@ -28,18 +28,6 @@ import javafx.scene.layout.HBox;
  * Controls the main controller of the subscription manager's main window
  */
 public class SubscriptionMainController {
-    @FXML private Button btnAllSubscriptions;
-    @FXML private Button btnActive;
-    @FXML private Button btnPaused;
-    @FXML private Button btnCancelled;
-    @FXML private Button btnUpcomingBills;
-    @FXML private Button btnBudgetAlerts;
-    @FXML private Button btnBudgetByCategory;
-    @FXML private Button btnHighExpense;
-    @FXML private Button btnSearch;
-    @FXML private Button btnSaveToFile;
-    @FXML private Button btnLoadFromFile;
-    @FXML private TextField searchField;
     @FXML private Label lblTotalSubscriptions;
     @FXML private Label lblMonthlySpend;
     @FXML private Label lblAnnualSpend;
