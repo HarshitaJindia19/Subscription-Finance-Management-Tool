@@ -27,6 +27,8 @@ and save/load data to CSV files through a graphical interface.
 
 ## Features
 
+<img width="1494" height="920" alt="Subscription Tool Dashboard" src="https://github.com/user-attachments/assets/341579f9-8183-4f7b-a26f-43213a80d4b5" />
+
 ### Data Management
 - Add a new subscription (name, cost, category, billing cycle, start date, end date, status)
 - Update any subscription field with input validation
